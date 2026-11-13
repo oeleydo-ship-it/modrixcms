@@ -1,0 +1,23 @@
+{
+    "name": "modrix/minimal",
+    "type": "theme",
+    "display_name": "Minimal",
+    "description": "Quiet and editorial: black and white with one accent colour, serif headlines, its own header and call-to-action block, and square corners.",
+    "version": "1.0.0",
+    "cms_version": "^1.0",
+    "author": "Modrix",
+    "license": "MIT",
+    "screenshot": "public/screenshot.svg",
+    "styles": ["public/theme.css"],
+    "scripts": ["public/theme.js"],
+    "settings": [
+        { "name": "accent", "label": "Accent colour", "type": "color", "default": "#e4572e", "css_var": "--brand" },
+        { "name": "background", "label": "Page background", "type": "color", "default": "#ffffff", "css_var": "--paper" },
+        { "name": "headline_font", "label": "Headline font", "type": "select", "default": "serif", "css_var": "--display",
+          "options": { "serif": "Serif", "sans": "Sans-serif" },
+          "css_values": { "serif": "Georgia, 'Times New Roman', serif", "sans": "Inter, system-ui, sans-serif" } },
+        { "name": "show_cta", "label": "Show the button in the header", "type": "toggle", "default": true },
+        { "name": "cta_label", "label": "Header button text", "type": "text", "default": "Get started" },
+        { "name": "cta_url", "label": "Header button link", "type": "url", "default": "" }
+    ]
+}

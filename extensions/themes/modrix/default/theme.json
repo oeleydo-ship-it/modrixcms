@@ -1,0 +1,20 @@
+{
+    "name": "modrix/default",
+    "type": "theme",
+    "display_name": "Modrix Default",
+    "description": "The built-in look: bold headlines, violet accents and soft paper background. Uses the core templates, so it always works.",
+    "version": "1.0.0",
+    "cms_version": "^1.0",
+    "author": "Modrix",
+    "license": "MIT",
+    "settings": [
+        { "name": "brand", "label": "Brand colour", "type": "color", "default": "#5b3df5", "css_var": "--brand" },
+        { "name": "brand_light", "label": "Brand colour (light)", "type": "color", "default": "#7c63ff", "css_var": "--brand-2" },
+        { "name": "highlight", "label": "Highlight colour", "type": "color", "default": "#c6f24e", "css_var": "--lime" },
+        { "name": "text", "label": "Text colour", "type": "color", "default": "#0d1220", "css_var": "--ink" },
+        { "name": "background", "label": "Page background", "type": "color", "default": "#f7f6f2", "css_var": "--paper" },
+        { "name": "corners", "label": "Corners", "type": "select", "default": "rounded", "css_var": "--radius",
+          "options": { "rounded": "Rounded", "soft": "Slightly rounded", "square": "Square" },
+          "css_values": { "rounded": "20px", "soft": "10px", "square": "2px" } }
+    ]
+}

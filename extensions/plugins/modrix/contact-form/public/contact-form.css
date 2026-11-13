@@ -1,0 +1,12 @@
+.contact-form { display: grid; gap: 1rem; max-width: 46rem; }
+.contact-form-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; }
+.contact-form label { display: grid; gap: .4rem; font-weight: 600; font-size: .92rem; }
+.contact-form input, .contact-form textarea {
+  font: inherit; font-weight: 400; padding: .8rem 1rem; border: 1px solid var(--line, #e4e6ee);
+  border-radius: 12px; background: var(--white, #fff); color: inherit;
+}
+.contact-form input:focus, .contact-form textarea:focus { outline: 2px solid var(--brand, #5b3df5); outline-offset: 1px; }
+.contact-form .btn { justify-self: start; }
+.contact-form-error { color: #b91c1c; font-weight: 500; font-size: .85rem; }
+.contact-form-sent { padding: 1rem 1.2rem; border-radius: 12px; background: #dcfce7; color: #14532d; max-width: 46rem; }
+.contact-form-trap { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }

@@ -1,0 +1,21 @@
+{
+    "name": "modrix/contact-form",
+    "type": "plugin",
+    "display_name": "Contact form",
+    "description": "A contact form block for any page, an inbox in the admin, and an optional email for every new message.",
+    "version": "1.0.0",
+    "cms_version": "^1.0",
+    "author": "Modrix",
+    "license": "MIT",
+    "autoload": { "psr-4": { "Modrix\\ContactForm\\": "src/" } },
+    "provider": "Modrix\\ContactForm\\ContactFormServiceProvider",
+    "routes": { "web": "routes/web.php", "admin": "routes/admin.php" },
+    "scripts": ["public/contact-form.js"],
+    "admin_navigation": [
+        { "title": "Messages", "route": "messages.index" }
+    ],
+    "settings": [
+        { "name": "recipient", "label": "Email new messages to", "type": "email", "default": "", "help": "Leave empty to only keep them in Admin → Messages. Needs SMTP set up in Settings." },
+        { "name": "success_message", "label": "Thank-you message", "type": "text", "default": "Thanks! Your message is on its way. We'll get back to you soon." }
+    ]
+}

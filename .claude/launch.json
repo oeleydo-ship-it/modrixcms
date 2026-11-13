@@ -1,0 +1,12 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "modrix-website",
+      "runtimeExecutable": "C:/php84/php.exe",
+      "runtimeArgs": ["artisan", "serve", "--host=127.0.0.1", "--port=8096"],
+      "port": 8096,
+      "autoPort": false
+    }
+  ]
+}

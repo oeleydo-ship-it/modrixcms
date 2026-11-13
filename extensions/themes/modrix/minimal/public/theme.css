@@ -1,0 +1,30 @@
+/* Minimal theme: loaded after the core styles, so it only changes what it needs. */
+:root {
+  --ink: #111111;
+  --ink-2: #222222;
+  --muted: #666666;
+  --line: #e5e5e5;
+  --white: #ffffff;
+  --brand-2: var(--brand);
+  --lime: color-mix(in srgb, var(--brand) 22%, white);
+  --radius: 2px;
+  --shadow: none;
+}
+
+body { background: var(--paper); }
+h1, h2, h3, h4 { font-family: var(--display); font-weight: 600; letter-spacing: -.01em; }
+
+.minimal-nav { background: var(--paper); border-bottom: 1px solid var(--line); box-shadow: none; }
+.minimal-nav .brand span { font-family: var(--display); font-size: 1.35rem; font-weight: 600; }
+.minimal-nav .nav-links a { text-transform: uppercase; font-size: .78rem; letter-spacing: .12em; }
+
+.btn { border-radius: var(--radius); background: var(--ink); }
+.btn-light { background: transparent; color: var(--ink); border: 1px solid var(--ink); }
+.window, .card, .feature, .step, .cta { border-radius: var(--radius) !important; box-shadow: none !important; }
+.hero h1 em { color: var(--brand); background: none; font-style: italic; }
+.footer { background: var(--paper); color: var(--ink); border-top: 1px solid var(--line); }
+.footer a, .footer p { color: var(--muted); }
+
+.minimal-cta { border-top: 1px solid var(--line); }
+.minimal-cta h2 { font-size: clamp(1.8rem, 3.6vw, 2.8rem); margin-bottom: .8rem; }
+.minimal-cta p { color: var(--muted); max-width: 40rem; }
