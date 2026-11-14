@@ -22,11 +22,12 @@ class PageController extends Controller
             return redirect()->route('home', status: 301);
         }
 
-        if ($page->usesBuilder()) {
-            abort_if($page->published_document === null, 404);
-
+        if ($page->usesBuilder() && $page->published_document !== null) {
             return self::builderPage($page);
         }
+
+        // Converted to the builder but not published from it yet: visitors keep the block version.
+        abort_if($page->usesBuilder() && ($page->blocks ?? []) === [], 404);
 
         return inertia('Site/Page', [
             'page' => ['title' => $page->title, 'slug' => $page->slug],

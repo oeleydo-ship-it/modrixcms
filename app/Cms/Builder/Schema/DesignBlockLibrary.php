@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace App\Cms\Builder\Schema;
 
-use Illuminate\Support\Str;
-
 /**
  * Ready-made sections a user can drop straight onto a page.
  *
@@ -36,6 +34,8 @@ use Illuminate\Support\Str;
  */
 final class DesignBlockLibrary
 {
+    use BuildsDocumentNodes;
+
     public const CATEGORY_HERO = 'hero';
 
     public const CATEGORY_CONTENT = 'content';
@@ -2220,112 +2220,6 @@ final class DesignBlockLibrary
     }
 
     /**
-     * @param  array<string, mixed>  $style
-     * @param  list<array<string, mixed>>  $rows
-     * @return array<string, mixed>
-     */
-    private function section(array $rows, array $style = [], string $width = 'boxed', bool $sticky = false): array
-    {
-        return [
-            'id' => (string) Str::ulid(),
-            'width' => $width,
-            'sticky' => $sticky,
-            'style' => $style,
-            'rows' => $rows,
-        ];
-    }
-
-    /**
-     * @param  list<array<string, mixed>>  $columns
-     * @param  array<string, mixed>  $style
-     * @return array<string, mixed>
-     */
-    private function row(array $columns, array $style = []): array
-    {
-        return [
-            'id' => (string) Str::ulid(),
-            // Multi-column rows stack on mobile: three 4-wide columns on a
-            // phone would be unreadable.
-            'stackBelow' => 'mobile',
-            'style' => $style,
-            'columns' => $columns,
-        ];
-    }
-
-    /**
-     * @param  list<array<string, mixed>>  $blocks
-     * @param  array<string, mixed>  $style
-     * @return array<string, mixed>
-     */
-    private function column(int $span, array $blocks, array $style = []): array
-    {
-        return [
-            'id' => (string) Str::ulid(),
-            'span' => ['desktop' => $span, 'tablet' => $span <= 4 ? 6 : 12, 'mobile' => 12],
-            'style' => $style,
-            'blocks' => $blocks,
-        ];
-    }
-
-    /**
-     * @param  array<string, mixed>  $props
-     * @param  array<string, mixed>  $style
-     * @return array<string, mixed>
-     */
-    private function blockNode(BlockType $type, array $props = [], array $style = []): array
-    {
-        return [
-            'id' => (string) Str::ulid(),
-            'type' => $type->value,
-            // Registry defaults first, so a block dropped from here has every
-            // prop the renderer expects even where this definition is terse.
-            'props' => [...BlockRegistry::defaultProps($type), ...$props],
-            'style' => $style,
-        ];
-    }
-
-    /**
-     * @param  array<string, mixed>  $style
-     * @return array<string, mixed>
-     */
-    private function heading(string $text, string $level, array $style = []): array
-    {
-        return $this->blockNode(BlockType::Heading, ['text' => $text, 'level' => $level], $style);
-    }
-
-    /**
-     * `text`, not `html` — the paragraph block reads `text` and sanitises a
-     * small inline subset out of it.
-     *
-     * @param  array<string, mixed>  $style
-     * @return array<string, mixed>
-     */
-    private function paragraph(string $text, array $style = []): array
-    {
-        return $this->blockNode(BlockType::Paragraph, ['text' => $text], $style);
-    }
-
-    /**
-     * @param  array<string, mixed>  $style
-     * @return array<string, mixed>
-     */
-    private function button(
-        string $label,
-        string $size = 'md',
-        string $variant = 'primary',
-        array $style = [],
-    ): array {
-        return $this->blockNode(BlockType::Button, [
-            'label' => $label,
-            // `scroll_to` keeps a template's buttons useful without inventing
-            // a URL that would 404 the moment the page is published.
-            'action' => 'scroll_to',
-            'size' => $size,
-            'variant' => $variant,
-        ], $style);
-    }
-
-    /**
      * A button that moves the visitor to the next funnel step.
      *
      * @param  array<string, mixed>  $style
@@ -2371,48 +2265,5 @@ final class DesignBlockLibrary
             'size' => $size,
             'variant' => 'primary',
         ], $style);
-    }
-
-    /**
-     * @param  array<string, mixed>  $style
-     * @return array<string, mixed>
-     */
-    private function image(string $alt, array $style = []): array
-    {
-        return $this->blockNode(BlockType::Image, ['src' => null, 'alt' => $alt], $style);
-    }
-
-    /**
-     * Every style value is responsive, so a bare value has to be wrapped.
-     *
-     * @return array<string, mixed>
-     */
-    private function responsive(mixed $desktop): array
-    {
-        return ['desktop' => $desktop];
-    }
-
-    /**
-     * A responsive font size — the desktop scale is nearly always too large on
-     * a phone, and leaving it unset is the most common design-block mistake.
-     *
-     * @return array<string, mixed>
-     */
-    private function font(string $desktop, string $mobile): array
-    {
-        return ['desktop' => $desktop, 'mobile' => $mobile];
-    }
-
-    /**
-     * Symmetric vertical padding with a tighter mobile tier.
-     *
-     * @return array<string, mixed>
-     */
-    private function pad(string $vertical, string $horizontal, string $mobileVertical): array
-    {
-        return [
-            'desktop' => ['top' => $vertical, 'right' => $horizontal, 'bottom' => $vertical, 'left' => $horizontal],
-            'mobile' => ['top' => $mobileVertical, 'right' => '20px', 'bottom' => $mobileVertical, 'left' => '20px'],
-        ];
     }
 }

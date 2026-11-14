@@ -54,6 +54,8 @@ Route::prefix('admin')->name('admin.')->group(function () {
 
         Route::post('pages/preview', [Admin\PageController::class, 'preview'])->name('pages.preview');
         Route::get('pages/{page}/builder', [Admin\PageController::class, 'builder'])->name('pages.builder');
+        Route::post('pages/{page}/convert-to-builder', [Admin\PageController::class, 'convertToBuilder'])->name('pages.convert');
+        Route::post('pages/{page}/switch-to-blocks', [Admin\PageController::class, 'switchToBlocks'])->name('pages.switch-to-blocks');
         Route::post('pages/new-builder-page', [Admin\PageController::class, 'storeBuilderPage'])->name('pages.store-builder');
         Route::resource('pages', Admin\PageController::class)->except('show');
         Route::post('builder/images', Admin\BuilderImageController::class)->middleware('throttle:30,1')->name('builder.images');

@@ -8,6 +8,7 @@ use App\Http\Controllers\Builder\TemplateController;
 use App\Models\BuilderTemplate;
 use App\Models\Page;
 use App\Models\User;
+use App\PageBuilder\PageBuilder;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
@@ -222,6 +223,65 @@ class VisualBuilderTest extends TestCase
         $this->get(route('admin.pages.index'))->assertInertia(fn ($inertia) => $inertia
             ->where('pages.data.0.editor', 'builder')
             ->where('pages.data.0.builder_url', route('admin.pages.builder', $page)));
+    }
+
+    public function test_a_block_page_converts_to_the_builder_and_stays_live_until_published(): void
+    {
+        $this->actingAs($this->admin());
+        $page = Page::factory()->create([
+            'slug' => 'about-us',
+            'is_published' => true,
+            'blocks' => [
+                PageBuilder::make('page_header', ['title' => 'About us']),
+                PageBuilder::make('text', ['content' => "## Our story\n\nWe **build** things."]),
+                PageBuilder::make('cta', ['title' => 'Talk to us', 'primary_label' => 'Contact', 'primary_url' => '/contact']),
+                ['id' => 'p1', 'type' => 'acme/maps:map', 'hidden' => false, 'data' => []],
+            ],
+        ]);
+
+        $this->post(route('admin.pages.convert', $page), [], ['X-Inertia' => 'true'])
+            ->assertStatus(409)
+            ->assertHeader('X-Inertia-Location', route('admin.pages.builder', $page));
+
+        $page->refresh();
+        $this->assertSame(Page::EDITOR_BUILDER, $page->editor);
+        $this->assertCount(3, $page->document['sections']);
+        $this->assertSame([], app(DocumentValidator::class)->errorsFor($page->document));
+        $this->assertStringContainsString('<h2>Our story</h2>', json_encode($page->document, JSON_UNESCAPED_SLASHES));
+        $this->assertStringContainsString('var(--site-dark, #0f172a)', json_encode($page->document, JSON_UNESCAPED_SLASHES));
+        $this->assertSame('Converted. These blocks have no visual-builder version and were left out: acme/maps:map.', session('status'));
+        $this->assertCount(4, $page->blocks, 'the original blocks are kept');
+
+        // Not published from the builder yet: visitors still get the block version.
+        $this->get('/about-us')->assertOk()->assertInertia(fn ($inertia) => $inertia->component('Site/Page'));
+
+        $this->postJson("/api/v1/pages/{$page->id}/publish")->assertOk();
+        $this->get('/about-us')->assertOk()->assertViewIs('builder-page');
+
+        // Switching back shows the blocks again; switching once more keeps the builder design.
+        $this->post(route('admin.pages.switch-to-blocks', $page))->assertRedirect(route('admin.pages.edit', $page));
+        $this->get('/about-us')->assertInertia(fn ($inertia) => $inertia->component('Site/Page'));
+
+        $design = $page->fresh()->document;
+        $this->post(route('admin.pages.convert', $page), [], ['X-Inertia' => 'true'])->assertStatus(409);
+        $this->assertEquals($design, $page->fresh()->document);
+    }
+
+    public function test_the_page_form_offers_conversion_and_switching_back(): void
+    {
+        $this->actingAs($this->admin());
+        $blockPage = Page::factory()->create();
+        $builderPage = $this->builderPage();
+
+        $this->get(route('admin.pages.edit', $blockPage))->assertInertia(fn ($inertia) => $inertia
+            ->where('page.convert_url', route('admin.pages.convert', $blockPage))
+            ->where('page.has_builder_design', false));
+
+        $this->get(route('admin.pages.edit', $builderPage))->assertInertia(fn ($inertia) => $inertia
+            ->where('page.editor', 'builder')
+            ->where('page.switch_back_url', null));
+
+        $this->post(route('admin.pages.switch-to-blocks', $builderPage))->assertStatus(422);
     }
 
     /** Documents compared without the server-stamped schema version. */

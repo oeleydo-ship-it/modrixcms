@@ -93,15 +93,30 @@ export default function PageForm({ page, builder }) {
                             <div className="panel">
                                 <h2>Visual builder</h2>
                                 <p className="hint">This page is designed in the visual builder: sections, columns and blocks on a live canvas, with device previews, History and Publish.</p>
-                                <a className="btn" href={page.builder_url}>Open builder</a>
+                                {!page.builder_live && page.switch_back_url ? (
+                                    <p className="hint"><strong>Visitors still see the block version</strong> of this page until you publish it from the builder.</p>
+                                ) : null}
+                                <div className="actions">
+                                    <a className="btn" href={page.builder_url}>Open builder</a>
+                                    {page.switch_back_url ? (
+                                        <button className="btn btn-light" type="button" onClick={() => {
+                                            if (window.confirm('Go back to the block editor? Visitors will see the block version again. Your visual-builder design is kept if you switch later.')) {
+                                                router.post(page.switch_back_url);
+                                            }
+                                        }}>Switch back to block editor</button>
+                                    ) : null}
+                                </div>
                             </div>
                         ) : (
+                        <>
+                        <ConvertPanel page={page} dirty={dirty} />
                         <div className="panel pb-panel">
                             <h2>Page builder</h2>
                             <p className="hint">Add blocks, drag ⋮⋮ to reorder, click a block to edit it. Hidden blocks stay here but aren’t shown on the site.</p>
                             <PageBuilder blocks={form.data.blocks} onChange={(blocks) => change('blocks', blocks)}
                                 definitions={builder.blocks} icons={builder.icons} uploadUrl={route('admin.builder.images')} />
                         </div>
+                        </>
                         )}
                     </div>
 
@@ -125,5 +140,46 @@ export default function PageForm({ page, builder }) {
                 </div>
             </form>
         </AdminLayout>
+    );
+}
+
+/**
+ * Offers the visual builder from the block editor: convert this page (its blocks become
+ * builder sections in the theme's colours, and are kept so it can switch back), or, for
+ * a page not saved yet, start a new page in the builder instead.
+ */
+function ConvertPanel({ page, dirty }) {
+    const convert = () => {
+        const message = page.has_builder_design
+            ? 'Switch this page to the visual builder? Your earlier builder design is still there.'
+            : 'Convert this page to the visual builder? Its blocks become editable sections in your theme’s colours. Visitors keep seeing the current version until you publish from the builder, and you can switch back.';
+
+        if (dirty) {
+            window.alert('Save your changes first, then convert.');
+            return;
+        }
+
+        if (window.confirm(message)) {
+            router.post(page.convert_url);
+        }
+    };
+
+    return (
+        <div className="panel convert-panel">
+            <h2>Design it visually</h2>
+            {page.convert_url ? (
+                <>
+                    <p className="hint">Edit this page on a live canvas with sections, columns, device previews and themed designs.</p>
+                    <button className="btn" type="button" onClick={convert}>
+                        {page.has_builder_design ? 'Switch to visual builder' : 'Convert to visual builder'}
+                    </button>
+                </>
+            ) : (
+                <>
+                    <p className="hint">Prefer a live canvas? Start this page in the visual builder instead.</p>
+                    <button className="btn" type="button" onClick={() => router.post(route('admin.pages.store-builder'))}>Start in visual builder</button>
+                </>
+            )}
+        </div>
     );
 }

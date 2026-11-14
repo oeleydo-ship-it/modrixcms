@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Cms\Builder\BlockPageConverter;
+use App\Cms\Builder\Exceptions\InvalidDocumentException;
+use App\Cms\Builder\PageDocuments;
 use App\Cms\Frontend\BlockPresenter;
 use App\Http\Controllers\Controller;
 use App\Models\Page;
@@ -95,6 +98,50 @@ class PageController extends Controller
         return view('builder', ['page' => $page]);
     }
 
+    /**
+     * Moves a block-editor page into the visual builder. Its blocks become builder
+     * sections (themed colours); the blocks are kept, so it can be switched back.
+     * Visitors keep seeing the block version until the page is published from the builder.
+     */
+    public function convertToBuilder(Request $request, Page $page, BlockPageConverter $converter, PageDocuments $documents): RedirectResponse|SymfonyResponse
+    {
+        if ($page->usesBuilder()) {
+            return Inertia::location(route('admin.pages.builder', $page));
+        }
+
+        $skipped = [];
+
+        // A page converted before keeps the builder work done since; only a first conversion builds from blocks.
+        if ($page->document === null) {
+            $result = $converter->convert($page->blocks ?? []);
+            $skipped = $result['skipped'];
+
+            try {
+                $page = $documents->save($page, $result['document'], $page->version, $request->user()->id, 'Converted from the block editor');
+            } catch (InvalidDocumentException $e) {
+                return back()->withErrors(['page' => 'This page could not be converted: '.implode(' ', array_slice($e->errors, 0, 3))]);
+            }
+        } else {
+            $page->forceFill(['editor' => Page::EDITOR_BUILDER])->save();
+        }
+
+        if ($skipped !== []) {
+            $request->session()->flash('status', 'Converted. These blocks have no visual-builder version and were left out: '.implode(', ', $skipped).'.');
+        }
+
+        return Inertia::location(route('admin.pages.builder', $page));
+    }
+
+    /** Back to the block editor (its blocks were kept). The builder design stays saved for later. */
+    public function switchToBlocks(Page $page): RedirectResponse
+    {
+        abort_if(($page->blocks ?? []) === [], 422, 'This page has no block-editor version to go back to.');
+
+        $page->forceFill(['editor' => Page::EDITOR_BLOCKS])->save();
+
+        return redirect()->route('admin.pages.edit', $page)->with('status', 'Back in the block editor. Your visual-builder design is kept if you switch again.');
+    }
+
     public function edit(Page $page): Response
     {
         return $this->form($page);
@@ -117,6 +164,10 @@ class PageController extends Controller
                 'url' => $page->exists ? ($page->is_home ? route('home') : route('pages.show', $page)) : null,
                 'editor' => $page->editor ?? Page::EDITOR_BLOCKS,
                 'builder_url' => $page->exists ? route('admin.pages.builder', $page) : null,
+                'convert_url' => $page->exists ? route('admin.pages.convert', $page) : null,
+                'switch_back_url' => $page->exists && ($page->blocks ?? []) !== [] ? route('admin.pages.switch-to-blocks', $page) : null,
+                'has_builder_design' => $page->document !== null,
+                'builder_live' => $page->published_document !== null,
             ],
             'builder' => PageBuilder::forEditor(),
         ]);

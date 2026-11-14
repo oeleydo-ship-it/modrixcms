@@ -20,8 +20,9 @@ class HomeController extends Controller
             return PageController::builderPage($page);
         }
 
-        // A builder home page that was never published counts as no home page yet.
-        $page = $page?->usesBuilder() ? null : $page;
+        // A builder home page not yet published from the builder shows its block version,
+        // or counts as no home page if it never had one.
+        $page = $page?->usesBuilder() && ($page->blocks ?? []) === [] ? null : $page;
 
         // No home page set yet: show the default landing page.
         $blocks = $hooks->apply('page.blocks', $page?->visibleBlocks() ?? PageBuilder::landingBlocks(), $page);
