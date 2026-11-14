@@ -89,12 +89,20 @@ export default function PageForm({ page, builder }) {
                             </div>
                         </div>
 
+                        {page.editor === 'builder' ? (
+                            <div className="panel">
+                                <h2>Visual builder</h2>
+                                <p className="hint">This page is designed in the visual builder: sections, columns and blocks on a live canvas, with device previews, History and Publish.</p>
+                                <a className="btn" href={page.builder_url}>Open builder</a>
+                            </div>
+                        ) : (
                         <div className="panel pb-panel">
                             <h2>Page builder</h2>
                             <p className="hint">Add blocks, drag ⋮⋮ to reorder, click a block to edit it. Hidden blocks stay here but aren’t shown on the site.</p>
                             <PageBuilder blocks={form.data.blocks} onChange={(blocks) => change('blocks', blocks)}
                                 definitions={builder.blocks} icons={builder.icons} uploadUrl={route('admin.builder.images')} />
                         </div>
+                        )}
                     </div>
 
                     <div className="builder-side">

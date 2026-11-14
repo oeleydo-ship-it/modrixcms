@@ -1,0 +1,42 @@
+{
+    "compilerOptions": {
+        "target": "ES2022",
+        "lib": ["ES2023", "DOM", "DOM.Iterable"],
+        "module": "ESNext",
+        "moduleResolution": "bundler",
+        "jsx": "react-jsx",
+        "types": ["vite/client", "node"],
+
+        "strict": true,
+        "noUncheckedIndexedAccess": true,
+        "noImplicitOverride": true,
+        "noFallthroughCasesInSwitch": true,
+        "noUnusedLocals": true,
+        "noUnusedParameters": true,
+        "exactOptionalPropertyTypes": false,
+        "useUnknownInCatchVariables": true,
+
+        "allowJs": false,
+        "checkJs": false,
+        "noEmit": true,
+        "isolatedModules": true,
+        "verbatimModuleSyntax": true,
+        "esModuleInterop": true,
+        "resolveJsonModule": true,
+        "skipLibCheck": true,
+        "forceConsistentCasingInFileNames": true,
+
+        "baseUrl": ".",
+        "paths": {
+            "@shared/*": ["resources/js/shared/*"],
+            "@dashboard/*": ["resources/js/dashboard/*"],
+            "@builder/*": ["resources/js/builder/*"],
+            "@email-builder/*": ["resources/js/email-builder/*"],
+            "@renderer/*": ["resources/js/renderer/*"],
+            "@shared": ["resources/js/shared/index.ts"],
+            "@renderer": ["resources/js/renderer/index.ts"]
+        }
+    },
+    "include": ["resources/js/**/*.ts", "resources/js/**/*.tsx"],
+    "exclude": ["node_modules", "public", "vendor"]
+}

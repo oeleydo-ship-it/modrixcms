@@ -1,0 +1,277 @@
+/*
+ * TheFunneller design tokens.
+ *
+ * Every colour is expressed as a CSS custom property so that the whole product
+ * can be re-themed (and white-labelled, see spec §55) without recompiling.
+ *
+ * Theme resolution order:
+ *   1. `[data-theme="dark"]` / `[data-theme="light"]` on <html> — explicit choice.
+ *   2. `prefers-color-scheme: dark` when no explicit choice has been made.
+ */
+
+:root {
+    color-scheme: light;
+
+    /* ---- Brand ramp (calm indigo) ------------------------------------ */
+    --color-brand-50: #eef2ff;
+    --color-brand-100: #e0e7ff;
+    --color-brand-200: #c7d2fe;
+    --color-brand-300: #a5b4fc;
+    --color-brand-400: #818cf8;
+    --color-brand-500: #6366f1;
+    --color-brand-600: #4f46e5;
+    --color-brand-700: #4338ca;
+    --color-brand-800: #3730a3;
+    --color-brand-900: #312e81;
+
+    /* ---- Neutral ramp (slate) ---------------------------------------- */
+    --color-neutral-0: #ffffff;
+    --color-neutral-50: #f8fafc;
+    --color-neutral-100: #f1f5f9;
+    --color-neutral-200: #e2e8f0;
+    --color-neutral-300: #cbd5e1;
+    --color-neutral-400: #94a3b8;
+    --color-neutral-500: #64748b;
+    --color-neutral-600: #475569;
+    --color-neutral-700: #334155;
+    --color-neutral-800: #1e293b;
+    --color-neutral-900: #0f172a;
+    --color-neutral-950: #020617;
+
+    /* ---- Status ramps ------------------------------------------------- */
+    --color-success-50: #ecfdf5;
+    --color-success-500: #10b981;
+    --color-success-600: #059669;
+    --color-warning-50: #fffbeb;
+    --color-warning-500: #f59e0b;
+    --color-warning-600: #d97706;
+    --color-danger-50: #fef2f2;
+    --color-danger-500: #ef4444;
+    --color-danger-600: #dc2626;
+    --color-info-50: #eff6ff;
+    --color-info-500: #3b82f6;
+    --color-info-600: #2563eb;
+
+    /* ---- Semantic surfaces ------------------------------------------- */
+    --color-canvas: var(--color-neutral-50);
+    --color-surface: var(--color-neutral-0);
+    --color-surface-raised: var(--color-neutral-0);
+    --color-surface-sunken: var(--color-neutral-100);
+    --color-surface-hover: var(--color-neutral-100);
+    --color-surface-active: var(--color-neutral-200);
+    --color-overlay: rgb(15 23 42 / 0.45);
+
+    /* ---- Semantic text ------------------------------------------------ */
+    --color-text: var(--color-neutral-900);
+    --color-text-muted: var(--color-neutral-500);
+    --color-text-subtle: var(--color-neutral-400);
+    --color-text-inverse: var(--color-neutral-0);
+    --color-text-brand: var(--color-brand-600);
+
+    /* ---- Borders & rings ---------------------------------------------- */
+    --color-border: var(--color-neutral-200);
+    --color-border-strong: var(--color-neutral-300);
+    --color-ring: var(--color-brand-500);
+
+    /* ---- Interactive --------------------------------------------------- */
+    --color-primary: var(--color-brand-600);
+    --color-primary-hover: var(--color-brand-700);
+    --color-primary-fg: #ffffff;
+    --color-primary-soft: var(--color-brand-50);
+
+    --color-success: var(--color-success-600);
+    --color-success-soft: var(--color-success-50);
+    --color-warning: var(--color-warning-600);
+    --color-warning-soft: var(--color-warning-50);
+    --color-danger: var(--color-danger-600);
+    --color-danger-soft: var(--color-danger-50);
+    --color-info: var(--color-info-600);
+    --color-info-soft: var(--color-info-50);
+
+    /* ---- Chart series (colour-blind safe ordering) --------------------- */
+    --color-chart-1: #6366f1;
+    --color-chart-2: #14b8a6;
+    --color-chart-3: #f59e0b;
+    --color-chart-4: #ec4899;
+    --color-chart-5: #0ea5e9;
+    --color-chart-6: #84cc16;
+    --color-chart-grid: var(--color-neutral-200);
+
+    /* ---- Radius scale --------------------------------------------------- */
+    --radius-xs: 0.25rem;
+    --radius-sm: 0.375rem;
+    --radius-md: 0.5rem;
+    --radius-lg: 0.75rem;
+    --radius-xl: 1rem;
+    --radius-2xl: 1.5rem;
+    --radius-full: 9999px;
+
+    /* ---- Shadow scale --------------------------------------------------- */
+    --shadow-xs: 0 1px 2px 0 rgb(15 23 42 / 0.05);
+    --shadow-sm: 0 1px 3px 0 rgb(15 23 42 / 0.08), 0 1px 2px -1px rgb(15 23 42 / 0.06);
+    --shadow-md: 0 4px 12px -2px rgb(15 23 42 / 0.1), 0 2px 4px -2px rgb(15 23 42 / 0.06);
+    --shadow-lg: 0 12px 24px -6px rgb(15 23 42 / 0.12), 0 4px 8px -4px rgb(15 23 42 / 0.08);
+    --shadow-xl: 0 24px 48px -12px rgb(15 23 42 / 0.18);
+
+    /* ---- Spacing scale (4px base) --------------------------------------- */
+    --space-0: 0px;
+    --space-1: 0.25rem;
+    --space-2: 0.5rem;
+    --space-3: 0.75rem;
+    --space-4: 1rem;
+    --space-5: 1.25rem;
+    --space-6: 1.5rem;
+    --space-8: 2rem;
+    --space-10: 2.5rem;
+    --space-12: 3rem;
+    --space-16: 4rem;
+
+    /* ---- Typography scale ------------------------------------------------ */
+    --font-sans:
+        'Plus Jakarta Sans', 'Inter', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif,
+        'Apple Color Emoji', 'Segoe UI Emoji';
+    --font-mono: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace;
+
+    --text-2xs: 0.6875rem;
+    --text-xs: 0.75rem;
+    --text-sm: 0.875rem;
+    --text-base: 0.875rem;
+    --text-md: 1rem;
+    --text-lg: 1.125rem;
+    --text-xl: 1.25rem;
+    --text-2xl: 1.5rem;
+    --text-3xl: 1.875rem;
+
+    --leading-tight: 1.2;
+    --leading-normal: 1.5;
+    --leading-relaxed: 1.7;
+
+    --weight-normal: 400;
+    --weight-medium: 500;
+    --weight-semibold: 600;
+    --weight-bold: 700;
+
+    /* ---- Layout ------------------------------------------------------------ */
+    --sidebar-width: 16rem;
+    --sidebar-width-collapsed: 4.25rem;
+    --topbar-height: 4rem;
+    --z-dropdown: 40;
+    --z-sticky: 50;
+    --z-drawer: 60;
+    --z-modal: 70;
+    --z-toast: 80;
+    --z-tooltip: 90;
+
+    --duration-fast: 120ms;
+    --duration-normal: 180ms;
+    --duration-slow: 280ms;
+    --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/*
+ * Dark theme — semantic tokens only; the ramps above stay put.
+ * Declared twice on purpose: once behind `prefers-color-scheme` for users who
+ * never picked a theme, once behind `[data-theme="dark"]` so an explicit choice
+ * wins in both directions.
+ */
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme='light']) {
+        color-scheme: dark;
+
+        --color-canvas: var(--color-neutral-950);
+        --color-surface: #0b1220;
+        --color-surface-raised: #131c2e;
+        --color-surface-sunken: #070d18;
+        --color-surface-hover: #1a2436;
+        --color-surface-active: #223049;
+        --color-overlay: rgb(2 6 23 / 0.65);
+
+        --color-text: var(--color-neutral-100);
+        --color-text-muted: var(--color-neutral-400);
+        --color-text-subtle: var(--color-neutral-500);
+        --color-text-inverse: var(--color-neutral-900);
+        --color-text-brand: var(--color-brand-300);
+
+        --color-border: #22304a;
+        --color-border-strong: #31415f;
+        --color-ring: var(--color-brand-400);
+
+        --color-primary: var(--color-brand-500);
+        --color-primary-hover: var(--color-brand-400);
+        --color-primary-fg: #ffffff;
+        --color-primary-soft: rgb(99 102 241 / 0.16);
+
+        --color-success: #34d399;
+        --color-success-soft: rgb(16 185 129 / 0.16);
+        --color-warning: #fbbf24;
+        --color-warning-soft: rgb(245 158 11 / 0.16);
+        --color-danger: #f87171;
+        --color-danger-soft: rgb(239 68 68 / 0.16);
+        --color-info: #60a5fa;
+        --color-info-soft: rgb(59 130 246 / 0.16);
+
+        --color-chart-1: #818cf8;
+        --color-chart-2: #2dd4bf;
+        --color-chart-3: #fbbf24;
+        --color-chart-4: #f472b6;
+        --color-chart-5: #38bdf8;
+        --color-chart-6: #a3e635;
+        --color-chart-grid: #22304a;
+
+        --shadow-xs: 0 1px 2px 0 rgb(0 0 0 / 0.4);
+        --shadow-sm: 0 1px 3px 0 rgb(0 0 0 / 0.45), 0 1px 2px -1px rgb(0 0 0 / 0.4);
+        --shadow-md: 0 4px 12px -2px rgb(0 0 0 / 0.5), 0 2px 4px -2px rgb(0 0 0 / 0.4);
+        --shadow-lg: 0 12px 24px -6px rgb(0 0 0 / 0.55), 0 4px 8px -4px rgb(0 0 0 / 0.45);
+        --shadow-xl: 0 24px 48px -12px rgb(0 0 0 / 0.6);
+    }
+}
+
+:root[data-theme='dark'] {
+    color-scheme: dark;
+
+    --color-canvas: var(--color-neutral-950);
+    --color-surface: #0b1220;
+    --color-surface-raised: #131c2e;
+    --color-surface-sunken: #070d18;
+    --color-surface-hover: #1a2436;
+    --color-surface-active: #223049;
+    --color-overlay: rgb(2 6 23 / 0.65);
+
+    --color-text: var(--color-neutral-100);
+    --color-text-muted: var(--color-neutral-400);
+    --color-text-subtle: var(--color-neutral-500);
+    --color-text-inverse: var(--color-neutral-900);
+    --color-text-brand: var(--color-brand-300);
+
+    --color-border: #22304a;
+    --color-border-strong: #31415f;
+    --color-ring: var(--color-brand-400);
+
+    --color-primary: var(--color-brand-500);
+    --color-primary-hover: var(--color-brand-400);
+    --color-primary-fg: #ffffff;
+    --color-primary-soft: rgb(99 102 241 / 0.16);
+
+    --color-success: #34d399;
+    --color-success-soft: rgb(16 185 129 / 0.16);
+    --color-warning: #fbbf24;
+    --color-warning-soft: rgb(245 158 11 / 0.16);
+    --color-danger: #f87171;
+    --color-danger-soft: rgb(239 68 68 / 0.16);
+    --color-info: #60a5fa;
+    --color-info-soft: rgb(59 130 246 / 0.16);
+
+    --color-chart-1: #818cf8;
+    --color-chart-2: #2dd4bf;
+    --color-chart-3: #fbbf24;
+    --color-chart-4: #f472b6;
+    --color-chart-5: #38bdf8;
+    --color-chart-6: #a3e635;
+    --color-chart-grid: #22304a;
+
+    --shadow-xs: 0 1px 2px 0 rgb(0 0 0 / 0.4);
+    --shadow-sm: 0 1px 3px 0 rgb(0 0 0 / 0.45), 0 1px 2px -1px rgb(0 0 0 / 0.4);
+    --shadow-md: 0 4px 12px -2px rgb(0 0 0 / 0.5), 0 2px 4px -2px rgb(0 0 0 / 0.4);
+    --shadow-lg: 0 12px 24px -6px rgb(0 0 0 / 0.55), 0 4px 8px -4px rgb(0 0 0 / 0.45);
+    --shadow-xl: 0 24px 48px -12px rgb(0 0 0 / 0.6);
+}

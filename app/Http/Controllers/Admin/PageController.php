@@ -11,8 +11,10 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\Rule;
+use Illuminate\View\View;
 use Inertia\Inertia;
 use Inertia\Response;
+use Symfony\Component\HttpFoundation\Response as SymfonyResponse;
 
 class PageController extends Controller
 {
@@ -34,6 +36,9 @@ class PageController extends Controller
                 'show_in_menu' => $page->show_in_menu,
                 'menu_order' => $page->menu_order,
                 'block_count' => count($page->blocks ?? []),
+                'editor' => $page->editor,
+                'builder_url' => route('admin.pages.builder', $page),
+                'unpublished_changes' => $page->hasUnpublishedChanges(),
                 'updated' => $page->updated_at->diffForHumans(),
                 'url' => $page->is_home ? route('home') : route('pages.show', $page),
             ]),
@@ -58,6 +63,38 @@ class PageController extends Controller
         return redirect()->route('admin.pages.edit', $page)->with('status', 'Page created.');
     }
 
+    /** Starts a new page in the visual builder. */
+    public function storeBuilderPage(): RedirectResponse
+    {
+        $slug = Slugs::from('untitled-page');
+        $base = $slug;
+
+        for ($n = 2; Page::query()->where('slug', $slug)->exists(); $n++) {
+            $slug = $base.'-'.$n;
+        }
+
+        $page = Page::query()->create([
+            'title' => 'Untitled page',
+            'slug' => $slug,
+            'editor' => Page::EDITOR_BUILDER,
+            'blocks' => [],
+            'is_published' => false,
+        ]);
+
+        return redirect()->route('admin.pages.builder', $page);
+    }
+
+    /** The visual page builder (a full-screen React app talking to /api/v1). */
+    public function builder(Request $request, Page $page): View|SymfonyResponse
+    {
+        // It is its own full-screen app: reached from an Inertia page, ask for a full load.
+        if ($request->header('X-Inertia')) {
+            return Inertia::location(route('admin.pages.builder', $page));
+        }
+
+        return view('builder', ['page' => $page]);
+    }
+
     public function edit(Page $page): Response
     {
         return $this->form($page);
@@ -78,6 +115,8 @@ class PageController extends Controller
                 'meta_title' => $page->meta_title,
                 'meta_description' => $page->meta_description,
                 'url' => $page->exists ? ($page->is_home ? route('home') : route('pages.show', $page)) : null,
+                'editor' => $page->editor ?? Page::EDITOR_BLOCKS,
+                'builder_url' => $page->exists ? route('admin.pages.builder', $page) : null,
             ],
             'builder' => PageBuilder::forEditor(),
         ]);

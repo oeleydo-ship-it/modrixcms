@@ -12,8 +12,8 @@ export default function PagesIndex({ pages, filters }) {
             title="Pages"
             subtitle="Every page, including the home page, is built from blocks."
             actions={<>
-                <Link className="btn btn-light" href={route('admin.pages.create', { template: 'landing' })}>New landing page</Link>
-                <Link className="btn" href={route('admin.pages.create')}>New page</Link>
+                <Link className="btn btn-light" href={route('admin.pages.create')}>New block page</Link>
+                <button className="btn" type="button" onClick={() => router.post(route('admin.pages.store-builder'))}>New page in visual builder</button>
             </>}
         >
             <ErrorFlash errors={errors} />
@@ -32,7 +32,7 @@ export default function PagesIndex({ pages, filters }) {
                                     <td className="title">
                                         <Link href={route('admin.pages.edit', page.id)}>{page.title}</Link>
                                         {page.is_home ? <> <span className="badge purple">Home page</span></> : null}
-                                        <div className="sub">{page.is_home ? '/' : `/${page.slug}`} · {page.block_count} blocks</div>
+                                        <div className="sub">{page.is_home ? '/' : `/${page.slug}`} · {page.editor === 'builder' ? 'Visual builder' : `${page.block_count} blocks`}{page.unpublished_changes ? ' · unpublished changes' : ''}</div>
                                     </td>
                                     <td><span className={`badge ${page.is_published ? 'green' : 'gray'}`}>{page.is_published ? 'Published' : 'Draft'}</span></td>
                                     <td>{page.show_in_menu ? `Yes (${page.menu_order})` : '—'}</td>
@@ -40,7 +40,8 @@ export default function PagesIndex({ pages, filters }) {
                                     <td>
                                         <div className="actions">
                                             {page.is_published ? <a className="btn btn-light btn-sm" href={page.url} target="_blank" rel="noopener">View</a> : null}
-                                            <Link className="btn btn-light btn-sm" href={route('admin.pages.edit', page.id)}>Edit</Link>
+                                            {page.editor === 'builder' ? <a className="btn btn-sm" href={page.builder_url}>Open builder</a> : null}
+                                            <Link className="btn btn-light btn-sm" href={route('admin.pages.edit', page.id)}>{page.editor === 'builder' ? 'Settings' : 'Edit'}</Link>
                                             {!page.is_home ? <DangerButton url={route('admin.pages.destroy', page.id)} confirm={`Delete “${page.title}”? This can’t be undone.`}>Delete</DangerButton> : null}
                                         </div>
                                     </td>

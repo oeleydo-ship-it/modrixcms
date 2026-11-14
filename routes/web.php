@@ -3,9 +3,40 @@
 use App\Cms\PluginLoader;
 use App\Http\Controllers\Admin;
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\Builder;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PageController;
 use Illuminate\Support\Facades\Route;
+
+/*
+| The visual page builder's API (session auth, admins only).
+*/
+Route::prefix('api/v1')->name('builder.')->middleware(['auth', 'admin', 'throttle:240,1'])->group(function () {
+    Route::get('pages/{page}', [Builder\PageApiController::class, 'show'])->name('pages.show');
+    Route::put('pages/{page}', [Builder\PageApiController::class, 'update'])->name('pages.update');
+    Route::post('pages/{page}/publish', [Builder\PageApiController::class, 'publish'])->name('pages.publish');
+    Route::get('pages/{page}/versions', [Builder\PageApiController::class, 'versions'])->name('pages.versions');
+    Route::post('pages/{page}/versions/{version}/restore', [Builder\PageApiController::class, 'restore'])->name('pages.versions.restore');
+
+    Route::get('design-blocks', [Builder\DesignBlockController::class, 'index'])->name('designs.index');
+    Route::get('design-blocks/{key}', [Builder\DesignBlockController::class, 'show'])->name('designs.show');
+
+    Route::get('templates', [Builder\TemplateController::class, 'index'])->name('templates.index');
+    Route::post('templates', [Builder\TemplateController::class, 'store'])->name('templates.store');
+    Route::get('templates/{template}', [Builder\TemplateController::class, 'show'])->name('templates.show');
+    Route::post('templates/{template}/install', [Builder\TemplateController::class, 'install'])->name('templates.install');
+    Route::delete('templates/{template}', [Builder\TemplateController::class, 'destroy'])->name('templates.destroy');
+
+    Route::get('media', [Builder\MediaController::class, 'index'])->name('media.index');
+    Route::post('media', [Builder\MediaController::class, 'store'])->middleware('throttle:30,1')->name('media.store');
+    Route::patch('media/{media}', [Builder\MediaController::class, 'update'])->name('media.update');
+    Route::delete('media/{media}', [Builder\MediaController::class, 'destroy'])->name('media.destroy');
+
+    // Funnel-platform pickers the builder still asks for: always empty here.
+    foreach (['forms', 'popups', 'products', 'booking/services', 'booking/staff', 'global-components'] as $unavailable) {
+        Route::get($unavailable, Builder\UnavailableFeatureController::class);
+    }
+});
 
 /*
 | Admin
@@ -22,6 +53,8 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::get('/', Admin\DashboardController::class)->name('dashboard');
 
         Route::post('pages/preview', [Admin\PageController::class, 'preview'])->name('pages.preview');
+        Route::get('pages/{page}/builder', [Admin\PageController::class, 'builder'])->name('pages.builder');
+        Route::post('pages/new-builder-page', [Admin\PageController::class, 'storeBuilderPage'])->name('pages.store-builder');
         Route::resource('pages', Admin\PageController::class)->except('show');
         Route::post('builder/images', Admin\BuilderImageController::class)->middleware('throttle:30,1')->name('builder.images');
         Route::resource('posts', Admin\PostController::class)->except('show');

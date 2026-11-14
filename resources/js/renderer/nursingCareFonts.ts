@@ -1,0 +1,2 @@
+// Generated from Google Fonts for self-contained template rendering.
+export const NURSING_CARE_FONTS = "@font-face{font-family:'Instrument Sans';font-style:normal;font-weight:600;font-display:swap;src:url(/fonts/templates/5e39a358a65a72b6b74b.ttf) format('truetype')}@font-face{font-family:'Inter';font-style:normal;font-weight:400;font-display:swap;src:url(/fonts/templates/1b08e7fc267a5c7e1d61.ttf) format('truetype')}@font-face{font-family:'Inter';font-style:normal;font-weight:500;font-display:swap;src:url(/fonts/templates/8c883f63b2c4157d9973.ttf) format('truetype')}";

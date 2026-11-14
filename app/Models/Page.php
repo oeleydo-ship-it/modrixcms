@@ -7,24 +7,54 @@ use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
-#[Fillable(['title', 'slug', 'blocks', 'meta_title', 'meta_description', 'is_published', 'is_home', 'show_in_menu', 'menu_order'])]
+#[Fillable(['title', 'slug', 'blocks', 'editor', 'meta_title', 'meta_description', 'is_published', 'is_home', 'show_in_menu', 'menu_order'])]
 class Page extends Model
 {
     /** @use HasFactory<PageFactory> */
     use HasFactory;
 
-    protected $attributes = ['blocks' => '[]'];
+    /** Built with the form-based block editor. */
+    public const EDITOR_BLOCKS = 'blocks';
+
+    /** Built with the visual page builder (document / published_document). */
+    public const EDITOR_BUILDER = 'builder';
+
+    protected $attributes = ['blocks' => '[]', 'editor' => self::EDITOR_BLOCKS];
 
     protected function casts(): array
     {
         return [
             'blocks' => 'array',
+            'document' => 'array',
+            'published_document' => 'array',
+            'version' => 'integer',
+            'schema_version' => 'integer',
+            'saves_since_snapshot' => 'integer',
+            'published_version' => 'integer',
+            'published_at' => 'datetime',
             'is_published' => 'boolean',
             'is_home' => 'boolean',
             'show_in_menu' => 'boolean',
             'menu_order' => 'integer',
         ];
+    }
+
+    public function versions(): HasMany
+    {
+        return $this->hasMany(PageVersion::class)->latest('created_at');
+    }
+
+    public function usesBuilder(): bool
+    {
+        return $this->editor === self::EDITOR_BUILDER;
+    }
+
+    /** The draft differs from what visitors see. */
+    public function hasUnpublishedChanges(): bool
+    {
+        return $this->usesBuilder() && $this->published_version !== $this->version;
     }
 
     public function scopePublished(Builder $query): Builder

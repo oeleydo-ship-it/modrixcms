@@ -1,0 +1,2 @@
+// Bundled Goli by Jaikishan Patel / MagicType. License in public/templates/candid.
+export const CANDID_FONTS = "@font-face{font-family:Goli;font-style:normal;font-weight:400;font-display:swap;src:url(/fonts/templates/f1fd3dd83659e7772767.otf) format('opentype')}@font-face{font-family:Goli;font-style:normal;font-weight:500;font-display:swap;src:url(/fonts/templates/c7067f209bc67f31146d.otf) format('opentype')}@font-face{font-family:Goli;font-style:normal;font-weight:700;font-display:swap;src:url(/fonts/templates/d941dce88d2fd5c1fab3.otf) format('opentype')}";
