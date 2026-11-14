@@ -226,13 +226,22 @@ function DesignBlockCard({ block, onInsert, onReplace, draggable = true }: { dra
               button — clickable and reachable by keyboard for anyone who is
               not dragging with a pointer at all.
             */}
+            {/*
+              A click on the thumbnail inserts too: it is most of the card, and in the
+              "Insert a section" dialog dragging is off. Drags only start after 5px of
+              movement, so a plain click never doubles as a drag.
+            */}
             <div
                 ref={(element) => { previewRef.current = element; setNodeRef(element); }}
                 aria-hidden
                 {...listeners}
                 {...attributes}
-                title={`Drag ${block.name} onto the page`}
-                className="h-24 w-full cursor-grab overflow-hidden bg-[var(--color-surface-sunken)] active:cursor-grabbing"
+                onClick={onInsert}
+                title={draggable ? `Click or drag ${block.name} onto the page` : `Add ${block.name} to the page`}
+                className={cn(
+                    'h-24 w-full overflow-hidden bg-[var(--color-surface-sunken)]',
+                    draggable ? 'cursor-grab active:cursor-grabbing' : 'cursor-pointer',
+                )}
             >
                 <div className="pointer-events-none h-full w-full">
                     {previewVisible && block.previewHtml ? (
