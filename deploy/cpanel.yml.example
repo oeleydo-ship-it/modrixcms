@@ -1,0 +1,21 @@
+# cPanel > Git Version Control: deploy on every push.
+#
+# 1. Create the repository in cPanel (Clone a Repository) and copy this file to the repository
+#    root as ".cpanel.yml".
+# 2. Replace CPANELUSER and the paths. DEPLOYPATH is the folder that holds the app: point the
+#    domain's document root to DEPLOYPATH/public (Domains > Manage), or keep the app in
+#    public_html and use the .htaccess in the project root.
+# 3. First install: upload the release zip (php deploy/build-release.php) and run /install once.
+#    After that every "Deploy HEAD Commit" copies the code and runs the migrations.
+#
+# vendor/ and public/build are not in git, so they are left alone by the copy. When composer is
+# available on the host it updates vendor/ on each deploy. When the front end changes, upload the
+# new public/build folder (or install a new release zip).
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/CPANELUSER/modrix
+    - export PHP_BIN=/usr/local/bin/php
+    - /bin/mkdir -p $DEPLOYPATH
+    - /bin/rsync -rlptD --delete --exclude=.git --exclude=.env --exclude=storage --exclude=vendor --exclude=node_modules --exclude=public/build --exclude=public/extensions --exclude=public/storage --exclude=database/database.sqlite ./ $DEPLOYPATH/
+    - cd $DEPLOYPATH && SKIP_NODE=1 NO_DOWNTIME=1 bash deploy/deploy.sh all

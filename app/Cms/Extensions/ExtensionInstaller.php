@@ -327,6 +327,31 @@ class ExtensionInstaller
         }
     }
 
+    /**
+     * Copies the public/ folder of every installed theme and plugin to public/extensions/…
+     * (git-ignored, so a fresh checkout or release folder starts without them) and rebuilds the
+     * plugin boot list. Run after every deploy: `php artisan cms:sync`.
+     *
+     * @return int number of packages whose assets were published
+     */
+    public function republishAll(): int
+    {
+        $count = 0;
+
+        foreach ([Extension::THEME, Extension::PLUGIN] as $type) {
+            foreach ($this->registry->all($type) as $package) {
+                if ($package->problem === null) {
+                    $this->publishAssets($package);
+                    $count++;
+                }
+            }
+        }
+
+        $this->loader->rebuildCache();
+
+        return $count;
+    }
+
     /** Copies the package's public/ folder to public/extensions/… (PHP files are refused at upload). */
     private function publishAssets(?Package $package): void
     {

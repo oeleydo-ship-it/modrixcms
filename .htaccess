@@ -1,0 +1,16 @@
+# For hosts where the domain's document root cannot be pointed at the "public" folder
+# (typical cPanel public_html): every request is served from public/, so the project's private
+# files (.env, app/, vendor/, storage/, ...) are never reachable from the web.
+# Best practice is still to point the document root to public/ when the host allows it, and
+# then this file is not used.
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    RewriteCond %{REQUEST_URI} !^/public/
+    RewriteRule ^(.*)$ public/$1 [L,QSA]
+</IfModule>
+
+<IfModule mod_autoindex.c>
+    Options -Indexes
+</IfModule>

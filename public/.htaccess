@@ -5,6 +5,9 @@
 
     RewriteEngine On
 
+    # Web installer (locks itself after the first install)
+    RewriteRule ^install/?$ install.php [L]
+
     # Handle Authorization Header
     RewriteCond %{HTTP:Authorization} .
     RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
