@@ -442,7 +442,7 @@ PROMPT;
     private function normaliseBrand(mixed $rawBrand, array $input): array
     {
         $brand = is_array($rawBrand) ? $rawBrand : [];
-        $fallbackName = trim((string) ($input['brand_name'] ?? '')) ?: (string) $this->settings->get('site_name', 'Modrix Commerce');
+        $fallbackName = trim((string) ($input['brand_name'] ?? '')) ?: (string) $this->settings->get('site_name', 'Modrix CMS');
         $siteName = trim((string) ($brand['site_name'] ?? '')) ?: $fallbackName;
         $tagline = trim((string) ($brand['tagline'] ?? '')) ?: (string) $this->settings->get('tagline', '');
         $footerText = trim((string) ($brand['footer_text'] ?? '')) ?: "{$siteName} · All rights reserved.";

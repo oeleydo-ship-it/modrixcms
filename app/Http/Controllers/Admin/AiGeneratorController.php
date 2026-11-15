@@ -69,7 +69,7 @@ class AiGeneratorController extends Controller
             'aiProviderLabel' => AiClient::PROVIDERS[$config['provider']]['label'] ?? $config['provider'],
             'aiModel' => $config['model'],
             'settingsUrl' => route('admin.settings.ai'),
-            'siteName' => $this->settings->get('site_name', 'Modrix Commerce'),
+            'siteName' => $this->settings->get('site_name', 'Modrix CMS'),
             'defaultPages' => ['Home', 'About', 'Services', 'Pricing', 'FAQ', 'Contact'],
             'siteCssVars' => str_replace(':root', '.ai-site-preview', DesignTokens::stylesheet($themes->design())),
             'existingPages' => $existingPages,

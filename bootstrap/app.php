@@ -4,6 +4,7 @@ use App\Http\Middleware\ApplyTheme;
 use App\Http\Middleware\EnsurePasswordRecentlyConfirmed;
 use App\Http\Middleware\EnsureUserIsAdmin;
 use App\Http\Middleware\HandleInertiaRequests;
+use App\Http\Middleware\RedirectToSetupWhenNoAdmin;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
@@ -20,6 +21,7 @@ return Application::configure(basePath: dirname(__DIR__))
             'admin' => EnsureUserIsAdmin::class,
             'cms.confirmed' => EnsurePasswordRecentlyConfirmed::class,
         ]);
+        $middleware->prependToGroup('web', RedirectToSetupWhenNoAdmin::class);
         $middleware->appendToGroup('web', [ApplyTheme::class, HandleInertiaRequests::class]);
         $middleware->redirectGuestsTo(fn () => route('admin.login'));
         $middleware->redirectUsersTo(fn () => route('admin.dashboard'));

@@ -32,6 +32,13 @@ return [
      */
     'safe_mode' => env('CMS_SAFE_MODE', false),
 
+    /*
+     * First-run setup: a site with no admin account sends its first visitor to /setup to create one.
+     * Set SETUP_TOKEN to also require a secret there (stops anyone claiming the site before you).
+     */
+    'first_run_setup' => env('CMS_FIRST_RUN_SETUP', true),
+    'setup_token' => env('SETUP_TOKEN'),
+
     'limits' => [
         'upload_mb' => 50,
         'extracted_mb' => 200,

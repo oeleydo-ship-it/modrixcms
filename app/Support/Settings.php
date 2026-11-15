@@ -21,10 +21,10 @@ class Settings
 
     public const DEFAULTS = [
         // General
-        'site_name' => 'Modrix Commerce',
+        'site_name' => 'Modrix CMS',
         'tagline' => 'Free, open-source e-commerce you host yourself',
         'contact_email' => null,
-        'footer_text' => 'Modrix Commerce · MIT License',
+        'footer_text' => 'Modrix CMS · MIT License',
         'github_url' => null,
         'marketplace_url' => null,
         'social_x' => null,

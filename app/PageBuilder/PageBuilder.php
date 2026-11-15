@@ -62,7 +62,7 @@ class PageBuilder
                     'badge' => 'Free & open source · MIT licensed',
                     'title' => "Your store.\nYour server.",
                     'highlight' => 'Zero platform fees.',
-                    'text' => 'Modrix Commerce is a complete e-commerce platform built on Laravel 13. Install it on your own hosting, own every order and every byte of data, and add the features you need from a marketplace of free themes and modules.',
+                    'text' => 'Modrix CMS is a complete e-commerce platform built on Laravel 13. Install it on your own hosting, own every order and every byte of data, and add the features you need from a marketplace of free themes and modules.',
                     'primary_label' => 'Download free', 'primary_url' => '@github',
                     'secondary_label' => 'Browse the marketplace →', 'secondary_url' => '#marketplace',
                     'facts' => [
@@ -400,8 +400,8 @@ class PageBuilder
                     'contact_url' => '@github',
                     'items' => [
                         [
-                            'question' => 'Is Modrix Commerce really free for commercial stores?',
-                            'answer' => 'Yes. Modrix Commerce is released under the **MIT license**. You can use it for unlimited commercial stores, client projects and custom deployments without royalties or license fees.',
+                            'question' => 'Is Modrix CMS really free for commercial stores?',
+                            'answer' => 'Yes. Modrix CMS is released under the **MIT license**. You can use it for unlimited commercial stores, client projects and custom deployments without royalties or license fees.',
                         ],
                         [
                             'question' => 'Can I switch between the Block Editor and Visual Builder?',
@@ -467,7 +467,7 @@ class PageBuilder
                     'anchor' => 'demo',
                     'eyebrow' => 'Product walkthrough',
                     'title' => 'See how a store comes together in minutes.',
-                    'text' => 'Watch the full workflow from installing Modrix Commerce to customizing your theme and publishing your first landing page.',
+                    'text' => 'Watch the full workflow from installing Modrix CMS to customizing your theme and publishing your first landing page.',
                     'video_url' => '',
                     'caption' => '4 min walkthrough · No plugins required',
                     'theme' => 'dark',
@@ -527,7 +527,7 @@ class PageBuilder
                     'anchor' => 'deploy',
                     'eyebrow' => 'Deploy anywhere',
                     'title' => 'Runs on the hosting you already have.',
-                    'text' => 'No vendor lock-in. If it runs PHP and MySQL, it runs Modrix Commerce.',
+                    'text' => 'No vendor lock-in. If it runs PHP and MySQL, it runs Modrix CMS.',
                     'items' => [
                         ['title' => 'Shared hosting', 'text' => 'cPanel, Plesk or DirectAdmin. Upload, open `/install`, and the web installer sets up the database and your store. No SSH needed.'],
                         ['title' => 'VPS or cloud server', 'text' => 'Full control on any Linux server with Nginx or Apache, PHP 8.3+ and MySQL 8 or MariaDB.'],
@@ -555,7 +555,7 @@ class PageBuilder
                     'anchor' => 'open-source',
                     'eyebrow' => 'Open source',
                     'title' => 'Free forever. Read every line.',
-                    'text' => 'Modrix Commerce is MIT licensed. Use it for your own shop or your clients’ shops, fork it, extend it. No license keys for the core, no revenue share, no phoning home.',
+                    'text' => 'Modrix CMS is MIT licensed. Use it for your own shop or your clients’ shops, fork it, extend it. No license keys for the core, no revenue share, no phoning home.',
                     'rows' => [
                         ['label' => 'License cost', 'us' => 'Free', 'them' => '$29–$299 / month'],
                         ['label' => 'Transaction fees', 'us' => '0%', 'them' => '0.5–2%'],
@@ -618,7 +618,7 @@ class PageBuilder
                 ],
                 'defaults' => [
                     'title' => 'Launch your store this afternoon.',
-                    'text' => 'Download Modrix Commerce, install it on your server, and add free themes and modules as you grow.',
+                    'text' => 'Download Modrix CMS, install it on your server, and add free themes and modules as you grow.',
                     'primary_label' => 'Download free', 'primary_url' => '@github',
                     'secondary_label' => 'Visit the marketplace', 'secondary_url' => '@marketplace',
                 ],

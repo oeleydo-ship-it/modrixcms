@@ -6,6 +6,7 @@ use App\Http\Controllers\BlogController;
 use App\Http\Controllers\Builder;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PageController;
+use App\Http\Controllers\SetupController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -43,6 +44,12 @@ Route::prefix('api/v1')->name('builder.')->middleware(['auth', 'admin', 'throttl
         Route::get($unavailable, Builder\UnavailableFeatureController::class);
     }
 });
+
+/*
+| First-run setup: creates the first admin while the site has none.
+*/
+Route::get('setup', [SetupController::class, 'create'])->name('setup');
+Route::post('setup', [SetupController::class, 'store'])->middleware('throttle:10,1')->name('setup.store');
 
 /*
 | Admin

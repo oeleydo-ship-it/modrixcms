@@ -31,6 +31,7 @@
         <env name="CMS_BOOT_CACHE" value="storage/framework/testing/cms/plugins-cache.php"/>
         <env name="CMS_STORAGE_PATH" value="storage/framework/testing/cms/storage"/>
         <env name="CMS_SAFE_MODE" value="false"/>
+        <env name="CMS_FIRST_RUN_SETUP" value="false"/>
         <env name="MAIL_MAILER" value="array"/>
         <env name="QUEUE_CONNECTION" value="sync"/>
         <env name="SESSION_DRIVER" value="array"/>

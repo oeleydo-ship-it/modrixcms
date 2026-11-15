@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #
-# Modrix git auto-deploy: install dependencies, build the front end, run migrations, publish
+# Modrix CMS git auto-deploy: install dependencies, build the front end, run migrations, publish
 # theme and plugin assets and warm the caches. One script for every git-based host.
 #
 #   bash deploy/deploy.sh build      composer install (no dev) + npm ci + npm run build
@@ -19,6 +19,8 @@
 #   UP_ON_FAILURE=1          bring the site back up even when the deploy failed (default: stay in
 #                            maintenance mode so visitors never meet new code on an old database)
 #   HEALTHCHECK_URL=https:// request this URL at the end and fail the deploy if it errors
+#   SETUP_TOKEN=secret       (site environment) require this secret on the first-run screen where
+#                            the first visitor creates the admin account
 #
 # ---------------------------------------------------------------------------------------------
 # Laravel Cloud  (Environment > Settings > Deployments)
@@ -103,6 +105,12 @@ release() {
 
     step "Restarting queue workers"
     artisan queue:restart || warn "queue:restart failed (no queue workers or no cache store): ignoring."
+
+    if [ "$(artisan tinker --execute 'echo app(App\Support\FirstRunSetup::class)->isPending() ? "pending" : "done";' 2>/dev/null | tail -1)" = "pending" ]; then
+        step "First visit: create the admin"
+        echo "This site has no admin account yet. Open it in a browser: the first visit asks for the admin email and password."
+        echo "Tip: set SETUP_TOKEN in the environment to require a secret there, so nobody else can claim the site before you."
+    fi
 
     if [ -n "${HEALTHCHECK_URL:-}" ]; then
         step "Health check: $HEALTHCHECK_URL"

@@ -1,7 +1,7 @@
 <?php
 
 /*
- * Modrix web installer: for cPanel, Plesk, DirectAdmin and any host without a terminal.
+ * Modrix CMS web installer: for cPanel, Plesk, DirectAdmin and any host without a terminal.
  *
  *   1. Upload the release zip (php deploy/build-release.php) and extract it, with the domain's
  *      document root on the "public" folder (or use the .htaccess in the project root).
@@ -411,7 +411,7 @@ $field = function ($name, $default = '') {
 
 $defaultDriver = isset($drivers['mysql']) ? 'mysql' : (string) key($drivers);
 $in = [
-    'site_name' => $field('site_name', 'My Website'),
+    'site_name' => $field('site_name', 'Modrix CMS'),
     'app_url' => $field('app_url', baseUrl()),
     'db_driver' => $field('db_driver', $defaultDriver),
     'db_host' => $field('db_host', 'localhost'),
@@ -496,7 +496,7 @@ $input = function ($label, $name, $value, $type = 'text', $extra = '') {
     return '<label for="'.h($name).'">'.$label.'</label><input id="'.h($name).'" name="'.h($name).'" type="'.h($type).'" value="'.h($value).'" '.$extra.'>';
 };
 
-$body = '<h1>Install Modrix</h1><p class="lead">Five minutes: check the server, connect the database, create your admin.</p>'
+$body = '<h1>Install Modrix CMS</h1><p class="lead">Five minutes: check the server, connect the database, create your admin.</p>'
     .$errorHtml
     .$checkCard
     .'<form method="post" autocomplete="off"><input type="hidden" name="csrf" value="'.h($_SESSION['csrf']).'">'
@@ -525,4 +525,4 @@ $body = '<h1>Install Modrix</h1><p class="lead">Five minutes: check the server, 
     .'d.addEventListener("change",sync);sync();'
     .'var f=document.querySelector("form");f.addEventListener("submit",function(){var b=document.getElementById("go");b.disabled=true;b.textContent="Installing...";document.getElementById("wait").textContent="This can take up to a minute."})})();</script>';
 
-page('Install Modrix', $body);
+page('Install Modrix CMS', $body);

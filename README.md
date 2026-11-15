@@ -1,6 +1,6 @@
-# Modrix Commerce — website
+# Modrix CMS
 
-Laravel 13 website for Modrix Commerce: the promo home page, plus an admin to manage pages, a blog, general settings, SMTP and the logo. Separate from the Modrix Commerce core.
+Modrix CMS is a Laravel 13 website CMS: the promo home page, plus an admin to manage pages, a blog, general settings, SMTP and the logo. Separate from the Modrix Commerce core.
 
 ## Features
 

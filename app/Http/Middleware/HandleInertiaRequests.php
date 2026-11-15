@@ -39,10 +39,10 @@ class HandleInertiaRequests extends Middleware
         ]));
     }
 
-    /** Admin screens; the page-builder preview is drawn like the public site. */
+    /** Admin screens (and the first-run setup); the page-builder preview is drawn like the public site. */
     public static function isAdmin(Request $request): bool
     {
-        return $request->is('admin', 'admin/*') && ! $request->routeIs('admin.pages.preview');
+        return $request->is('admin', 'admin/*', 'setup') && ! $request->routeIs('admin.pages.preview');
     }
 
     /** @return array<string, mixed> */
