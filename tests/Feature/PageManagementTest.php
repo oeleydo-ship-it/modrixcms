@@ -6,6 +6,7 @@ use App\Models\Page;
 use App\Models\User;
 use App\PageBuilder\PageBuilder;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\DB;
 use Tests\TestCase;
 
 class PageManagementTest extends TestCase
@@ -87,6 +88,36 @@ class PageManagementTest extends TestCase
         $this->actingAs($admin)->get(route('admin.pages.edit', $page))->assertOk()->assertInertia(fn ($page) => $page->component('Admin/Pages/Form')->has('builder.blocks.hero'));
         $this->actingAs($admin)->get(route('admin.pages.create'))->assertOk();
         $this->actingAs($admin)->get(route('admin.pages.create', ['template' => 'landing']))->assertOk()->assertInertia(fn ($page) => $page->where('page.blocks.0.type', 'hero'));
+    }
+
+    public function test_the_pages_list_sorts_only_light_columns_so_mysql_cannot_run_out_of_sort_memory(): void
+    {
+        foreach (['Charlie', 'Alpha', 'Bravo'] as $title) {
+            Page::factory()->create(['title' => $title, 'slug' => strtolower($title), 'blocks' => [PageBuilder::make('text', ['content' => str_repeat('x', 5000)])]]);
+        }
+
+        $queries = [];
+        DB::listen(function ($query) use (&$queries): void {
+            $queries[] = $query->sql;
+        });
+
+        $this->actingAs($this->admin())
+            ->get(route('admin.pages.index'))
+            ->assertOk()
+            ->assertInertia(fn ($page) => $page
+                ->where('pages.data.0.title', 'Alpha')
+                ->where('pages.data.1.title', 'Bravo')
+                ->where('pages.data.2.title', 'Charlie')
+                ->where('pages.data.0.block_count', 1));
+
+        // MySQL sorts the selected columns in a small buffer, so the sorted query must not select the big JSON columns.
+        $sorted = array_values(array_filter($queries, fn (string $sql): bool => str_contains($sql, 'from "pages"') && str_contains($sql, 'order by "title"')));
+
+        $this->assertNotEmpty($sorted);
+        foreach ($sorted as $sql) {
+            $this->assertStringNotContainsString('*', $sql);
+            $this->assertStringNotContainsString('"blocks"', $sql);
+        }
     }
 
     public function test_published_pages_render_markdown_and_drafts_are_hidden(): void

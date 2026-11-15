@@ -26,12 +26,21 @@ class PageController extends Controller
     public function index(Request $request, ThemeManager $themes, AiGeneratorController $aiGenerator): Response
     {
         $regularPageCount = Page::query()->regular()->count();
+        // MySQL sorts the columns it selects in a small buffer (sort_buffer_size, often 256 KB), and a
+        // page row carries large JSON documents (a theme demo page can be 150 KB). Sorting full rows
+        // fails there with "Out of sort memory", so sort and paginate only ids and titles, then load
+        // the full rows of this one page of results (no sorting) and keep that order.
         $pages = Page::query()
             ->regular()
             ->when($request->query('q'), fn ($q, $term) => $q->where('title', 'like', "%{$term}%"))
             ->orderBy('title')
+            ->orderBy('id')
+            ->select(['id', 'title'])
             ->paginate(20)
             ->withQueryString();
+
+        $loaded = Page::query()->whereKey($pages->pluck('id'))->get()->keyBy('id');
+        $pages->setCollection($pages->getCollection()->map(fn (Page $row): ?Page => $loaded->get($row->id))->filter()->values());
 
         return Inertia::render('Admin/Pages/Index', [
             'pages' => $pages->through(fn (Page $page) => [
