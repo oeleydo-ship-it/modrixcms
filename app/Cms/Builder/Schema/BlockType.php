@@ -32,6 +32,7 @@ enum BlockType: string
 
     // Capture
     case Form = 'form';
+    case SiteForm = 'site_form';
     case EmailOptin = 'email_optin';
     case PhoneInput = 'phone_input';
 
@@ -76,9 +77,10 @@ enum BlockType: string
             self::Icon => 'Icon',
             self::Divider => 'Divider',
             self::Spacer => 'Spacer',
-            self::Html => 'HTML',
-            self::CustomCode => 'Custom code',
+            self::Html => 'HTML embed',
+            self::CustomCode => 'Custom code / script',
             self::Form => 'Form',
+            self::SiteForm => 'Saved form',
             self::EmailOptin => 'Email opt-in',
             self::PhoneInput => 'Phone input',
             self::Checkout => 'Checkout',
@@ -111,8 +113,9 @@ enum BlockType: string
         return match ($this) {
             self::Container => 'layout',
             self::Heading, self::Paragraph, self::Image, self::Video, self::Button,
-            self::Icon, self::Divider, self::Spacer, self::Html, self::CustomCode => 'content',
-            self::Form, self::EmailOptin, self::PhoneInput => 'capture',
+            self::Icon, self::Divider, self::Spacer => 'content',
+            self::Html, self::CustomCode => 'code',
+            self::Form, self::SiteForm, self::EmailOptin, self::PhoneInput => 'capture',
             self::Checkout, self::Product, self::PricingTable => 'commerce',
             self::Countdown, self::Testimonial, self::Faq, self::Accordion,
             self::Tabs, self::ProgressBar, self::FeatureCards => 'persuasion',

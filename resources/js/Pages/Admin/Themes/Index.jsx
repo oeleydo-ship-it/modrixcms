@@ -1,7 +1,56 @@
+import { useState } from 'react';
 import { Link, router, usePage } from '@inertiajs/react';
 import AdminLayout from '@/cms/admin/AdminLayout';
 import { confirmVisit, ErrorFlash } from '@/cms/admin/forms';
 import { ScanTable, UploadPanel } from '@/cms/admin/extensions';
+
+/** One-click demo content: the theme's pages, header and footer, built in the visual builder. */
+function DemoImport({ theme }) {
+    const [open, setOpen] = useState(false);
+    const [setHome, setSetHome] = useState(true);
+    const [replace, setReplace] = useState(false);
+    const [busy, setBusy] = useState(false);
+    const demo = theme.demo;
+    const parts = [
+        `${demo.pages.length} ${demo.pages.length === 1 ? 'page' : 'pages'}`,
+        demo.header ? 'site header' : null,
+        demo.footer ? 'site footer' : null,
+    ].filter(Boolean).join(', ');
+
+    if (!theme.active) {
+        return <p className="hint">Includes demo content ({parts}). Activate the theme to import it.</p>;
+    }
+
+    const submit = () => {
+        router.post(route('admin.themes.demo', theme.routeKey), { set_home: setHome, replace }, {
+            preserveScroll: true,
+            onStart: () => setBusy(true),
+            onFinish: () => { setBusy(false); setOpen(false); },
+        });
+    };
+
+    return (
+        <div className="theme-demo">
+            {!open ? (
+                <button className="btn btn-sm" type="button" onClick={() => setOpen(true)}>Import demo</button>
+            ) : (
+                <div className="panel" style={{ marginTop: 12 }}>
+                    <h3 style={{ marginTop: 0 }}>Import the {theme.displayName} demo</h3>
+                    <p className="hint">
+                        Adds {parts}, all published and editable in the visual builder: {demo.pages.join(', ')}.
+                        Importing again updates these pages instead of copying them.
+                    </p>
+                    <label className="check"><input type="checkbox" checked={setHome} onChange={(e) => setSetHome(e.target.checked)} /> Make the demo home page your home page</label>
+                    <label className="check"><input type="checkbox" checked={replace} onChange={(e) => setReplace(e.target.checked)} /> Replace pages that use the same address (their old content stays in History)</label>
+                    <div className="actions" style={{ marginTop: 12 }}>
+                        <button className="btn btn-sm" type="button" disabled={busy} onClick={submit}>{busy ? 'Importing…' : 'Import demo'}</button>
+                        <button className="btn btn-light btn-sm" type="button" disabled={busy} onClick={() => setOpen(false)}>Cancel</button>
+                    </div>
+                </div>
+            )}
+        </div>
+    );
+}
 
 export default function ThemesIndex({ themes, uploadsAllowed, maxMb }) {
     const { errors } = usePage().props;
@@ -43,7 +92,8 @@ export default function ThemesIndex({ themes, uploadsAllowed, maxMb }) {
                                         <button className="btn btn-light btn-sm" type="button" onClick={() => run(theme, 'admin.themes.preview')}>Preview</button>
                                     </>
                                 ) : null}
-                                {theme.hasSettings ? <Link className="btn btn-light btn-sm" href={route('admin.themes.customize', theme.routeKey)}>Customize</Link> : null}
+                                {theme.usable ? <Link className="btn btn-light btn-sm" href={theme.designUrl}>Theme settings</Link> : null}
+                                {theme.hasSettings ? <Link className="btn btn-light btn-sm" href={route('admin.themes.customize', theme.routeKey)}>More options</Link> : null}
                                 {!theme.active && !theme.isDefault ? (
                                     <button className="btn btn-danger btn-sm" type="button"
                                         onClick={() => confirmVisit(`Delete ${theme.displayName}? Its files and settings are removed.`, 'delete', route('admin.themes.destroy', theme.routeKey))}>
@@ -51,6 +101,8 @@ export default function ThemesIndex({ themes, uploadsAllowed, maxMb }) {
                                     </button>
                                 ) : null}
                             </div>
+
+                            {theme.usable && theme.demo ? <DemoImport theme={theme} /> : null}
 
                             {theme.scan?.length ? (
                                 <details className="theme-scan">

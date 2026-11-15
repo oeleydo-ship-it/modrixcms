@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 400" fill="none" width="560" height="400">
+  <rect width="560" height="400" rx="24" fill="#F7F7F8"/>
+  <rect x="34" y="34" width="492" height="332" rx="18" fill="#FFFFFF" stroke="#EAEAEA"/>
+  <rect x="64" y="68" width="210" height="22" rx="11" fill="#EEF4FF"/>
+  <text x="169" y="83" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" font-weight="600" fill="#0066FF">Collaborative Hiring Studio</text>
+  <rect x="64" y="114" width="432" height="104" rx="14" fill="#F8FAFC" stroke="#EAEAEA"/>
+  <circle cx="110" cy="166" r="24" fill="#DBEAFE"/>
+  <circle cx="110" cy="159" r="8" fill="#1D4ED8"/>
+  <path d="M96 184C99 175 103 172 110 172C117 172 121 175 124 184" fill="#1D4ED8"/>
+  <circle cx="174" cy="166" r="24" fill="#DCFCE7"/>
+  <circle cx="174" cy="159" r="8" fill="#15803D"/>
+  <path d="M160 184C163 175 167 172 174 172C181 172 185 175 188 184" fill="#15803D"/>
+  <text x="220" y="160" font-family="Inter, sans-serif" font-size="14" font-weight="700" fill="#0C0407">Product &amp; Talent Sync</text>
+  <text x="220" y="180" font-family="Inter, sans-serif" font-size="11.5" fill="#666666">Weekly roadmap reviews across 14 global cities</text>
+  <rect x="64" y="242" width="132" height="92" rx="14" fill="#0066FF"/>
+  <text x="82" y="284" font-family="Inter, sans-serif" font-size="24" font-weight="700" fill="#FFFFFF">96%</text>
+  <text x="82" y="308" font-family="Inter, sans-serif" font-size="10.5" fill="#DBEAFE">Offer clarity</text>
+  <rect x="214" y="242" width="282" height="92" rx="14" fill="#F7F7F8"/>
+  <text x="234" y="276" font-family="Inter, sans-serif" font-size="13" font-weight="700" fill="#0C0407">Transparent Benchmarks</text>
+  <text x="234" y="298" font-family="Inter, sans-serif" font-size="11" fill="#666666">Verified role ranges &amp; direct hiring paths</text>
+</svg>

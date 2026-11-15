@@ -95,12 +95,20 @@ final class TemplatePresentation
     private static function style(array $style): array
     {
         if (isset($style['custom']['--fnl-effect'])) {
-            $effects = preg_split('/\s+/', (string) $style['custom']['--fnl-effect']) ?: [];
-            $effects = array_intersect($effects, ['press', 'zoom']);
+            $raw = $style['custom']['--fnl-effect'];
+            $effectString = is_array($raw) ? (string) ($raw['desktop'] ?? '') : (string) $raw;
+            $effects = preg_split('/\s+/', $effectString) ?: [];
+            $effects = array_intersect($effects, [
+                'reveal', 'fade-in', 'slide-left', 'slide-right', 'zoom-in', 'blur-in', 'flip-up', 'spring-pop',
+                'exit-fade', 'exit-up', 'exit-scale', 'exit-blur',
+                'lift', 'zoom', 'press', 'glow', 'tilt', 'float', 'pulse-slow', 'kenburns', 'marquee',
+            ]);
             if ($effects === []) {
                 unset($style['custom']['--fnl-effect']);
             } else {
-                $style['custom']['--fnl-effect'] = implode(' ', $effects);
+                $style['custom']['--fnl-effect'] = is_array($raw)
+                    ? ['desktop' => implode(' ', $effects)]
+                    : implode(' ', $effects);
             }
         }
         if (($style['custom'] ?? null) === []) {

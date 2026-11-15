@@ -1,0 +1,26 @@
+{
+    "name": "modrix/social-media",
+    "type": "plugin",
+    "display_name": "Social Media Suite",
+    "description": "Manage social profiles with click tracking, add follow/share/feed blocks, enable a floating share bar, output Twitter/OpenGraph tags, and inspect engagement analytics.",
+    "version": "1.0.1",
+    "cms_version": "^1.0",
+    "author": "Modrix",
+    "license": "MIT",
+    "autoload": { "psr-4": { "Modrix\\SocialMedia\\": "src/" } },
+    "provider": "Modrix\\SocialMedia\\SocialMediaServiceProvider",
+    "routes": { "web": "routes/web.php", "admin": "routes/admin.php" },
+    "scripts": ["public/social-media.js"],
+    "admin_navigation": [
+        { "title": "Social Links", "route": "profiles.index" },
+        { "title": "Social Analytics", "route": "analytics.index" }
+    ],
+    "settings": [
+        { "name": "floating_bar", "label": "Show floating share bar on public pages", "type": "toggle", "default": true },
+        { "name": "floating_position", "label": "Floating bar position", "type": "select", "default": "left", "options": { "left": "Left side", "right": "Right side" } },
+        { "name": "share_platforms", "label": "Share buttons", "type": "text", "default": "x,facebook,linkedin,whatsapp,telegram,email,copy", "help": "Comma-separated: x, facebook, linkedin, whatsapp, telegram, reddit, email, copy" },
+        { "name": "twitter_handle", "label": "X / Twitter handle", "type": "text", "default": "", "help": "Used for twitter:site meta tags, e.g. @modrix" },
+        { "name": "default_og_image", "label": "Default OpenGraph image URL", "type": "url", "default": "" },
+        { "name": "track_events", "label": "Track share & profile click analytics", "type": "toggle", "default": true }
+    ]
+}

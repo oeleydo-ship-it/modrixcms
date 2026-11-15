@@ -59,6 +59,7 @@ export type SaveState = 'idle' | 'dirty' | 'saving' | 'saved' | 'conflict' | 'er
 
 export interface BuilderState {
     pageId: string;
+    pageRole: 'header' | 'footer' | null;
     /** Optimistic concurrency token; the API rejects a stale one with a 409. */
     version: number;
     document: PageDocument;
@@ -71,7 +72,7 @@ export interface BuilderState {
     future: PageDocument[];
 
     /* lifecycle */
-    load: (pageId: string, document: PageDocument, version: number) => void;
+    load: (pageId: string, document: PageDocument, version: number, role?: 'header' | 'footer' | null) => void;
     markSaving: () => void;
     markSaved: (version: number, savedDocument?: PageDocument) => void;
     markConflict: () => void;
@@ -125,6 +126,7 @@ export interface BuilderState {
 
 export const useBuilderStore = create<BuilderState>()((set, get) => ({
     pageId: '',
+    pageRole: null,
     version: 0,
     document: blankDocument(),
     selected: null,
@@ -135,9 +137,10 @@ export const useBuilderStore = create<BuilderState>()((set, get) => ({
     past: [],
     future: [],
 
-    load: (pageId, document, version) =>
+    load: (pageId, document, version, role = null) =>
         set({
             pageId,
+            pageRole: role ?? null,
             document,
             version,
             past: [],

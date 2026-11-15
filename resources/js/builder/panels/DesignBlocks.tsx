@@ -33,6 +33,7 @@ type LoadState = 'loading' | 'ready' | 'unavailable';
 
 export function DesignBlocks({ onInsert, onReplace, presentation = 'list' }: { presentation?: 'list' | 'grid'; onInsert: (block: DesignBlock) => void; onReplace?: (block: DesignBlock, sectionId: string) => void }) {
     const selectedSectionId = useBuilderStore(state => state.selected?.kind === 'section' ? state.selected.id : null);
+    const pageRole = useBuilderStore(state => state.pageRole);
     const [state, setState] = useState<LoadState>('loading');
     const [blocks, setBlocks] = useState<DesignBlock[]>([]);
     const [labels, setLabels] = useState<Record<string, string>>({});
@@ -70,14 +71,24 @@ export function DesignBlocks({ onInsert, onReplace, presentation = 'list' }: { p
         };
     }, []);
 
-    const collections = useMemo(() => [...new Set(blocks.map(designCollection))].sort(), [blocks]);
+    const roleBlocks = useMemo(() => {
+        if (pageRole === 'header') {
+            return blocks.filter(block => designGroup(block) === 'Navigation');
+        }
+        if (pageRole === 'footer') {
+            return blocks.filter(block => designGroup(block) === 'Footer');
+        }
+        return blocks;
+    }, [blocks, pageRole]);
+
+    const collections = useMemo(() => [...new Set(roleBlocks.map(designCollection))].sort(), [roleBlocks]);
     const categories = useMemo(() => {
         const needle = query.trim().toLowerCase();
-        const matching = blocks.filter(block =>
+        const matching = roleBlocks.filter(block =>
             (collection === 'all' || designCollection(block) === collection) &&
             (!needle || `${block.name} ${block.category} ${labels[block.category] ?? ''} ${block.description ?? ''} ${designGroup(block)}`.toLowerCase().includes(needle)));
         return DESIGN_GROUPS.map(group => [group, matching.filter(block => designGroup(block) === group)] as const).filter(([, entries]) => entries.length);
-    }, [blocks, labels, query, collection]);
+    }, [roleBlocks, labels, query, collection]);
 
     if (state === 'loading') {
         return (
@@ -114,6 +125,13 @@ export function DesignBlocks({ onInsert, onReplace, presentation = 'list' }: { p
 
     return (
         <div className="flex h-full min-h-0 flex-col gap-3">
+            {pageRole && (
+                <p className="rounded-lg border border-indigo-200 bg-indigo-50/70 px-3 py-2 text-xs text-indigo-900">
+                    {pageRole === 'header'
+                        ? 'Global header only: navigation and header designs are shown so page sections stay on individual pages.'
+                        : 'Global footer only: footer designs are shown.'}
+                </p>
+            )}
             <label className="text-xs font-medium text-slate-600">Template collection
                 <select aria-label="Template collection" value={collection} onChange={event => setCollection(event.target.value)} className="mt-1 w-full rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm">
                     <option value="all">All collections</option>

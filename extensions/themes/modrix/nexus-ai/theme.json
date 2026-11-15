@@ -1,0 +1,179 @@
+{
+    "schema_version": 1,
+    "name": "modrix/nexus-ai",
+    "display_name": "Nexus AI",
+    "version": "1.0.0",
+    "cms_version": "^1.0",
+    "description": "High-contrast AI agency & SaaS theme featuring floating pill navigation, coral accents, Switzer/Satoshi typography, bento feature cards, interactive workflow previews, and smooth entrance & exit animations.",
+    "author": "Modrix",
+    "homepage": "https://modrix.org",
+    "license": "MIT",
+    "design": {
+        "primary": "#09090b",
+        "on_primary": "#ffffff",
+        "primary_soft": "#27272a",
+        "secondary": "#09090b",
+        "accent": "#ff542e",
+        "heading": "#09090b",
+        "body": "#52525b",
+        "muted": "#71717a",
+        "background": "#ffffff",
+        "surface": "#f4f4f2",
+        "dark": "#09090b",
+        "on_dark": "#ffffff",
+        "on_dark_muted": "#a1a1aa",
+        "border": "#e4e4e7"
+    },
+    "type": "theme",
+    "parent": null,
+    "supports": [
+        "menus",
+        "widgets",
+        "page-templates",
+        "dark-mode",
+        "animations"
+    ],
+    "menus": {
+        "primary": "Primary Floating Pill Navigation",
+        "footer": "Footer Navigation"
+    },
+    "widget_areas": {
+        "sidebar": "Blog Sidebar",
+        "footer-1": "Footer Column 1",
+        "footer-2": "Footer Column 2",
+        "footer-3": "Footer Column 3"
+    },
+    "templates": {
+        "page-landing": "AI Agency Landing Page",
+        "page-full-width": "Full Width Page"
+    },
+    "assets": {
+        "styles": [
+            "public/theme.css"
+        ],
+        "scripts": [],
+        "fonts": [
+            "https://api.fontshare.com/v2/css?f[]=switzer@400,500,600,700&f[]=satoshi@400,500,700&display=swap",
+            "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"
+        ]
+    },
+    "settings_schema": {
+        "primary_color": {
+            "type": "color",
+            "label": "Primary Brand / Button Color",
+            "default": "#09090b",
+            "css_var": "--color-primary"
+        },
+        "accent_color": {
+            "type": "color",
+            "label": "Accent Coral Color",
+            "default": "#ff542e",
+            "css_var": "--color-accent"
+        },
+        "surface_color": {
+            "type": "color",
+            "label": "Warm Alabaster Surface",
+            "default": "#f4f4f2",
+            "css_var": "--color-surface"
+        },
+        "dark_surface_color": {
+            "type": "color",
+            "label": "Dark Section Background",
+            "default": "#09090b",
+            "css_var": "--color-dark"
+        },
+        "heading_color": {
+            "type": "color",
+            "label": "Heading Ink Color",
+            "default": "#09090b",
+            "css_var": "--color-heading"
+        },
+        "body_color": {
+            "type": "color",
+            "label": "Muted Body Text Color",
+            "default": "#52525b",
+            "css_var": "--color-body"
+        },
+        "heading_font": {
+            "type": "select",
+            "label": "Heading Font",
+            "options": ["Switzer", "Satoshi", "Inter", "Plus Jakarta Sans"],
+            "default": "Switzer",
+            "css_var": "--font-heading"
+        },
+        "body_font": {
+            "type": "select",
+            "label": "Body Font",
+            "options": ["Switzer", "Satoshi", "Inter"],
+            "default": "Switzer",
+            "css_var": "--font-sans"
+        },
+        "mono_font": {
+            "type": "select",
+            "label": "Eyebrow Mono Font",
+            "options": ["JetBrains Mono", "Inter"],
+            "default": "JetBrains Mono",
+            "css_var": "--font-mono"
+        },
+        "container_width": {
+            "type": "select",
+            "label": "Container Width",
+            "options": ["1140px", "1200px", "1280px", "1360px"],
+            "default": "1200px",
+            "css_var": "--container-width"
+        },
+        "section_padding": {
+            "type": "select",
+            "label": "Vertical Section Spacing",
+            "options": ["72px", "96px", "112px", "128px"],
+            "default": "96px",
+            "css_var": "--section-padding"
+        },
+        "card_radius": {
+            "type": "select",
+            "label": "Card Border Radius",
+            "options": ["16px", "20px", "24px", "32px"],
+            "default": "24px",
+            "css_var": "--card-radius"
+        },
+        "button_radius": {
+            "type": "select",
+            "label": "Button Pill Radius",
+            "options": ["12px", "999px"],
+            "default": "999px",
+            "css_var": "--button-radius"
+        },
+        "nav_pill_blur": {
+            "type": "boolean",
+            "label": "Floating Glass Pill Header",
+            "default": true
+        },
+        "show_eyebrow_slashes": {
+            "type": "boolean",
+            "label": "Show // Eyebrow Prefix",
+            "default": true
+        },
+        "cta_button_label": {
+            "type": "text",
+            "label": "Header CTA Label",
+            "default": "Book free call"
+        },
+        "cta_button_url": {
+            "type": "text",
+            "label": "Header CTA URL",
+            "default": "/faqs"
+        }
+    },
+    "screenshot": "public/screenshot.svg",
+    "demo": {
+        "header": "demo/header.json",
+        "footer": "demo/footer.json",
+        "pages": [
+            { "title": "Home", "slug": "home", "file": "demo/home.json", "home": true, "menu": true },
+            { "title": "About Us", "slug": "about", "file": "demo/about.json", "menu": true },
+            { "title": "Services", "slug": "services", "file": "demo/services.json", "menu": true },
+            { "title": "FAQs", "slug": "faqs", "file": "demo/faqs.json", "menu": true },
+            { "title": "Blogs", "slug": "blogs", "file": "demo/blogs.json", "menu": true }
+        ]
+    }
+}

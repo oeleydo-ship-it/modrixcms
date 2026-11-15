@@ -51,6 +51,7 @@ export type BlockType =
     | 'html'
     | 'custom_code'
     | 'form'
+    | 'site_form'
     | 'email_optin'
     | 'phone_input'
     | 'checkout'
@@ -76,6 +77,7 @@ export type BlockType =
 export type BlockGroup =
     | 'layout'
     | 'content'
+    | 'code'
     | 'capture'
     | 'commerce'
     | 'persuasion'
@@ -96,6 +98,7 @@ export const BLOCK_TYPES: readonly BlockType[] = [
     'html',
     'custom_code',
     'form',
+    'site_form',
     'email_optin',
     'phone_input',
     'checkout',
@@ -141,9 +144,10 @@ export const BLOCK_LABEL: Record<BlockType, string> = {
     icon: 'Icon',
     divider: 'Divider',
     spacer: 'Spacer',
-    html: 'HTML',
-    custom_code: 'Custom code',
+    html: 'HTML embed',
+    custom_code: 'Custom code / script',
     form: 'Form',
+    site_form: 'Saved form',
     email_optin: 'Email opt-in',
     phone_input: 'Phone input',
     checkout: 'Checkout',
@@ -177,9 +181,10 @@ export const BLOCK_GROUP: Record<BlockType, BlockGroup> = {
     icon: 'content',
     divider: 'content',
     spacer: 'content',
-    html: 'content',
-    custom_code: 'content',
+    html: 'code',
+    custom_code: 'code',
     form: 'capture',
+    site_form: 'capture',
     email_optin: 'capture',
     phone_input: 'capture',
     checkout: 'commerce',
@@ -206,6 +211,7 @@ export const BLOCK_GROUP: Record<BlockType, BlockGroup> = {
 export const BLOCK_GROUP_LABEL: Record<BlockGroup, string> = {
     layout: 'Layout',
     content: 'Content',
+    code: 'Code & scripts',
     capture: 'Capture',
     commerce: 'Commerce',
     persuasion: 'Persuasion',

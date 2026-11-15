@@ -10,10 +10,11 @@
     <title inertia>{{ $settings->get('site_name') }} Admin</title>
     <link rel="icon" href="{{ $settings->fileUrl('favicon') ?? asset('favicon.svg') }}">
     <link rel="preconnect" href="https://fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=bricolage-grotesque:600,700|inter:400,500,600|jetbrains-mono:400&display=swap" rel="stylesheet">
+    <link href="https://fonts.bunny.net/css?family=bricolage-grotesque:500,600,700|dm-sans:400,500,600,700|inter:400,500,600,700|jetbrains-mono:400,500|plus-jakarta-sans:400,500,600,700&display=swap" rel="stylesheet">
     @routes
     @viteReactRefresh
     @vite(['resources/css/admin.css', 'resources/js/app.jsx'])
+    <style id="admin-theme-vars">{!! $settings->adminCssVariables() !!}</style>
     @hook('admin.head')
     @include('partials.cms-packages', ['area' => 'admin'])
 </head>

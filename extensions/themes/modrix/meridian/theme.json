@@ -1,0 +1,116 @@
+{
+    "name": "modrix/meridian",
+    "type": "theme",
+    "display_name": "Meridian Advisory",
+    "version": "1.0.0",
+    "description": "Global mobility, residency and executive advisory theme with floating dark-glass navigation, multi-column dropdown mega-menus, vertical pathway tabs, continuous destination marquees, live caseload ticker and complete Theme Settings integration.",
+    "cms_version": "^1.0",
+    "author": "Modrix",
+    "license": "MIT",
+    "styles": ["public/theme.css"],
+    "scripts": ["public/theme.js"],
+    "screenshot": "public/screenshot.svg",
+    "settings": [],
+    "design": {
+        "primary": "#15241b",
+        "on_primary": "#ffffff",
+        "primary_soft": "#eeefe3",
+        "secondary": "#1d3226",
+        "accent": "#b98b43",
+        "heading": "#15241b",
+        "body": "#425247",
+        "muted": "#5c6d60",
+        "background": "#f7f8ee",
+        "surface": "#f6f3ee",
+        "dark": "#15241b",
+        "on_dark": "#ffffff",
+        "on_dark_muted": "#d5ddd7",
+        "border": "#dbe0d3",
+        "header_bg": "#15241b",
+        "header_text": "#f7f8ee",
+        "footer_bg": "#15241b",
+        "footer_text": "#f7f8ee",
+        "link": "#b98b43",
+        "link_hover": "#15241b",
+        "heading_font": "Parkinsans",
+        "body_font": "DM Sans",
+        "base_size": "16",
+        "heading_scale": "large",
+        "heading_weight": "600",
+        "heading_line_height": "1.08",
+        "heading_tracking": "tight",
+        "button_shape": "rounded",
+        "button_hover": "lift",
+        "card_radius": "round",
+        "section_radius": "round",
+        "section_spacing": "roomy",
+        "shadow": "soft",
+        "content_width": "1280",
+        "header_height": "80",
+        "header_sticky": true,
+        "header_blur": true
+    },
+    "demo": {
+        "header": "demo/header.json",
+        "footer": "demo/footer.json",
+        "pages": [
+            {
+                "title": "Home",
+                "slug": "home",
+                "file": "demo/home.json",
+                "home": true,
+                "menu": true,
+                "site_header": true,
+                "site_footer": true
+            },
+            {
+                "title": "About",
+                "slug": "about",
+                "file": "demo/about.json",
+                "menu": true,
+                "site_header": true,
+                "site_footer": true
+            },
+            {
+                "title": "Services",
+                "slug": "services",
+                "file": "demo/services.json",
+                "menu": true,
+                "site_header": true,
+                "site_footer": true
+            },
+            {
+                "title": "Programs",
+                "slug": "programs",
+                "file": "demo/programs.json",
+                "menu": true,
+                "site_header": true,
+                "site_footer": true
+            },
+            {
+                "title": "Destinations",
+                "slug": "destinations",
+                "file": "demo/destinations.json",
+                "menu": true,
+                "site_header": true,
+                "site_footer": true
+            },
+            {
+                "title": "Insights",
+                "slug": "insights",
+                "file": "demo/insights.json",
+                "menu": true,
+                "site_header": true,
+                "site_footer": true
+            },
+            {
+                "title": "Contact",
+                "slug": "contact",
+                "file": "demo/contact.json",
+                "menu": true,
+                "site_header": true,
+                "site_footer": true
+            }
+        ]
+    }
+}

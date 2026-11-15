@@ -1,0 +1,21 @@
+{
+    "name": "modrix/promo-bars",
+    "type": "plugin",
+    "display_name": "Promo Bars & Popups",
+    "description": "Site-wide announcement bars, timed and scroll-triggered conversion popups, countdown timers, one-click coupon copying, inline promo banner blocks, and impression/click analytics.",
+    "version": "1.0.0",
+    "cms_version": "^1.0",
+    "author": "Modrix",
+    "license": "MIT",
+    "autoload": { "psr-4": { "Modrix\\PromoBars\\": "src/" } },
+    "provider": "Modrix\\PromoBars\\PromoBarsServiceProvider",
+    "routes": { "web": "routes/web.php", "admin": "routes/admin.php" },
+    "scripts": ["public/promo-bars.js"],
+    "admin_navigation": [
+        { "title": "Promotions", "route": "campaigns.index" }
+    ],
+    "settings": [
+        { "name": "enable_global", "label": "Show active site-wide bars & popups", "type": "toggle", "default": true },
+        { "name": "dismiss_days", "label": "Remember dismissed promotions (days)", "type": "number", "default": 7 }
+    ]
+}

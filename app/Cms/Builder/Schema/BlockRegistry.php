@@ -173,6 +173,10 @@ final class BlockRegistry
                 'placement' => 'inline', // inline | head | body_end
             ]),
 
+            BlockType::SiteForm->value => self::leaf([
+                'formSlug' => '',
+            ]),
+
             BlockType::Form->value => self::leaf([
                 'formId' => null,
                 'consentText' => null,
@@ -186,8 +190,14 @@ final class BlockRegistry
 
             BlockType::EmailOptin->value => self::leaf([
                 'formId' => null,
+                'label' => 'Email address',
+                'showLabel' => false,
+                'fieldName' => 'email',
+                'required' => true,
                 'successAction' => 'message',
                 'targetStepId' => null,
+                'successMessage' => 'Thanks — we got it.',
+                'redirectUrl' => null,
                 'placeholder' => 'you@example.com',
                 'submitLabel' => 'Send it to me',
                 'consentText' => null,
@@ -197,12 +207,20 @@ final class BlockRegistry
 
             BlockType::PhoneInput->value => self::leaf([
                 'formId' => null,
+                'label' => 'Phone number',
+                'showLabel' => true,
+                'fieldName' => 'phone',
+                'required' => true,
                 'successAction' => 'message',
                 'targetStepId' => null,
+                'successMessage' => 'Thanks — we got it.',
+                'redirectUrl' => null,
                 'placeholder' => '+1 555 000 0000',
                 'defaultCountry' => 'US',
                 'submitLabel' => 'Text me',
                 'requireConsent' => true,
+                'consentText' => 'I agree to receive text messages. Reply STOP to opt out.',
+                'layout' => 'inline',
             ]),
 
             BlockType::Checkout->value => self::leaf([

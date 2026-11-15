@@ -7,11 +7,11 @@
  * reorder blocks that are already on the page but can never accept a block
  * dragged in from the palette — the drag just ends nowhere, silently.
  *
- * Autosave is debounced rather than tied to a save button. The one rule it must
- * never break: a 409 from the server means someone else saved after us, so the
- * local document is stale and must NOT be pushed again. The store moves to
- * `conflict` and stays there until the editor reloads — silently retrying would
- * overwrite the other person's work.
+ * Saving is manual (Save button or Ctrl/⌘+S) rather than automatic. The one
+ * rule it must never break: a 409 from the server means someone else saved after
+ * us, so the local document is stale and must NOT be pushed again. The store
+ * moves to `conflict` and stays there until the editor reloads — silently
+ * retrying would overwrite the other person's work.
  */
 
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
@@ -41,6 +41,7 @@ import {
     Save,
     Keyboard,
     Smartphone,
+    Sparkles,
     Tablet,
     Undo2,
 } from 'lucide-react';
@@ -87,12 +88,11 @@ import { reorderSection } from './sectionOrder';
 import { LayerTree } from './panels/LayerTree';
 import { Properties } from './panels/Properties';
 import { TemplateLibrary } from './panels/TemplateLibrary';
+import { AiPageModal } from './panels/AiPageModal';
 import { HistoryModal } from './panels/HistoryModal';
 import { FunnelPanel } from './panels/FunnelPanel';
 import { funnelWidgetConfig, type FunnelWidgetId } from './funnelWidgets';
 import './builder.css';
-
-const AUTOSAVE_DELAY_MS = 2000;
 
 /**
  * Where the back button goes: Admin → Pages in Modrix CMS.
@@ -170,7 +170,7 @@ function SaveIndicator({ state, at }: { state: string; at: number | null }) {
 
     if (state === 'dirty') {
         return (
-            <span className="fnl-save" role="status">
+            <span className="fnl-save is-dirty" role="status">
                 Unsaved changes
             </span>
         );
@@ -199,9 +199,8 @@ export function BuilderApp({ source }: { source: BuilderSource }) {
     const [pageName, setPageName] = useState('');
     const [publishing, setPublishing] = useState(false);
     const [templatesOpen, setTemplatesOpen] = useState(false);
+    const [aiModalOpen, setAiModalOpen] = useState(false);
     const [historyOpen, setHistoryOpen] = useState(false);
-    const [historyPreparing, setHistoryPreparing] = useState(false);
-    const [leaving, setLeaving] = useState(false);
     const [shortcutsOpen, setShortcutsOpen] = useState(false);
     const [leftTab, setLeftTab] = useState<LeftTab>('blocks');
     const [rightTab, setRightTab] = useState<'block' | 'layers'>('block');
@@ -220,6 +219,7 @@ export function BuilderApp({ source }: { source: BuilderSource }) {
 
     const store = useBuilderStore();
     const {
+        pageRole,
         document: doc,
         selected,
         breakpoint,
@@ -227,7 +227,8 @@ export function BuilderApp({ source }: { source: BuilderSource }) {
         saveState,
         lastSavedAt,
     } = store;
-    const busy = publishing || historyPreparing || leaving;
+    const isGlobalChrome = pageRole === 'header' || pageRole === 'footer';
+    const busy = publishing;
     const actionPending = useRef(false);
     const saver = useMemo(() => createDraftSaver(
         useBuilderStore.getState,
@@ -244,10 +245,21 @@ export function BuilderApp({ source }: { source: BuilderSource }) {
     }, [toast]);
 
     const saveNow = useCallback(async (): Promise<void> => {
-        // Inline text and buffered settings commit on blur; include them in Ctrl+S.
+        // Inline text and buffered settings commit on blur; include them in Save / Ctrl+S.
         flushActiveEditor();
-        try { await saver.flush(); } catch (error) { reportSaveError(error); }
-    }, [saver, reportSaveError]);
+        const beforeState = useBuilderStore.getState().saveState;
+        if (beforeState !== 'dirty' && beforeState !== 'error') {
+            return;
+        }
+        try {
+            await saver.flush();
+            if (useBuilderStore.getState().saveState === 'saved') {
+                toast.success('Draft saved');
+            }
+        } catch (error) {
+            reportSaveError(error);
+        }
+    }, [saver, reportSaveError, toast]);
 
     const exportDraft = useCallback((): void => {
         const data = serialiseDocument(useBuilderStore.getState().document);
@@ -292,7 +304,7 @@ export function BuilderApp({ source }: { source: BuilderSource }) {
                   setPageName(page.name);
                   setFunnel(page.funnel);
                   setLeftTab(page.funnel ? 'funnel' : 'blocks');
-                  store.load(page.id, page.document, page.version);
+                  store.load(page.id, page.document, page.version, page.role);
                   setLoading(false);
               });
 
@@ -310,32 +322,7 @@ export function BuilderApp({ source }: { source: BuilderSource }) {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [pageId, editingComponent]);
 
-    /* ------------------------------------------------------------ autosave */
-
-    const timer = useRef<number | null>(null);
-
-    useEffect(() => {
-        // Only a dirty document is worth saving, and a conflict must never be
-        // retried — the local copy is known to be behind.
-        if (saveState !== 'dirty' || loading || busy || templatesOpen || historyOpen) {
-            return;
-        }
-
-        if (timer.current !== null) {
-            window.clearTimeout(timer.current);
-        }
-
-        timer.current = window.setTimeout(() => {
-            // Autosave must leave the user's caret and unfinished inline text alone.
-            void saver.flush().catch(reportSaveError);
-        }, AUTOSAVE_DELAY_MS);
-
-        return () => {
-            if (timer.current !== null) {
-                window.clearTimeout(timer.current);
-            }
-        };
-    }, [saveState, doc, loading, busy, templatesOpen, historyOpen, saver, reportSaveError]);
+    /* ---------------------------------------------------- unsaved warning */
 
     useEffect(() => {
         const beforeUnload = (event: BeforeUnloadEvent): void => {
@@ -386,49 +373,33 @@ export function BuilderApp({ source }: { source: BuilderSource }) {
         return () => window.removeEventListener('keydown', onKeyDown);
     }, [loading, busy, templatesOpen, historyOpen, shortcutsOpen, pickerTarget, togglePanel, saveNow]);
 
-    const openHistory = useCallback(async (): Promise<void> => {
+    const openHistory = useCallback((): void => {
         if (actionPending.current) return;
         const state = useBuilderStore.getState();
         if (state.saveState === 'conflict') {
             toast.error('Resolve the save conflict first', 'Reload the page before restoring an earlier revision.');
             return;
         }
-
-        actionPending.current = true;
-        setHistoryPreparing(true);
-        try {
-            await saver.flush();
-            setHistoryOpen(true);
-        } catch (error) {
-            reportSaveError(error);
-        } finally {
-            actionPending.current = false;
-            setHistoryPreparing(false);
-        }
-    }, [saver, reportSaveError, toast]);
+        setHistoryOpen(true);
+    }, [toast]);
 
     /* ------------------------------------------------------------- leave */
 
     /**
-     * Back to the funnel this page belongs to. Pending edits are saved first:
-     * autosave waits two seconds after the last change, and leaving inside that
-     * window would otherwise drop the most recent edit.
+     * Back to the pages list. With manual saving, confirm before discarding
+     * any unsaved edits rather than autosaving them on navigation.
      */
-    const navigateFromBuilder = useCallback(async (destination: string): Promise<void> => {
+    const navigateFromBuilder = useCallback((destination: string): void => {
         if (actionPending.current) return;
         flushActiveEditor();
-        actionPending.current = true;
-        setLeaving(true);
-        try {
-            await saver.flush();
-        } catch (error) {
-            reportSaveError(error);
-            actionPending.current = false;
-            setLeaving(false);
-            return;
+        const { saveState: currentSaveState } = useBuilderStore.getState();
+        if (['dirty', 'saving', 'error', 'conflict'].includes(currentSaveState)) {
+            if (!window.confirm('You have unsaved changes. Leave without saving?')) {
+                return;
+            }
         }
         window.location.assign(destination);
-    }, [saver, reportSaveError]);
+    }, []);
 
     const leaveBuilder = useCallback(() => navigateFromBuilder(
         funnel ? `${DASHBOARD_FUNNELS}/${funnel.id}` : DASHBOARD_FUNNELS,
@@ -438,6 +409,7 @@ export function BuilderApp({ source }: { source: BuilderSource }) {
 
     const handlePublish = useCallback(async (): Promise<void> => {
         if (actionPending.current || useBuilderStore.getState().saveState === 'conflict') return;
+        flushActiveEditor();
         actionPending.current = true;
         setPublishing(true);
         try {
@@ -581,8 +553,7 @@ export function BuilderApp({ source }: { source: BuilderSource }) {
                     <Button
                         variant="ghost"
                         size="sm"
-                        onClick={() => void leaveBuilder()}
-                        loading={leaving}
+                        onClick={leaveBuilder}
                         aria-label={funnel ? `Back to ${funnel.name}` : 'Back to pages'}
                         title={funnel ? `Back to ${funnel.name}` : 'Back to pages'}
                     >
@@ -601,6 +572,11 @@ export function BuilderApp({ source }: { source: BuilderSource }) {
                         </Button>
                     )}
                     <span className="fnl-page-name">{pageName}</span>
+                    {isGlobalChrome && (
+                        <span className="fnl-save" title="Shared across every page using the global chrome">
+                            {pageRole === 'header' ? 'Global header · all pages' : 'Global footer · all pages'}
+                        </span>
+                    )}
                     {editingComponent && usage !== null && (
                         <span className="fnl-save" title="Saving updates every page that uses this component">
                             Used on {usage} {usage === 1 ? 'page' : 'pages'}
@@ -626,7 +602,14 @@ export function BuilderApp({ source }: { source: BuilderSource }) {
                 </div>
 
                 <div className="fnl-builder-bar-right">
-                    <Button variant="secondary" size="sm" onClick={() => void saveNow()} loading={saveState === 'saving'} disabled={saveState === 'conflict'} title="Save draft (Ctrl+S or ⌘S)">
+                    <Button
+                        variant={saveState === 'dirty' || saveState === 'error' ? 'primary' : 'secondary'}
+                        size="sm"
+                        onClick={() => void saveNow()}
+                        loading={saveState === 'saving'}
+                        disabled={saveState === 'conflict'}
+                        title="Save draft (Ctrl+S or ⌘S)"
+                    >
                         <Save aria-hidden size={16} /> Save
                     </Button>
                     <Button variant="ghost" size="sm" iconOnly onClick={exportDraft} aria-label="Export draft as JSON" title="Export draft as JSON">
@@ -635,14 +618,21 @@ export function BuilderApp({ source }: { source: BuilderSource }) {
                     <Button variant="ghost" size="sm" iconOnly onClick={() => setShortcutsOpen(true)} aria-label="Keyboard shortcuts" title="Keyboard shortcuts">
                         <Keyboard aria-hidden size={16} />
                     </Button>
-                    <Button variant="secondary" size="sm" onClick={() => setTemplatesOpen(true)}>Templates</Button>
+                    {!isGlobalChrome && !editingComponent && (
+                        <Button variant="secondary" size="sm" onClick={() => setAiModalOpen(true)}>
+                            <Sparkles aria-hidden size={15} />
+                            AI modify
+                        </Button>
+                    )}
+                    {!isGlobalChrome && (
+                        <Button variant="secondary" size="sm" onClick={() => setTemplatesOpen(true)}>Templates</Button>
+                    )}
                     {!editingComponent && (
                         <Button
                             variant="ghost"
                             size="sm"
-                            loading={historyPreparing}
                             disabled={saveState === 'saving'}
-                            onClick={() => void openHistory()}
+                            onClick={openHistory}
                         >
                             <History aria-hidden size={16} />
                             History
@@ -676,7 +666,7 @@ export function BuilderApp({ source }: { source: BuilderSource }) {
                         Preview
                     </Button>
                     {!editingComponent && (
-                        <Button size="sm" onClick={handlePublish} loading={publishing} disabled={saveState === 'conflict'}>
+                        <Button variant="primary" size="sm" onClick={handlePublish} loading={publishing} disabled={saveState === 'conflict'}>
                             <Rocket aria-hidden size={16} />
                             Publish
                         </Button>
@@ -726,7 +716,17 @@ export function BuilderApp({ source }: { source: BuilderSource }) {
                 </dl>
             </Modal>
 
-            <TemplateLibrary open={templatesOpen} onClose={() => setTemplatesOpen(false)} />
+            {!isGlobalChrome && (
+                <TemplateLibrary open={templatesOpen} onClose={() => setTemplatesOpen(false)} onSaveDraft={saveNow} />
+            )}
+            {!isGlobalChrome && !editingComponent && (
+                <AiPageModal
+                    open={aiModalOpen}
+                    pageId={pageId}
+                    pageTitle={pageName}
+                    onClose={() => setAiModalOpen(false)}
+                />
+            )}
             {!editingComponent && (
                 <HistoryModal
                     open={historyOpen}
@@ -748,7 +748,7 @@ export function BuilderApp({ source }: { source: BuilderSource }) {
                 onDragEnd={handleDragEnd}
                 onDragCancel={() => setDragging(null)}
             >
-                <div className="fnl-builder-body" inert={busy || templatesOpen || historyOpen || shortcutsOpen}>
+                <div className="fnl-builder-body" inert={busy || templatesOpen || aiModalOpen || historyOpen || shortcutsOpen}>
                 {!previewing && collapsed.left && (
                     <div className="fnl-panel-rail fnl-panel-rail-left">
                         <button type="button" className="fnl-panel-rail-button" onClick={() => togglePanel('left')} aria-label="Show blocks panel" title="Show blocks panel (Ctrl+[)">

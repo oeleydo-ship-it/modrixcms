@@ -1,0 +1,1185 @@
+{
+    "schemaVersion": 1,
+    "sections": [
+        {
+            "id": "01J9MRK000000000000000001P",
+            "name": "Site Footer",
+            "width": "full",
+            "sticky": false,
+            "style": {
+                "fontFamily": {
+                    "desktop": "var(--site-body-font, \"Inter\", system-ui, sans-serif)"
+                },
+                "color": {
+                    "desktop": "var(--site-on-dark, #ffffff)"
+                },
+                "backgroundColor": {
+                    "desktop": "var(--site-footer-bg, #ffffff)"
+                },
+                "padding": {
+                    "desktop": {
+                        "top": "80px",
+                        "right": "24px",
+                        "bottom": "48px",
+                        "left": "24px"
+                    },
+                    "mobile": {
+                        "top": "56px",
+                        "right": "20px",
+                        "bottom": "36px",
+                        "left": "20px"
+                    }
+                }
+            },
+            "rows": [
+                {
+                    "id": "01J9MRK000000000000000000T",
+                    "stackBelow": "mobile",
+                    "style": {
+                        "margin": {
+                            "desktop": {
+                                "left": "auto",
+                                "right": "auto"
+                            }
+                        },
+                        "gap": {
+                            "desktop": "var(--site-grid-gap, 16px)",
+                            "mobile": "16px"
+                        },
+                        "maxWidth": {
+                            "desktop": "var(--site-content-width, 1140px)"
+                        },
+                        "alignItems": {
+                            "desktop": "flex-end"
+                        },
+                        "padding": {
+                            "desktop": {
+                                "bottom": "40px"
+                            }
+                        },
+                        "border": {
+                            "desktop": {
+                                "style": "solid",
+                                "color": "color-mix(in srgb, var(--site-on-dark, #ffffff) 16%, transparent)",
+                                "bottom": "1px"
+                            }
+                        }
+                    },
+                    "columns": [
+                        {
+                            "id": "01J9MRK000000000000000000Q",
+                            "span": {
+                                "desktop": 8,
+                                "tablet": 12,
+                                "mobile": 12
+                            },
+                            "style": {
+                                "gap": {
+                                    "desktop": "20px"
+                                }
+                            },
+                            "blocks": [
+                                {
+                                    "id": "01J9MRK000000000000000000N",
+                                    "type": "logo",
+                                    "props": {
+                                        "src": "/templates/larkspur/logo-light.svg",
+                                        "alt": "Larkspur Family Health",
+                                        "url": "/"
+                                    },
+                                    "style": {
+                                        "height": {
+                                            "desktop": "32px"
+                                        }
+                                    }
+                                },
+                                {
+                                    "id": "01J9MRK000000000000000000P",
+                                    "type": "heading",
+                                    "props": {
+                                        "text": "Family medicine across Portland. Welcoming new patients at all three clinics.",
+                                        "level": "h3",
+                                        "link": null
+                                    },
+                                    "style": {
+                                        "fontFamily": {
+                                            "desktop": "var(--site-heading-font, \"Inter\", system-ui, sans-serif)"
+                                        },
+                                        "color": {
+                                            "desktop": "var(--site-on-dark, #ffffff)"
+                                        },
+                                        "fontWeight": {
+                                            "desktop": "var(--site-heading-weight, 700)"
+                                        },
+                                        "letterSpacing": {
+                                            "desktop": "var(--site-heading-tracking, -0.02em)",
+                                            "mobile": "-0.02em"
+                                        },
+                                        "margin": {
+                                            "desktop": "0"
+                                        },
+                                        "fontSize": {
+                                            "desktop": "calc(var(--site-h4-size, 1.2rem) * 1.25)",
+                                            "mobile": "20px"
+                                        },
+                                        "lineHeight": {
+                                            "desktop": "1.333"
+                                        },
+                                        "maxWidth": {
+                                            "desktop": "34rem"
+                                        },
+                                        "custom": {
+                                            "text-wrap": "balance"
+                                        }
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "id": "01J9MRK000000000000000000S",
+                            "span": {
+                                "desktop": 4,
+                                "tablet": 6,
+                                "mobile": 12
+                            },
+                            "style": {
+                                "justifyContent": {
+                                    "desktop": "flex-end"
+                                },
+                                "alignItems": {
+                                    "desktop": "flex-end",
+                                    "mobile": "flex-start"
+                                }
+                            },
+                            "blocks": [
+                                {
+                                    "id": "01J9MRK000000000000000000R",
+                                    "type": "button",
+                                    "props": {
+                                        "label": "Book an appointment",
+                                        "action": "url",
+                                        "url": "/new-patients",
+                                        "targetStepId": null,
+                                        "targetBlockId": null,
+                                        "newTab": false,
+                                        "iconLeft": null,
+                                        "iconRight": null,
+                                        "fullWidth": false,
+                                        "size": "md",
+                                        "variant": "primary",
+                                        "larkspurRole": "btn btn-light"
+                                    },
+                                    "style": {
+                                        "fontFamily": {
+                                            "desktop": "var(--site-heading-font, \"Inter\", system-ui, sans-serif)"
+                                        },
+                                        "fontSize": {
+                                            "desktop": "16px"
+                                        },
+                                        "fontWeight": {
+                                            "desktop": "var(--site-button-weight, 600)"
+                                        },
+                                        "borderRadius": {
+                                            "desktop": "var(--site-button-radius)"
+                                        },
+                                        "backgroundColor": {
+                                            "desktop": "var(--site-background, #ffffff)"
+                                        },
+                                        "color": {
+                                            "desktop": "var(--site-primary, #4f46e5)"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "id": "01J9MRK000000000000000001H",
+                    "stackBelow": "mobile",
+                    "style": {
+                        "margin": {
+                            "desktop": {
+                                "left": "auto",
+                                "right": "auto"
+                            }
+                        },
+                        "gap": {
+                            "desktop": "var(--site-grid-gap, 16px)",
+                            "mobile": "16px"
+                        },
+                        "maxWidth": {
+                            "desktop": "var(--site-content-width, 1140px)"
+                        },
+                        "padding": {
+                            "desktop": {
+                                "top": "40px",
+                                "bottom": "40px"
+                            }
+                        }
+                    },
+                    "columns": [
+                        {
+                            "id": "01J9MRK000000000000000000V",
+                            "span": {
+                                "desktop": 4,
+                                "tablet": 6,
+                                "mobile": 12
+                            },
+                            "style": [],
+                            "blocks": [
+                                {
+                                    "id": "01J9MRK000000000000000000E",
+                                    "type": "container",
+                                    "props": {
+                                        "layout": "stack",
+                                        "gap": "12px",
+                                        "larkspurRole": "footer-column"
+                                    },
+                                    "style": [],
+                                    "children": [
+                                        {
+                                            "id": "01J9MRK000000000000000000F",
+                                            "type": "heading",
+                                            "props": {
+                                                "text": "Contact",
+                                                "level": "h4",
+                                                "link": null
+                                            },
+                                            "style": {
+                                                "fontFamily": {
+                                                    "desktop": "var(--site-heading-font, \"Inter\", system-ui, sans-serif)"
+                                                },
+                                                "color": {
+                                                    "desktop": "var(--site-on-dark, #ffffff)"
+                                                },
+                                                "fontWeight": {
+                                                    "desktop": "500"
+                                                },
+                                                "letterSpacing": {
+                                                    "desktop": "var(--site-heading-tracking, -0.02em)",
+                                                    "mobile": "-0.02em"
+                                                },
+                                                "margin": {
+                                                    "desktop": "0"
+                                                },
+                                                "fontSize": {
+                                                    "desktop": "16px"
+                                                },
+                                                "lineHeight": {
+                                                    "desktop": "1.4"
+                                                },
+                                                "custom": {
+                                                    "text-wrap": "balance"
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "id": "01J9MRK000000000000000000G",
+                                            "type": "paragraph",
+                                            "props": {
+                                                "text": "214 Orchard Street, Portland, OR 97205"
+                                            },
+                                            "style": {
+                                                "fontFamily": {
+                                                    "desktop": "var(--site-body-font, \"Inter\", system-ui, sans-serif)"
+                                                },
+                                                "color": {
+                                                    "desktop": "var(--site-footer-text, #64748b)"
+                                                },
+                                                "fontSize": {
+                                                    "desktop": "14px"
+                                                },
+                                                "lineHeight": {
+                                                    "desktop": "var(--site-line-height, 1.6)"
+                                                },
+                                                "textAlign": {
+                                                    "desktop": "left"
+                                                },
+                                                "margin": {
+                                                    "desktop": "0"
+                                                },
+                                                "maxWidth": {
+                                                    "desktop": "66ch"
+                                                },
+                                                "custom": {
+                                                    "text-wrap": "pretty"
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "id": "01J9MRK000000000000000000H",
+                                            "type": "paragraph",
+                                            "props": {
+                                                "text": "78 Bellweather Lane, Portland, OR 97214"
+                                            },
+                                            "style": {
+                                                "fontFamily": {
+                                                    "desktop": "var(--site-body-font, \"Inter\", system-ui, sans-serif)"
+                                                },
+                                                "color": {
+                                                    "desktop": "var(--site-footer-text, #64748b)"
+                                                },
+                                                "fontSize": {
+                                                    "desktop": "14px"
+                                                },
+                                                "lineHeight": {
+                                                    "desktop": "var(--site-line-height, 1.6)"
+                                                },
+                                                "textAlign": {
+                                                    "desktop": "left"
+                                                },
+                                                "margin": {
+                                                    "desktop": "0"
+                                                },
+                                                "maxWidth": {
+                                                    "desktop": "66ch"
+                                                },
+                                                "custom": {
+                                                    "text-wrap": "pretty"
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "id": "01J9MRK000000000000000000J",
+                                            "type": "paragraph",
+                                            "props": {
+                                                "text": "9 Marlow Park Road, Portland, OR 97219"
+                                            },
+                                            "style": {
+                                                "fontFamily": {
+                                                    "desktop": "var(--site-body-font, \"Inter\", system-ui, sans-serif)"
+                                                },
+                                                "color": {
+                                                    "desktop": "var(--site-footer-text, #64748b)"
+                                                },
+                                                "fontSize": {
+                                                    "desktop": "14px"
+                                                },
+                                                "lineHeight": {
+                                                    "desktop": "var(--site-line-height, 1.6)"
+                                                },
+                                                "textAlign": {
+                                                    "desktop": "left"
+                                                },
+                                                "margin": {
+                                                    "desktop": "0"
+                                                },
+                                                "maxWidth": {
+                                                    "desktop": "66ch"
+                                                },
+                                                "custom": {
+                                                    "text-wrap": "pretty"
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "id": "01J9MRK000000000000000000K",
+                                            "type": "paragraph",
+                                            "props": {
+                                                "text": "<a href=\"tel:+15553104477\">(555) 310-4477</a>",
+                                                "larkspurRole": "footer-link"
+                                            },
+                                            "style": {
+                                                "fontFamily": {
+                                                    "desktop": "var(--site-body-font, \"Inter\", system-ui, sans-serif)"
+                                                },
+                                                "color": {
+                                                    "desktop": "var(--site-on-dark, #ffffff)"
+                                                },
+                                                "fontSize": {
+                                                    "desktop": "14px"
+                                                },
+                                                "lineHeight": {
+                                                    "desktop": "var(--site-line-height, 1.6)"
+                                                },
+                                                "textAlign": {
+                                                    "desktop": "left"
+                                                },
+                                                "margin": {
+                                                    "desktop": "0"
+                                                },
+                                                "maxWidth": {
+                                                    "desktop": "66ch"
+                                                },
+                                                "custom": {
+                                                    "text-wrap": "pretty"
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "id": "01J9MRK000000000000000000M",
+                                            "type": "paragraph",
+                                            "props": {
+                                                "text": "<a href=\"mailto:care@larkspurhealth.com\">care@larkspurhealth.com</a>",
+                                                "larkspurRole": "footer-link"
+                                            },
+                                            "style": {
+                                                "fontFamily": {
+                                                    "desktop": "var(--site-body-font, \"Inter\", system-ui, sans-serif)"
+                                                },
+                                                "color": {
+                                                    "desktop": "var(--site-on-dark, #ffffff)"
+                                                },
+                                                "fontSize": {
+                                                    "desktop": "14px"
+                                                },
+                                                "lineHeight": {
+                                                    "desktop": "var(--site-line-height, 1.6)"
+                                                },
+                                                "textAlign": {
+                                                    "desktop": "left"
+                                                },
+                                                "margin": {
+                                                    "desktop": "0"
+                                                },
+                                                "maxWidth": {
+                                                    "desktop": "66ch"
+                                                },
+                                                "custom": {
+                                                    "text-wrap": "pretty"
+                                                }
+                                            }
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "id": "01J9MRK000000000000000001G",
+                            "span": {
+                                "desktop": 8,
+                                "tablet": 12,
+                                "mobile": 12
+                            },
+                            "style": [],
+                            "blocks": [
+                                {
+                                    "id": "01J9MRK000000000000000000W",
+                                    "type": "container",
+                                    "props": {
+                                        "layout": "columns",
+                                        "gap": "24px",
+                                        "columns": [
+                                            4,
+                                            4,
+                                            4
+                                        ],
+                                        "stackBelow": "mobile"
+                                    },
+                                    "style": [],
+                                    "children": [
+                                        {
+                                            "id": "01J9MRK000000000000000000X",
+                                            "type": "container",
+                                            "props": {
+                                                "layout": "stack",
+                                                "gap": "12px",
+                                                "larkspurRole": "footer-column"
+                                            },
+                                            "style": [],
+                                            "children": [
+                                                {
+                                                    "id": "01J9MRK000000000000000000Y",
+                                                    "type": "heading",
+                                                    "props": {
+                                                        "text": "Care",
+                                                        "level": "h4",
+                                                        "link": null
+                                                    },
+                                                    "style": {
+                                                        "fontFamily": {
+                                                            "desktop": "var(--site-heading-font, \"Inter\", system-ui, sans-serif)"
+                                                        },
+                                                        "color": {
+                                                            "desktop": "var(--site-on-dark, #ffffff)"
+                                                        },
+                                                        "fontWeight": {
+                                                            "desktop": "500"
+                                                        },
+                                                        "letterSpacing": {
+                                                            "desktop": "var(--site-heading-tracking, -0.02em)",
+                                                            "mobile": "-0.02em"
+                                                        },
+                                                        "margin": {
+                                                            "desktop": "0"
+                                                        },
+                                                        "fontSize": {
+                                                            "desktop": "16px"
+                                                        },
+                                                        "lineHeight": {
+                                                            "desktop": "1.4"
+                                                        },
+                                                        "custom": {
+                                                            "text-wrap": "balance"
+                                                        }
+                                                    }
+                                                },
+                                                {
+                                                    "id": "01J9MRK000000000000000000Z",
+                                                    "type": "paragraph",
+                                                    "props": {
+                                                        "text": "<a href=\"/services\">Services</a>",
+                                                        "larkspurRole": "footer-link"
+                                                    },
+                                                    "style": {
+                                                        "fontFamily": {
+                                                            "desktop": "var(--site-body-font, \"Inter\", system-ui, sans-serif)"
+                                                        },
+                                                        "color": {
+                                                            "desktop": "var(--site-footer-text, #64748b)"
+                                                        },
+                                                        "fontSize": {
+                                                            "desktop": "14px"
+                                                        },
+                                                        "lineHeight": {
+                                                            "desktop": "var(--site-line-height, 1.6)"
+                                                        },
+                                                        "textAlign": {
+                                                            "desktop": "left"
+                                                        },
+                                                        "margin": {
+                                                            "desktop": "0"
+                                                        },
+                                                        "maxWidth": {
+                                                            "desktop": "66ch"
+                                                        },
+                                                        "custom": {
+                                                            "text-wrap": "pretty"
+                                                        }
+                                                    }
+                                                },
+                                                {
+                                                    "id": "01J9MRK0000000000000000010",
+                                                    "type": "paragraph",
+                                                    "props": {
+                                                        "text": "<a href=\"/services\">Same-day visits</a>",
+                                                        "larkspurRole": "footer-link"
+                                                    },
+                                                    "style": {
+                                                        "fontFamily": {
+                                                            "desktop": "var(--site-body-font, \"Inter\", system-ui, sans-serif)"
+                                                        },
+                                                        "color": {
+                                                            "desktop": "var(--site-footer-text, #64748b)"
+                                                        },
+                                                        "fontSize": {
+                                                            "desktop": "14px"
+                                                        },
+                                                        "lineHeight": {
+                                                            "desktop": "var(--site-line-height, 1.6)"
+                                                        },
+                                                        "textAlign": {
+                                                            "desktop": "left"
+                                                        },
+                                                        "margin": {
+                                                            "desktop": "0"
+                                                        },
+                                                        "maxWidth": {
+                                                            "desktop": "66ch"
+                                                        },
+                                                        "custom": {
+                                                            "text-wrap": "pretty"
+                                                        }
+                                                    }
+                                                },
+                                                {
+                                                    "id": "01J9MRK0000000000000000011",
+                                                    "type": "paragraph",
+                                                    "props": {
+                                                        "text": "<a href=\"/services\">Video visits</a>",
+                                                        "larkspurRole": "footer-link"
+                                                    },
+                                                    "style": {
+                                                        "fontFamily": {
+                                                            "desktop": "var(--site-body-font, \"Inter\", system-ui, sans-serif)"
+                                                        },
+                                                        "color": {
+                                                            "desktop": "var(--site-footer-text, #64748b)"
+                                                        },
+                                                        "fontSize": {
+                                                            "desktop": "14px"
+                                                        },
+                                                        "lineHeight": {
+                                                            "desktop": "var(--site-line-height, 1.6)"
+                                                        },
+                                                        "textAlign": {
+                                                            "desktop": "left"
+                                                        },
+                                                        "margin": {
+                                                            "desktop": "0"
+                                                        },
+                                                        "maxWidth": {
+                                                            "desktop": "66ch"
+                                                        },
+                                                        "custom": {
+                                                            "text-wrap": "pretty"
+                                                        }
+                                                    }
+                                                },
+                                                {
+                                                    "id": "01J9MRK0000000000000000012",
+                                                    "type": "paragraph",
+                                                    "props": {
+                                                        "text": "<a href=\"/services\">Vaccinations</a>",
+                                                        "larkspurRole": "footer-link"
+                                                    },
+                                                    "style": {
+                                                        "fontFamily": {
+                                                            "desktop": "var(--site-body-font, \"Inter\", system-ui, sans-serif)"
+                                                        },
+                                                        "color": {
+                                                            "desktop": "var(--site-footer-text, #64748b)"
+                                                        },
+                                                        "fontSize": {
+                                                            "desktop": "14px"
+                                                        },
+                                                        "lineHeight": {
+                                                            "desktop": "var(--site-line-height, 1.6)"
+                                                        },
+                                                        "textAlign": {
+                                                            "desktop": "left"
+                                                        },
+                                                        "margin": {
+                                                            "desktop": "0"
+                                                        },
+                                                        "maxWidth": {
+                                                            "desktop": "66ch"
+                                                        },
+                                                        "custom": {
+                                                            "text-wrap": "pretty"
+                                                        }
+                                                    }
+                                                },
+                                                {
+                                                    "id": "01J9MRK0000000000000000013",
+                                                    "type": "paragraph",
+                                                    "props": {
+                                                        "text": "<a href=\"/services\">Tests & screening</a>",
+                                                        "larkspurRole": "footer-link"
+                                                    },
+                                                    "style": {
+                                                        "fontFamily": {
+                                                            "desktop": "var(--site-body-font, \"Inter\", system-ui, sans-serif)"
+                                                        },
+                                                        "color": {
+                                                            "desktop": "var(--site-footer-text, #64748b)"
+                                                        },
+                                                        "fontSize": {
+                                                            "desktop": "14px"
+                                                        },
+                                                        "lineHeight": {
+                                                            "desktop": "var(--site-line-height, 1.6)"
+                                                        },
+                                                        "textAlign": {
+                                                            "desktop": "left"
+                                                        },
+                                                        "margin": {
+                                                            "desktop": "0"
+                                                        },
+                                                        "maxWidth": {
+                                                            "desktop": "66ch"
+                                                        },
+                                                        "custom": {
+                                                            "text-wrap": "pretty"
+                                                        }
+                                                    }
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "id": "01J9MRK0000000000000000014",
+                                            "type": "container",
+                                            "props": {
+                                                "layout": "stack",
+                                                "gap": "12px",
+                                                "larkspurRole": "footer-column"
+                                            },
+                                            "style": [],
+                                            "children": [
+                                                {
+                                                    "id": "01J9MRK0000000000000000015",
+                                                    "type": "heading",
+                                                    "props": {
+                                                        "text": "Practice",
+                                                        "level": "h4",
+                                                        "link": null
+                                                    },
+                                                    "style": {
+                                                        "fontFamily": {
+                                                            "desktop": "var(--site-heading-font, \"Inter\", system-ui, sans-serif)"
+                                                        },
+                                                        "color": {
+                                                            "desktop": "var(--site-on-dark, #ffffff)"
+                                                        },
+                                                        "fontWeight": {
+                                                            "desktop": "500"
+                                                        },
+                                                        "letterSpacing": {
+                                                            "desktop": "var(--site-heading-tracking, -0.02em)",
+                                                            "mobile": "-0.02em"
+                                                        },
+                                                        "margin": {
+                                                            "desktop": "0"
+                                                        },
+                                                        "fontSize": {
+                                                            "desktop": "16px"
+                                                        },
+                                                        "lineHeight": {
+                                                            "desktop": "1.4"
+                                                        },
+                                                        "custom": {
+                                                            "text-wrap": "balance"
+                                                        }
+                                                    }
+                                                },
+                                                {
+                                                    "id": "01J9MRK0000000000000000016",
+                                                    "type": "paragraph",
+                                                    "props": {
+                                                        "text": "<a href=\"/clinicians\">Clinicians</a>",
+                                                        "larkspurRole": "footer-link"
+                                                    },
+                                                    "style": {
+                                                        "fontFamily": {
+                                                            "desktop": "var(--site-body-font, \"Inter\", system-ui, sans-serif)"
+                                                        },
+                                                        "color": {
+                                                            "desktop": "var(--site-footer-text, #64748b)"
+                                                        },
+                                                        "fontSize": {
+                                                            "desktop": "14px"
+                                                        },
+                                                        "lineHeight": {
+                                                            "desktop": "var(--site-line-height, 1.6)"
+                                                        },
+                                                        "textAlign": {
+                                                            "desktop": "left"
+                                                        },
+                                                        "margin": {
+                                                            "desktop": "0"
+                                                        },
+                                                        "maxWidth": {
+                                                            "desktop": "66ch"
+                                                        },
+                                                        "custom": {
+                                                            "text-wrap": "pretty"
+                                                        }
+                                                    }
+                                                },
+                                                {
+                                                    "id": "01J9MRK0000000000000000017",
+                                                    "type": "paragraph",
+                                                    "props": {
+                                                        "text": "<a href=\"/locations\">Locations</a>",
+                                                        "larkspurRole": "footer-link"
+                                                    },
+                                                    "style": {
+                                                        "fontFamily": {
+                                                            "desktop": "var(--site-body-font, \"Inter\", system-ui, sans-serif)"
+                                                        },
+                                                        "color": {
+                                                            "desktop": "var(--site-footer-text, #64748b)"
+                                                        },
+                                                        "fontSize": {
+                                                            "desktop": "14px"
+                                                        },
+                                                        "lineHeight": {
+                                                            "desktop": "var(--site-line-height, 1.6)"
+                                                        },
+                                                        "textAlign": {
+                                                            "desktop": "left"
+                                                        },
+                                                        "margin": {
+                                                            "desktop": "0"
+                                                        },
+                                                        "maxWidth": {
+                                                            "desktop": "66ch"
+                                                        },
+                                                        "custom": {
+                                                            "text-wrap": "pretty"
+                                                        }
+                                                    }
+                                                },
+                                                {
+                                                    "id": "01J9MRK0000000000000000018",
+                                                    "type": "paragraph",
+                                                    "props": {
+                                                        "text": "<a href=\"/fees\">Fees & insurance</a>",
+                                                        "larkspurRole": "footer-link"
+                                                    },
+                                                    "style": {
+                                                        "fontFamily": {
+                                                            "desktop": "var(--site-body-font, \"Inter\", system-ui, sans-serif)"
+                                                        },
+                                                        "color": {
+                                                            "desktop": "var(--site-footer-text, #64748b)"
+                                                        },
+                                                        "fontSize": {
+                                                            "desktop": "14px"
+                                                        },
+                                                        "lineHeight": {
+                                                            "desktop": "var(--site-line-height, 1.6)"
+                                                        },
+                                                        "textAlign": {
+                                                            "desktop": "left"
+                                                        },
+                                                        "margin": {
+                                                            "desktop": "0"
+                                                        },
+                                                        "maxWidth": {
+                                                            "desktop": "66ch"
+                                                        },
+                                                        "custom": {
+                                                            "text-wrap": "pretty"
+                                                        }
+                                                    }
+                                                },
+                                                {
+                                                    "id": "01J9MRK0000000000000000019",
+                                                    "type": "paragraph",
+                                                    "props": {
+                                                        "text": "<a href=\"/new-patients\">New patients</a>",
+                                                        "larkspurRole": "footer-link"
+                                                    },
+                                                    "style": {
+                                                        "fontFamily": {
+                                                            "desktop": "var(--site-body-font, \"Inter\", system-ui, sans-serif)"
+                                                        },
+                                                        "color": {
+                                                            "desktop": "var(--site-footer-text, #64748b)"
+                                                        },
+                                                        "fontSize": {
+                                                            "desktop": "14px"
+                                                        },
+                                                        "lineHeight": {
+                                                            "desktop": "var(--site-line-height, 1.6)"
+                                                        },
+                                                        "textAlign": {
+                                                            "desktop": "left"
+                                                        },
+                                                        "margin": {
+                                                            "desktop": "0"
+                                                        },
+                                                        "maxWidth": {
+                                                            "desktop": "66ch"
+                                                        },
+                                                        "custom": {
+                                                            "text-wrap": "pretty"
+                                                        }
+                                                    }
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "id": "01J9MRK000000000000000001A",
+                                            "type": "container",
+                                            "props": {
+                                                "layout": "stack",
+                                                "gap": "12px",
+                                                "larkspurRole": "footer-column"
+                                            },
+                                            "style": [],
+                                            "children": [
+                                                {
+                                                    "id": "01J9MRK000000000000000001B",
+                                                    "type": "heading",
+                                                    "props": {
+                                                        "text": "Help",
+                                                        "level": "h4",
+                                                        "link": null
+                                                    },
+                                                    "style": {
+                                                        "fontFamily": {
+                                                            "desktop": "var(--site-heading-font, \"Inter\", system-ui, sans-serif)"
+                                                        },
+                                                        "color": {
+                                                            "desktop": "var(--site-on-dark, #ffffff)"
+                                                        },
+                                                        "fontWeight": {
+                                                            "desktop": "500"
+                                                        },
+                                                        "letterSpacing": {
+                                                            "desktop": "var(--site-heading-tracking, -0.02em)",
+                                                            "mobile": "-0.02em"
+                                                        },
+                                                        "margin": {
+                                                            "desktop": "0"
+                                                        },
+                                                        "fontSize": {
+                                                            "desktop": "16px"
+                                                        },
+                                                        "lineHeight": {
+                                                            "desktop": "1.4"
+                                                        },
+                                                        "custom": {
+                                                            "text-wrap": "balance"
+                                                        }
+                                                    }
+                                                },
+                                                {
+                                                    "id": "01J9MRK000000000000000001C",
+                                                    "type": "paragraph",
+                                                    "props": {
+                                                        "text": "<a href=\"/contact\">Patient portal</a>",
+                                                        "larkspurRole": "footer-link"
+                                                    },
+                                                    "style": {
+                                                        "fontFamily": {
+                                                            "desktop": "var(--site-body-font, \"Inter\", system-ui, sans-serif)"
+                                                        },
+                                                        "color": {
+                                                            "desktop": "var(--site-footer-text, #64748b)"
+                                                        },
+                                                        "fontSize": {
+                                                            "desktop": "14px"
+                                                        },
+                                                        "lineHeight": {
+                                                            "desktop": "var(--site-line-height, 1.6)"
+                                                        },
+                                                        "textAlign": {
+                                                            "desktop": "left"
+                                                        },
+                                                        "margin": {
+                                                            "desktop": "0"
+                                                        },
+                                                        "maxWidth": {
+                                                            "desktop": "66ch"
+                                                        },
+                                                        "custom": {
+                                                            "text-wrap": "pretty"
+                                                        }
+                                                    }
+                                                },
+                                                {
+                                                    "id": "01J9MRK000000000000000001D",
+                                                    "type": "paragraph",
+                                                    "props": {
+                                                        "text": "<a href=\"/fees\">FAQ</a>",
+                                                        "larkspurRole": "footer-link"
+                                                    },
+                                                    "style": {
+                                                        "fontFamily": {
+                                                            "desktop": "var(--site-body-font, \"Inter\", system-ui, sans-serif)"
+                                                        },
+                                                        "color": {
+                                                            "desktop": "var(--site-footer-text, #64748b)"
+                                                        },
+                                                        "fontSize": {
+                                                            "desktop": "14px"
+                                                        },
+                                                        "lineHeight": {
+                                                            "desktop": "var(--site-line-height, 1.6)"
+                                                        },
+                                                        "textAlign": {
+                                                            "desktop": "left"
+                                                        },
+                                                        "margin": {
+                                                            "desktop": "0"
+                                                        },
+                                                        "maxWidth": {
+                                                            "desktop": "66ch"
+                                                        },
+                                                        "custom": {
+                                                            "text-wrap": "pretty"
+                                                        }
+                                                    }
+                                                },
+                                                {
+                                                    "id": "01J9MRK000000000000000001E",
+                                                    "type": "paragraph",
+                                                    "props": {
+                                                        "text": "<a href=\"/contact\">Contact</a>",
+                                                        "larkspurRole": "footer-link"
+                                                    },
+                                                    "style": {
+                                                        "fontFamily": {
+                                                            "desktop": "var(--site-body-font, \"Inter\", system-ui, sans-serif)"
+                                                        },
+                                                        "color": {
+                                                            "desktop": "var(--site-footer-text, #64748b)"
+                                                        },
+                                                        "fontSize": {
+                                                            "desktop": "14px"
+                                                        },
+                                                        "lineHeight": {
+                                                            "desktop": "var(--site-line-height, 1.6)"
+                                                        },
+                                                        "textAlign": {
+                                                            "desktop": "left"
+                                                        },
+                                                        "margin": {
+                                                            "desktop": "0"
+                                                        },
+                                                        "maxWidth": {
+                                                            "desktop": "66ch"
+                                                        },
+                                                        "custom": {
+                                                            "text-wrap": "pretty"
+                                                        }
+                                                    }
+                                                },
+                                                {
+                                                    "id": "01J9MRK000000000000000001F",
+                                                    "type": "paragraph",
+                                                    "props": {
+                                                        "text": "<a href=\"/contact\">Accessibility</a>",
+                                                        "larkspurRole": "footer-link"
+                                                    },
+                                                    "style": {
+                                                        "fontFamily": {
+                                                            "desktop": "var(--site-body-font, \"Inter\", system-ui, sans-serif)"
+                                                        },
+                                                        "color": {
+                                                            "desktop": "var(--site-footer-text, #64748b)"
+                                                        },
+                                                        "fontSize": {
+                                                            "desktop": "14px"
+                                                        },
+                                                        "lineHeight": {
+                                                            "desktop": "var(--site-line-height, 1.6)"
+                                                        },
+                                                        "textAlign": {
+                                                            "desktop": "left"
+                                                        },
+                                                        "margin": {
+                                                            "desktop": "0"
+                                                        },
+                                                        "maxWidth": {
+                                                            "desktop": "66ch"
+                                                        },
+                                                        "custom": {
+                                                            "text-wrap": "pretty"
+                                                        }
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "id": "01J9MRK000000000000000001N",
+                    "stackBelow": "mobile",
+                    "style": {
+                        "margin": {
+                            "desktop": {
+                                "left": "auto",
+                                "right": "auto"
+                            }
+                        },
+                        "gap": {
+                            "desktop": "var(--site-grid-gap, 16px)",
+                            "mobile": "16px"
+                        },
+                        "maxWidth": {
+                            "desktop": "var(--site-content-width, 1140px)"
+                        }
+                    },
+                    "columns": [
+                        {
+                            "id": "01J9MRK000000000000000001M",
+                            "span": {
+                                "desktop": 12,
+                                "tablet": 12,
+                                "mobile": 12
+                            },
+                            "style": [],
+                            "blocks": [
+                                {
+                                    "id": "01J9MRK000000000000000001J",
+                                    "type": "paragraph",
+                                    "props": {
+                                        "text": "<b>Not an emergency service.</b> For chest pain, trouble breathing or a serious injury, call 911."
+                                    },
+                                    "style": {
+                                        "fontFamily": {
+                                            "desktop": "var(--site-body-font, \"Inter\", system-ui, sans-serif)"
+                                        },
+                                        "color": {
+                                            "desktop": "color-mix(in srgb, var(--site-accent, #ca9352) 59%, #000000)"
+                                        },
+                                        "fontSize": {
+                                            "desktop": "14px"
+                                        },
+                                        "lineHeight": {
+                                            "desktop": "var(--site-line-height, 1.6)"
+                                        },
+                                        "textAlign": {
+                                            "desktop": "left"
+                                        },
+                                        "margin": {
+                                            "desktop": "0"
+                                        },
+                                        "backgroundColor": {
+                                            "desktop": "color-mix(in srgb, var(--site-accent, #ca9352) 25%, #ffffff)"
+                                        },
+                                        "borderRadius": {
+                                            "desktop": "8px"
+                                        },
+                                        "padding": {
+                                            "desktop": {
+                                                "top": "10px",
+                                                "right": "16px",
+                                                "bottom": "10px",
+                                                "left": "16px"
+                                            }
+                                        },
+                                        "maxWidth": {
+                                            "desktop": "66ch"
+                                        },
+                                        "custom": {
+                                            "text-wrap": "pretty"
+                                        }
+                                    }
+                                },
+                                {
+                                    "id": "01J9MRK000000000000000001K",
+                                    "type": "paragraph",
+                                    "props": {
+                                        "text": "© 2026 Larkspur Family Health. All rights reserved."
+                                    },
+                                    "style": {
+                                        "fontFamily": {
+                                            "desktop": "var(--site-body-font, \"Inter\", system-ui, sans-serif)"
+                                        },
+                                        "color": {
+                                            "desktop": "var(--site-footer-text, #64748b)"
+                                        },
+                                        "fontSize": {
+                                            "desktop": "13px"
+                                        },
+                                        "lineHeight": {
+                                            "desktop": "var(--site-line-height, 1.6)"
+                                        },
+                                        "textAlign": {
+                                            "desktop": "left"
+                                        },
+                                        "margin": {
+                                            "desktop": {
+                                                "top": "24px"
+                                            }
+                                        },
+                                        "maxWidth": {
+                                            "desktop": "66ch"
+                                        },
+                                        "custom": {
+                                            "text-wrap": "pretty"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "settings": {
+                "designCollection": "larkspur",
+                "designBlock": "footer"
+            }
+        }
+    ]
+}

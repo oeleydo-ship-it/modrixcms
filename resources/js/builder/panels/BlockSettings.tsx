@@ -26,8 +26,10 @@ import {
     BorderGroup,
     EffectsGroup,
     LayoutGroup,
+    MotionGroup,
     SizingGroup,
     SpacingGroup,
+    TailwindUtilityGroup,
     TypographyGroup,
     VisibilityGroup,
     makeStyleControl,
@@ -63,6 +65,10 @@ function StyleGroup({
             return <SizingGroup {...props} />;
         case 'layout':
             return <LayoutGroup {...props} />;
+        case 'motion':
+            return <MotionGroup {...props} />;
+        case 'tailwind':
+            return <TailwindUtilityGroup {...props} />;
         case 'effects':
             return <EffectsGroup {...props} />;
     }

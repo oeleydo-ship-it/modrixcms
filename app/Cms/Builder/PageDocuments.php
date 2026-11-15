@@ -6,6 +6,7 @@ use App\Cms\Builder\Exceptions\InvalidDocumentException;
 use App\Cms\Builder\Exceptions\StaleDocumentException;
 use App\Cms\Builder\Schema\DocumentUpgrader;
 use App\Cms\Builder\Schema\DocumentValidator;
+use App\Cms\Themes\DesignTokens;
 use App\Models\Page;
 use App\Models\PageVersion;
 use Illuminate\Support\Facades\DB;
@@ -87,7 +88,8 @@ class PageDocuments
                 'published_document' => $document,
                 'published_version' => $locked->version,
                 'published_at' => now(),
-                'is_published' => true,
+                // The site header and footer are never pages of their own.
+                'is_published' => $locked->role === null ? true : $locked->is_published,
             ])->save();
 
             return $locked;
@@ -124,10 +126,21 @@ class PageDocuments
         });
     }
 
-    /** An empty page: no sections, default settings. */
+    /** An empty page: no sections, settings that follow the theme. */
     public static function blank(): array
     {
-        return ['schema_version' => DocumentUpgrader::CURRENT_VERSION, 'settings' => [], 'sections' => []];
+        return ['schema_version' => DocumentUpgrader::CURRENT_VERSION, 'settings' => self::themedSettings(), 'sections' => []];
+    }
+
+    /**
+     * Page settings linked to Appearance → Theme settings, for new and converted pages: the content
+     * width follows the theme; colours and fonts come from the --site-* variables.
+     *
+     * @return array<string, mixed>
+     */
+    public static function themedSettings(): array
+    {
+        return ['contentWidth' => DesignTokens::ref('content_width')];
     }
 
     /** @throws StaleDocumentException */

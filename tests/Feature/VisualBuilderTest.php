@@ -2,6 +2,8 @@
 
 namespace Tests\Feature;
 
+use App\Cms\Builder\Schema\BlockRegistry;
+use App\Cms\Builder\Schema\BlockType;
 use App\Cms\Builder\Schema\DesignBlockLibrary;
 use App\Cms\Builder\Schema\DocumentValidator;
 use App\Http\Controllers\Builder\TemplateController;
@@ -11,7 +13,9 @@ use App\Models\User;
 use App\PageBuilder\PageBuilder;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 use Tests\TestCase;
 
 class VisualBuilderTest extends TestCase
@@ -115,6 +119,48 @@ class VisualBuilderTest extends TestCase
         $this->get('/launch', ['X-Inertia' => 'true'])->assertStatus(409);
     }
 
+    public function test_code_blocks_sit_in_their_own_group_and_publish_with_the_page(): void
+    {
+        $this->actingAs($this->admin());
+
+        $this->assertSame('code', BlockType::Html->group());
+        $this->assertSame('code', BlockType::CustomCode->group());
+        $this->assertSame('Custom code / script', BlockType::CustomCode->label());
+        $this->assertSame('capture', BlockType::SiteForm->group());
+        $this->assertSame('Saved form', BlockType::SiteForm->label());
+        $this->assertSame(['formSlug' => ''], BlockRegistry::defaultProps(BlockType::SiteForm));
+
+        $page = $this->builderPage(['slug' => 'with-code', 'title' => 'With code']);
+        $document = ['schema_version' => 1, 'settings' => [], 'sections' => [[
+            'id' => (string) Str::ulid(),
+            'width' => 'boxed',
+            'sticky' => false,
+            'style' => [],
+            'rows' => [[
+                'id' => (string) Str::ulid(),
+                'stackBelow' => 'mobile',
+                'style' => [],
+                'columns' => [[
+                    'id' => (string) Str::ulid(),
+                    'span' => ['desktop' => 12, 'tablet' => 12, 'mobile' => 12],
+                    'style' => [],
+                    'blocks' => [
+                        ['id' => (string) Str::ulid(), 'type' => 'html', 'props' => ['html' => '<iframe src="https://example.test/forms/lead?embed=1" title="Lead"></iframe>'], 'style' => []],
+                        ['id' => (string) Str::ulid(), 'type' => 'custom_code', 'props' => ['html' => '<div id="widget"></div>', 'css' => '#widget{color:red}', 'js' => 'window.widgetReady = true;', 'placement' => 'body_end'], 'style' => []],
+                    ],
+                ]],
+            ]],
+        ]]];
+
+        $this->putJson("/api/v1/pages/{$page->id}", ['version' => 1, 'document' => $document])->assertOk();
+        $this->postJson("/api/v1/pages/{$page->id}/publish", ['version' => 2])->assertOk();
+
+        $this->get('/with-code')->assertOk()
+            ->assertSee('example.test/forms/lead?embed=1', false)
+            ->assertSee('window.widgetReady = true;', false)
+            ->assertSee('body_end', false);
+    }
+
     public function test_a_published_builder_home_page_is_the_home_page(): void
     {
         $this->actingAs($this->admin());
@@ -154,7 +200,7 @@ class VisualBuilderTest extends TestCase
         $designs = $this->getJson('/api/v1/design-blocks')->assertOk()->json('data');
         $validator = app(DocumentValidator::class);
 
-        $this->assertGreaterThan(20, count($designs));
+        $this->assertGreaterThan(35, count($designs));
 
         foreach ($designs as $design) {
             $document = ['schema_version' => 1, 'settings' => [], ...$design['document']];
@@ -282,6 +328,205 @@ class VisualBuilderTest extends TestCase
             ->where('page.switch_back_url', null));
 
         $this->post(route('admin.pages.switch-to-blocks', $builderPage))->assertStatus(422);
+    }
+
+    public function test_capture_blocks_support_editable_labels_field_names_and_consent(): void
+    {
+        $this->actingAs($this->admin());
+
+        $page = Page::factory()->create([
+            'editor' => Page::EDITOR_BUILDER,
+            'title' => 'Lead Capture',
+            'slug' => 'lead-capture',
+        ]);
+
+        $initial = $this->getJson(route('builder.pages.show', $page))
+            ->assertOk();
+        $version = $initial->json('data.version');
+        $schemaVersion = $initial->json('data.document.schema_version');
+
+        $document = [
+            'schema_version' => $schemaVersion,
+            'sections' => [
+                [
+                    'id' => (string) Str::ulid(),
+                    'rows' => [
+                        [
+                            'id' => (string) Str::ulid(),
+                            'columns' => [
+                                [
+                                    'id' => (string) Str::ulid(),
+                                    'span' => ['desktop' => 12],
+                                    'blocks' => [
+                                        [
+                                            'id' => (string) Str::ulid(),
+                                            'type' => 'phone_input',
+                                            'props' => [
+                                                'label' => 'WhatsApp number',
+                                                'showLabel' => true,
+                                                'fieldName' => 'whatsapp_number',
+                                                'placeholder' => '(555) 010-9999',
+                                                'required' => true,
+                                                'layout' => 'stacked',
+                                                'consentText' => 'Allow WhatsApp updates.',
+                                                'buttonLabel' => 'Send code',
+                                            ],
+                                        ],
+                                        [
+                                            'id' => (string) Str::ulid(),
+                                            'type' => 'email_optin',
+                                            'props' => [
+                                                'label' => 'Work email',
+                                                'showLabel' => true,
+                                                'fieldName' => 'work_email',
+                                                'placeholder' => 'you@company.com',
+                                                'required' => true,
+                                                'buttonLabel' => 'Join list',
+                                            ],
+                                        ],
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
+            ],
+        ];
+
+        $this->putJson(route('builder.pages.update', $page), [
+            'document' => $document,
+            'version' => $version,
+        ])
+            ->assertOk()
+            ->assertJsonPath('data.document.sections.0.rows.0.columns.0.blocks.0.props.label', 'WhatsApp number')
+            ->assertJsonPath('data.document.sections.0.rows.0.columns.0.blocks.0.props.fieldName', 'whatsapp_number')
+            ->assertJsonPath('data.document.sections.0.rows.0.columns.0.blocks.1.props.label', 'Work email');
+
+        $this->postJson(route('builder.pages.publish', $page))->assertOk();
+
+        $this->get('/lead-capture')->assertOk()->assertSee('Lead Capture');
+    }
+
+    public function test_builder_pages_follow_the_theme_settings(): void
+    {
+        $this->actingAs($this->admin());
+        $page = $this->builderPage(['slug' => 'themed', 'is_published' => true]);
+
+        // The canvas loads the theme's CSS variables and offers its colours as linked swatches.
+        $this->get(route('admin.pages.builder', $page))->assertOk()
+            ->assertSee('<style id="site-design">:root{--site-primary:', false)
+            ->assertSee('"value":"var(--site-primary, #4f46e5)"', false);
+
+        // New pages take their content width from the theme; designs reference theme colours.
+        $this->getJson("/api/v1/pages/{$page->id}")
+            ->assertJsonPath('data.document.settings.contentWidth', 'var(--site-content-width, 1140px)');
+        $design = json_encode(app(DesignBlockLibrary::class)->find('feature-trio'), JSON_UNESCAPED_SLASHES);
+        $this->assertStringContainsString('var(--site-heading, #0f172a)', $design);
+        $this->assertStringContainsString('var(--site-section-padding, 88px)', $design);
+
+        $this->putJson("/api/v1/pages/{$page->id}", ['version' => 1, 'document' => $this->document('feature-trio')]);
+        $this->postJson("/api/v1/pages/{$page->id}/publish");
+
+        $this->get('/themed')->assertOk()->assertSee('<style id="site-design">:root{--site-primary:', false);
+    }
+
+    public function test_site_header_and_footer_wrap_every_builder_page(): void
+    {
+        $this->actingAs($this->admin());
+
+        // Opening them creates them from starter designs; they are never ordinary pages.
+        $this->get(route('admin.pages.site-header'))->assertOk()->assertSee('<div id="builder"', false);
+        $this->get(route('admin.pages.site-footer'))->assertOk();
+        $header = Page::query()->where('role', Page::ROLE_HEADER)->firstOrFail();
+        $footer = Page::query()->where('role', Page::ROLE_FOOTER)->firstOrFail();
+        $this->assertSame('Site header', $header->title);
+        $this->assertNotEmpty($header->document['sections']);
+        $this->getJson("/api/v1/pages/{$header->id}")->assertOk()->assertJsonPath('data.role', 'header');
+        $this->getJson("/api/v1/pages/{$footer->id}")->assertOk()->assertJsonPath('data.role', 'footer');
+        $this->get(route('admin.pages.index'))->assertInertia(fn ($inertia) => $inertia
+            ->where('pages.data', [])
+            ->where('siteChrome.headerLive', false));
+        $this->get(route('admin.pages.edit', $header), ['X-Inertia' => 'true'])->assertStatus(409);
+
+        $page = $this->builderPage(['slug' => 'landing', 'is_published' => true]);
+        $this->putJson("/api/v1/pages/{$page->id}", ['version' => 1, 'document' => $this->document()]);
+        $this->postJson("/api/v1/pages/{$page->id}/publish");
+        $own = count($page->fresh()->published_document['sections']);
+
+        // Until they are published, pages show without them.
+        $this->assertCount($own, $this->get('/landing')->viewData('document')['sections']);
+
+        $this->postJson("/api/v1/pages/{$header->id}/publish")->assertOk();
+        $this->postJson("/api/v1/pages/{$footer->id}/publish")->assertOk();
+        $this->assertFalse($header->fresh()->is_published, 'the header never becomes a page of its own');
+
+        $sections = $this->get('/landing')->assertOk()->viewData('document')['sections'];
+        $this->assertCount($own + count($header->document['sections']) + count($footer->document['sections']), $sections);
+        $this->assertSame($header->document['sections'][0]['id'], $sections[0]['id']);
+        $footerSections = $footer->fresh()->published_document['sections'];
+        $this->assertSame(end($footerSections)['id'], end($sections)['id']);
+
+        // The canvas gets them too, locked, with links to edit them.
+        $this->get(route('admin.pages.builder', $page))
+            ->assertSee('<script id="site-chrome"', false)
+            ->assertSee('"editUrl":"'.route('admin.pages.site-header').'"', false);
+
+        // A page can switch them off.
+        $this->put(route('admin.pages.update', $page), [
+            'title' => $page->title, 'slug' => 'landing', 'blocks' => '[]', 'is_published' => true,
+            'show_site_header' => false, 'show_site_footer' => true,
+        ])->assertSessionHasNoErrors();
+        $this->assertCount($own + count($footer->document['sections']), $this->get('/landing')->viewData('document')['sections']);
+    }
+
+    public function test_atomos99_theme_and_builder_pages_are_valid_and_editable(): void
+    {
+        $this->actingAs($this->admin());
+
+        $blocks = $this->getJson('/api/v1/design-blocks')->assertOk()->json('data');
+        $atomosKeys = array_values(array_map(
+            static fn (array $b): string => $b['key'],
+            array_filter($blocks, static fn (array $b): bool => str_starts_with($b['key'], 'atomos99-')),
+        ));
+
+        $this->assertContains('atomos99-navbar', $atomosKeys);
+        $this->assertContains('atomos99-hero-home', $atomosKeys);
+        $this->assertContains('atomos99-process', $atomosKeys);
+        $this->assertContains('atomos99-benefits', $atomosKeys);
+        $this->assertContains('atomos99-about-hero', $atomosKeys);
+        $this->assertContains('atomos99-about-team', $atomosKeys);
+        $this->assertContains('atomos99-services-hero', $atomosKeys);
+        $this->assertContains('atomos99-blog-grid', $atomosKeys);
+        $this->assertContains('atomos99-faq-hub', $atomosKeys);
+
+        $templates = $this->getJson('/api/v1/templates?type=page&per_page=100')->assertOk()->json('data');
+        $templateIds = array_column($templates, 'id');
+        $this->assertContains('atomos99-home-page', $templateIds);
+        $this->assertContains('atomos99-about-page', $templateIds);
+        $this->assertContains('atomos99-services-page', $templateIds);
+        $this->assertContains('atomos99-faqs-page', $templateIds);
+        $this->assertContains('atomos99-blog-page', $templateIds);
+
+        File::copyDirectory(
+            base_path('extensions/themes/modrix/nexus-ai'),
+            config('cms.path').'/themes/modrix/nexus-ai',
+        );
+
+        $result = app(DesignBlockLibrary::class)->applyAtomos99Site();
+        $this->assertSame('modrix/nexus-ai', $result['theme']);
+
+        $this->get('/')
+            ->assertOk()
+            ->assertSee('We build custom AI solutions for your business')
+            ->assertSee('See measurable results')
+            ->assertSee('AI Task Draft')
+            ->assertSee('Save hours every week')
+            ->assertSee('data:image/svg+xml;base64,', false);
+        $this->get('/about')->assertOk()->assertSee('An AI partner that thinks like an operator, not a vendor');
+        $this->get('/services')->assertOk()->assertSee('Four ways we help you grow with AI');
+        $this->get('/faqs')->assertOk()->assertSee('hi@nexusai.io', false);
+        $this->get('/blogs')->assertOk()->assertSee('How to know if your business is ready for AI');
+        $this->get('/blog/how-to-know-if-your-business-is-ready-for-ai')->assertOk();
     }
 
     /** Documents compared without the server-stamped schema version. */

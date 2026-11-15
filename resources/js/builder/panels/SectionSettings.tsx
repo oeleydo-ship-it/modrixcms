@@ -18,7 +18,9 @@ import {
     BorderGroup,
     EffectsGroup,
     LayoutGroup,
+    MotionGroup,
     SpacingGroup,
+    TailwindUtilityGroup,
     TypographyGroup,
     VisibilityGroup,
     makeStyleControl,
@@ -114,6 +116,9 @@ export function SectionSettings({
                         an “Align items: middle” under Advanced to centre the rows inside.
                     </PanelNote>
                 </ControlGroup>
+
+                <MotionGroup baseId={`${baseId}-motion`} control={control} defaultOpen={false} />
+                <TailwindUtilityGroup baseId={`${baseId}-tw`} control={control} defaultOpen={false} />
 
                 <VisibilityGroup visibility={section.visibility ?? DEFAULT_VISIBILITY} onChange={onVisibilityChange} noun="section" />
 

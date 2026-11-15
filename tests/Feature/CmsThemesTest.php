@@ -17,30 +17,93 @@ class CmsThemesTest extends TestCase
     {
         $this->actingAs($this->admin())->get(route('admin.themes.index'))->assertOk()
             ->assertInertia(fn ($page) => $page->component('Admin/Themes/Index')
-                ->where('themes.0.displayName', 'Minimal')
-                ->where('themes.0.needsTrust', true)
-                ->where('themes.1.displayName', 'Modrix Default')
-                ->where('themes.1.active', true));
+                ->where('themes', function ($themes) {
+                    $themes = collect($themes)->keyBy('displayName');
+
+                    return $themes['Minimal']['needsTrust'] === true && $themes['Modrix Default']['active'] === true;
+                }));
     }
 
-    public function test_default_theme_settings_become_css_variables(): void
+    public function test_theme_settings_become_css_variables_on_the_site(): void
     {
         $this->actingAs($this->admin());
 
-        $this->get('/')->assertOk()->assertSee(':root{--brand: #5b3df5;', false);
+        // The default theme ships its own design defaults (theme.json "design").
+        $this->get('/')->assertOk()
+            ->assertSee('--site-primary:#5b3df5;', false)
+            ->assertSee('--site-heading-font:"Bricolage Grotesque", system-ui, sans-serif;', false)
+            ->assertSee('--brand:var(--site-primary)', false)
+            ->assertSee('fonts.bunny.net/css?family=bricolage-grotesque', false);
 
-        $this->put(route('admin.themes.customize.update', ['modrix', 'default']), ['brand' => '#ff0000', 'corners' => 'square'])
-            ->assertSessionHasNoErrors();
+        $this->put(route('admin.themes.design.update', ['modrix', 'default']), ['values' => [
+            'primary' => '#ff0000',
+            'header_bg' => '#101828',
+            'button_shape' => 'square',
+            'button_border_width' => '2px',
+            'section_spacing' => 'roomy',
+            'section_radius' => 'soft',
+            'header_height' => '84',
+            'hero_highlight' => 'pill',
+            'hero_glow' => false,
+            'heading_font' => 'Georgia',
+            'heading_tracking' => 'wide',
+        ]])->assertSessionHasNoErrors();
 
-        $this->get('/')->assertSee('--brand: #ff0000;', false)->assertSee('--radius: 2px;', false);
+        $this->get('/')
+            ->assertSee('--site-primary:#ff0000;', false)
+            ->assertSee('--site-header-bg:#101828;', false)
+            ->assertSee('--site-button-radius:4px;', false)
+            ->assertSee('--site-button-border-width:2px;', false)
+            ->assertSee('--site-section-padding:128px;', false)
+            ->assertSee('--site-section-radius:16px;', false)
+            ->assertSee('--site-header-height:84px;', false)
+            ->assertSee('--site-hero-glow:0;', false)
+            ->assertSee('--site-heading-font:Georgia, "Times New Roman", serif;', false)
+            ->assertSee('--site-heading-tracking:0.02em;', false);
     }
 
-    public function test_customize_rejects_invalid_values(): void
+    public function test_theme_settings_ignore_unsafe_or_unknown_values(): void
     {
         $this->actingAs($this->admin());
 
-        $this->put(route('admin.themes.customize.update', ['modrix', 'default']), ['brand' => 'red;}body{display:none'])
-            ->assertSessionHasErrors('brand');
+        $this->put(route('admin.themes.design.update', ['modrix', 'default']), ['values' => [
+            'primary' => 'red;}body{display:none', 'button_shape' => 'wobbly', 'evil' => 'x',
+        ]])->assertSessionHasNoErrors();
+
+        $design = Extension::query()->where('name', 'modrix/default')->value('design');
+        // Invalid values keep the current setting (here the theme's own default).
+        $this->assertSame('#5b3df5', $design['primary']);
+        $this->assertSame('pill', $design['button_shape']);
+        $this->assertArrayNotHasKey('evil', $design);
+        $this->get('/')->assertDontSee('display:none', false);
+    }
+
+    public function test_each_theme_keeps_its_own_settings(): void
+    {
+        $this->confirmedAdmin();
+
+        $this->get(route('admin.themes.design', ['modrix', 'minimal']))->assertOk()->assertInertia(fn ($page) => $page
+            ->component('Admin/Themes/Design')
+            ->where('values.primary', '#e4572e')
+            ->where('values.heading_font', 'Georgia')
+            ->has('groups.colors.fields.primary')
+            ->has('groups.colors.fields.header_bg')
+            ->has('groups.typography.fields.heading_tracking')
+            ->has('groups.buttons.fields.button_hover')
+            ->has('groups.header.fields.header_height')
+            ->has('groups.hero.fields.hero_highlight')
+            ->has('groups.sections.fields.card_padding')
+            ->has('groups.links.fields.footer_padding'));
+
+        $this->put(route('admin.themes.design.update', ['modrix', 'minimal']), ['values' => ['primary' => '#008080']]);
+        $this->put(route('admin.themes.design.update', ['modrix', 'default']), ['values' => ['primary' => '#123456']]);
+
+        $this->get('/')->assertSee('--site-primary:#123456;', false);
+
+        $this->post(route('admin.themes.activate', ['modrix', 'minimal']), ['trust' => 1]);
+        $this->get('/')->assertSee('--site-primary:#008080;', false)->assertSee('--site-heading-font:Georgia', false);
+
+        $this->get(route('admin.themes.design.active'))->assertRedirect(route('admin.themes.design', ['modrix', 'minimal']));
     }
 
     public function test_activating_a_theme_with_scripts_needs_trust_and_then_loads_them(): void

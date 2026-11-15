@@ -1,0 +1,1740 @@
+{
+    "schemaVersion": 1,
+    "sections": [
+        {
+            "id": "01J9KRA000000000000000010Q",
+            "name": "Centered Subpage Hero",
+            "width": "full",
+            "sticky": false,
+            "style": {
+                "fontFamily": {
+                    "desktop": "var(--site-body-font, \"Inter\", system-ui, sans-serif)"
+                },
+                "color": {
+                    "desktop": "var(--site-heading, #0f172a)"
+                },
+                "backgroundColor": {
+                    "desktop": "var(--site-background, #ffffff)"
+                },
+                "padding": {
+                    "desktop": {
+                        "top": "72px",
+                        "right": "24px",
+                        "bottom": "36px",
+                        "left": "24px"
+                    },
+                    "mobile": {
+                        "top": "42px",
+                        "right": "20px",
+                        "bottom": "24px",
+                        "left": "20px"
+                    }
+                }
+            },
+            "rows": [
+                {
+                    "id": "01J9KRA000000000000000010P",
+                    "stackBelow": "mobile",
+                    "style": {
+                        "margin": {
+                            "desktop": {
+                                "left": "auto",
+                                "right": "auto"
+                            }
+                        },
+                        "gap": {
+                            "desktop": "var(--site-grid-gap, 16px)",
+                            "mobile": "16px"
+                        },
+                        "maxWidth": {
+                            "desktop": "var(--site-content-width, 1140px)"
+                        }
+                    },
+                    "columns": [
+                        {
+                            "id": "01J9KRA000000000000000010N",
+                            "span": {
+                                "desktop": 12,
+                                "tablet": 12,
+                                "mobile": 12
+                            },
+                            "style": {
+                                "alignItems": {
+                                    "desktop": "center"
+                                },
+                                "gap": {
+                                    "desktop": "16px"
+                                }
+                            },
+                            "blocks": [
+                                {
+                                    "id": "01J9KRA000000000000000010G",
+                                    "type": "container",
+                                    "props": {
+                                        "layout": "row",
+                                        "gap": "8px",
+                                        "kairoRole": "pill-badge"
+                                    },
+                                    "style": {
+                                        "backgroundColor": {
+                                            "desktop": "var(--site-background, #ffffff)"
+                                        },
+                                        "border": {
+                                            "desktop": {
+                                                "style": "solid",
+                                                "color": "var(--site-border, #e2e8f0)",
+                                                "top": "1px",
+                                                "right": "1px",
+                                                "bottom": "1px",
+                                                "left": "1px"
+                                            }
+                                        },
+                                        "borderRadius": {
+                                            "desktop": "var(--site-badge-radius, 999px)"
+                                        },
+                                        "padding": {
+                                            "desktop": {
+                                                "top": "6px",
+                                                "right": "14px",
+                                                "bottom": "6px",
+                                                "left": "12px"
+                                            }
+                                        },
+                                        "width": {
+                                            "desktop": "fit-content"
+                                        },
+                                        "alignItems": {
+                                            "desktop": "center"
+                                        },
+                                        "boxShadow": {
+                                            "desktop": "0 2px 6px rgba(12, 4, 7, 0.04)"
+                                        }
+                                    },
+                                    "children": [
+                                        {
+                                            "id": "01J9KRA000000000000000010H",
+                                            "type": "icon",
+                                            "props": {
+                                                "name": "sparkles",
+                                                "library": "lucide",
+                                                "size": "14px",
+                                                "link": null
+                                            },
+                                            "style": {
+                                                "color": {
+                                                    "desktop": "var(--site-primary, #4f46e5)"
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "id": "01J9KRA000000000000000010J",
+                                            "type": "paragraph",
+                                            "props": {
+                                                "text": "Articles & Guides"
+                                            },
+                                            "style": {
+                                                "fontFamily": {
+                                                    "desktop": "var(--site-body-font, \"Inter\", system-ui, sans-serif)"
+                                                },
+                                                "color": {
+                                                    "desktop": "var(--site-heading, #0f172a)"
+                                                },
+                                                "fontSize": {
+                                                    "desktop": "13px"
+                                                },
+                                                "lineHeight": {
+                                                    "desktop": "var(--site-line-height, 1.6)"
+                                                },
+                                                "textAlign": {
+                                                    "desktop": "left"
+                                                },
+                                                "margin": {
+                                                    "desktop": "0"
+                                                },
+                                                "fontWeight": {
+                                                    "desktop": "600"
+                                                },
+                                                "maxWidth": {
+                                                    "desktop": "66ch"
+                                                },
+                                                "custom": {
+                                                    "text-wrap": "pretty"
+                                                }
+                                            }
+                                        }
+                                    ]
+                                },
+                                {
+                                    "id": "01J9KRA000000000000000010K",
+                                    "type": "heading",
+                                    "props": {
+                                        "text": "Research for Your Next Move",
+                                        "level": "h1",
+                                        "link": null
+                                    },
+                                    "style": {
+                                        "fontFamily": {
+                                            "desktop": "var(--site-heading-font, \"Inter\", system-ui, sans-serif)"
+                                        },
+                                        "color": {
+                                            "desktop": "var(--site-heading, #0f172a)"
+                                        },
+                                        "fontSize": {
+                                            "desktop": "clamp(2.5rem, 4.6vw, calc(var(--site-h1-size, 3.5rem) * 1.12))",
+                                            "mobile": "36px"
+                                        },
+                                        "fontWeight": {
+                                            "desktop": "var(--site-heading-weight, 700)"
+                                        },
+                                        "lineHeight": {
+                                            "desktop": "var(--site-heading-line-height, 1.08)"
+                                        },
+                                        "letterSpacing": {
+                                            "desktop": "var(--site-heading-tracking, -0.02em)",
+                                            "mobile": "-0.02em"
+                                        },
+                                        "textAlign": {
+                                            "desktop": "center"
+                                        },
+                                        "margin": {
+                                            "desktop": "0"
+                                        },
+                                        "custom": {
+                                            "text-wrap": "balance"
+                                        }
+                                    }
+                                },
+                                {
+                                    "id": "01J9KRA000000000000000010M",
+                                    "type": "paragraph",
+                                    "props": {
+                                        "text": "Practical guides from talent advisors, engineering leads and product mentors across global tech hubs."
+                                    },
+                                    "style": {
+                                        "fontFamily": {
+                                            "desktop": "var(--site-body-font, \"Inter\", system-ui, sans-serif)"
+                                        },
+                                        "color": {
+                                            "desktop": "var(--site-muted, #64748b)"
+                                        },
+                                        "fontSize": {
+                                            "desktop": "17px"
+                                        },
+                                        "lineHeight": {
+                                            "desktop": "var(--site-line-height, 1.6)"
+                                        },
+                                        "textAlign": {
+                                            "desktop": "center"
+                                        },
+                                        "margin": {
+                                            "desktop": {
+                                                "left": "auto",
+                                                "right": "auto"
+                                            }
+                                        },
+                                        "maxWidth": {
+                                            "desktop": "56ch"
+                                        },
+                                        "custom": {
+                                            "text-wrap": "pretty"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "settings": {
+                "designCollection": "kairo",
+                "designBlock": "page-hero"
+            }
+        },
+        {
+            "id": "01J9KRA000000000000000011E",
+            "name": "Editorial Articles Grid",
+            "width": "full",
+            "sticky": false,
+            "style": {
+                "fontFamily": {
+                    "desktop": "var(--site-body-font, \"Inter\", system-ui, sans-serif)"
+                },
+                "color": {
+                    "desktop": "var(--site-heading, #0f172a)"
+                },
+                "backgroundColor": {
+                    "desktop": "var(--site-background, #ffffff)"
+                },
+                "padding": {
+                    "desktop": {
+                        "top": "var(--site-section-padding)",
+                        "right": "24px",
+                        "bottom": "var(--site-section-padding)",
+                        "left": "24px"
+                    },
+                    "mobile": {
+                        "top": "48px",
+                        "right": "20px",
+                        "bottom": "48px",
+                        "left": "20px"
+                    }
+                }
+            },
+            "rows": [
+                {
+                    "id": "01J9KRA000000000000000011D",
+                    "stackBelow": "mobile",
+                    "style": {
+                        "margin": {
+                            "desktop": {
+                                "left": "auto",
+                                "right": "auto"
+                            }
+                        },
+                        "gap": {
+                            "desktop": "var(--site-grid-gap, 16px)",
+                            "mobile": "18px"
+                        },
+                        "maxWidth": {
+                            "desktop": "var(--site-content-width, 1140px)"
+                        },
+                        "alignItems": {
+                            "desktop": "stretch"
+                        }
+                    },
+                    "columns": [
+                        {
+                            "id": "01J9KRA000000000000000010Y",
+                            "span": {
+                                "desktop": 4,
+                                "tablet": 6,
+                                "mobile": 12
+                            },
+                            "style": [],
+                            "blocks": [
+                                {
+                                    "id": "01J9KRA000000000000000010R",
+                                    "type": "container",
+                                    "props": {
+                                        "layout": "stack",
+                                        "gap": "14px",
+                                        "kairoRole": "bento-card"
+                                    },
+                                    "style": {
+                                        "backgroundColor": {
+                                            "desktop": "var(--site-surface, #f8fafc)"
+                                        },
+                                        "borderRadius": {
+                                            "desktop": "var(--site-card-radius, 8px)"
+                                        },
+                                        "padding": {
+                                            "desktop": {
+                                                "top": "20px",
+                                                "right": "20px",
+                                                "bottom": "24px",
+                                                "left": "20px"
+                                            }
+                                        },
+                                        "height": {
+                                            "desktop": "100%"
+                                        }
+                                    },
+                                    "children": [
+                                        {
+                                            "id": "01J9KRA000000000000000010S",
+                                            "type": "image",
+                                            "props": {
+                                                "src": "/templates/kairo/blog-1.svg",
+                                                "alt": "Navigating Salary Transparency Across Distributed Teams",
+                                                "caption": null,
+                                                "link": null,
+                                                "loading": "lazy",
+                                                "objectFit": "cover"
+                                            },
+                                            "style": {
+                                                "width": {
+                                                    "desktop": "100%"
+                                                },
+                                                "height": {
+                                                    "desktop": "190px",
+                                                    "mobile": "170px"
+                                                },
+                                                "borderRadius": {
+                                                    "desktop": "14px"
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "id": "01J9KRA000000000000000010T",
+                                            "type": "paragraph",
+                                            "props": {
+                                                "text": "Career Guide · 6 min read"
+                                            },
+                                            "style": {
+                                                "fontFamily": {
+                                                    "desktop": "var(--site-body-font, \"Inter\", system-ui, sans-serif)"
+                                                },
+                                                "color": {
+                                                    "desktop": "var(--site-primary, #4f46e5)"
+                                                },
+                                                "fontSize": {
+                                                    "desktop": "13px"
+                                                },
+                                                "lineHeight": {
+                                                    "desktop": "var(--site-line-height, 1.6)"
+                                                },
+                                                "textAlign": {
+                                                    "desktop": "left"
+                                                },
+                                                "margin": {
+                                                    "desktop": "0"
+                                                },
+                                                "fontWeight": {
+                                                    "desktop": "600"
+                                                },
+                                                "maxWidth": {
+                                                    "desktop": "66ch"
+                                                },
+                                                "custom": {
+                                                    "text-wrap": "pretty"
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "id": "01J9KRA000000000000000010V",
+                                            "type": "heading",
+                                            "props": {
+                                                "text": "Navigating Salary Transparency Across Distributed Teams",
+                                                "level": "h4",
+                                                "link": null
+                                            },
+                                            "style": {
+                                                "fontFamily": {
+                                                    "desktop": "var(--site-heading-font, \"Inter\", system-ui, sans-serif)"
+                                                },
+                                                "color": {
+                                                    "desktop": "var(--site-heading, #0f172a)"
+                                                },
+                                                "fontSize": {
+                                                    "desktop": "var(--site-h4-size, 1.35rem)",
+                                                    "mobile": "18px"
+                                                },
+                                                "fontWeight": {
+                                                    "desktop": "600"
+                                                },
+                                                "lineHeight": {
+                                                    "desktop": "1.3"
+                                                },
+                                                "margin": {
+                                                    "desktop": "0"
+                                                },
+                                                "custom": {
+                                                    "text-wrap": "balance"
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "id": "01J9KRA000000000000000010W",
+                                            "type": "paragraph",
+                                            "props": {
+                                                "text": "Learn how verified salary bands shape offer negotiations and reduce interview cycles by half."
+                                            },
+                                            "style": {
+                                                "fontFamily": {
+                                                    "desktop": "var(--site-body-font, \"Inter\", system-ui, sans-serif)"
+                                                },
+                                                "color": {
+                                                    "desktop": "var(--site-muted, #64748b)"
+                                                },
+                                                "fontSize": {
+                                                    "desktop": "14.5px"
+                                                },
+                                                "lineHeight": {
+                                                    "desktop": "var(--site-line-height, 1.6)"
+                                                },
+                                                "textAlign": {
+                                                    "desktop": "left"
+                                                },
+                                                "margin": {
+                                                    "desktop": "0"
+                                                },
+                                                "maxWidth": {
+                                                    "desktop": "66ch"
+                                                },
+                                                "custom": {
+                                                    "text-wrap": "pretty"
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "id": "01J9KRA000000000000000010X",
+                                            "type": "button",
+                                            "props": {
+                                                "label": "Read Article",
+                                                "action": "url",
+                                                "url": "/articles",
+                                                "targetStepId": null,
+                                                "targetBlockId": null,
+                                                "newTab": false,
+                                                "iconLeft": null,
+                                                "iconRight": "arrow-right",
+                                                "fullWidth": false,
+                                                "size": "md",
+                                                "variant": "outline"
+                                            },
+                                            "style": {
+                                                "fontFamily": {
+                                                    "desktop": "var(--site-body-font, \"Inter\", system-ui, sans-serif)"
+                                                },
+                                                "fontSize": {
+                                                    "desktop": "15px",
+                                                    "mobile": "14.5px"
+                                                },
+                                                "fontWeight": {
+                                                    "desktop": "var(--site-button-weight, 600)"
+                                                },
+                                                "borderRadius": {
+                                                    "desktop": "var(--site-button-radius)"
+                                                },
+                                                "padding": {
+                                                    "desktop": {
+                                                        "top": "4px",
+                                                        "right": "0px",
+                                                        "bottom": "4px",
+                                                        "left": "0px"
+                                                    }
+                                                },
+                                                "backgroundColor": {
+                                                    "desktop": "transparent"
+                                                },
+                                                "color": {
+                                                    "desktop": "var(--site-primary, #4f46e5)"
+                                                }
+                                            }
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "id": "01J9KRA0000000000000000115",
+                            "span": {
+                                "desktop": 4,
+                                "tablet": 6,
+                                "mobile": 12
+                            },
+                            "style": [],
+                            "blocks": [
+                                {
+                                    "id": "01J9KRA000000000000000010Z",
+                                    "type": "container",
+                                    "props": {
+                                        "layout": "stack",
+                                        "gap": "14px",
+                                        "kairoRole": "bento-card"
+                                    },
+                                    "style": {
+                                        "backgroundColor": {
+                                            "desktop": "var(--site-surface, #f8fafc)"
+                                        },
+                                        "borderRadius": {
+                                            "desktop": "var(--site-card-radius, 8px)"
+                                        },
+                                        "padding": {
+                                            "desktop": {
+                                                "top": "20px",
+                                                "right": "20px",
+                                                "bottom": "24px",
+                                                "left": "20px"
+                                            }
+                                        },
+                                        "height": {
+                                            "desktop": "100%"
+                                        }
+                                    },
+                                    "children": [
+                                        {
+                                            "id": "01J9KRA0000000000000000110",
+                                            "type": "image",
+                                            "props": {
+                                                "src": "/templates/kairo/blog-2.svg",
+                                                "alt": "Structured Portfolio Reviews That Win Senior Offers",
+                                                "caption": null,
+                                                "link": null,
+                                                "loading": "lazy",
+                                                "objectFit": "cover"
+                                            },
+                                            "style": {
+                                                "width": {
+                                                    "desktop": "100%"
+                                                },
+                                                "height": {
+                                                    "desktop": "190px",
+                                                    "mobile": "170px"
+                                                },
+                                                "borderRadius": {
+                                                    "desktop": "14px"
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "id": "01J9KRA0000000000000000111",
+                                            "type": "paragraph",
+                                            "props": {
+                                                "text": "Interviewing · 5 min read"
+                                            },
+                                            "style": {
+                                                "fontFamily": {
+                                                    "desktop": "var(--site-body-font, \"Inter\", system-ui, sans-serif)"
+                                                },
+                                                "color": {
+                                                    "desktop": "var(--site-primary, #4f46e5)"
+                                                },
+                                                "fontSize": {
+                                                    "desktop": "13px"
+                                                },
+                                                "lineHeight": {
+                                                    "desktop": "var(--site-line-height, 1.6)"
+                                                },
+                                                "textAlign": {
+                                                    "desktop": "left"
+                                                },
+                                                "margin": {
+                                                    "desktop": "0"
+                                                },
+                                                "fontWeight": {
+                                                    "desktop": "600"
+                                                },
+                                                "maxWidth": {
+                                                    "desktop": "66ch"
+                                                },
+                                                "custom": {
+                                                    "text-wrap": "pretty"
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "id": "01J9KRA0000000000000000112",
+                                            "type": "heading",
+                                            "props": {
+                                                "text": "Structured Portfolio Reviews That Win Senior Offers",
+                                                "level": "h4",
+                                                "link": null
+                                            },
+                                            "style": {
+                                                "fontFamily": {
+                                                    "desktop": "var(--site-heading-font, \"Inter\", system-ui, sans-serif)"
+                                                },
+                                                "color": {
+                                                    "desktop": "var(--site-heading, #0f172a)"
+                                                },
+                                                "fontSize": {
+                                                    "desktop": "var(--site-h4-size, 1.35rem)",
+                                                    "mobile": "18px"
+                                                },
+                                                "fontWeight": {
+                                                    "desktop": "600"
+                                                },
+                                                "lineHeight": {
+                                                    "desktop": "1.3"
+                                                },
+                                                "margin": {
+                                                    "desktop": "0"
+                                                },
+                                                "custom": {
+                                                    "text-wrap": "balance"
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "id": "01J9KRA0000000000000000113",
+                                            "type": "paragraph",
+                                            "props": {
+                                                "text": "Focus panel discussions around architecture decisions, impact metrics and real delivery trade-offs."
+                                            },
+                                            "style": {
+                                                "fontFamily": {
+                                                    "desktop": "var(--site-body-font, \"Inter\", system-ui, sans-serif)"
+                                                },
+                                                "color": {
+                                                    "desktop": "var(--site-muted, #64748b)"
+                                                },
+                                                "fontSize": {
+                                                    "desktop": "14.5px"
+                                                },
+                                                "lineHeight": {
+                                                    "desktop": "var(--site-line-height, 1.6)"
+                                                },
+                                                "textAlign": {
+                                                    "desktop": "left"
+                                                },
+                                                "margin": {
+                                                    "desktop": "0"
+                                                },
+                                                "maxWidth": {
+                                                    "desktop": "66ch"
+                                                },
+                                                "custom": {
+                                                    "text-wrap": "pretty"
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "id": "01J9KRA0000000000000000114",
+                                            "type": "button",
+                                            "props": {
+                                                "label": "Read Article",
+                                                "action": "url",
+                                                "url": "/articles",
+                                                "targetStepId": null,
+                                                "targetBlockId": null,
+                                                "newTab": false,
+                                                "iconLeft": null,
+                                                "iconRight": "arrow-right",
+                                                "fullWidth": false,
+                                                "size": "md",
+                                                "variant": "outline"
+                                            },
+                                            "style": {
+                                                "fontFamily": {
+                                                    "desktop": "var(--site-body-font, \"Inter\", system-ui, sans-serif)"
+                                                },
+                                                "fontSize": {
+                                                    "desktop": "15px",
+                                                    "mobile": "14.5px"
+                                                },
+                                                "fontWeight": {
+                                                    "desktop": "var(--site-button-weight, 600)"
+                                                },
+                                                "borderRadius": {
+                                                    "desktop": "var(--site-button-radius)"
+                                                },
+                                                "padding": {
+                                                    "desktop": {
+                                                        "top": "4px",
+                                                        "right": "0px",
+                                                        "bottom": "4px",
+                                                        "left": "0px"
+                                                    }
+                                                },
+                                                "backgroundColor": {
+                                                    "desktop": "transparent"
+                                                },
+                                                "color": {
+                                                    "desktop": "var(--site-primary, #4f46e5)"
+                                                }
+                                            }
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "id": "01J9KRA000000000000000011C",
+                            "span": {
+                                "desktop": 4,
+                                "tablet": 6,
+                                "mobile": 12
+                            },
+                            "style": [],
+                            "blocks": [
+                                {
+                                    "id": "01J9KRA0000000000000000116",
+                                    "type": "container",
+                                    "props": {
+                                        "layout": "stack",
+                                        "gap": "14px",
+                                        "kairoRole": "bento-card"
+                                    },
+                                    "style": {
+                                        "backgroundColor": {
+                                            "desktop": "var(--site-surface, #f8fafc)"
+                                        },
+                                        "borderRadius": {
+                                            "desktop": "var(--site-card-radius, 8px)"
+                                        },
+                                        "padding": {
+                                            "desktop": {
+                                                "top": "20px",
+                                                "right": "20px",
+                                                "bottom": "24px",
+                                                "left": "20px"
+                                            }
+                                        },
+                                        "height": {
+                                            "desktop": "100%"
+                                        }
+                                    },
+                                    "children": [
+                                        {
+                                            "id": "01J9KRA0000000000000000117",
+                                            "type": "image",
+                                            "props": {
+                                                "src": "/templates/kairo/blog-3.svg",
+                                                "alt": "How High-Growth Studios Screen For Systems Thinking",
+                                                "caption": null,
+                                                "link": null,
+                                                "loading": "lazy",
+                                                "objectFit": "cover"
+                                            },
+                                            "style": {
+                                                "width": {
+                                                    "desktop": "100%"
+                                                },
+                                                "height": {
+                                                    "desktop": "190px",
+                                                    "mobile": "170px"
+                                                },
+                                                "borderRadius": {
+                                                    "desktop": "14px"
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "id": "01J9KRA0000000000000000118",
+                                            "type": "paragraph",
+                                            "props": {
+                                                "text": "Product Hiring · 7 min read"
+                                            },
+                                            "style": {
+                                                "fontFamily": {
+                                                    "desktop": "var(--site-body-font, \"Inter\", system-ui, sans-serif)"
+                                                },
+                                                "color": {
+                                                    "desktop": "var(--site-primary, #4f46e5)"
+                                                },
+                                                "fontSize": {
+                                                    "desktop": "13px"
+                                                },
+                                                "lineHeight": {
+                                                    "desktop": "var(--site-line-height, 1.6)"
+                                                },
+                                                "textAlign": {
+                                                    "desktop": "left"
+                                                },
+                                                "margin": {
+                                                    "desktop": "0"
+                                                },
+                                                "fontWeight": {
+                                                    "desktop": "600"
+                                                },
+                                                "maxWidth": {
+                                                    "desktop": "66ch"
+                                                },
+                                                "custom": {
+                                                    "text-wrap": "pretty"
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "id": "01J9KRA0000000000000000119",
+                                            "type": "heading",
+                                            "props": {
+                                                "text": "How High-Growth Studios Screen For Systems Thinking",
+                                                "level": "h4",
+                                                "link": null
+                                            },
+                                            "style": {
+                                                "fontFamily": {
+                                                    "desktop": "var(--site-heading-font, \"Inter\", system-ui, sans-serif)"
+                                                },
+                                                "color": {
+                                                    "desktop": "var(--site-heading, #0f172a)"
+                                                },
+                                                "fontSize": {
+                                                    "desktop": "var(--site-h4-size, 1.35rem)",
+                                                    "mobile": "18px"
+                                                },
+                                                "fontWeight": {
+                                                    "desktop": "600"
+                                                },
+                                                "lineHeight": {
+                                                    "desktop": "1.3"
+                                                },
+                                                "margin": {
+                                                    "desktop": "0"
+                                                },
+                                                "custom": {
+                                                    "text-wrap": "balance"
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "id": "01J9KRA000000000000000011A",
+                                            "type": "paragraph",
+                                            "props": {
+                                                "text": "An inside look at the signal teams prioritize when scaling product design and engineering pods."
+                                            },
+                                            "style": {
+                                                "fontFamily": {
+                                                    "desktop": "var(--site-body-font, \"Inter\", system-ui, sans-serif)"
+                                                },
+                                                "color": {
+                                                    "desktop": "var(--site-muted, #64748b)"
+                                                },
+                                                "fontSize": {
+                                                    "desktop": "14.5px"
+                                                },
+                                                "lineHeight": {
+                                                    "desktop": "var(--site-line-height, 1.6)"
+                                                },
+                                                "textAlign": {
+                                                    "desktop": "left"
+                                                },
+                                                "margin": {
+                                                    "desktop": "0"
+                                                },
+                                                "maxWidth": {
+                                                    "desktop": "66ch"
+                                                },
+                                                "custom": {
+                                                    "text-wrap": "pretty"
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "id": "01J9KRA000000000000000011B",
+                                            "type": "button",
+                                            "props": {
+                                                "label": "Read Article",
+                                                "action": "url",
+                                                "url": "/articles",
+                                                "targetStepId": null,
+                                                "targetBlockId": null,
+                                                "newTab": false,
+                                                "iconLeft": null,
+                                                "iconRight": "arrow-right",
+                                                "fullWidth": false,
+                                                "size": "md",
+                                                "variant": "outline"
+                                            },
+                                            "style": {
+                                                "fontFamily": {
+                                                    "desktop": "var(--site-body-font, \"Inter\", system-ui, sans-serif)"
+                                                },
+                                                "fontSize": {
+                                                    "desktop": "15px",
+                                                    "mobile": "14.5px"
+                                                },
+                                                "fontWeight": {
+                                                    "desktop": "var(--site-button-weight, 600)"
+                                                },
+                                                "borderRadius": {
+                                                    "desktop": "var(--site-button-radius)"
+                                                },
+                                                "padding": {
+                                                    "desktop": {
+                                                        "top": "4px",
+                                                        "right": "0px",
+                                                        "bottom": "4px",
+                                                        "left": "0px"
+                                                    }
+                                                },
+                                                "backgroundColor": {
+                                                    "desktop": "transparent"
+                                                },
+                                                "color": {
+                                                    "desktop": "var(--site-primary, #4f46e5)"
+                                                }
+                                            }
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "settings": {
+                "designCollection": "kairo",
+                "designBlock": "blog-grid"
+            }
+        },
+        {
+            "id": "01J9KRA000000000000000011V",
+            "name": "FAQ Accordion",
+            "width": "full",
+            "sticky": false,
+            "style": {
+                "fontFamily": {
+                    "desktop": "var(--site-body-font, \"Inter\", system-ui, sans-serif)"
+                },
+                "color": {
+                    "desktop": "var(--site-heading, #0f172a)"
+                },
+                "backgroundColor": {
+                    "desktop": "var(--site-background, #ffffff)"
+                },
+                "padding": {
+                    "desktop": {
+                        "top": "var(--site-section-padding)",
+                        "right": "24px",
+                        "bottom": "var(--site-section-padding)",
+                        "left": "24px"
+                    },
+                    "mobile": {
+                        "top": "48px",
+                        "right": "20px",
+                        "bottom": "48px",
+                        "left": "20px"
+                    }
+                }
+            },
+            "rows": [
+                {
+                    "id": "01J9KRA000000000000000011T",
+                    "stackBelow": "mobile",
+                    "style": {
+                        "margin": {
+                            "desktop": {
+                                "left": "auto",
+                                "right": "auto"
+                            }
+                        },
+                        "gap": {
+                            "desktop": "48px",
+                            "mobile": "28px"
+                        },
+                        "maxWidth": {
+                            "desktop": "var(--site-content-width, 1140px)"
+                        },
+                        "alignItems": {
+                            "desktop": "flex-start"
+                        }
+                    },
+                    "columns": [
+                        {
+                            "id": "01J9KRA000000000000000011P",
+                            "span": {
+                                "desktop": 5,
+                                "tablet": 6,
+                                "mobile": 12
+                            },
+                            "style": [],
+                            "blocks": [
+                                {
+                                    "id": "01J9KRA000000000000000011F",
+                                    "type": "container",
+                                    "props": {
+                                        "layout": "stack",
+                                        "gap": "16px",
+                                        "kairoRole": "sticky-col"
+                                    },
+                                    "style": [],
+                                    "children": [
+                                        {
+                                            "id": "01J9KRA000000000000000011G",
+                                            "type": "container",
+                                            "props": {
+                                                "layout": "row",
+                                                "gap": "8px",
+                                                "kairoRole": "pill-badge"
+                                            },
+                                            "style": {
+                                                "backgroundColor": {
+                                                    "desktop": "var(--site-background, #ffffff)"
+                                                },
+                                                "border": {
+                                                    "desktop": {
+                                                        "style": "solid",
+                                                        "color": "var(--site-border, #e2e8f0)",
+                                                        "top": "1px",
+                                                        "right": "1px",
+                                                        "bottom": "1px",
+                                                        "left": "1px"
+                                                    }
+                                                },
+                                                "borderRadius": {
+                                                    "desktop": "var(--site-badge-radius, 999px)"
+                                                },
+                                                "padding": {
+                                                    "desktop": {
+                                                        "top": "6px",
+                                                        "right": "14px",
+                                                        "bottom": "6px",
+                                                        "left": "12px"
+                                                    }
+                                                },
+                                                "width": {
+                                                    "desktop": "fit-content"
+                                                },
+                                                "alignItems": {
+                                                    "desktop": "center"
+                                                },
+                                                "boxShadow": {
+                                                    "desktop": "0 2px 6px rgba(12, 4, 7, 0.04)"
+                                                }
+                                            },
+                                            "children": [
+                                                {
+                                                    "id": "01J9KRA000000000000000011H",
+                                                    "type": "icon",
+                                                    "props": {
+                                                        "name": "shield",
+                                                        "library": "lucide",
+                                                        "size": "14px",
+                                                        "link": null
+                                                    },
+                                                    "style": {
+                                                        "color": {
+                                                            "desktop": "var(--site-primary, #4f46e5)"
+                                                        }
+                                                    }
+                                                },
+                                                {
+                                                    "id": "01J9KRA000000000000000011J",
+                                                    "type": "paragraph",
+                                                    "props": {
+                                                        "text": "FAQ"
+                                                    },
+                                                    "style": {
+                                                        "fontFamily": {
+                                                            "desktop": "var(--site-body-font, \"Inter\", system-ui, sans-serif)"
+                                                        },
+                                                        "color": {
+                                                            "desktop": "var(--site-heading, #0f172a)"
+                                                        },
+                                                        "fontSize": {
+                                                            "desktop": "13px"
+                                                        },
+                                                        "lineHeight": {
+                                                            "desktop": "var(--site-line-height, 1.6)"
+                                                        },
+                                                        "textAlign": {
+                                                            "desktop": "left"
+                                                        },
+                                                        "margin": {
+                                                            "desktop": "0"
+                                                        },
+                                                        "fontWeight": {
+                                                            "desktop": "600"
+                                                        },
+                                                        "maxWidth": {
+                                                            "desktop": "66ch"
+                                                        },
+                                                        "custom": {
+                                                            "text-wrap": "pretty"
+                                                        }
+                                                    }
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "id": "01J9KRA000000000000000011K",
+                                            "type": "heading",
+                                            "props": {
+                                                "text": "Got Questions?\nWe've Got Answers",
+                                                "level": "h2",
+                                                "link": null
+                                            },
+                                            "style": {
+                                                "fontFamily": {
+                                                    "desktop": "var(--site-heading-font, \"Inter\", system-ui, sans-serif)"
+                                                },
+                                                "color": {
+                                                    "desktop": "var(--site-heading, #0f172a)"
+                                                },
+                                                "fontSize": {
+                                                    "desktop": "clamp(2rem, 3.6vw, calc(var(--site-h2-size, 2.75rem) * 1.12))",
+                                                    "mobile": "30px"
+                                                },
+                                                "fontWeight": {
+                                                    "desktop": "var(--site-heading-weight, 700)"
+                                                },
+                                                "lineHeight": {
+                                                    "desktop": "1.12"
+                                                },
+                                                "letterSpacing": {
+                                                    "desktop": "var(--site-heading-tracking, -0.02em)",
+                                                    "mobile": "-0.02em"
+                                                },
+                                                "textAlign": {
+                                                    "desktop": "left"
+                                                },
+                                                "margin": {
+                                                    "desktop": "0"
+                                                },
+                                                "custom": {
+                                                    "text-wrap": "balance"
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "id": "01J9KRA000000000000000011M",
+                                            "type": "paragraph",
+                                            "props": {
+                                                "text": "Can't find the exact detail you are looking for? Reach our support team directly and get a reply within 24 hours."
+                                            },
+                                            "style": {
+                                                "fontFamily": {
+                                                    "desktop": "var(--site-body-font, \"Inter\", system-ui, sans-serif)"
+                                                },
+                                                "color": {
+                                                    "desktop": "var(--site-muted, #64748b)"
+                                                },
+                                                "fontSize": {
+                                                    "desktop": "16px"
+                                                },
+                                                "lineHeight": {
+                                                    "desktop": "var(--site-line-height, 1.6)"
+                                                },
+                                                "textAlign": {
+                                                    "desktop": "left"
+                                                },
+                                                "margin": {
+                                                    "desktop": "0"
+                                                },
+                                                "maxWidth": {
+                                                    "desktop": "66ch"
+                                                },
+                                                "custom": {
+                                                    "text-wrap": "pretty"
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "id": "01J9KRA000000000000000011N",
+                                            "type": "button",
+                                            "props": {
+                                                "label": "Contact Support",
+                                                "action": "url",
+                                                "url": "/contact",
+                                                "targetStepId": null,
+                                                "targetBlockId": null,
+                                                "newTab": false,
+                                                "iconLeft": null,
+                                                "iconRight": "arrow-right",
+                                                "fullWidth": false,
+                                                "size": "md",
+                                                "variant": "primary"
+                                            },
+                                            "style": {
+                                                "fontFamily": {
+                                                    "desktop": "var(--site-body-font, \"Inter\", system-ui, sans-serif)"
+                                                },
+                                                "fontSize": {
+                                                    "desktop": "15px",
+                                                    "mobile": "14.5px"
+                                                },
+                                                "fontWeight": {
+                                                    "desktop": "var(--site-button-weight, 600)"
+                                                },
+                                                "borderRadius": {
+                                                    "desktop": "var(--site-button-radius)"
+                                                },
+                                                "padding": {
+                                                    "desktop": {
+                                                        "top": "13px",
+                                                        "right": "22px",
+                                                        "bottom": "13px",
+                                                        "left": "22px"
+                                                    }
+                                                },
+                                                "backgroundColor": {
+                                                    "desktop": "var(--site-primary, #4f46e5)"
+                                                },
+                                                "color": {
+                                                    "desktop": "var(--site-on-primary, #ffffff)"
+                                                }
+                                            }
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "id": "01J9KRA000000000000000011S",
+                            "span": {
+                                "desktop": 7,
+                                "tablet": 12,
+                                "mobile": 12
+                            },
+                            "style": [],
+                            "blocks": [
+                                {
+                                    "id": "01J9KRA000000000000000011Q",
+                                    "type": "container",
+                                    "props": {
+                                        "layout": "stack",
+                                        "gap": "0px",
+                                        "kairoRole": "faq-list"
+                                    },
+                                    "style": [],
+                                    "children": [
+                                        {
+                                            "id": "01J9KRA000000000000000011R",
+                                            "type": "faq",
+                                            "props": {
+                                                "initialOpen": true,
+                                                "items": [
+                                                    {
+                                                        "question": "Is Kairo free for individual job seekers?",
+                                                        "answer": "Yes. Our Basic Plan includes smart skill matching, 10 saved opportunities and weekly compensation insights at zero cost."
+                                                    },
+                                                    {
+                                                        "question": "How does Kairo verify company compensation bands?",
+                                                        "answer": "Hiring partners publish active base salary ranges before roles go live, validated against regional market benchmarks across 40+ cities."
+                                                    },
+                                                    {
+                                                        "question": "Can I switch between Monthly and Yearly billing anytime?",
+                                                        "answer": "Yes. Upgrade, switch to Yearly billing to save 20%, or pause your Pro subscription inside your account with zero lock-in fees."
+                                                    },
+                                                    {
+                                                        "question": "Do recruiters see my profile before I apply?",
+                                                        "answer": "Only when you opt in to Verified Discovery. You control full visibility for current employers and private portfolio links."
+                                                    },
+                                                    {
+                                                        "question": "How fast do hiring teams respond on Kairo?",
+                                                        "answer": "Verified studios commit to clear 5-business-day status updates so you are never left guessing inside automated black boxes."
+                                                    },
+                                                    {
+                                                        "question": "Does Kairo support remote and international roles?",
+                                                        "answer": "Yes. Filter opportunities seamlessly by remote-first, hybrid hub cities, relocation sponsorship and timezone overlap."
+                                                    }
+                                                ],
+                                                "allowMultipleOpen": false,
+                                                "emitSchemaOrg": true
+                                            },
+                                            "style": {
+                                                "color": {
+                                                    "desktop": "var(--site-heading, #0f172a)"
+                                                },
+                                                "fontFamily": {
+                                                    "desktop": "var(--site-body-font, \"Inter\", system-ui, sans-serif)"
+                                                }
+                                            }
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "settings": {
+                "designCollection": "kairo",
+                "designBlock": "faq"
+            }
+        },
+        {
+            "id": "01J9KRA0000000000000000127",
+            "name": "Download App CTA Banner",
+            "width": "full",
+            "sticky": false,
+            "style": {
+                "fontFamily": {
+                    "desktop": "var(--site-body-font, \"Inter\", system-ui, sans-serif)"
+                },
+                "color": {
+                    "desktop": "var(--site-heading, #0f172a)"
+                },
+                "backgroundColor": {
+                    "desktop": "var(--site-background, #ffffff)"
+                },
+                "padding": {
+                    "desktop": {
+                        "top": "32px",
+                        "right": "24px",
+                        "bottom": "56px",
+                        "left": "24px"
+                    },
+                    "mobile": {
+                        "top": "20px",
+                        "right": "12px",
+                        "bottom": "32px",
+                        "left": "12px"
+                    }
+                }
+            },
+            "rows": [
+                {
+                    "id": "01J9KRA0000000000000000126",
+                    "stackBelow": "mobile",
+                    "style": {
+                        "margin": {
+                            "desktop": {
+                                "left": "auto",
+                                "right": "auto"
+                            }
+                        },
+                        "gap": {
+                            "desktop": "var(--site-grid-gap, 16px)",
+                            "mobile": "16px"
+                        },
+                        "maxWidth": {
+                            "desktop": "var(--site-content-width, 1140px)"
+                        },
+                        "backgroundColor": {
+                            "desktop": "var(--site-surface, #f8fafc)"
+                        },
+                        "borderRadius": {
+                            "desktop": "var(--site-section-radius, 36px)"
+                        },
+                        "padding": {
+                            "desktop": {
+                                "top": "68px",
+                                "right": "40px",
+                                "bottom": "0px",
+                                "left": "40px"
+                            },
+                            "mobile": {
+                                "top": "44px",
+                                "right": "20px",
+                                "bottom": "0px",
+                                "left": "20px"
+                            }
+                        },
+                        "overflow": {
+                            "desktop": "hidden"
+                        }
+                    },
+                    "columns": [
+                        {
+                            "id": "01J9KRA0000000000000000125",
+                            "span": {
+                                "desktop": 12,
+                                "tablet": 12,
+                                "mobile": 12
+                            },
+                            "style": {
+                                "alignItems": {
+                                    "desktop": "center"
+                                },
+                                "gap": {
+                                    "desktop": "20px"
+                                }
+                            },
+                            "blocks": [
+                                {
+                                    "id": "01J9KRA000000000000000011W",
+                                    "type": "container",
+                                    "props": {
+                                        "layout": "row",
+                                        "gap": "8px",
+                                        "kairoRole": "pill-badge"
+                                    },
+                                    "style": {
+                                        "backgroundColor": {
+                                            "desktop": "var(--site-background, #ffffff)"
+                                        },
+                                        "border": {
+                                            "desktop": {
+                                                "style": "solid",
+                                                "color": "var(--site-border, #e2e8f0)",
+                                                "top": "1px",
+                                                "right": "1px",
+                                                "bottom": "1px",
+                                                "left": "1px"
+                                            }
+                                        },
+                                        "borderRadius": {
+                                            "desktop": "var(--site-badge-radius, 999px)"
+                                        },
+                                        "padding": {
+                                            "desktop": {
+                                                "top": "6px",
+                                                "right": "14px",
+                                                "bottom": "6px",
+                                                "left": "12px"
+                                            }
+                                        },
+                                        "width": {
+                                            "desktop": "fit-content"
+                                        },
+                                        "alignItems": {
+                                            "desktop": "center"
+                                        },
+                                        "boxShadow": {
+                                            "desktop": "0 2px 6px rgba(12, 4, 7, 0.04)"
+                                        }
+                                    },
+                                    "children": [
+                                        {
+                                            "id": "01J9KRA000000000000000011X",
+                                            "type": "icon",
+                                            "props": {
+                                                "name": "users",
+                                                "library": "lucide",
+                                                "size": "14px",
+                                                "link": null
+                                            },
+                                            "style": {
+                                                "color": {
+                                                    "desktop": "var(--site-primary, #4f46e5)"
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "id": "01J9KRA000000000000000011Y",
+                                            "type": "paragraph",
+                                            "props": {
+                                                "text": "Join Now"
+                                            },
+                                            "style": {
+                                                "fontFamily": {
+                                                    "desktop": "var(--site-body-font, \"Inter\", system-ui, sans-serif)"
+                                                },
+                                                "color": {
+                                                    "desktop": "var(--site-heading, #0f172a)"
+                                                },
+                                                "fontSize": {
+                                                    "desktop": "13px"
+                                                },
+                                                "lineHeight": {
+                                                    "desktop": "var(--site-line-height, 1.6)"
+                                                },
+                                                "textAlign": {
+                                                    "desktop": "left"
+                                                },
+                                                "margin": {
+                                                    "desktop": "0"
+                                                },
+                                                "fontWeight": {
+                                                    "desktop": "600"
+                                                },
+                                                "maxWidth": {
+                                                    "desktop": "66ch"
+                                                },
+                                                "custom": {
+                                                    "text-wrap": "pretty"
+                                                }
+                                            }
+                                        }
+                                    ]
+                                },
+                                {
+                                    "id": "01J9KRA000000000000000011Z",
+                                    "type": "heading",
+                                    "props": {
+                                        "text": "Download Our App And\nFind Your Next Role",
+                                        "level": "h2",
+                                        "link": null
+                                    },
+                                    "style": {
+                                        "fontFamily": {
+                                            "desktop": "var(--site-heading-font, \"Inter\", system-ui, sans-serif)"
+                                        },
+                                        "color": {
+                                            "desktop": "var(--site-heading, #0f172a)"
+                                        },
+                                        "fontSize": {
+                                            "desktop": "clamp(2rem, 3.6vw, calc(var(--site-h2-size, 2.75rem) * 1.12))",
+                                            "mobile": "30px"
+                                        },
+                                        "fontWeight": {
+                                            "desktop": "var(--site-heading-weight, 700)"
+                                        },
+                                        "lineHeight": {
+                                            "desktop": "1.12"
+                                        },
+                                        "letterSpacing": {
+                                            "desktop": "var(--site-heading-tracking, -0.02em)",
+                                            "mobile": "-0.02em"
+                                        },
+                                        "textAlign": {
+                                            "desktop": "center"
+                                        },
+                                        "margin": {
+                                            "desktop": "0"
+                                        },
+                                        "custom": {
+                                            "text-wrap": "balance"
+                                        }
+                                    }
+                                },
+                                {
+                                    "id": "01J9KRA0000000000000000120",
+                                    "type": "paragraph",
+                                    "props": {
+                                        "text": "Start matching with verified teams, transparent pay ranges and effortless one-tap applications today."
+                                    },
+                                    "style": {
+                                        "fontFamily": {
+                                            "desktop": "var(--site-body-font, \"Inter\", system-ui, sans-serif)"
+                                        },
+                                        "color": {
+                                            "desktop": "var(--site-muted, #64748b)"
+                                        },
+                                        "fontSize": {
+                                            "desktop": "16.5px"
+                                        },
+                                        "lineHeight": {
+                                            "desktop": "var(--site-line-height, 1.6)"
+                                        },
+                                        "textAlign": {
+                                            "desktop": "center"
+                                        },
+                                        "margin": {
+                                            "desktop": {
+                                                "left": "auto",
+                                                "right": "auto"
+                                            }
+                                        },
+                                        "maxWidth": {
+                                            "desktop": "54ch"
+                                        },
+                                        "custom": {
+                                            "text-wrap": "pretty"
+                                        }
+                                    }
+                                },
+                                {
+                                    "id": "01J9KRA0000000000000000121",
+                                    "type": "container",
+                                    "props": {
+                                        "layout": "row",
+                                        "gap": "12px"
+                                    },
+                                    "style": {
+                                        "justifyContent": {
+                                            "desktop": "center"
+                                        }
+                                    },
+                                    "children": [
+                                        {
+                                            "id": "01J9KRA0000000000000000122",
+                                            "type": "button",
+                                            "props": {
+                                                "label": "Download on Appstore",
+                                                "action": "url",
+                                                "url": "/pricing",
+                                                "targetStepId": null,
+                                                "targetBlockId": null,
+                                                "newTab": false,
+                                                "iconLeft": null,
+                                                "iconRight": "arrow-right",
+                                                "fullWidth": false,
+                                                "size": "md",
+                                                "variant": "primary"
+                                            },
+                                            "style": {
+                                                "fontFamily": {
+                                                    "desktop": "var(--site-body-font, \"Inter\", system-ui, sans-serif)"
+                                                },
+                                                "fontSize": {
+                                                    "desktop": "15px",
+                                                    "mobile": "14.5px"
+                                                },
+                                                "fontWeight": {
+                                                    "desktop": "var(--site-button-weight, 600)"
+                                                },
+                                                "borderRadius": {
+                                                    "desktop": "var(--site-button-radius)"
+                                                },
+                                                "padding": {
+                                                    "desktop": {
+                                                        "top": "13px",
+                                                        "right": "22px",
+                                                        "bottom": "13px",
+                                                        "left": "22px"
+                                                    }
+                                                },
+                                                "backgroundColor": {
+                                                    "desktop": "var(--site-primary, #4f46e5)"
+                                                },
+                                                "color": {
+                                                    "desktop": "var(--site-on-primary, #ffffff)"
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "id": "01J9KRA0000000000000000123",
+                                            "type": "button",
+                                            "props": {
+                                                "label": "Get it on Google Play",
+                                                "action": "url",
+                                                "url": "/features",
+                                                "targetStepId": null,
+                                                "targetBlockId": null,
+                                                "newTab": false,
+                                                "iconLeft": null,
+                                                "iconRight": "arrow-right",
+                                                "fullWidth": false,
+                                                "size": "md",
+                                                "variant": "outline"
+                                            },
+                                            "style": {
+                                                "fontFamily": {
+                                                    "desktop": "var(--site-body-font, \"Inter\", system-ui, sans-serif)"
+                                                },
+                                                "fontSize": {
+                                                    "desktop": "15px",
+                                                    "mobile": "14.5px"
+                                                },
+                                                "fontWeight": {
+                                                    "desktop": "var(--site-button-weight, 600)"
+                                                },
+                                                "borderRadius": {
+                                                    "desktop": "var(--site-button-radius)"
+                                                },
+                                                "padding": {
+                                                    "desktop": {
+                                                        "top": "13px",
+                                                        "right": "22px",
+                                                        "bottom": "13px",
+                                                        "left": "22px"
+                                                    }
+                                                },
+                                                "backgroundColor": {
+                                                    "desktop": "var(--site-background, #ffffff)"
+                                                },
+                                                "color": {
+                                                    "desktop": "var(--site-heading, #0f172a)"
+                                                },
+                                                "border": {
+                                                    "desktop": {
+                                                        "style": "solid",
+                                                        "color": "var(--site-border, #e2e8f0)",
+                                                        "top": "1px",
+                                                        "right": "1px",
+                                                        "bottom": "1px",
+                                                        "left": "1px"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    ]
+                                },
+                                {
+                                    "id": "01J9KRA0000000000000000124",
+                                    "type": "image",
+                                    "props": {
+                                        "src": "/templates/kairo/cta-triple-phones.svg",
+                                        "alt": "Three fanned Kairo mobile devices showing app home, roles and offer tracker",
+                                        "caption": null,
+                                        "link": null,
+                                        "loading": "lazy",
+                                        "objectFit": "contain"
+                                    },
+                                    "style": {
+                                        "width": {
+                                            "desktop": "100%"
+                                        },
+                                        "maxWidth": {
+                                            "desktop": "780px"
+                                        },
+                                        "height": {
+                                            "desktop": "320px",
+                                            "mobile": "210px"
+                                        },
+                                        "margin": {
+                                            "desktop": {
+                                                "left": "auto",
+                                                "right": "auto",
+                                                "top": "16px"
+                                            }
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "settings": {
+                "designCollection": "kairo",
+                "designBlock": "cta-download"
+            }
+        }
+    ]
+}

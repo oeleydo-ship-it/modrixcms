@@ -348,11 +348,228 @@ export function duplicateBlock(document: PageDocument, id: string): PageDocument
 
 export type ContainerLayout = 'stack' | 'row' | 'grid' | 'columns';
 
-/** What the palette and the block picker can add: any block type, or a ready-split Columns container. */
-export type PaletteChoice = BlockType | 'columns';
+export type ShadcnPresetChoice =
+    | 'shadcn_card'
+    | 'shadcn_alert'
+    | 'shadcn_badge'
+    | 'shadcn_accordion'
+    | 'shadcn_tabs'
+    | 'shadcn_bento'
+    | 'shadcn_pricing'
+    | 'shadcn_testimonial';
+
+export const SHADCN_PRESET_CHOICES: readonly ShadcnPresetChoice[] = [
+    'shadcn_card',
+    'shadcn_alert',
+    'shadcn_badge',
+    'shadcn_accordion',
+    'shadcn_tabs',
+    'shadcn_bento',
+    'shadcn_pricing',
+    'shadcn_testimonial',
+] as const;
+
+export const SHADCN_PRESET_LABEL: Record<ShadcnPresetChoice, string> = {
+    shadcn_card: 'Card (shadcn/ui)',
+    shadcn_alert: 'Alert Callout (shadcn/ui)',
+    shadcn_badge: 'Badge Pill (shadcn/ui)',
+    shadcn_accordion: 'Accordion (shadcn/ui)',
+    shadcn_tabs: 'Tabs (shadcn/ui)',
+    shadcn_bento: 'Bento Grid (shadcn/ui)',
+    shadcn_pricing: 'Pricing Card (shadcn/ui)',
+    shadcn_testimonial: 'Review Card (shadcn/ui)',
+};
+
+export function isShadcnPreset(choice: string): choice is ShadcnPresetChoice {
+    return (SHADCN_PRESET_CHOICES as readonly string[]).includes(choice);
+}
+
+/** What the palette and the block picker can add: any block type, a ready-split Columns container, or a shadcn/ui preset. */
+export type PaletteChoice = BlockType | 'columns' | ShadcnPresetChoice;
+
+function createShadcnBlock(preset: ShadcnPresetChoice): BlockData {
+    switch (preset) {
+        case 'shadcn_card': {
+            const card = createBlock('container');
+            const badge = createBlock('paragraph');
+            badge.name = 'Card Badge';
+            badge.props = { text: 'SHADCN/UI · COMPONENT' };
+            badge.style = {
+                fontSize: { desktop: '11px' },
+                fontWeight: { desktop: '700' },
+                letterSpacing: { desktop: '0.08em' },
+                color: { desktop: 'var(--site-primary, #4f46e5)' },
+            };
+
+            const title = createBlock('heading');
+            title.name = 'Card Title';
+            title.props = { text: 'Composable shadcn/ui Card', level: 'h3', link: null };
+            title.style = {
+                fontSize: { desktop: '22px' },
+                fontWeight: { desktop: '600' },
+                lineHeight: { desktop: '1.25' },
+            };
+
+            const body = createBlock('paragraph');
+            body.name = 'Card Description';
+            body.props = {
+                text: 'Designed with Tailwind CSS v4 utilities, Framer spring animations, and full canvas inline editing.',
+            };
+            body.style = {
+                fontSize: { desktop: '14px' },
+                color: { desktop: 'var(--site-body, #64748b)' },
+                lineHeight: { desktop: '1.6' },
+            };
+
+            const action = createBlock('button');
+            action.name = 'Card Action';
+            action.props = { ...action.props, label: 'Get started', size: 'sm', variant: 'primary' };
+
+            card.name = 'shadcn Card';
+            card.props = { layout: 'stack', gap: '12px' };
+            card.style = {
+                padding: { desktop: { top: '24px', right: '24px', bottom: '24px', left: '24px' } },
+                custom: {
+                    '--fnl-shadcn': { desktop: 'card' },
+                    '--fnl-effect': { desktop: 'reveal lift' },
+                    '--fnl-tw': { desktop: 'rounded-xl border border-slate-200/80 bg-white shadow-xs p-6' },
+                },
+            };
+            card.children = [badge, title, body, action];
+            return card;
+        }
+        case 'shadcn_alert': {
+            const alert = createBlock('container');
+            const title = createBlock('heading');
+            title.name = 'Alert Title';
+            title.props = { text: 'Heads up! Tailwind v4 & Motion are active', level: 'h4', link: null };
+            title.style = { fontSize: { desktop: '15px' }, fontWeight: { desktop: '600' } };
+
+            const body = createBlock('paragraph');
+            body.name = 'Alert Description';
+            body.props = {
+                text: 'You can customize every utility class, surface variant, and spring animation curve in the right-hand inspector.',
+            };
+            body.style = { fontSize: { desktop: '13px' }, lineHeight: { desktop: '1.55' } };
+
+            alert.name = 'shadcn Alert';
+            alert.props = { layout: 'stack', gap: '6px' };
+            alert.style = {
+                padding: { desktop: { top: '16px', right: '20px', bottom: '16px', left: '20px' } },
+                custom: {
+                    '--fnl-shadcn': { desktop: 'accent' },
+                    '--fnl-effect': { desktop: 'fade-in' },
+                    '--fnl-tw': { desktop: 'rounded-xl border p-5' },
+                },
+            };
+            alert.children = [title, body];
+            return alert;
+        }
+        case 'shadcn_badge': {
+            const badge = createBlock('paragraph');
+            badge.name = 'shadcn Badge';
+            badge.props = { text: 'New in v4.0' };
+            badge.style = {
+                display: { desktop: 'inline-flex' },
+                fontSize: { desktop: '12px' },
+                fontWeight: { desktop: '600' },
+                padding: { desktop: { top: '4px', right: '12px', bottom: '4px', left: '12px' } },
+                custom: {
+                    '--fnl-shadcn': { desktop: 'muted' },
+                    '--fnl-effect': { desktop: 'spring-pop' },
+                    '--fnl-tw': { desktop: 'rounded-full border border-slate-200 bg-slate-100/80 px-3 py-1 text-xs font-semibold tracking-tight' },
+                },
+            };
+            return badge;
+        }
+        case 'shadcn_accordion': {
+            const acc = withPanelChildren(createBlock('accordion'));
+            acc.name = 'shadcn Accordion';
+            acc.style = {
+                custom: {
+                    '--fnl-shadcn': { desktop: 'card' },
+                    '--fnl-effect': { desktop: 'reveal' },
+                    '--fnl-tw': { desktop: 'rounded-xl border border-slate-200/80 bg-white shadow-xs p-4' },
+                },
+            };
+            return acc;
+        }
+        case 'shadcn_tabs': {
+            const tabs = withPanelChildren(createBlock('tabs'));
+            tabs.name = 'shadcn Tabs';
+            tabs.style = {
+                custom: {
+                    '--fnl-shadcn': { desktop: 'card' },
+                    '--fnl-effect': { desktop: 'reveal' },
+                    '--fnl-tw': { desktop: 'rounded-xl border border-slate-200/80 bg-white shadow-xs p-6' },
+                },
+            };
+            return tabs;
+        }
+        case 'shadcn_bento': {
+            const bento = createBlock('feature_cards');
+            bento.name = 'shadcn Bento Grid';
+            bento.props = {
+                columns: 3,
+                items: [
+                    {
+                        icon: 'zap',
+                        title: 'Tailwind CSS v4',
+                        body: 'Instant utility classes and design tokens on every section, column, and block.',
+                    },
+                    {
+                        icon: 'sparkles',
+                        title: 'Spring Motion',
+                        body: 'Hardware-accelerated scroll reveals, 3D flips, and hover micro-interactions.',
+                    },
+                    {
+                        icon: 'layers',
+                        title: 'shadcn/ui Surfaces',
+                        body: 'Accessible, composable card, glass, and callout primitives ready out of the box.',
+                    },
+                ],
+            };
+            bento.style = {
+                custom: {
+                    '--fnl-effect': { desktop: 'reveal lift' },
+                    '--fnl-tw': { desktop: 'gap-6' },
+                },
+            };
+            return bento;
+        }
+        case 'shadcn_pricing': {
+            const pricing = createBlock('pricing_table');
+            pricing.name = 'shadcn Pricing';
+            pricing.style = {
+                custom: {
+                    '--fnl-effect': { desktop: 'reveal lift' },
+                },
+            };
+            return pricing;
+        }
+        case 'shadcn_testimonial': {
+            const review = createBlock('testimonial');
+            review.name = 'shadcn Review Card';
+            review.style = {
+                custom: {
+                    '--fnl-shadcn': { desktop: 'card' },
+                    '--fnl-effect': { desktop: 'reveal lift' },
+                    '--fnl-tw': { desktop: 'rounded-xl shadow-xs' },
+                },
+            };
+            return review;
+        }
+    }
+}
 
 export function createPaletteBlock(choice: PaletteChoice): BlockData {
-    return choice === 'columns' ? createColumnsBlock() : createBlock(choice);
+    if (choice === 'columns') {
+        return createColumnsBlock();
+    }
+    if (isShadcnPreset(choice)) {
+        return createShadcnBlock(choice);
+    }
+    return createBlock(choice);
 }
 
 function clampSpans(spans: readonly number[]): number[] {

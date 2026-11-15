@@ -22,6 +22,8 @@ export type StyleGroupId =
     | 'spacing'
     | 'sizing'
     | 'layout'
+    | 'motion'
+    | 'tailwind'
     | 'effects';
 
 /** Render order, so panels never disagree about where a group appears. */
@@ -32,39 +34,44 @@ export const STYLE_GROUP_ORDER: readonly StyleGroupId[] = [
     'spacing',
     'sizing',
     'layout',
+    'motion',
+    'tailwind',
     'effects',
 ];
 
-const TEXTUAL: readonly StyleGroupId[] = ['typography', 'background', 'spacing', 'sizing', 'effects'];
-const BOXED: readonly StyleGroupId[] = ['background', 'border', 'spacing', 'sizing', 'effects'];
+const TEXTUAL: readonly StyleGroupId[] = ['typography', 'background', 'spacing', 'sizing', 'motion', 'tailwind', 'effects'];
+const BOXED: readonly StyleGroupId[] = ['background', 'border', 'spacing', 'sizing', 'motion', 'tailwind', 'effects'];
 const RICH: readonly StyleGroupId[] = [
     'typography',
     'background',
     'border',
     'spacing',
     'sizing',
+    'motion',
+    'tailwind',
     'effects',
 ];
 
 export const BLOCK_STYLE_GROUPS: Record<BlockType, readonly StyleGroupId[]> = {
     // Layout
-    container: ['background', 'border', 'spacing', 'sizing', 'layout', 'effects'],
+    container: ['background', 'border', 'spacing', 'sizing', 'layout', 'motion', 'tailwind', 'effects'],
 
     // Content
-    heading: ['typography', 'background', 'spacing', 'sizing', 'effects'],
+    heading: ['typography', 'background', 'spacing', 'sizing', 'motion', 'tailwind', 'effects'],
     paragraph: TEXTUAL,
-    image: ['border', 'spacing', 'sizing', 'effects'],
-    video: ['border', 'spacing', 'sizing', 'effects'],
+    image: ['border', 'spacing', 'sizing', 'motion', 'tailwind', 'effects'],
+    video: ['border', 'spacing', 'sizing', 'motion', 'tailwind', 'effects'],
     button: RICH,
     // An icon is coloured and scaled, never line-heighted.
-    icon: ['typography', 'spacing', 'sizing', 'effects'],
+    icon: ['typography', 'spacing', 'sizing', 'motion', 'tailwind', 'effects'],
     // Thickness and style are props; the line colour is the block's text
     // colour, which lives in Typography. A border would box the block instead.
-    divider: ['typography', 'spacing', 'sizing'],
+    divider: ['typography', 'spacing', 'sizing', 'tailwind'],
     // A spacer is nothing but space.
     spacer: ['spacing', 'sizing'],
-    html: ['typography', 'background', 'border', 'spacing', 'sizing'],
-    custom_code: ['typography', 'background', 'border', 'spacing', 'sizing'],
+    html: ['typography', 'background', 'border', 'spacing', 'sizing', 'tailwind'],
+    custom_code: ['typography', 'background', 'border', 'spacing', 'sizing', 'tailwind'],
+    site_form: ['spacing', 'sizing', 'tailwind'],
 
     // Capture
     form: RICH,
@@ -74,7 +81,7 @@ export const BLOCK_STYLE_GROUPS: Record<BlockType, readonly StyleGroupId[]> = {
     // Commerce
     checkout: RICH,
     product: RICH,
-    pricing_table: ['typography', 'background', 'border', 'spacing', 'sizing', 'layout', 'effects'],
+    pricing_table: ['typography', 'background', 'border', 'spacing', 'sizing', 'layout', 'motion', 'tailwind', 'effects'],
 
     // Persuasion
     countdown: RICH,
@@ -83,16 +90,16 @@ export const BLOCK_STYLE_GROUPS: Record<BlockType, readonly StyleGroupId[]> = {
     accordion: RICH,
     tabs: RICH,
     // A bar's fill and track are colours and corners, not type.
-    progress_bar: ['background', 'border', 'spacing', 'sizing'],
-    feature_cards: ['typography', 'background', 'border', 'spacing', 'sizing', 'layout', 'effects'],
+    progress_bar: ['background', 'border', 'spacing', 'sizing', 'motion', 'tailwind'],
+    feature_cards: ['typography', 'background', 'border', 'spacing', 'sizing', 'layout', 'motion', 'tailwind', 'effects'],
 
     // Media and navigation
-    carousel: ['background', 'border', 'spacing', 'sizing', 'layout', 'effects'],
-    gallery: ['border', 'spacing', 'sizing', 'layout', 'effects'],
-    social_icons: ['typography', 'spacing', 'sizing', 'layout'],
-    navigation: ['typography', 'background', 'spacing', 'sizing', 'layout'],
-    logo: ['border', 'spacing', 'sizing'],
-    map: ['border', 'spacing', 'sizing', 'effects'],
+    carousel: ['background', 'border', 'spacing', 'sizing', 'layout', 'motion', 'tailwind', 'effects'],
+    gallery: ['border', 'spacing', 'sizing', 'layout', 'motion', 'tailwind', 'effects'],
+    social_icons: ['typography', 'spacing', 'sizing', 'layout', 'motion', 'tailwind'],
+    navigation: ['typography', 'background', 'spacing', 'sizing', 'layout', 'tailwind'],
+    logo: ['border', 'spacing', 'sizing', 'tailwind'],
+    map: ['border', 'spacing', 'sizing', 'motion', 'tailwind', 'effects'],
 
     // Scheduling
     calendar: BOXED,

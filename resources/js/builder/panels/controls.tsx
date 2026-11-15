@@ -15,6 +15,7 @@ import { Button } from '@shared/ui/Button';
 import { Field } from '@shared/ui/Field';
 import { Select } from '@shared/ui/Select';
 import { cn } from '@shared/lib/cn';
+import { siteDesignColors } from '../siteDesign';
 import {
     BREAKPOINT_CASCADE,
     BREAKPOINT_LABEL,
@@ -289,11 +290,34 @@ export function ColorControl({
     allowTransparent?: boolean;
 }) {
     const current = asString(valueAt(context.value, context.breakpoint));
-    const swatch = /^#([0-9a-f]{3}|[0-9a-f]{6})$/i.test(current) ? current : '#000000';
+    const themeColors = siteDesignColors();
+    const linked = themeColors.find((color) => color.value === current);
+    const swatch = /^#([0-9a-f]{3}|[0-9a-f]{6})$/i.test(current) ? current : linked?.color ?? '#000000';
 
     return (
         <div className="flex flex-col gap-1">
             <ControlHeader id={id} label={label} context={context} />
+            {themeColors.length > 0 && (
+                // Theme colours stay linked: the block follows later changes in Theme settings.
+                <div className="flex flex-wrap items-center gap-1" role="group" aria-label={`${label}: theme colours`}>
+                    {themeColors.map((color) => (
+                        <button
+                            key={color.name}
+                            type="button"
+                            title={`${color.label} (theme colour, stays linked)`}
+                            aria-label={`Use theme colour ${color.label}`}
+                            aria-pressed={linked?.name === color.name}
+                            onClick={() => context.onChange(withBreakpoint(context.value, context.breakpoint, color.value))}
+                            className={cn(
+                                'h-5 w-5 rounded-full border border-[var(--color-border-strong)]',
+                                linked?.name === color.name && 'ring-2 ring-[var(--color-ring)] ring-offset-1',
+                            )}
+                            style={{ background: color.color }}
+                        />
+                    ))}
+                </div>
+            )}
+            {linked && <span className="text-[length:var(--text-2xs)] text-[var(--color-text-muted)]">Theme colour: {linked.label}</span>}
             <div className="flex items-center gap-2">
                 <BufferedStyleInput
                     type="color"

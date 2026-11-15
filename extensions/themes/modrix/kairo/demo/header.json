@@ -1,0 +1,297 @@
+{
+    "schemaVersion": 1,
+    "sections": [
+        {
+            "id": "01J9KRA0000000000000000009",
+            "name": "Site Header",
+            "width": "full",
+            "sticky": true,
+            "style": {
+                "fontFamily": {
+                    "desktop": "var(--site-body-font, \"Inter\", system-ui, sans-serif)"
+                },
+                "color": {
+                    "desktop": "var(--site-heading, #0f172a)"
+                },
+                "backgroundColor": {
+                    "desktop": "var(--site-header-bg, #ffffff)"
+                },
+                "border": {
+                    "desktop": {
+                        "style": "solid",
+                        "color": "var(--site-border, #e2e8f0)",
+                        "bottom": "1px"
+                    }
+                },
+                "padding": {
+                    "desktop": {
+                        "top": "6px",
+                        "right": "24px",
+                        "bottom": "6px",
+                        "left": "24px"
+                    },
+                    "mobile": {
+                        "top": "6px",
+                        "right": "16px",
+                        "bottom": "6px",
+                        "left": "16px"
+                    }
+                },
+                "zIndex": {
+                    "desktop": "70"
+                }
+            },
+            "rows": [
+                {
+                    "id": "01J9KRA0000000000000000008",
+                    "stackBelow": "mobile",
+                    "style": {
+                        "margin": {
+                            "desktop": {
+                                "left": "auto",
+                                "right": "auto"
+                            }
+                        },
+                        "gap": {
+                            "desktop": "var(--site-grid-gap, 16px)",
+                            "mobile": "16px"
+                        },
+                        "maxWidth": {
+                            "desktop": "none"
+                        }
+                    },
+                    "columns": [
+                        {
+                            "id": "01J9KRA0000000000000000007",
+                            "span": {
+                                "desktop": 12,
+                                "tablet": 12,
+                                "mobile": 12
+                            },
+                            "style": [],
+                            "blocks": [
+                                {
+                                    "id": "01J9KRA0000000000000000006",
+                                    "type": "container",
+                                    "props": {
+                                        "layout": "columns",
+                                        "gap": "16px",
+                                        "columns": [
+                                            2,
+                                            7,
+                                            3
+                                        ],
+                                        "stackBelow": "none",
+                                        "kairoRole": "header-bar"
+                                    },
+                                    "style": {
+                                        "width": {
+                                            "desktop": "100%"
+                                        },
+                                        "minHeight": {
+                                            "desktop": "var(--site-header-height, 68px)",
+                                            "mobile": "64px"
+                                        },
+                                        "alignItems": {
+                                            "desktop": "center"
+                                        },
+                                        "maxWidth": {
+                                            "desktop": "var(--site-content-width, 1140px)"
+                                        },
+                                        "margin": {
+                                            "desktop": {
+                                                "left": "auto",
+                                                "right": "auto"
+                                            }
+                                        }
+                                    },
+                                    "children": [
+                                        {
+                                            "id": "01J9KRA0000000000000000002",
+                                            "type": "logo",
+                                            "props": {
+                                                "src": "/templates/kairo/logo.svg",
+                                                "alt": "Kairo Career",
+                                                "url": "/"
+                                            },
+                                            "style": {
+                                                "height": {
+                                                    "desktop": "34px",
+                                                    "mobile": "30px"
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "id": "01J9KRA0000000000000000001",
+                                            "type": "navigation",
+                                            "props": {
+                                                "items": [
+                                                    {
+                                                        "label": "Home",
+                                                        "url": "/"
+                                                    },
+                                                    {
+                                                        "label": "Features",
+                                                        "url": "/features"
+                                                    },
+                                                    {
+                                                        "label": "About us",
+                                                        "url": "/about"
+                                                    },
+                                                    {
+                                                        "label": "Pricing",
+                                                        "url": "/pricing"
+                                                    },
+                                                    {
+                                                        "label": "Blog",
+                                                        "url": "/articles"
+                                                    }
+                                                ],
+                                                "orientation": "horizontal",
+                                                "mobileBehaviour": "drawer"
+                                            },
+                                            "style": {
+                                                "color": {
+                                                    "desktop": "var(--site-header-text, #0f172a)"
+                                                },
+                                                "textAlign": {
+                                                    "desktop": "center"
+                                                },
+                                                "gap": {
+                                                    "desktop": "var(--site-nav-gap, 1.75rem)",
+                                                    "mobile": "8px"
+                                                },
+                                                "fontWeight": {
+                                                    "desktop": "var(--site-nav-weight, 500)"
+                                                },
+                                                "fontSize": {
+                                                    "desktop": "15px",
+                                                    "mobile": "16px"
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "id": "01J9KRA0000000000000000003",
+                                            "type": "container",
+                                            "props": {
+                                                "layout": "row",
+                                                "gap": "18px",
+                                                "kairoRole": "header-cta"
+                                            },
+                                            "style": {
+                                                "justifyContent": {
+                                                    "desktop": "flex-end"
+                                                },
+                                                "alignItems": {
+                                                    "desktop": "center"
+                                                }
+                                            },
+                                            "children": [
+                                                {
+                                                    "id": "01J9KRA0000000000000000004",
+                                                    "type": "button",
+                                                    "props": {
+                                                        "label": "Plans",
+                                                        "action": "url",
+                                                        "url": "/pricing",
+                                                        "targetStepId": null,
+                                                        "targetBlockId": null,
+                                                        "newTab": false,
+                                                        "iconLeft": null,
+                                                        "iconRight": null,
+                                                        "fullWidth": false,
+                                                        "size": "md",
+                                                        "variant": "outline"
+                                                    },
+                                                    "style": {
+                                                        "fontFamily": {
+                                                            "desktop": "var(--site-body-font, \"Inter\", system-ui, sans-serif)"
+                                                        },
+                                                        "fontSize": {
+                                                            "desktop": "15px",
+                                                            "mobile": "14.5px"
+                                                        },
+                                                        "fontWeight": {
+                                                            "desktop": "500"
+                                                        },
+                                                        "borderRadius": {
+                                                            "desktop": "var(--site-button-radius)"
+                                                        },
+                                                        "padding": {
+                                                            "desktop": {
+                                                                "top": "10px",
+                                                                "right": "14px",
+                                                                "bottom": "10px",
+                                                                "left": "14px"
+                                                            }
+                                                        },
+                                                        "backgroundColor": {
+                                                            "desktop": "transparent"
+                                                        },
+                                                        "color": {
+                                                            "desktop": "var(--site-header-text, #0f172a)"
+                                                        }
+                                                    }
+                                                },
+                                                {
+                                                    "id": "01J9KRA0000000000000000005",
+                                                    "type": "button",
+                                                    "props": {
+                                                        "label": "Contact",
+                                                        "action": "url",
+                                                        "url": "/contact",
+                                                        "targetStepId": null,
+                                                        "targetBlockId": null,
+                                                        "newTab": false,
+                                                        "iconLeft": null,
+                                                        "iconRight": "arrow-right",
+                                                        "fullWidth": false,
+                                                        "size": "md",
+                                                        "variant": "primary"
+                                                    },
+                                                    "style": {
+                                                        "fontFamily": {
+                                                            "desktop": "var(--site-body-font, \"Inter\", system-ui, sans-serif)"
+                                                        },
+                                                        "fontSize": {
+                                                            "desktop": "15px",
+                                                            "mobile": "14.5px"
+                                                        },
+                                                        "fontWeight": {
+                                                            "desktop": "var(--site-button-weight, 600)"
+                                                        },
+                                                        "borderRadius": {
+                                                            "desktop": "var(--site-button-radius)"
+                                                        },
+                                                        "padding": {
+                                                            "desktop": {
+                                                                "top": "10px",
+                                                                "right": "20px",
+                                                                "bottom": "10px",
+                                                                "left": "20px"
+                                                            }
+                                                        },
+                                                        "backgroundColor": {
+                                                            "desktop": "var(--site-primary, #4f46e5)"
+                                                        },
+                                                        "color": {
+                                                            "desktop": "var(--site-on-primary, #ffffff)"
+                                                        }
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "settings": {
+                "designCollection": "kairo",
+                "designBlock": "header"
+            }
+        }
+    ]
+}

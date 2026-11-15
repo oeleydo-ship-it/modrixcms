@@ -89,6 +89,7 @@ class PageApiController extends Controller
             'id' => (string) $page->id,
             'name' => $page->title,
             'slug' => $page->slug,
+            'role' => $page->role,
             'status' => $page->is_published && $page->published_document !== null ? 'published' : 'draft',
             'version' => $page->version,
             'document' => $this->documents->draft($page),

@@ -7,13 +7,14 @@ use App\Cms\PluginLoader;
 /** The admin sidebar: core screens, then screens added by enabled plugins. */
 class AdminNavigation
 {
-    /** @return array<int, array{label: string, items: array<int, array{title: string, url: string, active: string, icon: string}>}> */
+    /** @return array<int, array{label: string, items: array<int, array{title: string, url: string, active: bool, icon: string}>}> */
     public static function groups(): array
     {
         $groups = [
             ['label' => 'Content', 'items' => [
                 self::item('Dashboard', 'admin.dashboard', 'admin.dashboard', 'dashboard'),
                 self::item('Pages', 'admin.pages.index', 'admin.pages.*', 'page'),
+                self::item('AI generator', 'admin.ai.index', 'admin.ai.*', 'sparkles'),
                 self::item('Blog posts', 'admin.posts.index', 'admin.posts.*', 'posts'),
                 self::item('Categories', 'admin.categories.index', 'admin.categories.*', 'layers'),
             ]],
@@ -23,8 +24,10 @@ class AdminNavigation
             ]],
             ['label' => 'Settings', 'items' => [
                 self::item('General', 'admin.settings.general', 'admin.settings.general*', 'gear'),
+                self::item('Admin design', 'admin.settings.appearance', 'admin.settings.appearance*', 'sliders'),
                 self::item('SMTP', 'admin.settings.smtp', 'admin.settings.smtp*', 'mail'),
                 self::item('Logo & favicon', 'admin.settings.branding', 'admin.settings.branding*', 'image'),
+                self::item('AI API', 'admin.settings.ai', 'admin.settings.ai*', 'sparkles'),
                 self::item('My account', 'admin.account', 'admin.account*', 'user'),
             ]],
         ];

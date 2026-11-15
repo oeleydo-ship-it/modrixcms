@@ -22,10 +22,13 @@ import {
 } from '@renderer';
 import { toBuilderFunnel, type BuilderFunnel } from './funnelContext';
 
+export type PageRole = 'header' | 'footer' | null;
+
 export interface PageResponse {
     id: string;
     name: string;
     slug: string;
+    role?: PageRole;
     status: 'draft' | 'published';
     version: number;
     document: unknown;
@@ -36,6 +39,7 @@ export interface PageResponse {
 export interface LoadedPage {
     id: string;
     name: string;
+    role: PageRole;
     status: 'draft' | 'published';
     version: number;
     document: PageDocument;
@@ -50,6 +54,7 @@ export async function loadPage(pageId: string): Promise<LoadedPage> {
     return {
         id: page.id,
         name: page.name,
+        role: page.role ?? null,
         status: page.status,
         version: page.version,
         document: normaliseDocument(page.document),
@@ -569,6 +574,7 @@ export async function deleteSavedSection(id: string): Promise<void> {
 
 export interface FormOption {
     id: string;
+    slug: string;
     name: string;
     isActive: boolean;
 }
@@ -583,6 +589,7 @@ export async function listForms(): Promise<FormOption[]> {
             .filter((row) => typeof row['id'] === 'string')
             .map((row) => ({
                 id: row['id'] as string,
+                slug: typeof row['slug'] === 'string' ? row['slug'] : '',
                 name: typeof row['name'] === 'string' && row['name'] !== '' ? row['name'] : 'Untitled form',
                 isActive: row['is_active'] !== false,
             }));

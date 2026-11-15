@@ -1,0 +1,25 @@
+{
+    "name": "modrix/form-builder",
+    "type": "plugin",
+    "display_name": "Form Builder",
+    "description": "Drag-and-drop visual form builder with 18 field types, inline renaming, conditional logic, style customization, starter templates, live responsive preview, submissions inbox, email alerts, and CSV export.",
+    "version": "1.3.4",
+    "cms_version": "^1.0",
+    "author": "Modrix",
+    "license": "MIT",
+    "autoload": { "psr-4": { "Modrix\\FormBuilder\\": "src/" } },
+    "provider": "Modrix\\FormBuilder\\FormBuilderServiceProvider",
+    "routes": { "web": "routes/web.php", "admin": "routes/admin.php" },
+    "scripts": ["public/form-builder.js"],
+    "admin_navigation": [
+        { "title": "Forms", "route": "forms.index" },
+        { "title": "Submissions", "route": "submissions.index" }
+    ],
+    "settings": [
+        { "name": "default_notify_email", "label": "Default notification email", "type": "email", "default": "", "help": "Used when a form does not specify its own notification email. Requires SMTP in Settings." },
+        { "name": "default_submit_label", "label": "Default submit button label", "type": "text", "default": "Submit" },
+        { "name": "default_success_message", "label": "Default confirmation message", "type": "text", "default": "Thank you! Your submission has been received." },
+        { "name": "spam_keywords", "label": "Spam filter keywords", "type": "textarea", "default": "", "help": "Comma-separated words or phrases. Matching submissions are automatically marked as spam." },
+        { "name": "store_ip", "label": "Store submitter IP address", "type": "toggle", "default": true }
+    ]
+}

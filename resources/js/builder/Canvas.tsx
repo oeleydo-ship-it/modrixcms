@@ -33,6 +33,7 @@ import {
 import { cn } from '@shared/lib/cn';
 import { blockDraggableId, dropZoneId, type DragPayload } from './dnd';
 import { isColumnsContainer } from './tree';
+import { SiteChromeBand, siteChrome } from './siteChrome';
 
 /** Frame widths per breakpoint. Matches the media-query tiers in the renderer. */
 const FRAME_WIDTH: Record<Breakpoint, number | null> = {
@@ -272,6 +273,28 @@ export function Canvas({
         return { sections, nodes, cells: columnCells(document) };
     }, [document]);
 
+    // Blocks smaller than their own toolbar (an icon is 20px wide): the Remove button
+    // goes beside them instead of on top, where it hid the block and could not be reached.
+    const compact = useMemo(() => {
+        const ids = new Set<string>();
+        const walk = (blocks: SectionData['rows'][number]['columns'][number]['blocks']): void => {
+            for (const block of blocks) {
+                if (block.type === 'icon') {
+                    ids.add(block.id);
+                }
+                walk(block.children ?? []);
+            }
+        };
+        for (const section of document.sections) {
+            for (const row of section.rows) {
+                for (const column of row.columns) {
+                    walk(column.blocks);
+                }
+            }
+        }
+        return ids;
+    }, [document]);
+
     const slots = useMemo(
         () => ({
             wrapNode: (ref: NodeRef, element: ReactNode): ReactNode => {
@@ -321,7 +344,7 @@ export function Canvas({
                 }
 
                 return (
-                    <div className="fnl-block-wrap" key={ref.id}>
+                    <div className={cn('fnl-block-wrap', compact.has(ref.id) && 'fnl-block-wrap--compact')} key={ref.id}>
                         <DropBefore blockId={ref.id} />
                         <BlockDragHandle blockId={ref.id} />
                         <NodeTools label="this block" onDelete={() => onDeleteBlock(ref.id)} />
@@ -349,7 +372,7 @@ export function Canvas({
             pageAppend: (): ReactNode =>
                 previewing ? null : <PageEnd onAppendSection={onInsertSections ? () => setInsertion({ beforeId: null }) : onAppendSection} />,
         }),
-        [previewing, onAppendToColumn, onSetColumns, onAppendToBlock, onDeleteBlock, onAppendSection, onInsertSections, locked, selected, onSelect],
+        [previewing, onAppendToColumn, onSetColumns, onAppendToBlock, onDeleteBlock, onAppendSection, onInsertSections, locked, compact, selected, onSelect],
     );
 
     const width = FRAME_WIDTH[breakpoint];
@@ -371,6 +394,8 @@ export function Canvas({
                 data-breakpoint={breakpoint}
             >
                 <FunnelProvider value={runtime}>
+                    {/* The shared site header and footer, locked: they are edited on their own screen. */}
+                    <SiteChromeBand part={siteChrome().header} label="header" document={document} breakpoint={breakpoint} />
                     <PageRenderer
                         document={document}
                         mode={previewing ? 'static' : 'editable'}
@@ -380,6 +405,7 @@ export function Canvas({
                         onBlockPropsChange={previewing ? undefined : onBlockPropsChange}
                         slots={previewing ? undefined : slots}
                     />
+                    <SiteChromeBand part={siteChrome().footer} label="footer" document={document} breakpoint={breakpoint} />
                 </FunnelProvider>
             </div>
         </div>

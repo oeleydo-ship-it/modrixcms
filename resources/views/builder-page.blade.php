@@ -19,12 +19,17 @@
     <link rel="icon" href="{{ $settings->fileUrl('favicon') ?? asset('favicon.svg') }}">
     @viteReactRefresh
     @vite(['resources/js/builder-page.tsx'])
+    @siteDesign
+    <style>body{margin:0;background:var(--site-background);color:var(--site-body);font-family:var(--site-body-font)}</style>
     @hook('head')
 </head>
 <body>
     @hook('body.start')
     <div id="public-page"></div>
     <script id="published-document" type="application/json">@json($document, JSON_HEX_TAG | JSON_HEX_AMP | JSON_UNESCAPED_SLASHES)</script>
+    @if(!empty($runtime))
+    <script id="published-runtime" type="application/json">@json($runtime, JSON_HEX_TAG | JSON_HEX_AMP | JSON_UNESCAPED_SLASHES)</script>
+    @endif
     @hook('body.end')
 </body>
 </html>

@@ -19,14 +19,31 @@ import {
     type BlockGroup,
 } from '@renderer';
 import { paletteDraggableId, type DragPayload } from '../dnd';
-import type { PaletteChoice } from '../tree';
+import {
+    SHADCN_PRESET_CHOICES,
+    SHADCN_PRESET_LABEL,
+    isShadcnPreset,
+    type PaletteChoice,
+} from '../tree';
 
-const label = (choice: PaletteChoice): string => (choice === 'columns' ? 'Columns' : BLOCK_LABEL[choice]);
+const label = (choice: PaletteChoice): string => {
+    if (choice === 'columns') {
+        return 'Columns';
+    }
+    if (isShadcnPreset(choice)) {
+        return SHADCN_PRESET_LABEL[choice];
+    }
+    return BLOCK_LABEL[choice];
+};
 
-const GROUP_ORDER: readonly (BlockGroup | 'navigation')[] = [
+type PaletteGroupKey = BlockGroup | 'navigation' | 'shadcn';
+
+const GROUP_ORDER: readonly PaletteGroupKey[] = [
+    'shadcn',
     'navigation',
     'layout',
     'content',
+    'code',
     'capture',
     'commerce',
     'persuasion',
@@ -77,18 +94,32 @@ export function Palette({ onAdd }: { onAdd: (type: PaletteChoice) => void }) {
 
     const groups = useMemo(() => {
         const needle = query.trim().toLowerCase();
-        return GROUP_ORDER.map((group) => ({
-            group,
-            types: [...(group === 'layout' ? (['columns'] as const) : []), ...PALETTE_BLOCK_TYPES].filter(
-                (type) =>
-                    (type === 'columns'
-                        ? group === 'layout'
-                        : group === 'navigation'
-                          ? ['navigation', 'logo'].includes(type)
-                          : BLOCK_GROUP[type] === group && !['navigation', 'logo'].includes(type)) &&
-                    (needle === '' || label(type).toLowerCase().includes(needle)),
-            ) as PaletteChoice[],
-        })).filter((entry) => entry.types.length > 0);
+        return GROUP_ORDER.map((group) => {
+            const candidates: PaletteChoice[] =
+                group === 'shadcn'
+                    ? [...SHADCN_PRESET_CHOICES]
+                    : [
+                          ...(group === 'layout' ? (['columns'] as const) : []),
+                          ...PALETTE_BLOCK_TYPES,
+                      ];
+
+            return {
+                group,
+                types: candidates.filter(
+                    (type) =>
+                        (group === 'shadcn'
+                            ? isShadcnPreset(type)
+                            : type === 'columns'
+                              ? group === 'layout'
+                              : isShadcnPreset(type)
+                                ? false
+                                : group === 'navigation'
+                                  ? ['navigation', 'logo'].includes(type)
+                                  : BLOCK_GROUP[type] === group && !['navigation', 'logo'].includes(type)) &&
+                        (needle === '' || label(type).toLowerCase().includes(needle)),
+                ),
+            };
+        }).filter((entry) => entry.types.length > 0);
     }, [query]);
 
     return (
@@ -96,7 +127,7 @@ export function Palette({ onAdd }: { onAdd: (type: PaletteChoice) => void }) {
             <SearchInput
                 value={query}
                 onValueChange={setQuery}
-                placeholder="Find a block"
+                placeholder="Find a block or shadcn component"
                 aria-label="Find a block"
                 size="sm"
             />
@@ -108,8 +139,8 @@ export function Palette({ onAdd }: { onAdd: (type: PaletteChoice) => void }) {
                     </p>
                 ) : (
                     groups.map(({ group, types }) => (
-                        <details key={`${group}-${Boolean(query)}`} className="fnl-library-group" open={Boolean(query) || group === 'navigation' || group === 'layout'}>
-                            <summary>{group === 'navigation' ? 'Navigation' : BLOCK_GROUP_LABEL[group]}<span>{types.length}</span></summary>
+                        <details key={`${group}-${Boolean(query)}`} className="fnl-library-group" open={Boolean(query) || group === 'shadcn' || group === 'navigation' || group === 'layout'}>
+                            <summary>{group === 'shadcn' ? 'shadcn/ui Components' : group === 'navigation' ? 'Navigation' : BLOCK_GROUP_LABEL[group]}<span>{types.length}</span></summary>
                             <ul className="flex flex-col gap-1">
                                 {types.map((type) => (
                                     <PaletteItem key={type} type={type} onAdd={onAdd} />

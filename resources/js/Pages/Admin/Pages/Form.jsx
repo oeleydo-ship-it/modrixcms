@@ -16,6 +16,8 @@ export default function PageForm({ page, builder }) {
         is_published: page.is_published,
         is_home: page.is_home,
         show_in_menu: page.show_in_menu,
+        show_site_header: page.show_site_header ?? true,
+        show_site_footer: page.show_site_footer ?? true,
         menu_order: page.menu_order ?? 0,
         meta_title: page.meta_title ?? '',
         meta_description: page.meta_description ?? '',
@@ -77,14 +79,14 @@ export default function PageForm({ page, builder }) {
                         <div className="panel">
                             <div className="row">
                                 <Field form={form} name="title" label="Page name" help="Shown in the admin and in menus.">
-                                    <input id="field-title" value={form.data.title} required onChange={(e) => {
+                                    <input id="field-title" type="text" value={form.data.title} placeholder="e.g. Home" required onChange={(e) => {
                                         setDirty(true);
                                         const title = e.target.value;
                                         form.setData((data) => ({ ...data, title, slug: slugTouched ? data.slug : slugify(title) }));
                                     }} />
                                 </Field>
                                 <Field form={form} name="slug" label="URL" help={page.is_home ? 'The home page is always shown at /.' : 'Leave empty to build it from the name.'}>
-                                    <div className="slug-prefix"><span>/</span><input id="field-slug" value={form.data.slug} onChange={(e) => { setSlugTouched(e.target.value !== ''); change('slug', e.target.value); }} /></div>
+                                    <div className="slug-prefix"><span>/</span><input id="field-slug" type="text" value={form.data.slug} placeholder="page-slug" autoComplete="off" onChange={(e) => { setSlugTouched(e.target.value !== ''); change('slug', e.target.value); }} /></div>
                                 </Field>
                             </div>
                         </div>
@@ -112,9 +114,16 @@ export default function PageForm({ page, builder }) {
                         <ConvertPanel page={page} dirty={dirty} />
                         <div className="panel pb-panel">
                             <h2>Page builder</h2>
-                            <p className="hint">Add blocks, drag ⋮⋮ to reorder, click a block to edit it. Hidden blocks stay here but aren’t shown on the site.</p>
-                            <PageBuilder blocks={form.data.blocks} onChange={(blocks) => change('blocks', blocks)}
-                                definitions={builder.blocks} icons={builder.icons} uploadUrl={route('admin.builder.images')} />
+                            <p className="hint">Add blocks, apply ready-made section presets, drag ⋮⋮ to reorder, or click a block to customize its fields and layout options.</p>
+                            <PageBuilder
+                                blocks={form.data.blocks}
+                                onChange={(blocks) => change('blocks', blocks)}
+                                definitions={builder.blocks}
+                                icons={builder.icons}
+                                categories={builder.categories}
+                                presets={builder.presets}
+                                uploadUrl={route('admin.builder.images')}
+                            />
                         </div>
                         </>
                         )}
@@ -127,6 +136,10 @@ export default function PageForm({ page, builder }) {
                             <Check form={form} name="is_published" label="Published" />
                             <Check form={form} name="is_home" label="Use as the home page" />
                             <Check form={form} name="show_in_menu" label="Show in site menu" />
+                            {page.editor === 'builder' ? <>
+                                <Check form={form} name="show_site_header" label="Show the site header" />
+                                <Check form={form} name="show_site_footer" label="Show the site footer" />
+                            </> : null}
                             <Field form={form} name="menu_order" label="Menu position" type="number" min={0} />
                             <button className="btn" type="submit" disabled={form.processing}>{exists ? 'Save page' : 'Create page'}</button>
                         </div>

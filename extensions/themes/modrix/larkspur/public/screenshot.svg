@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" role="img" aria-label="Larkspur Family Health theme preview">
+  <defs>
+    <linearGradient id="ov" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0c2b3b" stop-opacity=".35"/><stop offset="1" stop-color="#0c2b3b" stop-opacity=".9"/></linearGradient>
+    <linearGradient id="ph" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#9fb8c4"/><stop offset=".55" stop-color="#c9d6d0"/><stop offset="1" stop-color="#7e9aa8"/></linearGradient>
+  </defs>
+  <rect width="1200" height="800" fill="#ffffff"/>
+  <rect width="1200" height="36" fill="#a3bfdb"/>
+  <text x="600" y="23" text-anchor="middle" font-family="Mulish, Arial, sans-serif" font-size="13" fill="#15394c">Flu and COVID boosters now available  |  Not an emergency service  |  (555) 310-4477</text>
+  <g transform="translate(48 52)" fill="#1a6083"><path d="M16 30V13" stroke="#1a6083" stroke-width="2"/><ellipse cx="16" cy="6.5" rx="3.2" ry="4.5"/><ellipse cx="10.2" cy="11.5" rx="2.8" ry="4" transform="rotate(-38 10.2 11.5)"/><ellipse cx="21.8" cy="11.5" rx="2.8" ry="4" transform="rotate(38 21.8 11.5)"/><text x="38" y="23" font-family="Arial, sans-serif" font-size="22">Larkspur</text></g>
+  <g font-family="Arial, sans-serif" font-size="15" fill="#2f2f2f"><text x="400" y="74">Services</text><text x="485" y="74">Clinicians</text><text x="580" y="74">Locations</text><text x="672" y="74">Fees &amp; insurance</text><text x="800" y="74">New patients</text></g>
+  <rect x="1000" y="52" width="152" height="40" rx="20" fill="#1a6083"/><text x="1050" y="77" text-anchor="middle" font-family="Arial, sans-serif" font-size="15" fill="#fff">Book a visit</text><circle cx="1132" cy="72" r="14" fill="#fff"/>
+  <rect y="108" width="1200" height="452" fill="url(#ph)"/>
+  <rect x="80" y="180" width="300" height="200" fill="#e8ece6" opacity=".7"/><rect x="760" y="250" width="360" height="160" rx="10" fill="#d9cdb8" opacity=".8"/>
+  <rect y="108" width="1200" height="452" fill="url(#ov)"/>
+  <text x="48" y="420" font-family="Arial, sans-serif" font-size="62" fill="#ffffff">Same-day care for every</text>
+  <text x="48" y="488" font-family="Arial, sans-serif" font-size="62" fill="#ffffff">age in your home</text>
+  <rect x="48" y="512" width="150" height="40" rx="20" fill="#ffffff"/><rect x="214" y="512" width="200" height="40" rx="20" fill="none" stroke="#ffffff" stroke-opacity=".6"/>
+  <rect y="560" width="1200" height="44" fill="#a3bfdb"/>
+  <text x="40" y="588" font-family="Arial, sans-serif" font-size="15" fill="#15394c">Welcoming new patients   ✦   Same-day sick visits   ✦   Video visits 7 am to 9 pm   ✦   Late hours Tue and Thu   ✦   Most insurance accepted</text>
+  <rect x="48" y="640" width="130" height="28" rx="14" fill="#fff" stroke="#e1e4e8"/><circle cx="64" cy="654" r="9" fill="#a3bfdb"/><circle cx="64" cy="654" r="4" fill="#1a6083"/>
+  <text x="48" y="720" font-family="Arial, sans-serif" font-size="40" fill="#1a6083">Visit in person, call, <tspan fill="#4b545d">or see us on video</tspan></text>
+  <rect x="48" y="744" width="420" height="80" rx="24" fill="#c9d6d0"/><rect x="490" y="744" width="662" height="80" rx="16" fill="#eef3f8"/>
+</svg>

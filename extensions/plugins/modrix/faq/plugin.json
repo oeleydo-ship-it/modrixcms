@@ -1,0 +1,22 @@
+{
+    "name": "modrix/faq",
+    "type": "plugin",
+    "display_name": "FAQ & Help Center",
+    "description": "Categorized FAQ knowledge base with searchable accordion block, Markdown answers, helpfulness voting, and FAQPage JSON-LD schema.",
+    "version": "1.0.0",
+    "cms_version": "^1.0",
+    "author": "Modrix",
+    "license": "MIT",
+    "autoload": { "psr-4": { "Modrix\\Faq\\": "src/" } },
+    "provider": "Modrix\\Faq\\FaqServiceProvider",
+    "routes": { "web": "routes/web.php", "admin": "routes/admin.php" },
+    "scripts": ["public/faq.js"],
+    "admin_navigation": [
+        { "title": "FAQs", "route": "items.index" }
+    ],
+    "settings": [
+        { "name": "enable_schema", "label": "Output FAQPage JSON-LD schema", "type": "toggle", "default": true },
+        { "name": "allow_voting", "label": "Allow helpfulness voting", "type": "toggle", "default": true },
+        { "name": "allow_multiple_open", "label": "Allow multiple questions open at once", "type": "toggle", "default": false }
+    ]
+}

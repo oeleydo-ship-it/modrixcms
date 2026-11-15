@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 400" fill="none" width="420" height="400">
+  <rect width="420" height="400" rx="24" fill="#F7F7F8"/>
+  <rect x="28" y="34" width="364" height="162" rx="18" fill="#FFFFFF" stroke="#EAEAEA"/>
+  <text x="52" y="72" font-family="Inter, sans-serif" font-size="13" font-weight="700" fill="#0C0407">Global Talent Velocity</text>
+  <text x="52" y="92" font-family="Inter, sans-serif" font-size="11" fill="#666666">Median days from first match to offer</text>
+  <rect x="52" y="114" width="316" height="12" rx="6" fill="#EEF4FF"/>
+  <rect x="52" y="114" width="234" height="12" rx="6" fill="#0066FF"/>
+  <text x="52" y="156" font-family="Inter, sans-serif" font-size="22" font-weight="700" fill="#0066FF">2.8x faster</text>
+  <text x="184" y="156" font-family="Inter, sans-serif" font-size="12" fill="#666666">than cold job boards</text>
+
+  <rect x="28" y="214" width="174" height="152" rx="18" fill="#0C0407"/>
+  <text x="48" y="266" font-family="Inter, sans-serif" font-size="28" font-weight="700" fill="#FFFFFF">99.2%</text>
+  <text x="48" y="294" font-family="Inter, sans-serif" font-size="11" fill="#CBD5E1">Salary transparency</text>
+  <text x="48" y="312" font-family="Inter, sans-serif" font-size="11" fill="#CBD5E1">across verified teams</text>
+
+  <rect x="218" y="214" width="174" height="152" rx="18" fill="#FFFFFF" stroke="#EAEAEA"/>
+  <circle cx="256" cy="256" r="18" fill="#DCFCE7"/>
+  <path d="M248 256L253 261L264 249" stroke="#16A34A" stroke-width="2.4" stroke-linecap="round"/>
+  <text x="240" y="302" font-family="Inter, sans-serif" font-size="15" font-weight="700" fill="#0C0407">Human First</text>
+  <text x="240" y="324" font-family="Inter, sans-serif" font-size="11" fill="#666666">Real recruiter updates</text>
+</svg>

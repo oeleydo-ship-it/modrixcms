@@ -1,5 +1,5 @@
 import { Link, usePage } from '@inertiajs/react';
-import AdminLayout from '@/cms/admin/AdminLayout';
+import AdminLayout, { ReferenceEmptyArt } from '@/cms/admin/AdminLayout';
 import { PostStatus } from './Posts/Index';
 
 export default function Dashboard({ stats, recentPosts, recentPages }) {
@@ -31,7 +31,18 @@ export default function Dashboard({ stats, recentPosts, recentPages }) {
                                         <td><PostStatus status={post.status} /></td>
                                     </tr>
                                 )) : (
-                                    <tr><td className="empty">No posts yet. <Link href={route('admin.posts.create')}>Write the first one</Link>.</td></tr>
+                                    <tr>
+                                        <td className="empty">
+                                            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '16px 0' }}>
+                                                <ReferenceEmptyArt />
+                                                <strong style={{ color: 'var(--ink)', fontSize: 14, marginBottom: 4 }}>Your blog posts will show here</strong>
+                                                <span>No posts yet. <Link href={route('admin.posts.create')}>Write the first one</Link>.</span>
+                                                <div style={{ marginTop: 14 }}>
+                                                    <Link className="btn" href={route('admin.posts.create')}>Create post</Link>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
                                 )}
                             </tbody>
                         </table>
@@ -45,7 +56,20 @@ export default function Dashboard({ stats, recentPosts, recentPages }) {
                         <tbody>
                             {recentPages.length ? recentPages.map((page) => (
                                 <tr key={page.id}><td className="title"><Link href={route('admin.pages.edit', page.id)}>{page.title}</Link><div className="sub">/{page.slug}</div></td></tr>
-                            )) : <tr><td className="empty">No pages yet.</td></tr>}
+                            )) : (
+                                <tr>
+                                    <td className="empty">
+                                        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '16px 0' }}>
+                                            <ReferenceEmptyArt />
+                                            <strong style={{ color: 'var(--ink)', fontSize: 14, marginBottom: 4 }}>Your pages will show here</strong>
+                                            <span>No pages yet.</span>
+                                            <div style={{ marginTop: 14 }}>
+                                                <Link className="btn" href={route('admin.pages.create')}>Create page</Link>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            )}
                         </tbody>
                     </table>
                 </div>

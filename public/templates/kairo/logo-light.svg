@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 132 36" fill="none" width="132" height="36">
+  <rect x="2" y="4" width="28" height="28" rx="8" fill="#0066FF"/>
+  <path d="M16 10.5C17.1 14.3 18.7 15.9 22.5 17C18.7 18.1 17.1 19.7 16 23.5C14.9 19.7 13.3 18.1 9.5 17C13.3 15.9 14.9 14.3 16 10.5Z" fill="#FFFFFF"/>
+  <circle cx="21.5" cy="11.5" r="1.4" fill="#FFFFFF" opacity="0.85"/>
+  <text x="39" y="25" font-family="Inter, system-ui, -apple-system, sans-serif" font-size="22" font-weight="700" letter-spacing="-0.03em" fill="#FFFFFF">Kairo</text>
+</svg>

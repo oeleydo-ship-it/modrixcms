@@ -2,8 +2,11 @@ import { useState } from 'react';
 import { Link, useForm } from '@inertiajs/react';
 import AdminLayout from '@/cms/admin/AdminLayout';
 import { Field, FileField, slugify } from '@/cms/admin/forms';
+import RichTextEditor from '@/cms/admin/RichTextEditor';
+import PostSeoPanel from '@/cms/admin/PostSeoPanel';
+import { PostAiWriter } from '@/cms/admin/PostAi';
 
-export default function PostForm({ post, categories, blogUrl }) {
+export default function PostForm({ post, categories, blogUrl, siteName, aiConfigured }) {
     const exists = post.id !== null;
     const [slugTouched, setSlugTouched] = useState(Boolean(post.slug));
     const form = useForm({
@@ -15,6 +18,13 @@ export default function PostForm({ post, categories, blogUrl }) {
         published_at: post.published_at ?? '',
         category_id: post.category_id ?? '',
         meta_description: post.meta_description ?? '',
+        meta_title: post.meta_title ?? '',
+        focus_keyword: post.focus_keyword ?? '',
+        canonical_url: post.canonical_url ?? '',
+        noindex: Boolean(post.noindex),
+        og_title: post.og_title ?? '',
+        og_description: post.og_description ?? '',
+        og_image: post.og_image ?? '',
         cover_image: null,
         remove_cover: false,
         _method: exists ? 'put' : 'post',
@@ -39,17 +49,20 @@ export default function PostForm({ post, categories, blogUrl }) {
         >
             <form onSubmit={submit}>
                 <div className="grid-2">
+                    <div>
+                    <PostAiWriter form={form} aiConfigured={aiConfigured} hasContent={form.data.content.replace(/<[^>]*>/g, '').trim() !== ''} />
                     <div className="panel">
                         <Field form={form} name="title" label="Title" required>
-                            <input id="field-title" value={form.data.title} onChange={(e) => setTitle(e.target.value)} required />
+                            <input id="field-title" type="text" value={form.data.title} onChange={(e) => setTitle(e.target.value)} required />
                         </Field>
                         <Field form={form} name="slug" label="URL" help="Leave empty to build it from the title.">
-                            <div className="slug-prefix"><span>{blogUrl}/</span><input id="field-slug" value={form.data.slug} onChange={(e) => { setSlugTouched(e.target.value !== ''); form.setData('slug', e.target.value); }} /></div>
+                            <div className="slug-prefix"><span>{blogUrl}/</span><input id="field-slug" type="text" value={form.data.slug} autoComplete="off" onChange={(e) => { setSlugTouched(e.target.value !== ''); form.setData('slug', e.target.value); }} /></div>
                         </Field>
                         <Field form={form} name="excerpt" label="Excerpt" type="textarea" rows={3} maxLength={500} help="Short summary for the blog list and social sharing." />
-                        <Field form={form} name="content" label="Content" type="textarea" className="editor-field" help="Markdown: ## Heading, **bold**, *italic*, [link](https://…), - list items, `code`." >
-                            <textarea id="field-content" className="editor" value={form.data.content} onChange={(e) => form.setData('content', e.target.value)} />
+                        <Field form={form} name="content" label="Content" className="editor-field">
+                            <RichTextEditor value={form.data.content} onChange={(html) => form.setData('content', html)} />
                         </Field>
+                    </div>
                     </div>
 
                     <div>
@@ -79,10 +92,7 @@ export default function PostForm({ post, categories, blogUrl }) {
                             <FileField form={form} name="cover_image" accept="image/jpeg,image/png,image/webp" />
                         </div>
 
-                        <div className="panel">
-                            <h2>SEO</h2>
-                            <Field form={form} name="meta_description" label="Meta description" type="textarea" rows={3} maxLength={300} help="Defaults to the excerpt." />
-                        </div>
+                        <PostSeoPanel form={form} post={post} blogUrl={blogUrl} siteName={siteName} />
                     </div>
                 </div>
             </form>

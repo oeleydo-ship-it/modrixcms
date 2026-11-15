@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 460 380" fill="none" width="460" height="380">
+  <defs>
+    <filter id="wtSh" x="0" y="0" width="460" height="380" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="0" dy="14" stdDeviation="16" flood-color="#0C0407" flood-opacity="0.1"/>
+    </filter>
+    <linearGradient id="portraitBg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#E2E8F0"/>
+      <stop offset="100%" stop-color="#CBD5E1"/>
+    </linearGradient>
+  </defs>
+  <!-- Editorial studio backdrop -->
+  <rect x="20" y="18" width="420" height="344" rx="24" fill="url(#portraitBg)"/>
+  <!-- Friendly stylized editorial portrait silhouette -->
+  <circle cx="240" cy="146" r="56" fill="#0C0407"/>
+  <circle cx="240" cy="152" r="46" fill="#FDBA74"/>
+  <path d="M196 140C204 114 276 114 284 140C272 126 208 126 196 140Z" fill="#0C0407"/>
+  <circle cx="224" cy="152" r="4" fill="#0C0407"/>
+  <circle cx="256" cy="152" r="4" fill="#0C0407"/>
+  <path d="M228 170C234 177 246 177 252 170" stroke="#0C0407" stroke-width="3" stroke-linecap="round"/>
+  <path d="M138 362C146 266 190 226 240 226C290 226 334 266 342 362H138Z" fill="#1E293B"/>
+  <path d="M214 226L240 264L266 226H214Z" fill="#FFFFFF"/>
+
+  <!-- Top floating interview status pill -->
+  <g transform="translate(34 44)" filter="url(#wtSh)">
+    <rect x="0" y="0" width="234" height="58" rx="16" fill="#FFFFFF"/>
+    <circle cx="28" cy="29" r="14" fill="#DCFCE7"/>
+    <path d="M22 29L26 33L34 24" stroke="#16A34A" stroke-width="2.2" stroke-linecap="round"/>
+    <text x="52" y="26" font-family="Inter, sans-serif" font-size="12" font-weight="700" fill="#0C0407">Software Engineer</text>
+    <text x="52" y="42" font-family="Inter, sans-serif" font-size="10" font-weight="600" fill="#16A34A">Final Interview Stage</text>
+  </g>
+
+  <!-- Bottom Electric Blue Opportunities card -->
+  <g transform="translate(178 242)" filter="url(#wtSh)">
+    <rect x="0" y="0" width="244" height="92" rx="18" fill="#0066FF"/>
+    <circle cx="34" cy="34" r="14" fill="#FFFFFF" fill-opacity="0.22"/>
+    <path d="M35 26L29 35H35L33 42L39 33H33L35 26Z" fill="#FFFFFF"/>
+    <text x="58" y="34" font-family="Inter, sans-serif" font-size="17" font-weight="700" fill="#FFFFFF">1,200+ Roles</text>
+    <text x="58" y="54" font-family="Inter, sans-serif" font-size="11.5" fill="#DBEAFE">Curated matches added daily</text>
+    <text x="20" y="76" font-family="Inter, sans-serif" font-size="9.5" font-weight="600" fill="#FFFFFF">Verified Employers · Direct Responses →</text>
+  </g>
+</svg>

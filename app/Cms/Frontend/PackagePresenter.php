@@ -4,6 +4,7 @@ namespace App\Cms\Frontend;
 
 use App\Cms\Cms;
 use App\Cms\Extensions\Package;
+use App\Cms\Themes\ThemeDemo;
 use App\Models\Extension;
 
 /** Themes and plugins as props for the admin screens. */
@@ -43,7 +44,9 @@ class PackagePresenter
         return self::base($theme) + [
             'active' => $theme->name === $active,
             'isDefault' => $theme->name === config('cms.default_theme'),
+            'designUrl' => route('admin.themes.design', explode('/', $theme->name)),
             'needsTrust' => ! $theme->isTrusted() && $theme->hasScripts(),
+            'demo' => app(ThemeDemo::class)->summary($theme),
             'screenshot' => $screenshot && is_file($theme->manifest->file($screenshot))
                 ? Cms::publicUrl(Extension::THEME, $theme->name, $screenshot)
                 : null,

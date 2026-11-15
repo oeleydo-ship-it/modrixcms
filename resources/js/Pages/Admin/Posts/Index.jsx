@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import { Link, router } from '@inertiajs/react';
-import AdminLayout from '@/cms/admin/AdminLayout';
+import AdminLayout, { ReferenceEmptyArt } from '@/cms/admin/AdminLayout';
 import { DangerButton, Pager } from '@/cms/admin/forms';
+import { AutoBlogPanel } from '@/cms/admin/PostAi';
 
 export function PostStatus({ status }) {
     const tone = { Published: 'green', Scheduled: 'purple' }[status] ?? 'gray';
@@ -9,7 +10,8 @@ export function PostStatus({ status }) {
     return <span className={`badge ${tone}`}>{status}</span>;
 }
 
-export default function PostsIndex({ posts, categories, filters }) {
+export default function PostsIndex({ posts, categories, filters, aiConfigured }) {
+    const [autoOpen, setAutoOpen] = useState(false);
     const [q, setQ] = useState(filters.q ?? '');
     const [category, setCategory] = useState(filters.category ?? '');
 
@@ -23,10 +25,13 @@ export default function PostsIndex({ posts, categories, filters }) {
             title="Blog posts"
             subtitle="Write, schedule and publish articles."
             actions={<>
+                <button type="button" className="btn btn-light" onClick={() => setAutoOpen((open) => !open)}>✦ AI auto blog</button>
                 <Link className="btn btn-light" href={route('admin.categories.index')}>Categories</Link>
                 <Link className="btn" href={route('admin.posts.create')}>New post</Link>
             </>}
         >
+            {autoOpen ? <AutoBlogPanel categories={categories} aiConfigured={aiConfigured} onClose={() => setAutoOpen(false)} /> : null}
+
             <div className="panel">
                 <form className="toolbar" onSubmit={filter}>
                     <input type="search" value={q} onChange={(e) => setQ(e.target.value)} placeholder="Search posts…" />
@@ -55,7 +60,18 @@ export default function PostsIndex({ posts, categories, filters }) {
                                         </div>
                                     </td>
                                 </tr>
-                            )) : <tr><td colSpan={5} className="empty">No posts found.</td></tr>}
+                            )) : (
+                                <tr>
+                                    <td colSpan={5} className="empty">
+                                        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '24px 0' }}>
+                                            <ReferenceEmptyArt />
+                                            <strong style={{ color: 'var(--ink)', fontSize: 15, marginBottom: 4 }}>Your blog posts will show here</strong>
+                                            <span style={{ maxWidth: 320, marginBottom: 14 }}>No posts found. This is where you’ll write, schedule, and publish articles for your store.</span>
+                                            <Link className="btn" href={route('admin.posts.create')}>Create post</Link>
+                                        </div>
+                                    </td>
+                                </tr>
+                            )}
                         </tbody>
                     </table>
                 </div>

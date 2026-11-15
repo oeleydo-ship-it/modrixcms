@@ -2,14 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Cms\Builder\SiteChrome;
 use App\Cms\Frontend\BlockPresenter;
 use App\Cms\Hooks;
+use App\Http\Controllers\Builder\FormApiController;
 use App\Models\Page;
 use App\Support\Settings;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 use Inertia\Inertia;
 use Inertia\Response;
+use Modrix\FormBuilder\Models\Form;
 use Symfony\Component\HttpFoundation\Response as SymfonyResponse;
 
 class PageController extends Controller
@@ -49,6 +52,64 @@ class PageController extends Controller
             return Inertia::location(request()->fullUrl());
         }
 
-        return view('builder-page', ['page' => $page, 'document' => $page->published_document]);
+        // The site header and footer (if published and switched on for this page) go around it.
+        $document = app(SiteChrome::class)->wrap($page, $page->published_document ?? []);
+        $runtime = self::builderRuntime($document);
+
+        return view('builder-page', [
+            'page' => $page,
+            'document' => $document,
+            'runtime' => $runtime,
+        ]);
+    }
+
+    /**
+     * @param  array<string, mixed>  $document
+     * @return array<string, mixed>|null
+     */
+    private static function builderRuntime(array $document): ?array
+    {
+        if (! FormApiController::isPluginEnabled()) {
+            return null;
+        }
+
+        $formIds = [];
+        $collect = function (array $blocks) use (&$collect, &$formIds): void {
+            foreach ($blocks as $block) {
+                if (! is_array($block)) {
+                    continue;
+                }
+                $formId = $block['props']['formId'] ?? null;
+                if (is_string($formId) && $formId !== '') {
+                    $formIds[] = $formId;
+                }
+                if (is_array($block['children'] ?? null)) {
+                    $collect($block['children']);
+                }
+            }
+        };
+
+        foreach ($document['sections'] ?? [] as $section) {
+            foreach ($section['rows'] ?? [] as $row) {
+                foreach ($row['columns'] ?? [] as $column) {
+                    $collect($column['blocks'] ?? []);
+                }
+            }
+        }
+
+        $formIds = array_values(array_unique($formIds));
+
+        if ($formIds === []) {
+            return null;
+        }
+
+        $forms = Form::query()
+            ->active()
+            ->whereIn('id', $formIds)
+            ->get()
+            ->mapWithKeys(fn (Form $form): array => [(string) $form->id => FormApiController::serializeForm($form)])
+            ->all();
+
+        return ['forms' => $forms];
     }
 }

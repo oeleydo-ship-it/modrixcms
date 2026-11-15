@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="216" height="44" viewBox="0 0 216 44" role="img" aria-label="Meridian Advisory">
+  <g transform="translate(2 4)">
+    <circle cx="18" cy="18" r="15.5" fill="none" stroke="#15241b" stroke-width="2.2"/>
+    <ellipse cx="18" cy="18" rx="7.5" ry="15.5" fill="none" stroke="#15241b" stroke-width="1.6"/>
+    <path d="M2.5 18h31" stroke="#15241b" stroke-width="1.6"/>
+    <path d="M18 2l3.4 9.6L31 15l-9.6 3.4L18 28l-3.4-9.6L5 15l9.6-3.4z" fill="#b98b43"/>
+  </g>
+  <text x="48" y="29" fill="#15241b" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="22" font-weight="600" letter-spacing="-0.03em">meridian</text>
+</svg>

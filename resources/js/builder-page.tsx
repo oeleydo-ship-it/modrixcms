@@ -8,13 +8,16 @@
 import { createRoot } from 'react-dom/client';
 import { PageRenderer } from './renderer/PageRenderer';
 import { normaliseDocument } from './renderer/document';
+import { normaliseFunnelRuntime } from './renderer/funnel';
 import './shared/styles/app.css';
 
 const root = document.getElementById('public-page');
 const payload = document.getElementById('published-document');
+const runtimePayload = document.getElementById('published-runtime');
 
 if (root && payload?.textContent) {
-    createRoot(root).render(<PageRenderer document={normaliseDocument(JSON.parse(payload.textContent))} mode="static" />);
+    const runtime = runtimePayload?.textContent ? normaliseFunnelRuntime(JSON.parse(runtimePayload.textContent)) : null;
+    createRoot(root).render(<PageRenderer document={normaliseDocument(JSON.parse(payload.textContent))} mode="static" runtime={runtime} />);
 }
 
 /**

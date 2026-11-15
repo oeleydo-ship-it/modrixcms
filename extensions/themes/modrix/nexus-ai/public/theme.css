@@ -1,0 +1,68 @@
+:root {
+    --color-primary: #09090b;
+    --color-accent: #ff542e;
+    --color-surface: #f4f4f2;
+    --color-dark: #09090b;
+    --color-heading: #09090b;
+    --color-body: #52525b;
+    --font-heading: 'Switzer', 'Satoshi', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-sans: 'Switzer', 'Satoshi', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+    /* Follows Theme settings → Sections & Cards → Content width. */
+    --container-width: var(--site-content-width, 1200px);
+    --section-padding: 96px;
+    --card-radius: 24px;
+    --button-radius: 999px;
+
+    /* Visual Builder CSS token bridge */
+    --site-primary: var(--color-primary);
+    --site-accent: var(--color-accent);
+    --site-surface: var(--color-surface);
+    --site-dark: var(--color-dark);
+    --site-heading: var(--color-heading);
+    --site-body: var(--color-body);
+    --site-section-padding: var(--section-padding);
+    --site-card-radius: var(--card-radius);
+    --site-button-radius: var(--button-radius);
+    --site-font-heading: var(--font-heading);
+    --site-font-body: var(--font-sans);
+    --site-font-mono: var(--font-mono);
+}
+
+body,
+.fnl-page {
+    font-family: var(--font-sans);
+    color: var(--color-body);
+    background-color: #ffffff;
+    -webkit-font-smoothing: antialiased;
+    letter-spacing: -0.01em;
+    overflow-x: hidden;
+}
+
+.fnl-page h1,
+.fnl-page h2,
+.fnl-page h3,
+.fnl-page h4 {
+    font-family: var(--font-heading);
+    color: var(--color-heading);
+    letter-spacing: -0.035em;
+    font-weight: 500;
+}
+
+.fnl-page a.fnl-btn {
+    border-radius: var(--button-radius, 999px);
+    transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.22s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.2s ease;
+    max-width: 100%;
+    white-space: nowrap;
+}
+
+.fnl-page a.fnl-btn:hover {
+    transform: translateY(-1px);
+}
+
+@media (max-width: 640px) {
+    .fnl-page img {
+        max-width: 100%;
+        height: auto;
+    }
+}

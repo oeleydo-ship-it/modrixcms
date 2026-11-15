@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" fill="none" width="800" height="500">
+  <rect width="800" height="500" rx="24" fill="#FFFFFF"/>
+  <!-- Top Nav Pill Preview -->
+  <rect x="0" y="0" width="800" height="62" fill="#FFFFFF"/>
+  <line x1="0" y1="62" x2="800" y2="62" stroke="#EAEAEA"/>
+  <rect x="44" y="18" width="26" height="26" rx="7" fill="#0066FF"/>
+  <path d="M57 23C57.8 26.2 59 27.4 62.2 28.2C59 29 57.8 30.2 57 33.4C56.2 30.2 55 29 51.8 28.2C55 27.4 56.2 26.2 57 23Z" fill="#FFFFFF"/>
+  <text x="80" y="37" font-family="Inter, sans-serif" font-size="16" font-weight="700" fill="#0C0407">Kairo</text>
+  <rect x="270" y="27" width="44" height="8" rx="4" fill="#CBD5E1"/>
+  <rect x="330" y="27" width="48" height="8" rx="4" fill="#CBD5E1"/>
+  <rect x="394" y="27" width="44" height="8" rx="4" fill="#CBD5E1"/>
+  <rect x="454" y="27" width="44" height="8" rx="4" fill="#CBD5E1"/>
+  <rect x="668" y="17" width="88" height="28" rx="14" fill="#0066FF"/>
+  <text x="712" y="35" text-anchor="middle" font-family="Inter, sans-serif" font-size="10.5" font-weight="600" fill="#FFFFFF">Contact →</text>
+
+  <!-- Hero surface -->
+  <rect x="24" y="76" width="752" height="292" rx="22" fill="#F7F7F8"/>
+  <rect x="52" y="106" width="186" height="24" rx="12" fill="#FFFFFF" stroke="#EAEAEA"/>
+  <text x="145" y="122" text-anchor="middle" font-family="Inter, sans-serif" font-size="9.5" font-weight="600" fill="#0C0407">★★★★★ Top-Rated Career App</text>
+  <text x="52" y="168" font-family="Inter, sans-serif" font-size="30" font-weight="700" letter-spacing="-0.03em" fill="#0C0407">One Platform To Find,</text>
+  <text x="52" y="204" font-family="Inter, sans-serif" font-size="30" font-weight="700" letter-spacing="-0.03em" fill="#0C0407">Match &amp; Grow Careers</text>
+  <text x="52" y="234" font-family="Inter, sans-serif" font-size="12" fill="#666666">Personalized opportunities, salary transparency, and one-tap applications.</text>
+  <rect x="52" y="256" width="136" height="36" rx="18" fill="#0066FF"/>
+  <text x="120" y="278" text-anchor="middle" font-family="Inter, sans-serif" font-size="10.5" font-weight="600" fill="#FFFFFF">Download App →</text>
+  <rect x="198" y="256" width="128" height="36" rx="18" fill="#FFFFFF" stroke="#E5E7EB"/>
+  <text x="262" y="278" text-anchor="middle" font-family="Inter, sans-serif" font-size="10.5" font-weight="600" fill="#0C0407">Explore Features →</text>
+
+  <!-- Mini Phone Mockup on Right -->
+  <rect x="492" y="96" width="128" height="242" rx="22" fill="#0C0407"/>
+  <rect x="498" y="102" width="116" height="230" rx="17" fill="#FFFFFF"/>
+  <rect x="506" y="122" width="100" height="46" rx="10" fill="#0066FF"/>
+  <text x="514" y="144" font-family="Inter, sans-serif" font-size="9" font-weight="700" fill="#FFFFFF">96% Match Score</text>
+  <text x="514" y="157" font-family="Inter, sans-serif" font-size="7.5" fill="#DBEAFE">Curated roles ready</text>
+  <rect x="506" y="176" width="100" height="58" rx="10" fill="#F7F7F8" stroke="#EAEAEA"/>
+  <text x="514" y="196" font-family="Inter, sans-serif" font-size="8.5" font-weight="700" fill="#0C0407">UI/UX Designer</text>
+  <text x="514" y="210" font-family="Inter, sans-serif" font-size="8" font-weight="600" fill="#0066FF">$14k–$22k/mo</text>
+
+  <rect x="612" y="122" width="116" height="224" rx="22" fill="#18181B" transform="rotate(8 612 122)"/>
+  <rect x="618" y="128" width="104" height="212" rx="17" fill="#FFFFFF" transform="rotate(8 612 122)"/>
+
+  <!-- Bottom 3 bento preview cards -->
+  <rect x="24" y="384" width="238" height="92" rx="16" fill="#F7F7F8"/>
+  <rect x="40" y="400" width="24" height="24" rx="7" fill="#FFFFFF"/>
+  <circle cx="52" cy="412" r="5" fill="#0066FF"/>
+  <text x="40" y="446" font-family="Inter, sans-serif" font-size="12" font-weight="700" fill="#0C0407">Smart Matching</text>
+  <text x="40" y="462" font-family="Inter, sans-serif" font-size="9.5" fill="#666666">Tailored role scoring &amp; fit</text>
+
+  <rect x="281" y="384" width="238" height="92" rx="16" fill="#F7F7F8"/>
+  <rect x="297" y="400" width="24" height="24" rx="7" fill="#FFFFFF"/>
+  <circle cx="309" cy="412" r="5" fill="#22C55E"/>
+  <text x="297" y="446" font-family="Inter, sans-serif" font-size="12" font-weight="700" fill="#0C0407">Salary Transparency</text>
+  <text x="297" y="462" font-family="Inter, sans-serif" font-size="9.5" fill="#666666">Verified market pay bands</text>
+
+  <rect x="538" y="384" width="238" height="92" rx="16" fill="#F7F7F8"/>
+  <rect x="554" y="400" width="24" height="24" rx="7" fill="#FFFFFF"/>
+  <circle cx="566" cy="412" r="5" fill="#FFB600"/>
+  <text x="554" y="446" font-family="Inter, sans-serif" font-size="12" font-weight="700" fill="#0C0407">Real-Time Analytics</text>
+  <text x="554" y="462" font-family="Inter, sans-serif" font-size="9.5" fill="#666666">Track views &amp; interviews</text>
+</svg>

@@ -60,10 +60,17 @@ import {
     PALETTE_BLOCK_TYPES,
     type BlockGroup,
 } from '@renderer';
-import type { PaletteChoice } from '../tree';
+import {
+    SHADCN_PRESET_CHOICES,
+    SHADCN_PRESET_LABEL,
+    isShadcnPreset,
+    type PaletteChoice,
+} from '../tree';
 
-const GROUP_ORDER: readonly BlockGroup[] = [
+const GROUP_ORDER: readonly (BlockGroup | 'shadcn')[] = [
+    'shadcn',
     'content',
+    'code',
     'capture',
     'persuasion',
     'commerce',
@@ -74,6 +81,14 @@ const GROUP_ORDER: readonly BlockGroup[] = [
 ];
 
 const ICON: Record<PaletteChoice, LucideIcon> = {
+    shadcn_card: Box,
+    shadcn_alert: Sparkles,
+    shadcn_badge: BadgeCheck,
+    shadcn_accordion: ChevronsDownUp,
+    shadcn_tabs: PanelTop,
+    shadcn_bento: LayoutGrid,
+    shadcn_pricing: Tags,
+    shadcn_testimonial: Quote,
     columns: LayoutPanelLeft,
     container: Box,
     heading: Heading,
@@ -87,6 +102,7 @@ const ICON: Record<PaletteChoice, LucideIcon> = {
     html: FileCode,
     custom_code: Code,
     form: FileText,
+    site_form: FileText,
     email_optin: Mail,
     phone_input: Phone,
     checkout: ShoppingCart,
@@ -112,6 +128,14 @@ const ICON: Record<PaletteChoice, LucideIcon> = {
 
 /** One line on what each block is for — the label alone rarely says enough. */
 const DESCRIPTION: Record<PaletteChoice, string> = {
+    shadcn_card: 'Elevated shadcn/ui card with badge, title, copy and button',
+    shadcn_alert: 'Bordered shadcn/ui callout banner with headline and note',
+    shadcn_badge: 'Inline pill badge styled with Tailwind v4 tokens',
+    shadcn_accordion: 'Collapsible shadcn/ui FAQ panels with spring motion',
+    shadcn_tabs: 'Segmented shadcn/ui tabs with bordered content container',
+    shadcn_bento: 'Three-card bento feature grid with hover lift',
+    shadcn_pricing: 'Composable pricing tiers with highlighted plan',
+    shadcn_testimonial: 'Bordered customer quote card with rating',
     columns: 'Side-by-side columns inside this column',
     container: 'Group blocks in a stack, row or grid',
     heading: 'A title or section headline',
@@ -122,9 +146,10 @@ const DESCRIPTION: Record<PaletteChoice, string> = {
     icon: 'A single icon',
     divider: 'A horizontal rule',
     spacer: 'Vertical breathing room',
-    html: 'Raw HTML embed',
-    custom_code: 'HTML, CSS and JS together',
+    html: 'Paste an iframe, widget or any HTML',
+    custom_code: 'HTML, CSS and a script: tracking, chat, widgets',
     form: 'A multi-field capture form',
+    site_form: 'A saved form, shown in full with its own design',
     email_optin: 'Email field and a button',
     phone_input: 'Phone capture with SMS consent',
     checkout: 'Take payment for products',
@@ -156,19 +181,37 @@ const DESCRIPTION: Record<PaletteChoice, string> = {
 const COMING_SOON: ReadonlySet<PaletteChoice> = new Set<PaletteChoice>();
 
 /** The blocks people reach for most, shown first when nothing is searched. */
-const LABEL = (choice: PaletteChoice): string => (choice === 'columns' ? 'Columns' : BLOCK_LABEL[choice]);
-const GROUP_OF = (choice: PaletteChoice): BlockGroup => (choice === 'columns' ? 'layout' : BLOCK_GROUP[choice]);
-const CHOICES: readonly PaletteChoice[] = ['columns', ...PALETTE_BLOCK_TYPES];
+const LABEL = (choice: PaletteChoice): string => {
+    if (choice === 'columns') {
+        return 'Columns';
+    }
+    if (isShadcnPreset(choice)) {
+        return SHADCN_PRESET_LABEL[choice];
+    }
+    return BLOCK_LABEL[choice];
+};
+const GROUP_OF = (choice: PaletteChoice): BlockGroup | 'shadcn' => {
+    if (choice === 'columns') {
+        return 'layout';
+    }
+    if (isShadcnPreset(choice)) {
+        return 'shadcn';
+    }
+    return BLOCK_GROUP[choice];
+};
+const GROUP_LABEL_FOR = (group: BlockGroup | 'shadcn'): string =>
+    group === 'shadcn' ? 'shadcn/ui Components' : BLOCK_GROUP_LABEL[group];
+const CHOICES: readonly PaletteChoice[] = [...SHADCN_PRESET_CHOICES, 'columns', ...PALETTE_BLOCK_TYPES];
 
 const POPULAR: readonly PaletteChoice[] = [
+    'shadcn_card',
+    'shadcn_bento',
     'heading',
     'paragraph',
     'button',
     'image',
     'video',
     'feature_cards',
-    'testimonial',
-    'countdown',
 ];
 
 export interface BlockPickerProps {
@@ -198,11 +241,11 @@ export function BlockPicker({ open, onClose, onPick }: BlockPickerProps) {
             needle === '' ||
             LABEL(type).toLowerCase().includes(needle) ||
             DESCRIPTION[type].toLowerCase().includes(needle) ||
-            BLOCK_GROUP_LABEL[GROUP_OF(type)].toLowerCase().includes(needle);
+            GROUP_LABEL_FOR(GROUP_OF(type)).toLowerCase().includes(needle);
 
         const grouped = GROUP_ORDER.map((group) => ({
             key: group as string,
-            label: BLOCK_GROUP_LABEL[group],
+            label: GROUP_LABEL_FOR(group),
             types: CHOICES.filter((type) => GROUP_OF(type) === group && matches(type)),
         })).filter((entry) => entry.types.length > 0);
 

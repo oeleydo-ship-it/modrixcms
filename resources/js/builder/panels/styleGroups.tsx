@@ -10,12 +10,14 @@
  */
 
 import { useState, type ReactNode } from 'react';
-import { ChevronDown, SlidersHorizontal } from 'lucide-react';
+import { ChevronDown, Play, SlidersHorizontal, Sparkles } from 'lucide-react';
 import {
     BREAKPOINTS,
     BREAKPOINT_LABEL,
     valueAt,
+    withBreakpoint,
     type Breakpoint,
+    type ResponsiveValue,
     type StyleData,
     type StyleProperty,
     type VisibilityData,
@@ -142,20 +144,50 @@ export const BACKGROUND_ATTACHMENT = [
 /* The control factory a panel hands to every group                            */
 /* -------------------------------------------------------------------------- */
 
-/** Builds a `ControlContext` for one style property, bound to the active tier. */
-export type StyleControlFactory = (property: StyleProperty) => ControlContext;
+export type CustomStyleProperty = `--fnl-${string}`;
+
+/** Builds a `ControlContext` for one style property (or `--fnl-*` custom property), bound to the active tier. */
+export type StyleControlFactory = (property: StyleProperty | CustomStyleProperty) => ControlContext;
 
 export function makeStyleControl(
     style: StyleData,
     breakpoint: Breakpoint,
     onStyleChange: (style: StyleData) => void,
 ): StyleControlFactory {
-    return (property) => ({
-        breakpoint,
-        value: style[property],
-        onChange: (next) => onStyleChange({ ...style, [property]: next }),
-        onChangeMany: (patch) => onStyleChange({ ...style, ...patch }),
-    });
+    return (property) => {
+        const isCustom = property.startsWith('--');
+        const currentValue = isCustom ? style.custom?.[property] : style[property as StyleProperty];
+
+        return {
+            breakpoint,
+            value: currentValue,
+            onChange: (next) => {
+                if (isCustom) {
+                    const custom: Record<string, ResponsiveValue> = { ...(style.custom ?? {}), [property]: next };
+                    onStyleChange({ ...style, custom });
+                    return;
+                }
+                onStyleChange({ ...style, [property]: next });
+            },
+            onChangeMany: (patch) => {
+                const nextStyle: StyleData = { ...style };
+                const nextCustom: Record<string, ResponsiveValue> = { ...(style.custom ?? {}) };
+                let touchedCustom = false;
+                for (const [key, val] of Object.entries(patch)) {
+                    if (key.startsWith('--')) {
+                        nextCustom[key] = val;
+                        touchedCustom = true;
+                    } else {
+                        nextStyle[key as StyleProperty] = val;
+                    }
+                }
+                if (touchedCustom) {
+                    nextStyle.custom = nextCustom;
+                }
+                onStyleChange(nextStyle);
+            },
+        };
+    };
 }
 
 export interface GroupProps {
@@ -392,24 +424,405 @@ export function SizingGroup({ baseId, control, defaultOpen = false, title = 'Siz
     );
 }
 
+export const SHADCN_SURFACES = [
+    { value: '', label: 'None (Default)' },
+    { value: 'card', label: 'shadcn Card (Elevated)' },
+    { value: 'muted', label: 'shadcn Muted Surface' },
+    { value: 'glass', label: 'Glassmorphism Panel' },
+    { value: 'outline', label: 'shadcn Outline Box' },
+    { value: 'accent', label: 'shadcn Accent Callout' },
+    { value: 'dark', label: 'shadcn Dark Zinc' },
+] as const;
+
+export const TAILWIND_PRESET_GROUPS: ReadonlyArray<{
+    category: string;
+    chips: ReadonlyArray<{ label: string; classes: string }>;
+}> = [
+    {
+        category: 'shadcn/ui & Surface',
+        chips: [
+            { label: 'Card border', classes: 'rounded-xl border border-slate-200/80 bg-white shadow-xs' },
+            { label: 'Glass blur', classes: 'backdrop-blur-md bg-white/75 border border-white/50 shadow-lg' },
+            { label: 'Muted well', classes: 'rounded-xl bg-slate-100/80 border border-slate-200/60' },
+            { label: 'Focus ring', classes: 'ring-1 ring-slate-900/5 shadow-sm' },
+        ],
+    },
+    {
+        category: 'Spacing & Corners',
+        chips: [
+            { label: 'p-6', classes: 'p-6' },
+            { label: 'p-8', classes: 'p-8' },
+            { label: 'rounded-xl', classes: 'rounded-xl' },
+            { label: 'rounded-2xl', classes: 'rounded-2xl' },
+            { label: 'rounded-full', classes: 'rounded-full' },
+        ],
+    },
+    {
+        category: 'Layout & Typography',
+        chips: [
+            { label: 'Flex center', classes: 'flex items-center justify-center gap-3' },
+            { label: 'Flex between', classes: 'flex items-center justify-between gap-4' },
+            { label: 'Tracking tight', classes: 'tracking-tight' },
+            { label: 'Text balance', classes: 'text-balance' },
+        ],
+    },
+    {
+        category: 'Hover & Depth',
+        chips: [
+            { label: 'Shadow lg', classes: 'shadow-lg' },
+            { label: 'Shadow xl', classes: 'shadow-xl' },
+            { label: 'Hover lift', classes: 'transition-all duration-300 hover:-translate-y-1 hover:shadow-md' },
+            { label: 'Hover scale', classes: 'transition-transform duration-300 hover:scale-[1.02]' },
+        ],
+    },
+];
+
+export const ENTRANCE_PRESETS = [
+    { value: '', label: 'None' },
+    { value: 'reveal', label: 'Fade Up' },
+    { value: 'fade-in', label: 'Fade In' },
+    { value: 'slide-left', label: 'Slide Left' },
+    { value: 'slide-right', label: 'Slide Right' },
+    { value: 'zoom-in', label: 'Scale Up' },
+    { value: 'blur-in', label: 'Blur Reveal' },
+    { value: 'spring-pop', label: 'Spring Pop' },
+    { value: 'flip-up', label: '3D Flip' },
+] as const;
+
+export const EXIT_PRESETS = [
+    { value: '', label: 'None' },
+    { value: 'exit-fade', label: 'Fade Out' },
+    { value: 'exit-up', label: 'Slide Up Out' },
+    { value: 'exit-scale', label: 'Scale Down Out' },
+    { value: 'exit-blur', label: 'Blur Out' },
+] as const;
+
+export const HOVER_LOOP_EFFECTS = [
+    { value: 'lift', label: 'Hover Lift' },
+    { value: 'zoom', label: 'Image Zoom' },
+    { value: 'press', label: 'Button Press' },
+    { value: 'glow', label: 'Hover Glow' },
+    { value: 'tilt', label: '3D Tilt' },
+    { value: 'float', label: 'Float Loop' },
+    { value: 'pulse-slow', label: 'Pulse Loop' },
+    { value: 'kenburns', label: 'Ken Burns' },
+    { value: 'marquee', label: 'Marquee' },
+] as const;
+
+export const MOTION_CURVES = [
+    { value: 'cubic-bezier(0.16, 1, 0.3, 1)', label: 'Framer Spring (Smooth)' },
+    { value: 'cubic-bezier(0.34, 1.56, 0.64, 1)', label: 'Bouncy Spring' },
+    { value: 'cubic-bezier(0.22, 1, 0.36, 1)', label: 'Ease Out Quint' },
+    { value: 'ease-in-out', label: 'Ease In Out' },
+    { value: 'linear', label: 'Linear' },
+] as const;
+
 export function LayoutGroup({ baseId, control, defaultOpen = false, title = 'Layout' }: GroupProps) {
+    const displayCtx = control('display');
+    const alignCtx = control('alignItems');
+    const justifyCtx = control('justifyContent');
+    const currentDisplay = String(valueAt(displayCtx.value, displayCtx.breakpoint) ?? '');
+    const isFlex = currentDisplay === 'flex' || currentDisplay === 'inline-flex';
+
     return (
         <ControlGroup title={title} defaultOpen={defaultOpen}>
-            <SelectControl id={`${baseId}-display`} label="Display" options={DISPLAY} context={control('display')} />
+            <SelectControl id={`${baseId}-display`} label="Display" options={DISPLAY} context={displayCtx} />
+            {isFlex && (
+                <div className="rounded-lg border border-[var(--color-border)] bg-[var(--color-surface-sunken)] p-2">
+                    <span className="mb-1.5 block text-[11px] font-medium text-[var(--color-text-muted)]">
+                        Framer Quick Align
+                    </span>
+                    <div className="grid grid-cols-3 gap-1">
+                        {(['flex-start', 'center', 'flex-end'] as const).map((justify) =>
+                            (['flex-start', 'center', 'flex-end'] as const).map((align) => {
+                                const active =
+                                    valueAt(justifyCtx.value, justifyCtx.breakpoint) === justify &&
+                                    valueAt(alignCtx.value, alignCtx.breakpoint) === align;
+                                return (
+                                    <button
+                                        key={`${justify}-${align}`}
+                                        type="button"
+                                        title={`Align ${align.replace('flex-', '')} / Justify ${justify.replace('flex-', '')}`}
+                                        onClick={() => {
+                                            alignCtx.onChangeMany?.({
+                                                alignItems: withBreakpoint(alignCtx.value, alignCtx.breakpoint, align),
+                                                justifyContent: withBreakpoint(justifyCtx.value, justifyCtx.breakpoint, justify),
+                                            });
+                                        }}
+                                        className={[
+                                            'flex h-6 items-center justify-center rounded border text-[10px] transition',
+                                            active
+                                                ? 'border-[var(--color-primary)] bg-[var(--color-primary)] text-white'
+                                                : 'border-[var(--color-border)] bg-[var(--color-surface)] text-[var(--color-text-muted)] hover:border-[var(--color-border-strong)]',
+                                        ].join(' ')}
+                                    >
+                                        <span className="size-1.5 rounded-full bg-current" />
+                                    </button>
+                                );
+                            }),
+                        )}
+                    </div>
+                </div>
+            )}
             <SelectControl
                 id={`${baseId}-flex-direction`}
                 label="Direction"
                 options={FLEX_DIRECTION}
                 context={control('flexDirection')}
             />
-            <SelectControl id={`${baseId}-align-items`} label="Align items" options={ALIGN_ITEMS} context={control('alignItems')} />
+            <SelectControl id={`${baseId}-align-items`} label="Align items" options={ALIGN_ITEMS} context={alignCtx} />
             <SelectControl
                 id={`${baseId}-justify`}
                 label="Justify content"
                 options={JUSTIFY}
-                context={control('justifyContent')}
+                context={justifyCtx}
             />
             <TextControl id={`${baseId}-gap`} label="Gap" placeholder="16px" context={control('gap')} />
+        </ControlGroup>
+    );
+}
+
+export function TailwindUtilityGroup({
+    baseId,
+    control,
+    defaultOpen = false,
+    title = 'Tailwind CSS v4 & shadcn/ui',
+}: GroupProps) {
+    const twCtx = control('--fnl-tw');
+    const shadcnCtx = control('--fnl-shadcn');
+    const currentTw = String(valueAt(twCtx.value, twCtx.breakpoint) ?? '').trim();
+    const activeTokens = new Set(currentTw ? currentTw.split(/\s+/) : []);
+
+    const togglePresetClasses = (presetClasses: string): void => {
+        const tokens = presetClasses.trim().split(/\s+/).filter(Boolean);
+        const next = new Set(activeTokens);
+        const allPresent = tokens.every((token) => next.has(token));
+        if (allPresent) {
+            tokens.forEach((token) => next.delete(token));
+        } else {
+            tokens.forEach((token) => next.add(token));
+        }
+        const joined = Array.from(next).join(' ');
+        twCtx.onChange(withBreakpoint(twCtx.value, twCtx.breakpoint, joined || null));
+    };
+
+    return (
+        <ControlGroup title={title} defaultOpen={defaultOpen}>
+            <SelectControl
+                id={`${baseId}-shadcn-surface`}
+                label="shadcn/ui surface preset"
+                options={SHADCN_SURFACES}
+                context={shadcnCtx}
+            />
+            <TextControl
+                id={`${baseId}-tw-classes`}
+                label="Tailwind v4 utility classes"
+                placeholder="rounded-2xl shadow-lg backdrop-blur-md p-6"
+                context={twCtx}
+            />
+            <div className="flex flex-col gap-2 pt-1">
+                {TAILWIND_PRESET_GROUPS.map((group) => (
+                    <div key={group.category} className="flex flex-col gap-1">
+                        <span className="text-[11px] font-medium text-[var(--color-text-muted)]">
+                            {group.category}
+                        </span>
+                        <div className="flex flex-wrap gap-1">
+                            {group.chips.map((chip) => {
+                                const tokens = chip.classes.split(/\s+/);
+                                const active = tokens.every((token) => activeTokens.has(token));
+                                return (
+                                    <button
+                                        key={chip.label}
+                                        type="button"
+                                        onClick={() => togglePresetClasses(chip.classes)}
+                                        title={chip.classes}
+                                        className={[
+                                            'rounded-md border px-2 py-0.5 text-[11px] font-medium transition',
+                                            active
+                                                ? 'border-[var(--color-primary)] bg-[var(--color-primary)] text-white'
+                                                : 'border-[var(--color-border)] bg-[var(--color-surface)] text-[var(--color-text)] hover:border-[var(--color-border-strong)]',
+                                        ].join(' ')}
+                                    >
+                                        {chip.label}
+                                    </button>
+                                );
+                            })}
+                        </div>
+                    </div>
+                ))}
+            </div>
+            <PanelNote>
+                Tailwind CSS v4 classes and shadcn/ui surface presets apply live on the canvas and on the published page.
+            </PanelNote>
+        </ControlGroup>
+    );
+}
+
+export function MotionGroup({
+    baseId,
+    control,
+    defaultOpen = false,
+    title = 'Motion & Animation',
+}: GroupProps) {
+    const effectCtx = control('--fnl-effect');
+    const durationCtx = control('--fnl-anim-duration');
+    const delayCtx = control('--fnl-anim-delay');
+    const easingCtx = control('--fnl-anim-easing');
+
+    const rawEffect = String(valueAt(effectCtx.value, 'desktop') ?? '').trim();
+    const effectTokens = new Set(rawEffect ? rawEffect.split(/\s+/) : []);
+    const entranceValues = new Set<string>(ENTRANCE_PRESETS.map((item) => item.value).filter(Boolean));
+    const exitValues = new Set<string>(EXIT_PRESETS.map((item) => item.value).filter(Boolean));
+    const activeEntrance = Array.from(effectTokens).find((token) => entranceValues.has(token)) ?? '';
+    const activeExit = Array.from(effectTokens).find((token) => exitValues.has(token)) ?? '';
+
+    const setEntrance = (nextEntrance: string): void => {
+        const filtered = Array.from(effectTokens).filter((token) => !entranceValues.has(token));
+        if (nextEntrance) {
+            filtered.unshift(nextEntrance);
+        }
+        effectCtx.onChange(withBreakpoint(effectCtx.value, 'desktop', filtered.join(' ') || null));
+        if (nextEntrance && typeof window !== 'undefined') {
+            window.setTimeout(() => {
+                window.dispatchEvent(new CustomEvent('fnl:replay-motion', { detail: { phase: 'entrance' } }));
+            }, 30);
+        }
+    };
+
+    const setExit = (nextExit: string): void => {
+        const filtered = Array.from(effectTokens).filter((token) => !exitValues.has(token));
+        if (nextExit) {
+            filtered.push(nextExit);
+        }
+        effectCtx.onChange(withBreakpoint(effectCtx.value, 'desktop', filtered.join(' ') || null));
+        if (nextExit && typeof window !== 'undefined') {
+            window.setTimeout(() => {
+                window.dispatchEvent(new CustomEvent('fnl:replay-motion', { detail: { phase: 'exit' } }));
+            }, 30);
+        }
+    };
+
+    const toggleHoverEffect = (effect: string): void => {
+        const next = new Set(effectTokens);
+        if (next.has(effect)) {
+            next.delete(effect);
+        } else {
+            next.add(effect);
+        }
+        effectCtx.onChange(withBreakpoint(effectCtx.value, 'desktop', Array.from(next).join(' ') || null));
+    };
+
+    return (
+        <ControlGroup title={title} defaultOpen={defaultOpen}>
+            <div className="flex items-center justify-between gap-2">
+                <span className="flex items-center gap-1.5 text-[11px] font-semibold text-[var(--color-text)]">
+                    <Sparkles size={13} className="text-[var(--color-brand)]" aria-hidden />
+                    Entrance preset
+                </span>
+                <button
+                    type="button"
+                    onClick={() => window.dispatchEvent(new CustomEvent('fnl:replay-motion'))}
+                    className="inline-flex items-center gap-1 rounded-md border border-[var(--color-border)] bg-[var(--color-surface)] px-2 py-0.5 text-[11px] font-medium text-[var(--color-text)] hover:border-[var(--color-primary)]"
+                >
+                    <Play size={11} aria-hidden />
+                    Preview motion
+                </button>
+            </div>
+
+            <div className="grid grid-cols-3 gap-1">
+                {ENTRANCE_PRESETS.map((preset) => {
+                    const selected = activeEntrance === preset.value;
+                    return (
+                        <button
+                            key={preset.value || 'none'}
+                            type="button"
+                            onClick={() => setEntrance(preset.value)}
+                            className={[
+                                'rounded-md border px-2 py-1.5 text-center text-[11px] font-medium transition',
+                                selected
+                                    ? 'border-[var(--color-primary)] bg-[var(--color-primary)] text-white shadow-xs'
+                                    : 'border-[var(--color-border)] bg-[var(--color-surface)] text-[var(--color-text)] hover:border-[var(--color-border-strong)]',
+                            ].join(' ')}
+                        >
+                            {preset.label}
+                        </button>
+                    );
+                })}
+            </div>
+
+            <div className="flex flex-col gap-1 pt-1">
+                <span className="text-[11px] font-medium text-[var(--color-text-muted)]">
+                    Exit / Scroll-out Animation
+                </span>
+                <div className="grid grid-cols-3 gap-1">
+                    {EXIT_PRESETS.map((preset) => {
+                        const selected = activeExit === preset.value;
+                        return (
+                            <button
+                                key={preset.value || 'exit-none'}
+                                type="button"
+                                onClick={() => setExit(preset.value)}
+                                className={[
+                                    'rounded-md border px-2 py-1 text-center text-[11px] font-medium transition',
+                                    selected
+                                        ? 'border-[var(--color-primary)] bg-[var(--color-primary)] text-white shadow-xs'
+                                        : 'border-[var(--color-border)] bg-[var(--color-surface)] text-[var(--color-text)] hover:border-[var(--color-border-strong)]',
+                                ].join(' ')}
+                            >
+                                {preset.label}
+                            </button>
+                        );
+                    })}
+                </div>
+            </div>
+
+            <div className="flex flex-col gap-1 pt-1">
+                <span className="text-[11px] font-medium text-[var(--color-text-muted)]">
+                    Hover & Continuous Motion
+                </span>
+                <div className="flex flex-wrap gap-1">
+                    {HOVER_LOOP_EFFECTS.map((item) => {
+                        const active = effectTokens.has(item.value);
+                        return (
+                            <button
+                                key={item.value}
+                                type="button"
+                                onClick={() => toggleHoverEffect(item.value)}
+                                className={[
+                                    'rounded-md border px-2 py-0.5 text-[11px] font-medium transition',
+                                    active
+                                        ? 'border-[var(--color-primary)] bg-[var(--color-primary)] text-white'
+                                        : 'border-[var(--color-border)] bg-[var(--color-surface)] text-[var(--color-text)] hover:border-[var(--color-border-strong)]',
+                                ].join(' ')}
+                            >
+                                {item.label}
+                            </button>
+                        );
+                    })}
+                </div>
+            </div>
+
+            <div className="grid grid-cols-2 gap-2 pt-1">
+                <TextControl
+                    id={`${baseId}-anim-duration`}
+                    label="Duration (ms)"
+                    placeholder="650"
+                    context={durationCtx}
+                />
+                <TextControl
+                    id={`${baseId}-anim-delay`}
+                    label="Delay (ms)"
+                    placeholder="0"
+                    context={delayCtx}
+                />
+            </div>
+
+            <SelectControl
+                id={`${baseId}-anim-easing`}
+                label="Spring / Easing curve"
+                options={MOTION_CURVES}
+                context={easingCtx}
+            />
         </ControlGroup>
     );
 }

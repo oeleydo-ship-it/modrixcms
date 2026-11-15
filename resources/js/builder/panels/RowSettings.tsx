@@ -23,8 +23,10 @@ import {
     EffectsGroup,
     JUSTIFY,
     LayoutGroup,
+    MotionGroup,
     SizingGroup,
     SpacingGroup,
+    TailwindUtilityGroup,
     TypographyGroup,
     VisibilityGroup,
     makeStyleControl,
@@ -245,6 +247,9 @@ export function RowSettings({
                     <BoxControl id={`${baseId}-padding`} label="Padding" context={control('padding')} />
                     <BoxControl id={`${baseId}-margin`} label="Margin" context={control('margin')} />
                 </ControlGroup>
+
+                <MotionGroup baseId={`${baseId}-motion`} control={control} defaultOpen={false} />
+                <TailwindUtilityGroup baseId={`${baseId}-tw`} control={control} defaultOpen={false} />
 
                 <VisibilityGroup visibility={row.visibility ?? DEFAULT_VISIBILITY} onChange={onVisibilityChange} noun="row" />
 

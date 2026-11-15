@@ -64,7 +64,10 @@ class HandleInertiaRequests extends Middleware
         ];
 
         return self::isAdmin($request)
-            ? $shared + ['nav' => fn () => $user?->is_admin ? AdminNavigation::groups() : []]
+            ? $shared + [
+                'nav' => fn () => $user?->is_admin ? AdminNavigation::groups() : [],
+                'adminTheme' => fn () => $this->settings->adminTheme(),
+            ]
             : $shared + $this->siteProps();
     }
 

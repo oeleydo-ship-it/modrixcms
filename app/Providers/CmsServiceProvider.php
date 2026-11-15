@@ -28,5 +28,7 @@ class CmsServiceProvider extends ServiceProvider
     {
         Blade::directive('hook', fn (string $expression) => "<?php echo app(\\App\\Cms\\Hooks::class)->render({$expression}); ?>");
         Blade::directive('themeStyles', fn () => '<?php echo app(\\App\\Cms\\Themes\\ThemeManager::class)->styles(); ?>');
+        // The site's design settings as CSS variables; @siteDesign(true) also maps the block site's own variables.
+        Blade::directive('siteDesign', fn (string $expression) => '<?php echo app(\\App\\Cms\\Themes\\ThemeManager::class)->designStyles('.($expression ?: 'false').'); ?>');
     }
 }

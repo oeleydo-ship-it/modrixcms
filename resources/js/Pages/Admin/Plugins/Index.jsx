@@ -1,5 +1,5 @@
 import { Link, router, usePage } from '@inertiajs/react';
-import AdminLayout from '@/cms/admin/AdminLayout';
+import AdminLayout, { ReferenceEmptyArt } from '@/cms/admin/AdminLayout';
 import { ErrorFlash } from '@/cms/admin/forms';
 import { PluginStatus, UploadPanel } from '@/cms/admin/extensions';
 
@@ -36,7 +36,17 @@ export default function PluginsIndex({ plugins, uploadsAllowed, maxMb }) {
                                         </div>
                                     </td>
                                 </tr>
-                            )) : <tr><td colSpan={4} className="empty">No plugins yet. Upload one below.</td></tr>}
+                            )) : (
+                                <tr>
+                                    <td colSpan={4} className="empty">
+                                        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '24px 0' }}>
+                                            <ReferenceEmptyArt />
+                                            <strong style={{ color: 'var(--ink)', fontSize: 15, marginBottom: 4 }}>Your plugins will show here</strong>
+                                            <span>No plugins yet. Upload one below.</span>
+                                        </div>
+                                    </td>
+                                </tr>
+                            )}
                         </tbody>
                     </table>
                 </div>

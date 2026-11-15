@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" fill="none" width="640" height="360">
+  <rect width="640" height="360" rx="22" fill="#EEF4FF"/>
+  <rect x="36" y="36" width="568" height="288" rx="18" fill="#FFFFFF" stroke="#DBEAFE"/>
+  <rect x="64" y="64" width="110" height="26" rx="13" fill="#0066FF"/>
+  <text x="119" y="81" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" font-weight="600" fill="#FFFFFF">Career Guide</text>
+  <text x="64" y="132" font-family="Inter, sans-serif" font-size="24" font-weight="700" letter-spacing="-0.02em" fill="#0C0407">Navigating Salary Transparency</text>
+  <text x="64" y="164" font-family="Inter, sans-serif" font-size="24" font-weight="700" letter-spacing="-0.02em" fill="#0C0407">Across Distributed Teams</text>
+  <rect x="64" y="198" width="220" height="88" rx="14" fill="#F7F7F8"/>
+  <text x="82" y="232" font-family="Inter, sans-serif" font-size="12" font-weight="700" fill="#0C0407">Median Offer Growth</text>
+  <text x="82" y="264" font-family="Inter, sans-serif" font-size="24" font-weight="700" fill="#0066FF">+18.4%</text>
+  <rect x="304" y="198" width="272" height="88" rx="14" fill="#F7F7F8"/>
+  <rect x="328" y="252" width="24" height="18" rx="4" fill="#CBD5E1"/>
+  <rect x="364" y="238" width="24" height="32" rx="4" fill="#93C5FD"/>
+  <rect x="400" y="226" width="24" height="44" rx="4" fill="#60A5FA"/>
+  <rect x="436" y="216" width="24" height="54" rx="4" fill="#0066FF"/>
+  <rect x="472" y="228" width="24" height="42" rx="4" fill="#93C5FD"/>
+  <rect x="508" y="212" width="24" height="58" rx="4" fill="#0066FF"/>
+</svg>

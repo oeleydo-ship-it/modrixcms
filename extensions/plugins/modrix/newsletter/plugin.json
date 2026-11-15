@@ -1,0 +1,25 @@
+{
+    "name": "modrix/newsletter",
+    "type": "plugin",
+    "display_name": "Newsletter & Campaigns",
+    "description": "Collect email subscribers, segment with tags, import/export CSV, support double opt-in and one-click unsubscribe, and compose & send Markdown email campaigns.",
+    "version": "1.0.0",
+    "cms_version": "^1.0",
+    "author": "Modrix",
+    "license": "MIT",
+    "autoload": { "psr-4": { "Modrix\\Newsletter\\": "src/" } },
+    "provider": "Modrix\\Newsletter\\NewsletterServiceProvider",
+    "routes": { "web": "routes/web.php", "admin": "routes/admin.php" },
+    "scripts": ["public/newsletter.js"],
+    "admin_navigation": [
+        { "title": "Subscribers", "route": "subscribers.index" },
+        { "title": "Campaigns", "route": "campaigns.index" }
+    ],
+    "settings": [
+        { "name": "double_opt_in", "label": "Require email confirmation (double opt-in)", "type": "toggle", "default": false },
+        { "name": "send_welcome_email", "label": "Send welcome email on subscribe", "type": "toggle", "default": false },
+        { "name": "welcome_subject", "label": "Welcome email subject", "type": "text", "default": "Welcome to our newsletter!" },
+        { "name": "reply_to", "label": "Campaign reply-to email", "type": "email", "default": "" },
+        { "name": "success_message", "label": "Subscribed confirmation message", "type": "text", "default": "You are subscribed! Thanks for joining." }
+    ]
+}

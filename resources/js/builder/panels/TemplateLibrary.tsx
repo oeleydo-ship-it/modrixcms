@@ -14,7 +14,7 @@ const CATEGORIES = [
     ['lead_generation', 'Lead generation'], ['product_sales', 'Product sales'], ['webinar', 'Webinar'],
     ['course', 'Course'], ['booking', 'Booking'], ['newsletter', 'Newsletter'], ['saas_signup', 'SaaS signup'],
     ['free_trial', 'Free trial'], ['event', 'Event'], ['ecommerce', 'E-commerce'],
-    ['application', 'Application'], ['survey', 'Survey'], ['sections', 'Sections & blocks'],
+    ['application', 'Application'], ['survey', 'Survey'], ['advisory', 'Global advisory'], ['sections', 'Sections & blocks'],
 ] as const;
 
 function message(error: unknown): string {
@@ -23,7 +23,7 @@ function message(error: unknown): string {
 }
 
 /** Apply through the installation API so the server validates nodes and creates capture forms. */
-export function TemplateLibrary({ open, onClose }: { open: boolean; onClose: () => void }) {
+export function TemplateLibrary({ open, onClose, onSaveDraft }: { open: boolean; onClose: () => void; onSaveDraft?: () => Promise<void> }) {
     const [rows, setRows] = useState<Template[]>([]);
     const [type, setType] = useState('page');
     const [search, setSearch] = useState('');
@@ -142,7 +142,24 @@ export function TemplateLibrary({ open, onClose }: { open: boolean; onClose: () 
             <select className="rounded border border-[var(--color-border)] p-2" aria-label="Template type" value={type} disabled={busy} onChange={(event) => { setType(event.target.value); setPage(1); }}><option value="page">Pages</option><option value="section">Sections</option><option value="block">Blocks</option></select>
             <Button variant="secondary" disabled={busy} onClick={() => { setSavingTemplate(!savingTemplate); setError(null); }}>Save page as template</Button>
         </div>
-        {!ready && <p role="status" className="mb-3 text-sm">{saveState === 'conflict' ? 'This page changed elsewhere. Reload it before saving or installing a template.' : saveState === 'error' ? 'Resolve the page save error before saving or installing a template.' : 'Waiting for your current changes to finish saving…'}</p>}
+        {!ready && (
+            <div role="status" className="mb-3 flex flex-wrap items-center gap-3 text-sm">
+                <span>
+                    {saveState === 'conflict'
+                        ? 'This page changed elsewhere. Reload it before saving or installing a template.'
+                        : saveState === 'error'
+                            ? 'Resolve the page save error before saving or installing a template.'
+                            : saveState === 'saving'
+                                ? 'Waiting for your current changes to finish saving…'
+                                : 'You have unsaved changes. Save your draft before saving or installing a template.'}
+                </span>
+                {saveState === 'dirty' && onSaveDraft && (
+                    <Button size="xs" variant="primary" disabled={busy} onClick={() => void onSaveDraft()}>
+                        Save draft
+                    </Button>
+                )}
+            </div>
+        )}
         {savingTemplate && <form className="mb-4 rounded-lg border border-[var(--color-border)] p-4" onSubmit={(event) => { event.preventDefault(); void saveTemplate(); }}>
             <h3 className="mb-2 font-semibold">Save this page to your template library</h3>
             <p className="mb-3 text-sm text-[var(--color-text-muted)]">Creates a reusable copy of the saved draft. Your current page stays unchanged.</p>

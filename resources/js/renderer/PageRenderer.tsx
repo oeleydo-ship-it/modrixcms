@@ -9,12 +9,14 @@
 
 import {
     Fragment,
+    useEffect,
     useMemo,
     useRef,
     type CSSProperties,
     type KeyboardEvent as ReactKeyboardEvent,
     type MouseEvent as ReactMouseEvent,
     type ReactNode,
+    type RefObject,
 } from 'react';
 import { googleFontsImport } from './fonts';
 import { METROPOLIS_FONTS } from './metropolisFonts';
@@ -29,6 +31,11 @@ import { CANDID_CSS } from './candid';
 import { VISTAHAVEN_CSS } from './vistahaven';
 import { SOLENNE_CSS } from './solenne';
 import { FLUENT_CSS } from './fluent365';
+import { PEBBLEWOOD_CSS } from './pebblewood';
+import { LUMIKIN_CSS } from './lumikin';
+import { MERIDIAN_CSS } from './meridian';
+import { KAIRO_CSS, useKairoMotion } from './kairo';
+import { LARKSPUR_CSS, useLarkspurMotion } from './larkspur';
 import { columnExtra, nodeCss, valueAt } from './style';
 import { responsivePropReset } from './responsiveProps';
 import { componentFor, INLINE_EDITABLE } from './registry';
@@ -61,7 +68,16 @@ import {
  * section matches how CSS text-align already behaves.
  */
 const BASE_CSS = `
-.fnl-page{width:100%;color:inherit;margin-inline:auto}
+.fnl-page{width:100%;margin-inline:auto}
+/* Site theme settings (--site-*, Appearance → Theme settings). Zero-specificity :where() rules, so
+   anything set on the page, a section or a block wins and only unstyled content follows the theme. */
+:where(.fnl-page){background:var(--site-background,transparent);color:var(--site-body,inherit);font-family:var(--site-body-font,inherit);font-size:var(--site-font-size,inherit);line-height:var(--site-line-height,inherit)}
+:where(.fnl-block[data-fnl-type="heading"]){font-family:var(--site-heading-font,inherit);font-weight:var(--site-heading-weight,700);letter-spacing:var(--site-heading-tracking,normal);line-height:var(--site-heading-line-height,1.15);color:var(--site-heading,inherit)}
+:where(.fnl-block[data-fnl-type="paragraph"] a,.fnl-block[data-fnl-type="html"] a){color:var(--site-link,inherit);text-decoration:var(--site-link-decoration,underline);text-underline-offset:var(--site-link-underline-offset,3px)}
+:where(.fnl-block[data-fnl-type="paragraph"] a:hover,.fnl-block[data-fnl-type="html"] a:hover){color:var(--site-link-hover,var(--site-link,inherit))}
+:where(.fnl-block[data-fnl-type="button"] a,.fnl-block[data-fnl-type="button"] button){transition:transform .2s ease,box-shadow .2s ease}
+:where(.fnl-block[data-fnl-type="button"] a:hover,.fnl-block[data-fnl-type="button"] button:hover){transform:var(--site-button-hover-transform,none);box-shadow:var(--site-button-hover-shadow,none)}
+:where(.fnl-block[data-fnl-type="feature_cards"],.fnl-block[data-fnl-type="testimonial"],.fnl-block[data-fnl-type="pricing_table"]) :where(article,li,figure,blockquote){border-radius:var(--site-card-radius,inherit)}
 .fnl-page,.fnl-page *,.fnl-page *::before,.fnl-page *::after{box-sizing:border-box}
 /* Section content limits must not inherit the body maximum width. */
 .fnl-section{position:relative;width:100%;--fnl-max-width:initial}
@@ -97,16 +113,30 @@ const BASE_CSS = `
 .fnl-page [data-fnl-effect~="zoom"]:hover img{transform:scale(1.07)}
 .fnl-page [data-fnl-effect~="press"] :is(a,button){transition:transform .25s cubic-bezier(.2,.7,.2,1),filter .25s,box-shadow .25s}
 .fnl-page [data-fnl-effect~="press"] :is(a,button):hover{transform:translateY(-3px);filter:brightness(1.07);box-shadow:0 16px 30px -18px rgba(0,0,0,.55)}
+.fnl-page [data-fnl-effect~="glow"]{transition:box-shadow .35s cubic-bezier(.16,1,.3,1),transform .35s cubic-bezier(.16,1,.3,1)}
+.fnl-page [data-fnl-effect~="glow"]:hover{box-shadow:0 0 0 2px color-mix(in srgb,var(--site-primary,#4f46e5) 45%,transparent),0 20px 40px -16px color-mix(in srgb,var(--site-primary,#4f46e5) 32%,transparent)}
+.fnl-page [data-fnl-effect~="tilt"]{transition:transform .4s cubic-bezier(.16,1,.3,1)}
+.fnl-page [data-fnl-effect~="tilt"]:hover{transform:perspective(900px) rotateX(2deg) rotateY(-2deg) translateY(-4px)}
 .fnl-page:not(.fnl-editable) [data-fnl-effect~="float"]{animation:fnl-float 7s ease-in-out infinite}
+.fnl-page:not(.fnl-editable) [data-fnl-effect~="pulse-slow"]{animation:fnl-pulse-slow 4s ease-in-out infinite}
 .fnl-page:not(.fnl-editable) [data-fnl-effect~="kenburns"]::before{animation:fnl-kenburns 26s ease-in-out infinite alternate}
 .fnl-page [data-fnl-effect~="marquee"]{overflow:hidden}
 .fnl-page [data-fnl-effect~="marquee"]>*{display:inline-block;width:max-content;max-width:none;white-space:nowrap}
 .fnl-page:not(.fnl-editable) [data-fnl-effect~="marquee"]>*{animation:fnl-marquee 42s linear infinite}
-@supports (animation-timeline:view()){.fnl-page:not(.fnl-editable) [data-fnl-effect~="reveal"]{animation:fnl-reveal linear both;animation-timeline:view();animation-range:entry 0% cover 26%}}
+/* shadcn/ui surface variants */
+.fnl-page [data-fnl-shadcn="card"]{background:var(--site-surface,#ffffff);border:1px solid color-mix(in srgb,var(--site-heading,#0f172a) 10%,#e2e8f0);border-radius:12px;box-shadow:0 1px 3px 0 rgba(15,23,42,.04),0 1px 2px -1px rgba(15,23,42,.04);padding:var(--fnl-padding,24px)}
+.fnl-page [data-fnl-shadcn="muted"]{background:color-mix(in srgb,var(--site-surface,#f8fafc) 92%,#f1f5f9);border:1px solid color-mix(in srgb,var(--site-heading,#0f172a) 8%,#e2e8f0);border-radius:12px;padding:var(--fnl-padding,24px)}
+.fnl-page [data-fnl-shadcn="glass"]{background:rgba(255,255,255,.72);backdrop-filter:blur(14px) saturate(160%);-webkit-backdrop-filter:blur(14px) saturate(160%);border:1px solid rgba(255,255,255,.55);border-radius:16px;box-shadow:0 12px 32px -12px rgba(15,23,42,.12);padding:var(--fnl-padding,24px)}
+.fnl-page [data-fnl-shadcn="outline"]{background:transparent;border:1px solid color-mix(in srgb,var(--site-heading,#0f172a) 14%,#cbd5e1);border-radius:12px;padding:var(--fnl-padding,20px)}
+.fnl-page [data-fnl-shadcn="accent"]{background:color-mix(in srgb,var(--site-primary,#4f46e5) 7%,#ffffff);border:1px solid color-mix(in srgb,var(--site-primary,#4f46e5) 22%,#e2e8f0);border-radius:12px;padding:var(--fnl-padding,20px)}
+.fnl-page [data-fnl-shadcn="dark"]{background:#09090b;color:#fafafa;border:1px solid #27272a;border-radius:12px;box-shadow:0 10px 25px -10px rgba(0,0,0,.5);padding:var(--fnl-padding,24px)}
+/* Virtualized offscreen section rendering for large pages */
+.fnl-section:not([data-selected="true"]):not(:first-of-type){content-visibility:auto;contain-intrinsic-size:auto 420px}
 @keyframes fnl-float{50%{transform:translateY(-12px)}}
+@keyframes fnl-pulse-slow{50%{opacity:.82;transform:scale(.99)}}
 @keyframes fnl-kenburns{from{transform:scale(1)}to{transform:scale(1.09)}}
 @keyframes fnl-marquee{to{transform:translateX(-50%)}}
-@keyframes fnl-reveal{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:none}}
+@keyframes fnl-reveal{from{opacity:0;transform:translateY(32px)}to{opacity:1;transform:none}}
 @media (prefers-reduced-motion:reduce){.fnl-page [data-fnl-effect],.fnl-page [data-fnl-effect]>*,.fnl-page [data-fnl-effect]::before,.fnl-page [data-fnl-effect] img{animation:none!important;transition:none!important}}
 .fnl-nested-columns>*{min-width:0}
 .fnl-page[data-fnl-breakpoint="mobile"] .fnl-nested-columns:not([data-stack="none"]),.fnl-page[data-fnl-breakpoint="tablet"] .fnl-nested-columns[data-stack="tablet"]{grid-template-columns:minmax(0,1fr)!important}
@@ -312,19 +342,46 @@ function wrap(context: RenderContext, ref: NodeRef, element: ReactNode): ReactNo
     return context.slots.wrapNode ? context.slots.wrapNode(ref, element) : element;
 }
 
-/** Marks the node that owns an adjustable background or overlay layer. */
-function backgroundLayerAttributes(style: StyleData | null | undefined): Record<string, string> {
+/** Marks the node that owns an adjustable background, overlay, motion effect, or shadcn/ui surface. */
+function backgroundLayerAttributes(style: StyleData | null | undefined, breakpoint?: Breakpoint): Record<string, string> {
     const hasBackgroundImage = style?.backgroundImage !== undefined && style.backgroundImage !== null;
     const hasBackgroundVideo = style?.backgroundVideo !== undefined && style.backgroundVideo !== null;
     const hasOverlay = (style?.overlayColor !== undefined && style.overlayColor !== null)
         || (style?.overlayImage !== undefined && style.overlayImage !== null);
     const effect = effectOf(style);
+    const shadcn = shadcnSurfaceOf(style, breakpoint);
     return {
         'data-fnl-background-image': hasBackgroundImage ? 'true' : 'false',
         'data-fnl-background-video': hasBackgroundVideo ? 'true' : 'false',
         'data-fnl-overlay': hasOverlay ? 'true' : 'false',
         ...(effect ? { 'data-fnl-effect': effect } : {}),
+        ...(shadcn ? { 'data-fnl-shadcn': shadcn } : {}),
     };
+}
+
+/**
+ * Resolves Tailwind CSS v4 utility classes stored in `style.custom['--fnl-tw']`.
+ */
+export function tailwindClassesOf(style: StyleData | null | undefined, breakpoint?: Breakpoint): string {
+    const raw = style?.custom?.['--fnl-tw'];
+    const resolved = valueAt(raw, breakpoint ?? 'desktop');
+    if (typeof resolved !== 'string' || resolved.trim() === '') {
+        return '';
+    }
+    return resolved
+        .trim()
+        .split(/\s+/)
+        .filter((token) => /^[a-zA-Z0-9_:./[\]()%#!-]+$/.test(token))
+        .join(' ');
+}
+
+function shadcnSurfaceOf(style: StyleData | null | undefined, breakpoint?: Breakpoint): string | null {
+    const raw = style?.custom?.['--fnl-shadcn'];
+    const resolved = valueAt(raw, breakpoint ?? 'desktop');
+    if (typeof resolved !== 'string') {
+        return null;
+    }
+    return /^(card|muted|glass|outline|accent|dark)$/.test(resolved.trim()) ? resolved.trim() : null;
 }
 
 /**
@@ -386,11 +443,15 @@ function asUrl(value: unknown): string | null {
     return trimmed.startsWith('/') || /^https?:\/\//i.test(trimmed) ? trimmed : null;
 }
 
+const VALID_EFFECTS = /^(reveal|fade-in|slide-left|slide-right|zoom-in|blur-in|flip-up|spring-pop|exit-fade|exit-up|exit-scale|exit-blur|lift|zoom|press|glow|tilt|float|pulse-slow|kenburns|marquee)$/;
+const ENTRANCE_EFFECTS = ['reveal', 'fade-in', 'slide-left', 'slide-right', 'zoom-in', 'blur-in', 'flip-up', 'spring-pop'] as const;
+const EXIT_EFFECTS = ['exit-fade', 'exit-up', 'exit-scale', 'exit-blur'] as const;
+
 /**
- * Motion a node asks for through its `--fnl-effect` custom style: `reveal`,
- * `lift`, `zoom`, `press`, `float`, `kenburns` or `marquee`, space-separated.
- * The CSS lives in BASE_CSS; the builder canvas keeps everything still, and
- * visitors who prefer reduced motion get none of it.
+ * Motion a node asks for through its `--fnl-effect` custom style: entrance presets
+ * (`reveal`, `fade-in`, `slide-left`, `slide-right`, `zoom-in`, `blur-in`, `flip-up`,
+ * `spring-pop`) and hover/loop effects (`lift`, `zoom`, `press`, `glow`, `tilt`,
+ * `float`, `pulse-slow`, `kenburns`, `marquee`), space-separated.
  */
 function effectOf(style: StyleData | null | undefined): string | null {
     const raw: unknown = (style?.custom as Record<string, unknown> | undefined)?.['--fnl-effect'];
@@ -398,8 +459,174 @@ function effectOf(style: StyleData | null | undefined): string | null {
     if (typeof value !== 'string') {
         return null;
     }
-    const effects = value.split(/\s+/).filter((name) => /^(reveal|lift|zoom|press|float|kenburns|marquee)$/.test(name));
+    const effects = value.split(/\s+/).filter((name) => VALID_EFFECTS.test(name));
     return effects.length > 0 ? effects.join(' ') : null;
+}
+
+function keyframesForEntrance(effect: string): Keyframe[] {
+    switch (effect) {
+        case 'fade-in':
+            return [{ opacity: 0 }, { opacity: 1 }];
+        case 'slide-left':
+            return [
+                { opacity: 0, transform: 'translate3d(-36px, 0, 0)' },
+                { opacity: 1, transform: 'translate3d(0, 0, 0)' },
+            ];
+        case 'slide-right':
+            return [
+                { opacity: 0, transform: 'translate3d(36px, 0, 0)' },
+                { opacity: 1, transform: 'translate3d(0, 0, 0)' },
+            ];
+        case 'zoom-in':
+            return [
+                { opacity: 0, transform: 'scale(0.88)' },
+                { opacity: 1, transform: 'scale(1)' },
+            ];
+        case 'blur-in':
+            return [
+                { opacity: 0, filter: 'blur(12px)', transform: 'translate3d(0, 16px, 0)' },
+                { opacity: 1, filter: 'blur(0px)', transform: 'translate3d(0, 0, 0)' },
+            ];
+        case 'flip-up':
+            return [
+                { opacity: 0, transform: 'perspective(900px) rotateX(22deg) translate3d(0, 28px, 0)' },
+                { opacity: 1, transform: 'perspective(900px) rotateX(0deg) translate3d(0, 0, 0)' },
+            ];
+        case 'spring-pop':
+            return [
+                { opacity: 0, transform: 'scale(0.8) translate3d(0, 20px, 0)' },
+                { opacity: 1, transform: 'scale(1.03) translate3d(0, -3px, 0)', offset: 0.72 },
+                { opacity: 1, transform: 'scale(1) translate3d(0, 0, 0)' },
+            ];
+        case 'reveal':
+        default:
+            return [
+                { opacity: 0, transform: 'translate3d(0, 32px, 0)' },
+                { opacity: 1, transform: 'translate3d(0, 0, 0)' },
+            ];
+    }
+}
+
+function keyframesForExit(effect: string): Keyframe[] {
+    switch (effect) {
+        case 'exit-up':
+            return [
+                { opacity: 1, transform: 'translate3d(0, 0, 0)' },
+                { opacity: 0.15, transform: 'translate3d(0, -24px, 0)' },
+            ];
+        case 'exit-scale':
+            return [
+                { opacity: 1, transform: 'scale(1)' },
+                { opacity: 0.18, transform: 'scale(0.94)' },
+            ];
+        case 'exit-blur':
+            return [
+                { opacity: 1, filter: 'blur(0px)' },
+                { opacity: 0.2, filter: 'blur(8px)' },
+            ];
+        case 'exit-fade':
+        default:
+            return [{ opacity: 1 }, { opacity: 0.18 }];
+    }
+}
+
+function playNodeMotion(element: HTMLElement, phase: 'entrance' | 'exit' = 'entrance'): void {
+    if (typeof element.animate !== 'function') {
+        return;
+    }
+    const effects = (element.getAttribute('data-fnl-effect') ?? '').split(/\s+/).filter(Boolean);
+    const computed = window.getComputedStyle(element);
+    const rawDuration = parseFloat(computed.getPropertyValue('--fnl-anim-duration') || '650');
+    const rawDelay = parseFloat(computed.getPropertyValue('--fnl-anim-delay') || '0');
+    const rawEasing = computed.getPropertyValue('--fnl-anim-easing').trim() || 'cubic-bezier(0.16, 1, 0.3, 1)';
+    const duration = Number.isFinite(rawDuration) && rawDuration > 0 ? Math.min(rawDuration, 4000) : 650;
+    const delay = Number.isFinite(rawDelay) && rawDelay >= 0 ? Math.min(rawDelay, 3000) : 0;
+
+    if (phase === 'exit') {
+        const exitEffect = effects.find((name) => (EXIT_EFFECTS as readonly string[]).includes(name)) ?? 'exit-fade';
+        element.animate(keyframesForExit(exitEffect), {
+            duration: Math.max(280, Math.round(duration * 0.75)),
+            easing: rawEasing,
+            fill: 'forwards',
+        });
+        return;
+    }
+
+    const entrance = effects.find((name) => (ENTRANCE_EFFECTS as readonly string[]).includes(name)) ?? 'reveal';
+    element.animate(keyframesForEntrance(entrance), {
+        duration,
+        delay,
+        easing: rawEasing,
+        fill: 'both',
+    });
+}
+
+function useBuilderMotion(root: RefObject<HTMLDivElement | null>, editable: boolean, revision: unknown): void {
+    useEffect(() => {
+        const page = root.current;
+        if (!page) {
+            return;
+        }
+
+        const onReplay = (event: Event): void => {
+            const detail = (event as CustomEvent<{ nodeId?: string; phase?: 'entrance' | 'exit' }>).detail;
+            const target = detail?.nodeId
+                ? page.querySelector<HTMLElement>(`[data-fnl-id="${detail.nodeId}"]`)
+                : page.querySelector<HTMLElement>('[data-selected="true"]');
+            if (target) {
+                playNodeMotion(target, detail?.phase ?? 'entrance');
+                if (detail?.phase === 'exit') {
+                    window.setTimeout(() => playNodeMotion(target, 'entrance'), 650);
+                }
+            }
+        };
+
+        window.addEventListener('fnl:replay-motion', onReplay);
+
+        if (editable || typeof window === 'undefined' || typeof IntersectionObserver === 'undefined') {
+            return () => window.removeEventListener('fnl:replay-motion', onReplay);
+        }
+
+        if (window.matchMedia?.('(prefers-reduced-motion: reduce)').matches) {
+            return () => window.removeEventListener('fnl:replay-motion', onReplay);
+        }
+
+        const allMotionEffects = [...ENTRANCE_EFFECTS, ...EXIT_EFFECTS];
+        const selector = allMotionEffects.map((name) => `[data-fnl-effect~="${name}"]`).join(', ');
+        const nodes = Array.from(page.querySelectorAll<HTMLElement>(selector));
+        if (nodes.length === 0) {
+            return () => window.removeEventListener('fnl:replay-motion', onReplay);
+        }
+
+        const seen = new WeakSet<Element>();
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    const el = entry.target as HTMLElement;
+                    const effects = (el.getAttribute('data-fnl-effect') ?? '').split(/\s+/);
+                    const hasExit = effects.some((e) => (EXIT_EFFECTS as readonly string[]).includes(e));
+
+                    if (entry.isIntersecting) {
+                        seen.add(el);
+                        playNodeMotion(el, 'entrance');
+                        if (!hasExit) {
+                            observer.unobserve(el);
+                        }
+                    } else if (hasExit && seen.has(el)) {
+                        playNodeMotion(el, 'exit');
+                    }
+                });
+            },
+            { threshold: 0.12, rootMargin: '0px 0px -24px 0px' },
+        );
+
+        nodes.forEach((node) => observer.observe(node));
+
+        return () => {
+            observer.disconnect();
+            window.removeEventListener('fnl:replay-motion', onReplay);
+        };
+    }, [root, editable, revision]);
 }
 
 function RenderBlock({ block, context }: { block: BlockData; context: RenderContext }): ReactNode {
@@ -415,9 +642,10 @@ function RenderBlock({ block, context }: { block: BlockData; context: RenderCont
     const editable = context.mode === 'editable' && INLINE_EDITABLE.has(block.type) && context.onBlockPropsChange;
     const append =
         context.mode === 'editable' && block.type === 'container' ? context.slots.blockAppend?.(block) : undefined;
+    const tw = tailwindClassesOf(block.style, context.breakpoint);
 
     const element = (
-        <div className="fnl-block" data-aurelle-role={typeof block.props.aurelleRole === 'string' ? block.props.aurelleRole : undefined} data-forma-role={typeof block.props.formaRole === 'string' ? block.props.formaRole : undefined} data-york-role={typeof block.props.yorkRole === 'string' ? block.props.yorkRole : undefined} style={{ maxWidth: 'min(100%, var(--fnl-max-width, 100%))', overflowWrap: 'anywhere' }} {...backgroundLayerAttributes(block.style)} {...nodeAttributes(context, ref)}>
+        <div className={['fnl-block', tw].filter(Boolean).join(' ')} data-fnl-type={block.type} data-aurelle-role={typeof block.props.aurelleRole === 'string' ? block.props.aurelleRole : undefined} data-forma-role={typeof block.props.formaRole === 'string' ? block.props.formaRole : undefined} data-york-role={typeof block.props.yorkRole === 'string' ? block.props.yorkRole : undefined} data-meridian-role={typeof block.props.meridianRole === 'string' ? block.props.meridianRole : undefined} data-kairo-role={typeof block.props.kairoRole === 'string' ? block.props.kairoRole : undefined} data-larkspur-role={typeof block.props.larkspurRole === 'string' ? block.props.larkspurRole : undefined} style={{ maxWidth: 'min(100%, var(--fnl-max-width, 100%))', overflowWrap: 'anywhere' }} {...backgroundLayerAttributes(block.style, context.breakpoint)} {...nodeAttributes(context, ref)}>
             {block.props.formaRole === 'film' && context.mode !== 'editable' ? <FormaFilm block={block} /> : block.props.yorkRole === 'announcement' && context.mode !== 'editable' ? <YorkAnnouncement text={String(block.props.text ?? '')} /> : <Component
                 block={block}
                 mode={context.mode}
@@ -438,12 +666,13 @@ function RenderBlock({ block, context }: { block: BlockData; context: RenderCont
 
 function RenderColumn({ column, context }: { column: ColumnData; context: RenderContext }): ReactNode {
     const ref: NodeRef = { kind: 'column', id: column.id };
+    const tw = tailwindClassesOf(column.style, context.breakpoint);
 
     const element = (
         <div
-            className="fnl-column"
+            className={['fnl-column', tw].filter(Boolean).join(' ')}
             data-empty={column.blocks.length === 0 ? 'true' : 'false'}
-            {...backgroundLayerAttributes(column.style)}
+            {...backgroundLayerAttributes(column.style, context.breakpoint)}
             {...nodeAttributes(context, ref)}
         >
             <BackgroundVideo style={column.style} breakpoint={context.breakpoint} editable={context.mode === 'editable'} />
@@ -459,9 +688,10 @@ function RenderColumn({ column, context }: { column: ColumnData; context: Render
 
 function RenderRow({ row, context }: { row: RowData; context: RenderContext }): ReactNode {
     const ref: NodeRef = { kind: 'row', id: row.id };
+    const tw = tailwindClassesOf(row.style, context.breakpoint);
 
     const element = (
-        <div className="fnl-row" data-stack={row.stackBelow ?? 'mobile'} {...backgroundLayerAttributes(row.style)} {...nodeAttributes(context, ref)}>
+        <div className={['fnl-row', tw].filter(Boolean).join(' ')} data-stack={row.stackBelow ?? 'mobile'} {...backgroundLayerAttributes(row.style, context.breakpoint)} {...nodeAttributes(context, ref)}>
             <BackgroundVideo style={row.style} breakpoint={context.breakpoint} editable={context.mode === 'editable'} />
             {row.columns.map((column) => (
                 <RenderColumn key={column.id} column={column} context={context} />
@@ -475,11 +705,12 @@ function RenderRow({ row, context }: { row: RowData; context: RenderContext }): 
 
 function RenderSection({ section, context }: { section: SectionData; context: RenderContext }): ReactNode {
     const ref: NodeRef = { kind: 'section', id: section.id };
+    const tw = tailwindClassesOf(section.style, context.breakpoint);
     const element = (
         <section
             id={typeof section.settings?.anchor === 'string' && section.settings.anchor !== '' ? section.settings.anchor : undefined}
             data-fluent={section.settings?.designCollection === 'fluent-365' ? String(section.settings.designBlock ?? '') : (typeof section.settings?.fluent === 'string' && section.settings.fluent !== '' ? section.settings.fluent : undefined)}
-            className="fnl-section"
+            className={['fnl-section', tw].filter(Boolean).join(' ')}
             data-vistahaven={section.settings?.designCollection === 'vistahaven' ? String(section.settings.designBlock ?? '') : undefined}
             data-solenne={section.settings?.designCollection === 'solenne-estates' ? String(section.settings.designBlock ?? '') : undefined}
             data-candid={section.settings?.designCollection === 'candid' ? String(section.settings.designBlock ?? '') : undefined}
@@ -488,10 +719,15 @@ function RenderSection({ section, context }: { section: SectionData; context: Re
             data-forma-build={section.settings?.designCollection === 'forma-build' ? String(section.settings.designBlock ?? '') : undefined}
             data-aurelle-apartments={section.settings?.designCollection === 'aurelle-apartments' ? String(section.settings.designBlock ?? '') : undefined}
             data-edefy={section.settings?.designCollection === 'edefy' ? String(section.settings.designBlock ?? '') : undefined}
+            data-pebblewood={section.settings?.designCollection === 'pebblewood' ? String(section.settings.designBlock ?? '') : undefined}
+            data-lumikin={section.settings?.designCollection === 'lumikin' ? String(section.settings.designBlock ?? '') : undefined}
+            data-meridian={section.settings?.designCollection === 'meridian' ? String(section.settings.designBlock ?? '') : undefined}
+            data-kairo={section.settings?.designCollection === 'kairo' ? String(section.settings.designBlock ?? '') : undefined}
+            data-larkspur={section.settings?.designCollection === 'larkspur' ? String(section.settings.designBlock ?? '') : undefined}
             data-width={section.width}
             style={section.width === 'full' ? { width: '100%', maxWidth: 'none', marginInline: 'auto' } : { marginInline: 'auto' }}
             data-sticky={section.sticky ? 'true' : 'false'}
-            {...backgroundLayerAttributes(section.style)}
+            {...backgroundLayerAttributes(section.style, context.breakpoint)}
             aria-label={section.name ?? undefined}
             {...nodeAttributes(context, ref)}
         >
@@ -524,6 +760,9 @@ export function PageRenderer({
     const root = useRef<HTMLDivElement>(null);
     useFormaMotion(root, mode === 'editable', document);
     useAurelleMotion(root, mode === 'editable', document);
+    useKairoMotion(root, mode === 'editable', document);
+    useLarkspurMotion(root, mode === 'editable', document);
+    useBuilderMotion(root, mode === 'editable', document);
 
     const context: RenderContext = {
         mode,
@@ -541,7 +780,7 @@ export function PageRenderer({
             <style>{`${googleFontsImport(css)}
 ${VISTAHAVEN_CSS}
 ${SOLENNE_CSS}
-${METROPOLIS_FONTS}\n${SCALEFORGE_FONTS}\n${SPAZIO_FONTS}\n${BASE_CSS}\n${EDEFY_CSS}\n${NURSING_CARE_CSS}\n${YORK_CITY_CSS}\n${FORMA_BUILD_CSS}\n${AURELLE_APARTMENTS_CSS}\n${CANDID_CSS}\n${FLUENT_CSS}\n${mode === 'editable' ? EDITABLE_CSS : ''}\n${css}\n${customCss}`}</style>
+${METROPOLIS_FONTS}\n${SCALEFORGE_FONTS}\n${SPAZIO_FONTS}\n${BASE_CSS}\n${EDEFY_CSS}\n${NURSING_CARE_CSS}\n${YORK_CITY_CSS}\n${FORMA_BUILD_CSS}\n${AURELLE_APARTMENTS_CSS}\n${CANDID_CSS}\n${FLUENT_CSS}\n${PEBBLEWOOD_CSS}\n${LUMIKIN_CSS}\n${MERIDIAN_CSS}\n${KAIRO_CSS}\n${LARKSPUR_CSS}\n${mode === 'editable' ? EDITABLE_CSS : ''}\n${css}\n${customCss}`}</style>
             <div
                 ref={root}
                 className={['fnl-page', mode === 'editable' ? 'fnl-editable' : '', className ?? '']

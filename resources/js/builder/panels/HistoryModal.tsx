@@ -84,7 +84,7 @@ export function HistoryModal({
             open={open}
             onClose={close}
             title="Page history"
-            description="Preview an autosave or published snapshot, then restore it as the current draft."
+            description="Preview a saved or published snapshot, then restore it as the current draft."
             size="xl"
             dismissOnOverlayClick={!restoring}
             footer={selected ? (
@@ -107,7 +107,7 @@ export function HistoryModal({
             ) : error && revisions.length === 0 ? (
                 <Alert tone="danger" title="History unavailable">{error}</Alert>
             ) : revisions.length === 0 ? (
-                <EmptyState icon={<History size={20} />} title="No saved revisions yet" description="Revisions appear after publishing and periodically while autosaving." />
+                <EmptyState icon={<History size={20} />} title="No saved revisions yet" description="Revisions appear when you save or publish." />
             ) : (
                 <div className="fnl-history-layout">
                     <aside className="fnl-history-list" aria-label="Saved revisions">

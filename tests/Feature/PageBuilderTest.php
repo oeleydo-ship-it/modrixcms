@@ -27,7 +27,16 @@ class PageBuilderTest extends TestCase
         $this->get('/all-blocks')->assertOk()
             ->assertSeeInPage('Launch your store this afternoon.')
             ->assertSeeInPage('Built on a stack you already trust')
-            ->assertSeeInPage('Free forever. Read every line.');
+            ->assertSeeInPage('Free forever. Read every line.')
+            ->assertSeeInPage('Numbers that speak for themselves.')
+            ->assertSeeInPage('Start free, scale without limits.')
+            ->assertSeeInPage('Why store owners switch to Modrix.')
+            ->assertSeeInPage('Everything you need to know.')
+            ->assertSeeInPage('Continuous improvements, shipped openly.');
+
+        $editor = PageBuilder::forEditor();
+        $this->assertArrayHasKey('categories', $editor);
+        $this->assertNotEmpty($editor['presets']);
     }
 
     public function test_sanitize_drops_unknown_blocks_and_fields_and_unsafe_urls(): void
@@ -102,6 +111,23 @@ class PageBuilderTest extends TestCase
 
         $this->actingAs($admin)->delete(route('admin.pages.destroy', $new))->assertSessionHasErrors('page');
         $this->assertModelExists($new);
+    }
+
+    public function test_the_last_remaining_home_page_can_be_deleted(): void
+    {
+        $admin = $this->admin();
+        $home = Page::factory()->home()->create(['title' => 'Home']);
+
+        $this->actingAs($admin)->get(route('admin.pages.index'))
+            ->assertOk()
+            ->assertInertia(fn ($page) => $page->where('pages.data.0.can_delete', true));
+
+        $this->actingAs($admin)->delete(route('admin.pages.destroy', $home))
+            ->assertRedirect(route('admin.pages.index'))
+            ->assertSessionHasNoErrors();
+
+        $this->assertModelMissing($home);
+        $this->get('/')->assertOk();
     }
 
     public function test_preview_renders_unsaved_blocks(): void

@@ -39,11 +39,49 @@ class BlogController extends Controller
         return inertia('Site/BlogPost', [
             'post' => PostPresenter::full($post),
             'related' => $related->map(fn (Post $item) => PostPresenter::card($item))->all(),
-            'meta' => array_filter([
-                'title' => $post->title.' · '.$this->settings->get('site_name'),
-                'description' => (string) ($post->meta_description ?: $post->excerpt) ?: null,
-                'type' => 'article',
-                'image' => $post->coverUrl(),
+            'meta' => $this->postMeta($post),
+        ]);
+    }
+
+    /**
+     * What search engines and social networks read: the post's own SEO fields where it has them,
+     * the title, excerpt and cover otherwise.
+     *
+     * @return array<string, mixed>
+     */
+    private function postMeta(Post $post): array
+    {
+        $siteName = (string) $this->settings->get('site_name');
+        $description = (string) ($post->meta_description ?: $post->excerpt);
+        $image = $post->og_image ?: $post->coverUrl();
+        $canonical = $post->canonical_url ?: null;
+
+        if ($canonical !== null) {
+            // The SEO plugin would otherwise add the page's own address as well.
+            request()->attributes->set('canonical_url', $canonical);
+        }
+
+        return array_filter([
+            'title' => ($post->meta_title ?: $post->title).' · '.$siteName,
+            'description' => $description ?: null,
+            'type' => 'article',
+            'image' => $image,
+            'noindex' => $post->noindex ?: null,
+            'canonical' => $canonical,
+            'ogTitle' => $post->og_title ?: null,
+            'ogDescription' => $post->og_description ?: null,
+            'jsonLd' => array_filter([
+                '@context' => 'https://schema.org',
+                '@type' => 'BlogPosting',
+                'headline' => $post->title,
+                'description' => $description ?: null,
+                'image' => $image ? url($image) : null,
+                'datePublished' => $post->published_at?->toAtomString(),
+                'dateModified' => $post->updated_at?->toAtomString(),
+                'author' => $post->author ? ['@type' => 'Person', 'name' => $post->author->name] : null,
+                'publisher' => ['@type' => 'Organization', 'name' => $siteName],
+                'mainEntityOfPage' => $canonical ?? route('blog.show', $post),
+                'keywords' => $post->focus_keyword ?: null,
             ]),
         ]);
     }

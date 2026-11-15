@@ -118,6 +118,7 @@ const BLOCK_DEFAULTS: Record<BlockType, () => Record<string, unknown>> = {
     spacer: () => ({ height: '48px' }),
     html: () => ({ html: '' }),
     custom_code: () => ({ html: '', css: '', js: '', placement: 'inline' }),
+    site_form: () => ({ formSlug: '' }),
     form: () => ({
         formId: null,
         consentText: null,
@@ -130,8 +131,14 @@ const BLOCK_DEFAULTS: Record<BlockType, () => Record<string, unknown>> = {
     }),
     email_optin: () => ({
         formId: null,
+        label: 'Email address',
+        showLabel: false,
+        fieldName: 'email',
+        required: true,
         successAction: 'message',
         targetStepId: null,
+        successMessage: 'Thanks — we got it.',
+        redirectUrl: null,
         placeholder: 'you@example.com',
         submitLabel: 'Send it to me',
         consentText: null,
@@ -140,12 +147,20 @@ const BLOCK_DEFAULTS: Record<BlockType, () => Record<string, unknown>> = {
     }),
     phone_input: () => ({
         formId: null,
+        label: 'Phone number',
+        showLabel: true,
+        fieldName: 'phone',
+        required: true,
         successAction: 'message',
         targetStepId: null,
+        successMessage: 'Thanks — we got it.',
+        redirectUrl: null,
         placeholder: '+1 555 000 0000',
         defaultCountry: 'US',
         submitLabel: 'Text me',
         requireConsent: true,
+        consentText: 'I agree to receive text messages. Reply STOP to opt out.',
+        layout: 'inline',
     }),
     checkout: () => ({
         productIds: [],
@@ -399,7 +414,8 @@ export function normaliseSection(value: unknown): SectionData {
 export function normaliseSettings(value: unknown): PageSettingsData {
     const source = isRecord(value) ? value : {};
     return {
-        contentWidth: asString(source['contentWidth'], '1140px'),
+        // A page without its own width follows Theme settings → Content width (1140px when none is set).
+        contentWidth: asString(source['contentWidth'], 'var(--site-content-width, 1140px)'),
         body: normaliseStyle(source['body']),
         colors: isRecord(source['colors']) ? source['colors'] : {},
         fonts: isRecord(source['fonts']) ? source['fonts'] : {},

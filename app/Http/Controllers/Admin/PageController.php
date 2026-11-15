@@ -5,7 +5,9 @@ namespace App\Http\Controllers\Admin;
 use App\Cms\Builder\BlockPageConverter;
 use App\Cms\Builder\Exceptions\InvalidDocumentException;
 use App\Cms\Builder\PageDocuments;
+use App\Cms\Builder\SiteChrome;
 use App\Cms\Frontend\BlockPresenter;
+use App\Cms\Themes\ThemeManager;
 use App\Http\Controllers\Controller;
 use App\Models\Page;
 use App\PageBuilder\PageBuilder;
@@ -21,9 +23,11 @@ use Symfony\Component\HttpFoundation\Response as SymfonyResponse;
 
 class PageController extends Controller
 {
-    public function index(Request $request): Response
+    public function index(Request $request, ThemeManager $themes, AiGeneratorController $aiGenerator): Response
     {
+        $regularPageCount = Page::query()->regular()->count();
         $pages = Page::query()
+            ->regular()
             ->when($request->query('q'), fn ($q, $term) => $q->where('title', 'like', "%{$term}%"))
             ->orderBy('title')
             ->paginate(20)
@@ -35,6 +39,7 @@ class PageController extends Controller
                 'title' => $page->title,
                 'slug' => $page->slug,
                 'is_home' => $page->is_home,
+                'can_delete' => ! $page->is_home || $regularPageCount <= 1,
                 'is_published' => $page->is_published,
                 'show_in_menu' => $page->show_in_menu,
                 'menu_order' => $page->menu_order,
@@ -46,7 +51,27 @@ class PageController extends Controller
                 'url' => $page->is_home ? route('home') : route('pages.show', $page),
             ]),
             'filters' => ['q' => $request->query('q')],
+            'siteChrome' => [
+                'headerUrl' => route('admin.pages.site-header'),
+                'footerUrl' => route('admin.pages.site-footer'),
+                'headerLive' => app(SiteChrome::class)->current(Page::ROLE_HEADER)?->published_document !== null,
+                'footerLive' => app(SiteChrome::class)->current(Page::ROLE_FOOTER)?->published_document !== null,
+                'theme' => $themes->theme()?->displayName() ?? $themes->name(),
+            ],
+            'ai' => $aiGenerator->workspaceProps($themes, $request->filled('ai_page') ? $request->integer('ai_page') : null),
         ]);
+    }
+
+    /** Opens the site header (shown on top of every visual-builder page) in the builder. */
+    public function siteHeader(Request $request, SiteChrome $chrome): View|SymfonyResponse
+    {
+        return $this->builder($request, $chrome->page(Page::ROLE_HEADER));
+    }
+
+    /** Opens the site footer (shown below every visual-builder page) in the builder. */
+    public function siteFooter(Request $request, SiteChrome $chrome): View|SymfonyResponse
+    {
+        return $this->builder($request, $chrome->page(Page::ROLE_FOOTER));
     }
 
     public function create(Request $request): Response
@@ -142,8 +167,13 @@ class PageController extends Controller
         return redirect()->route('admin.pages.edit', $page)->with('status', 'Back in the block editor. Your visual-builder design is kept if you switch again.');
     }
 
-    public function edit(Page $page): Response
+    public function edit(Page $page): Response|SymfonyResponse
     {
+        // The site header and footer have no settings of their own: they open in the builder.
+        if ($page->role !== null) {
+            return Inertia::location(route('admin.pages.builder', $page));
+        }
+
         return $this->form($page);
     }
 
@@ -168,6 +198,8 @@ class PageController extends Controller
                 'switch_back_url' => $page->exists && ($page->blocks ?? []) !== [] ? route('admin.pages.switch-to-blocks', $page) : null,
                 'has_builder_design' => $page->document !== null,
                 'builder_live' => $page->published_document !== null,
+                'show_site_header' => (bool) ($page->show_site_header ?? true),
+                'show_site_footer' => (bool) ($page->show_site_footer ?? true),
             ],
             'builder' => PageBuilder::forEditor(),
         ]);
@@ -185,7 +217,11 @@ class PageController extends Controller
 
     public function destroy(Page $page): RedirectResponse
     {
-        if ($page->is_home) {
+        if ($page->role !== null) {
+            return back()->withErrors(['page' => 'Site header and footer templates cannot be deleted.']);
+        }
+
+        if ($page->is_home && Page::query()->regular()->whereKeyNot($page->getKey())->exists()) {
             return back()->withErrors(['page' => 'This is the home page. Make another page the home page before deleting it.']);
         }
 
@@ -242,6 +278,8 @@ class PageController extends Controller
             'is_published' => $request->boolean('is_published'),
             'is_home' => $request->boolean('is_home'),
             'show_in_menu' => $request->boolean('show_in_menu'),
+            'show_site_header' => $request->boolean('show_site_header', true),
+            'show_site_footer' => $request->boolean('show_site_footer', true),
         ];
     }
 }

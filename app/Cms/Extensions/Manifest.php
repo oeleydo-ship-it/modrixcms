@@ -214,12 +214,65 @@ final class Manifest
 
     private static function validateTheme(array $data, callable $fail): void
     {
+        // Default design settings (see App\Cms\Themes\DesignTokens); unknown or invalid values are ignored.
+        if (isset($data['design']) && (! is_array($data['design']) || array_filter($data['design'], fn ($value) => ! is_scalar($value)) !== [])) {
+            $fail('"design" must be an object of setting names and values, e.g. {"primary": "#4f46e5"}.');
+        }
+
         foreach (['screenshot'] as $key) {
             if (isset($data[$key]) && (! is_string($data[$key]) || ! self::isSafeRelativePath($data[$key]) || ! str_starts_with($data[$key], 'public/'))) {
                 $fail("\"{$key}\" must be a file inside public/.");
             }
         }
 
+        if (isset($data['demo'])) {
+            self::validateDemo($data['demo'], $fail);
+        }
+    }
+
+    /**
+     * Demo content (Appearance → Import demo): visual-builder documents stored as .json files
+     * inside demo/, for pages and for the theme's own site header and footer.
+     */
+    private static function validateDemo(mixed $demo, callable $fail): void
+    {
+        $isDemoFile = fn (mixed $file): bool => is_string($file) && self::isSafeRelativePath($file)
+            && str_starts_with($file, 'demo/') && str_ends_with($file, '.json');
+
+        if (! is_array($demo)) {
+            $fail('"demo" must be an object with "pages" and optional "header" and "footer" files.');
+
+            return;
+        }
+
+        foreach (['header', 'footer'] as $key) {
+            if (isset($demo[$key]) && ! $isDemoFile($demo[$key])) {
+                $fail("\"demo.{$key}\" must be a .json file inside demo/.");
+            }
+        }
+
+        $pages = $demo['pages'] ?? [];
+
+        if (! is_array($pages) || ! array_is_list($pages) || count($pages) > 30) {
+            $fail('"demo.pages" must be a list of up to 30 pages.');
+
+            return;
+        }
+
+        foreach ($pages as $index => $page) {
+            if (! is_array($page)
+                || ! is_string($page['title'] ?? null) || mb_strlen($page['title']) > 120
+                || ! is_string($page['slug'] ?? null) || ! preg_match('/^[a-z0-9]+(?:-[a-z0-9]+)*$/', $page['slug']) || strlen($page['slug']) > 80
+                || ! $isDemoFile($page['file'] ?? null)) {
+                $fail("\"demo.pages.{$index}\" needs a \"title\", a \"slug\" (lowercase letters, digits and dashes) and a .json \"file\" inside demo/.");
+            }
+
+            foreach (['home', 'menu', 'site_header', 'site_footer'] as $flag) {
+                if (isset($page[$flag]) && ! is_bool($page[$flag])) {
+                    $fail("\"demo.pages.{$index}.{$flag}\" must be true or false.");
+                }
+            }
+        }
     }
 
     /** "styles" (.css) and "scripts" (compiled ES modules, .js/.mjs) live in public/. */

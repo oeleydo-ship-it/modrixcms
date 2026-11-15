@@ -37,8 +37,10 @@ import {
     BackgroundGroup,
     EffectsGroup,
     LayoutGroup,
+    MotionGroup,
     SizingGroup,
     SpacingGroup,
+    TailwindUtilityGroup,
     TypographyGroup,
     VisibilityGroup,
     makeStyleControl,
@@ -228,6 +230,9 @@ export function ColumnSettings({
                     <BorderControl id={`${baseId}-border`} context={control('border')} />
                     <RadiusControl id={`${baseId}-radius`} context={control('borderRadius')} />
                 </ControlGroup>
+
+                <MotionGroup baseId={`${baseId}-motion`} control={control} defaultOpen={false} />
+                <TailwindUtilityGroup baseId={`${baseId}-tw`} control={control} defaultOpen={false} />
 
                 <VisibilityGroup
                     visibility={column.visibility ?? DEFAULT_VISIBILITY}

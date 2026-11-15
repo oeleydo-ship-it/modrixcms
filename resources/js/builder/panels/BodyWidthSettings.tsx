@@ -4,6 +4,13 @@ import { useBuilderStore } from '../store';
 import { BackgroundGroup, TypographyGroup, SpacingGroup, makeStyleControl } from './styleGroups';
 import { WidthControls } from './WidthControls';
 
+/** The page width that follows Appearance → Theme settings → Content width. */
+const THEME_WIDTH = 'var(--site-content-width, 1140px)';
+
+function followsTheme(width: string | null | undefined): boolean {
+    return !width || width.startsWith('var(--site-content-width');
+}
+
 export function BodyWidthSettings({ document, breakpoint }: { document: PageDocument; breakpoint: Breakpoint }) {
     const id = useId();
     const change = (body: StyleData) => {
@@ -23,12 +30,20 @@ export function BodyWidthSettings({ document, breakpoint }: { document: PageDocu
         </div>
         <WidthControls id={id} control={control} title="Body width" />
         <label className="flex flex-col gap-2 text-sm">Default boxed content width
-            <input className="rounded-md border border-slate-200 px-3 py-2" placeholder="1200px"
-                value={document.settings.contentWidth ?? ''} onChange={event => {
+            <input className="rounded-md border border-slate-200 px-3 py-2" placeholder="Theme setting"
+                value={followsTheme(document.settings.contentWidth) ? '' : (document.settings.contentWidth ?? '')} onChange={event => {
                     const state = useBuilderStore.getState();
-                    state.commit({ ...state.document, settings: { ...state.document.settings, contentWidth: /^\d+(\.\d+)?$/.test(event.currentTarget.value.trim()) ? event.currentTarget.value.trim() + 'px' : event.currentTarget.value } });
+                    const raw = event.currentTarget.value.trim();
+                    // Empty means "follow Theme settings → Content width" again.
+                    const contentWidth = raw === '' ? THEME_WIDTH : /^\d+(\.\d+)?$/.test(raw) ? raw + 'px' : event.currentTarget.value;
+                    state.commit({ ...state.document, settings: { ...state.document.settings, contentWidth } });
                 }} />
         </label>
+        <p className="-mt-2 text-xs text-slate-500">
+            {followsTheme(document.settings.contentWidth)
+                ? 'Follows Appearance → Theme settings → Content width. Type a width (e.g. 1200px) to fix it for this page.'
+                : 'Fixed for this page. Clear the field to follow the theme setting again.'}
+        </p>
         <BackgroundGroup baseId={`${id}-background`} control={control} layeredImageTools={false} />
         <TypographyGroup baseId={`${id}-typography`} control={control} defaultOpen={false} />
         <SpacingGroup baseId={`${id}-spacing`} control={control} defaultOpen={false} />

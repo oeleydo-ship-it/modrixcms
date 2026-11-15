@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 350" fill="none" width="820" height="350">
+  <defs>
+    <filter id="ctaPhoneShadow" x="0" y="0" width="820" height="350" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="0" dy="18" stdDeviation="18" flood-color="#0C0407" flood-opacity="0.16"/>
+    </filter>
+    <linearGradient id="ctaBlueCard" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0066FF"/>
+      <stop offset="100%" stop-color="#3B82F6"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Left Phone Tilted -->
+  <g transform="translate(88 78) rotate(-14)" filter="url(#ctaPhoneShadow)">
+    <rect x="0" y="0" width="210" height="320" rx="32" fill="#0C0407"/>
+    <rect x="7" y="7" width="196" height="306" rx="26" fill="#FFFFFF"/>
+    <rect x="66" y="14" width="78" height="16" rx="8" fill="#0C0407"/>
+    <text x="20" y="54" font-family="Inter, sans-serif" font-size="11" font-weight="700" fill="#0C0407">Saved Roles</text>
+    <rect x="18" y="68" width="174" height="72" rx="12" fill="#F7F7F8"/>
+    <rect x="28" y="78" width="26" height="26" rx="7" fill="#0066FF"/>
+    <text x="62" y="90" font-family="Inter, sans-serif" font-size="10" font-weight="700" fill="#0C0407">Staff Designer</text>
+    <text x="62" y="103" font-family="Inter, sans-serif" font-size="8.5" fill="#666666">$16k – $22k /mo</text>
+    <rect x="28" y="114" width="44" height="14" rx="4" fill="#FFFFFF"/>
+    <text x="50" y="124" text-anchor="middle" font-family="Inter, sans-serif" font-size="7" fill="#4C4C4C">Remote</text>
+    <rect x="18" y="150" width="174" height="72" rx="12" fill="#FFFFFF" stroke="#EAEAEA"/>
+    <rect x="28" y="160" width="26" height="26" rx="7" fill="#22C55E"/>
+    <text x="62" y="172" font-family="Inter, sans-serif" font-size="10" font-weight="700" fill="#0C0407">Frontend Architect</text>
+    <text x="62" y="185" font-family="Inter, sans-serif" font-size="8.5" fill="#666666">$15k – $20k /mo</text>
+    <rect x="18" y="232" width="174" height="60" rx="12" fill="#EEF4FF"/>
+    <text x="30" y="256" font-family="Inter, sans-serif" font-size="9.5" font-weight="700" fill="#0066FF">2 Active Interviews</text>
+    <text x="30" y="272" font-family="Inter, sans-serif" font-size="8" fill="#4C4C4C">Tomorrow · 10:30 AM</text>
+  </g>
+
+  <!-- Right Phone Tilted -->
+  <g transform="translate(522 26) rotate(14)" filter="url(#ctaPhoneShadow)">
+    <rect x="0" y="0" width="210" height="320" rx="32" fill="#0C0407"/>
+    <rect x="7" y="7" width="196" height="306" rx="26" fill="#FFFFFF"/>
+    <rect x="66" y="14" width="78" height="16" rx="8" fill="#0C0407"/>
+    <text x="20" y="54" font-family="Inter, sans-serif" font-size="11" font-weight="700" fill="#0C0407">Offer Tracker</text>
+    <rect x="18" y="68" width="174" height="84" rx="12" fill="#EEF4FF" stroke="#BFDBFE"/>
+    <text x="30" y="90" font-family="Inter, sans-serif" font-size="9" font-weight="600" fill="#0066FF">96% Match Readiness</text>
+    <text x="30" y="114" font-family="Inter, sans-serif" font-size="18" font-weight="700" fill="#0C0407">Top 8%</text>
+    <rect x="30" y="126" width="150" height="8" rx="4" fill="#DBEAFE"/>
+    <rect x="30" y="126" width="136" height="8" rx="4" fill="#0066FF"/>
+    <rect x="18" y="164" width="174" height="72" rx="12" fill="#FFFFFF" stroke="#EAEAEA"/>
+    <circle cx="38" cy="188" r="10" fill="#FFB600"/>
+    <text x="56" y="186" font-family="Inter, sans-serif" font-size="9.5" font-weight="700" fill="#0C0407">Direct Hiring Chat</text>
+    <text x="56" y="200" font-family="Inter, sans-serif" font-size="8" fill="#666666">Recruiter shared team brief</text>
+  </g>
+
+  <!-- Center Hero Upright Phone -->
+  <g transform="translate(292 12)" filter="url(#ctaPhoneShadow)">
+    <rect x="0" y="0" width="236" height="356" rx="34" fill="#0C0407"/>
+    <rect x="8" y="8" width="220" height="340" rx="28" fill="#FFFFFF"/>
+    <rect x="78" y="15" width="80" height="18" rx="9" fill="#0C0407"/>
+    <text x="24" y="28" font-family="Inter, sans-serif" font-size="9" font-weight="700" fill="#0C0407">9:41</text>
+
+    <circle cx="38" cy="58" r="13" fill="#DBEAFE"/>
+    <text x="58" y="54" font-family="Inter, sans-serif" font-size="8" fill="#666666">Welcome Back</text>
+    <text x="58" y="67" font-family="Inter, sans-serif" font-size="10.5" font-weight="700" fill="#0C0407">Maya Lin</text>
+
+    <rect x="20" y="80" width="196" height="28" rx="9" fill="#F7F7F8" stroke="#EAEAEA"/>
+    <text x="34" y="98" font-family="Inter, sans-serif" font-size="8.5" fill="#666666">Search 12,400+ curated roles...</text>
+
+    <rect x="20" y="118" width="196" height="84" rx="14" fill="url(#ctaBlueCard)"/>
+    <text x="34" y="142" font-family="Inter, sans-serif" font-size="11" font-weight="700" fill="#FFFFFF">Apply with one tap</text>
+    <text x="34" y="158" font-family="Inter, sans-serif" font-size="11" font-weight="700" fill="#FFFFFF">to vetted roles</text>
+    <rect x="34" y="168" width="74" height="20" rx="10" fill="#FFFFFF"/>
+    <text x="71" y="181" text-anchor="middle" font-family="Inter, sans-serif" font-size="8" font-weight="600" fill="#0066FF">Get Started</text>
+
+    <text x="20" y="224" font-family="Inter, sans-serif" font-size="10.5" font-weight="700" fill="#0C0407">Recommendation</text>
+    <text x="216" y="224" text-anchor="end" font-family="Inter, sans-serif" font-size="8.5" font-weight="600" fill="#0066FF">See All</text>
+
+    <rect x="20" y="234" width="196" height="92" rx="14" fill="#FFFFFF" stroke="#EAEAEA"/>
+    <rect x="32" y="246" width="30" height="30" rx="8" fill="#FEE2E2"/>
+    <circle cx="47" cy="261" r="7" fill="#EF4444"/>
+    <text x="70" y="257" font-family="Inter, sans-serif" font-size="10.5" font-weight="700" fill="#0C0407">UI/UX Designer</text>
+    <text x="70" y="270" font-family="Inter, sans-serif" font-size="8.5" fill="#666666">California, United States</text>
+    <text x="32" y="294" font-family="Inter, sans-serif" font-size="9.5" font-weight="700" fill="#0066FF">$14,000 – $22,000 /mo</text>
+    <rect x="32" y="302" width="44" height="14" rx="4" fill="#F7F7F8"/>
+    <text x="54" y="312" text-anchor="middle" font-family="Inter, sans-serif" font-size="7" fill="#4C4C4C">Full Time</text>
+    <rect x="82" y="302" width="42" height="14" rx="4" fill="#F7F7F8"/>
+    <text x="103" y="312" text-anchor="middle" font-family="Inter, sans-serif" font-size="7" fill="#4C4C4C">Remote</text>
+  </g>
+</svg>

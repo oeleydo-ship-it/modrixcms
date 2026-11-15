@@ -13,7 +13,7 @@ export function designGroup(block: Pick<DesignBlock, 'name' | 'key' | 'category'
     if (/call.to.action|closing|cta|scarcity/.test(text)) return 'Calls to action';
     if (/form|contact|booking|calendar|opt.in|lead.magnet/.test(text) || block.category === 'scheduling') return 'Forms & booking';
     if (/pricing|engagement|checkout|product|offer|upsell|downsell|bonus/.test(text) || block.category === 'commerce') return 'Offers & pricing';
-    if (/testimonial|quote|social.proof|logo.cloud/.test(text) || block.category === 'social-proof') return 'Social proof';
+    if (/testimonial|quote|social.proof|logo.cloud|review|case.study|trust/.test(text) || block.category === 'social-proof' || block.category === 'social_proof') return 'Social proof';
     return 'Content & services';
 }
 

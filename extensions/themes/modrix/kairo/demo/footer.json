@@ -1,0 +1,657 @@
+{
+    "schemaVersion": 1,
+    "sections": [
+        {
+            "id": "01J9KRA0000000000000000015",
+            "name": "Site Footer",
+            "width": "full",
+            "sticky": false,
+            "style": {
+                "fontFamily": {
+                    "desktop": "var(--site-body-font, \"Inter\", system-ui, sans-serif)"
+                },
+                "color": {
+                    "desktop": "var(--site-heading, #0f172a)"
+                },
+                "backgroundColor": {
+                    "desktop": "var(--site-footer-bg, #ffffff)"
+                },
+                "border": {
+                    "desktop": {
+                        "style": "solid",
+                        "color": "var(--site-border, #e2e8f0)",
+                        "top": "1px"
+                    }
+                },
+                "padding": {
+                    "desktop": {
+                        "top": "72px",
+                        "right": "24px",
+                        "bottom": "40px",
+                        "left": "24px"
+                    },
+                    "mobile": {
+                        "top": "48px",
+                        "right": "20px",
+                        "bottom": "32px",
+                        "left": "20px"
+                    }
+                }
+            },
+            "rows": [
+                {
+                    "id": "01J9KRA000000000000000000V",
+                    "stackBelow": "mobile",
+                    "style": {
+                        "margin": {
+                            "desktop": {
+                                "bottom": "48px"
+                            },
+                            "mobile": {
+                                "bottom": "28px"
+                            }
+                        },
+                        "gap": {
+                            "desktop": "32px",
+                            "mobile": "28px"
+                        },
+                        "maxWidth": {
+                            "desktop": "var(--site-content-width, 1140px)"
+                        }
+                    },
+                    "columns": [
+                        {
+                            "id": "01J9KRA000000000000000000D",
+                            "span": {
+                                "desktop": 4,
+                                "tablet": 6,
+                                "mobile": 12
+                            },
+                            "style": {
+                                "gap": {
+                                    "desktop": "16px"
+                                }
+                            },
+                            "blocks": [
+                                {
+                                    "id": "01J9KRA000000000000000000A",
+                                    "type": "logo",
+                                    "props": {
+                                        "src": "/templates/kairo/logo.svg",
+                                        "alt": "Kairo Career",
+                                        "url": "/"
+                                    },
+                                    "style": {
+                                        "height": {
+                                            "desktop": "34px",
+                                            "mobile": "30px"
+                                        }
+                                    }
+                                },
+                                {
+                                    "id": "01J9KRA000000000000000000B",
+                                    "type": "paragraph",
+                                    "props": {
+                                        "text": "Kairo is a smart career platform helping skilled professionals connect with verified hiring teams and transparent roles faster."
+                                    },
+                                    "style": {
+                                        "fontFamily": {
+                                            "desktop": "var(--site-body-font, \"Inter\", system-ui, sans-serif)"
+                                        },
+                                        "color": {
+                                            "desktop": "var(--site-footer-text, #64748b)"
+                                        },
+                                        "fontSize": {
+                                            "desktop": "14.5px"
+                                        },
+                                        "lineHeight": {
+                                            "desktop": "var(--site-line-height, 1.6)"
+                                        },
+                                        "textAlign": {
+                                            "desktop": "left"
+                                        },
+                                        "margin": {
+                                            "desktop": "0"
+                                        },
+                                        "maxWidth": {
+                                            "desktop": "32ch"
+                                        },
+                                        "custom": {
+                                            "text-wrap": "pretty"
+                                        }
+                                    }
+                                },
+                                {
+                                    "id": "01J9KRA000000000000000000C",
+                                    "type": "social_icons",
+                                    "props": {
+                                        "networks": [
+                                            {
+                                                "network": "linkedin",
+                                                "url": "/contact"
+                                            },
+                                            {
+                                                "network": "x",
+                                                "url": "/contact"
+                                            },
+                                            {
+                                                "network": "instagram",
+                                                "url": "/contact"
+                                            },
+                                            {
+                                                "network": "youtube",
+                                                "url": "/contact"
+                                            }
+                                        ],
+                                        "size": "18px",
+                                        "shape": "circle"
+                                    },
+                                    "style": {
+                                        "color": {
+                                            "desktop": "var(--site-muted, #64748b)"
+                                        }
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "id": "01J9KRA000000000000000000J",
+                            "span": {
+                                "desktop": 3,
+                                "tablet": 6,
+                                "mobile": 12
+                            },
+                            "style": [],
+                            "blocks": [
+                                {
+                                    "id": "01J9KRA000000000000000000F",
+                                    "type": "container",
+                                    "props": {
+                                        "layout": "stack",
+                                        "gap": "12px"
+                                    },
+                                    "style": [],
+                                    "children": [
+                                        {
+                                            "id": "01J9KRA000000000000000000G",
+                                            "type": "paragraph",
+                                            "props": {
+                                                "text": "Quick Links"
+                                            },
+                                            "style": {
+                                                "fontFamily": {
+                                                    "desktop": "var(--site-body-font, \"Inter\", system-ui, sans-serif)"
+                                                },
+                                                "color": {
+                                                    "desktop": "var(--site-heading, #0f172a)"
+                                                },
+                                                "fontSize": {
+                                                    "desktop": "15px"
+                                                },
+                                                "lineHeight": {
+                                                    "desktop": "var(--site-line-height, 1.6)"
+                                                },
+                                                "textAlign": {
+                                                    "desktop": "left"
+                                                },
+                                                "margin": {
+                                                    "desktop": "0"
+                                                },
+                                                "fontWeight": {
+                                                    "desktop": "600"
+                                                },
+                                                "maxWidth": {
+                                                    "desktop": "66ch"
+                                                },
+                                                "custom": {
+                                                    "text-wrap": "pretty"
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "id": "01J9KRA000000000000000000H",
+                                            "type": "navigation",
+                                            "props": {
+                                                "items": [
+                                                    {
+                                                        "label": "Home",
+                                                        "url": "/"
+                                                    },
+                                                    {
+                                                        "label": "Features",
+                                                        "url": "/features"
+                                                    },
+                                                    {
+                                                        "label": "About us",
+                                                        "url": "/about"
+                                                    },
+                                                    {
+                                                        "label": "Pricing",
+                                                        "url": "/pricing"
+                                                    },
+                                                    {
+                                                        "label": "Contact",
+                                                        "url": "/contact"
+                                                    }
+                                                ],
+                                                "orientation": "vertical",
+                                                "mobileBehaviour": "keep"
+                                            },
+                                            "style": {
+                                                "color": {
+                                                    "desktop": "var(--site-footer-text, #64748b)"
+                                                },
+                                                "fontSize": {
+                                                    "desktop": "14.5px",
+                                                    "mobile": "14px"
+                                                },
+                                                "gap": {
+                                                    "desktop": "10px"
+                                                }
+                                            }
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "id": "01J9KRA000000000000000000P",
+                            "span": {
+                                "desktop": 3,
+                                "tablet": 6,
+                                "mobile": 12
+                            },
+                            "style": [],
+                            "blocks": [
+                                {
+                                    "id": "01J9KRA000000000000000000K",
+                                    "type": "container",
+                                    "props": {
+                                        "layout": "stack",
+                                        "gap": "12px"
+                                    },
+                                    "style": [],
+                                    "children": [
+                                        {
+                                            "id": "01J9KRA000000000000000000M",
+                                            "type": "paragraph",
+                                            "props": {
+                                                "text": "Product"
+                                            },
+                                            "style": {
+                                                "fontFamily": {
+                                                    "desktop": "var(--site-body-font, \"Inter\", system-ui, sans-serif)"
+                                                },
+                                                "color": {
+                                                    "desktop": "var(--site-heading, #0f172a)"
+                                                },
+                                                "fontSize": {
+                                                    "desktop": "15px"
+                                                },
+                                                "lineHeight": {
+                                                    "desktop": "var(--site-line-height, 1.6)"
+                                                },
+                                                "textAlign": {
+                                                    "desktop": "left"
+                                                },
+                                                "margin": {
+                                                    "desktop": "0"
+                                                },
+                                                "fontWeight": {
+                                                    "desktop": "600"
+                                                },
+                                                "maxWidth": {
+                                                    "desktop": "66ch"
+                                                },
+                                                "custom": {
+                                                    "text-wrap": "pretty"
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "id": "01J9KRA000000000000000000N",
+                                            "type": "navigation",
+                                            "props": {
+                                                "items": [
+                                                    {
+                                                        "label": "Smart Matching",
+                                                        "url": "/features"
+                                                    },
+                                                    {
+                                                        "label": "Salary Benchmarks",
+                                                        "url": "/features"
+                                                    },
+                                                    {
+                                                        "label": "Monthly & Yearly Plans",
+                                                        "url": "/pricing"
+                                                    },
+                                                    {
+                                                        "label": "Plan Comparison",
+                                                        "url": "/pricing"
+                                                    }
+                                                ],
+                                                "orientation": "vertical",
+                                                "mobileBehaviour": "keep"
+                                            },
+                                            "style": {
+                                                "color": {
+                                                    "desktop": "var(--site-footer-text, #64748b)"
+                                                },
+                                                "fontSize": {
+                                                    "desktop": "14.5px",
+                                                    "mobile": "14px"
+                                                },
+                                                "gap": {
+                                                    "desktop": "10px"
+                                                }
+                                            }
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "id": "01J9KRA000000000000000000T",
+                            "span": {
+                                "desktop": 2,
+                                "tablet": 6,
+                                "mobile": 12
+                            },
+                            "style": [],
+                            "blocks": [
+                                {
+                                    "id": "01J9KRA000000000000000000Q",
+                                    "type": "container",
+                                    "props": {
+                                        "layout": "stack",
+                                        "gap": "12px"
+                                    },
+                                    "style": [],
+                                    "children": [
+                                        {
+                                            "id": "01J9KRA000000000000000000R",
+                                            "type": "paragraph",
+                                            "props": {
+                                                "text": "Resources"
+                                            },
+                                            "style": {
+                                                "fontFamily": {
+                                                    "desktop": "var(--site-body-font, \"Inter\", system-ui, sans-serif)"
+                                                },
+                                                "color": {
+                                                    "desktop": "var(--site-heading, #0f172a)"
+                                                },
+                                                "fontSize": {
+                                                    "desktop": "15px"
+                                                },
+                                                "lineHeight": {
+                                                    "desktop": "var(--site-line-height, 1.6)"
+                                                },
+                                                "textAlign": {
+                                                    "desktop": "left"
+                                                },
+                                                "margin": {
+                                                    "desktop": "0"
+                                                },
+                                                "fontWeight": {
+                                                    "desktop": "600"
+                                                },
+                                                "maxWidth": {
+                                                    "desktop": "66ch"
+                                                },
+                                                "custom": {
+                                                    "text-wrap": "pretty"
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "id": "01J9KRA000000000000000000S",
+                                            "type": "navigation",
+                                            "props": {
+                                                "items": [
+                                                    {
+                                                        "label": "Articles & Guides",
+                                                        "url": "/articles"
+                                                    },
+                                                    {
+                                                        "label": "About Our Story",
+                                                        "url": "/about"
+                                                    },
+                                                    {
+                                                        "label": "Member Support",
+                                                        "url": "/contact"
+                                                    }
+                                                ],
+                                                "orientation": "vertical",
+                                                "mobileBehaviour": "keep"
+                                            },
+                                            "style": {
+                                                "color": {
+                                                    "desktop": "var(--site-footer-text, #64748b)"
+                                                },
+                                                "fontSize": {
+                                                    "desktop": "14.5px",
+                                                    "mobile": "14px"
+                                                },
+                                                "gap": {
+                                                    "desktop": "10px"
+                                                }
+                                            }
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "id": "01J9KRA000000000000000000X",
+                    "stackBelow": "mobile",
+                    "style": {
+                        "margin": {
+                            "desktop": {
+                                "bottom": "24px"
+                            }
+                        },
+                        "gap": {
+                            "desktop": "var(--site-grid-gap, 16px)",
+                            "mobile": "16px"
+                        },
+                        "maxWidth": {
+                            "desktop": "var(--site-content-width, 1140px)"
+                        }
+                    },
+                    "columns": [
+                        {
+                            "id": "01J9KRA000000000000000000W",
+                            "span": {
+                                "desktop": 12,
+                                "tablet": 12,
+                                "mobile": 12
+                            },
+                            "style": [],
+                            "blocks": [
+                                {
+                                    "id": "01J9KRA000000000000000000E",
+                                    "type": "divider",
+                                    "props": {
+                                        "style": "solid",
+                                        "thickness": "1px",
+                                        "width": "100%"
+                                    },
+                                    "style": {
+                                        "color": {
+                                            "desktop": "var(--site-border, #e2e8f0)"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "id": "01J9KRA0000000000000000014",
+                    "stackBelow": "mobile",
+                    "style": {
+                        "margin": {
+                            "desktop": {
+                                "left": "auto",
+                                "right": "auto"
+                            }
+                        },
+                        "gap": {
+                            "desktop": "16px",
+                            "mobile": "10px"
+                        },
+                        "maxWidth": {
+                            "desktop": "var(--site-content-width, 1140px)"
+                        }
+                    },
+                    "columns": [
+                        {
+                            "id": "01J9KRA000000000000000000Z",
+                            "span": {
+                                "desktop": 4,
+                                "tablet": 6,
+                                "mobile": 12
+                            },
+                            "style": [],
+                            "blocks": [
+                                {
+                                    "id": "01J9KRA000000000000000000Y",
+                                    "type": "paragraph",
+                                    "props": {
+                                        "text": "Built for Modern Teams"
+                                    },
+                                    "style": {
+                                        "fontFamily": {
+                                            "desktop": "var(--site-body-font, \"Inter\", system-ui, sans-serif)"
+                                        },
+                                        "color": {
+                                            "desktop": "var(--site-footer-text, #64748b)"
+                                        },
+                                        "fontSize": {
+                                            "desktop": "13.5px"
+                                        },
+                                        "lineHeight": {
+                                            "desktop": "var(--site-line-height, 1.6)"
+                                        },
+                                        "textAlign": {
+                                            "desktop": "left"
+                                        },
+                                        "margin": {
+                                            "desktop": "0"
+                                        },
+                                        "maxWidth": {
+                                            "desktop": "66ch"
+                                        },
+                                        "custom": {
+                                            "text-wrap": "pretty"
+                                        }
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "id": "01J9KRA0000000000000000011",
+                            "span": {
+                                "desktop": 4,
+                                "tablet": 6,
+                                "mobile": 12
+                            },
+                            "style": [],
+                            "blocks": [
+                                {
+                                    "id": "01J9KRA0000000000000000010",
+                                    "type": "paragraph",
+                                    "props": {
+                                        "text": "Copyright © 2026 Kairo Career. All Rights Reserved."
+                                    },
+                                    "style": {
+                                        "fontFamily": {
+                                            "desktop": "var(--site-body-font, \"Inter\", system-ui, sans-serif)"
+                                        },
+                                        "color": {
+                                            "desktop": "var(--site-footer-text, #64748b)"
+                                        },
+                                        "fontSize": {
+                                            "desktop": "13.5px"
+                                        },
+                                        "lineHeight": {
+                                            "desktop": "var(--site-line-height, 1.6)"
+                                        },
+                                        "textAlign": {
+                                            "desktop": "center"
+                                        },
+                                        "margin": {
+                                            "desktop": {
+                                                "top": "0",
+                                                "bottom": "0",
+                                                "left": "auto",
+                                                "right": "auto"
+                                            }
+                                        },
+                                        "maxWidth": {
+                                            "desktop": "66ch"
+                                        },
+                                        "custom": {
+                                            "text-wrap": "pretty"
+                                        }
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "id": "01J9KRA0000000000000000013",
+                            "span": {
+                                "desktop": 4,
+                                "tablet": 6,
+                                "mobile": 12
+                            },
+                            "style": [],
+                            "blocks": [
+                                {
+                                    "id": "01J9KRA0000000000000000012",
+                                    "type": "paragraph",
+                                    "props": {
+                                        "text": "Powered by Modrix CMS"
+                                    },
+                                    "style": {
+                                        "fontFamily": {
+                                            "desktop": "var(--site-body-font, \"Inter\", system-ui, sans-serif)"
+                                        },
+                                        "color": {
+                                            "desktop": "var(--site-footer-text, #64748b)"
+                                        },
+                                        "fontSize": {
+                                            "desktop": "13.5px"
+                                        },
+                                        "lineHeight": {
+                                            "desktop": "var(--site-line-height, 1.6)"
+                                        },
+                                        "textAlign": {
+                                            "desktop": "right"
+                                        },
+                                        "margin": {
+                                            "desktop": "0"
+                                        },
+                                        "maxWidth": {
+                                            "desktop": "66ch"
+                                        },
+                                        "custom": {
+                                            "text-wrap": "pretty"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "settings": {
+                "designCollection": "kairo",
+                "designBlock": "footer"
+            }
+        }
+    ]
+}

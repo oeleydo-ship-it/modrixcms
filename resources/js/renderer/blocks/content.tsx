@@ -45,6 +45,22 @@ import {
     Workflow,
     Video,
     Zap,
+    Plus,
+    TrainFront,
+    Languages,
+    ShieldCheck,
+    Sparkle,
+    CircleDot,
+    CircleCheck,
+    TriangleAlert,
+    Thermometer,
+    HeartPulse,
+    Brain,
+    Syringe,
+    FlaskConical,
+    MessageCircle,
+    Stethoscope,
+    Baby,
     type LucideIcon,
 } from 'lucide-react';
 import { useEffect, useRef, useState, type CSSProperties } from 'react';
@@ -102,10 +118,26 @@ const ICONS: Record<string, LucideIcon> = {
     linkedin: Globe,
     tiktok: Video,
     youtube: Video,
+    'plus': Plus,
+    'train-front': TrainFront,
+    'languages': Languages,
+    'shield-check': ShieldCheck,
+    'sparkle': Sparkle,
+    'circle-dot': CircleDot,
+    'circle-check': CircleCheck,
+    'triangle-alert': TriangleAlert,
+    'thermometer': Thermometer,
+    'heart-pulse': HeartPulse,
+    'brain': Brain,
+    'syringe': Syringe,
+    'flask-conical': FlaskConical,
+    'message-circle': MessageCircle,
+    'stethoscope': Stethoscope,
+    'baby': Baby,
 };
 
 /** The icon names a block may use, for the builder's icon pickers. */
-export const ICON_NAMES: readonly string[] = ['star', 'zap', 'shield', 'heart', 'check', 'mail', 'map-pin', 'play', 'arrow-right', 'globe', 'calculator', 'calendar-check', 'chart-no-axes-combined', 'clipboard-check', 'compass', 'home', 'layers', 'mail-check', 'phone', 'target', 'users', 'workflow', 'video', 'building-2', 'boxes', 'construction', 'panels-top-left', 'ruler', 'waves', 'dumbbell', 'car', 'package', 'paw-print', 'book-open'];
+export const ICON_NAMES: readonly string[] = ['star', 'zap', 'shield', 'heart', 'check', 'mail', 'map-pin', 'play', 'arrow-right', 'globe', 'calculator', 'calendar-check', 'chart-no-axes-combined', 'clipboard-check', 'compass', 'home', 'layers', 'mail-check', 'phone', 'target', 'users', 'workflow', 'video', 'building-2', 'boxes', 'construction', 'panels-top-left', 'ruler', 'waves', 'dumbbell', 'car', 'package', 'paw-print', 'book-open', 'plus', 'train-front', 'languages', 'shield-check', 'sparkle', 'circle-dot', 'circle-check', 'triangle-alert', 'thermometer', 'heart-pulse', 'brain', 'syringe', 'flask-conical', 'message-circle', 'stethoscope', 'baby', 'clock'];
 
 export function iconFor(name: string): LucideIcon {
     return ICONS[name] ?? Star;
@@ -141,6 +173,7 @@ export function ContainerBlock({ block, children, append }: BlockComponentProps)
                 style={{
                     display: 'grid',
                     gridTemplateColumns: spans.map((span) => `minmax(0, ${span}fr)`).join(' '),
+                    alignItems: 'var(--fnl-align-items, stretch)',
                     gap,
                 }}
             >
@@ -153,9 +186,17 @@ export function ContainerBlock({ block, children, append }: BlockComponentProps)
     // line up passes that on to the flex row itself. Rows that declare nothing are
     // left alone, so template stylesheets targeting them still apply.
     const alignsItems = block.style?.justifyContent != null || block.style?.custom?.['justify-content'] != null;
+    const crossAligns = block.style?.alignItems != null || block.style?.custom?.['align-items'] != null;
     const style: CSSProperties =
         layout === 'row'
-            ? { display: 'flex', flexDirection: 'row', flexWrap: 'wrap', gap, ...(alignsItems ? { justifyContent: 'inherit' } : {}) }
+            ? {
+                  display: 'flex',
+                  flexDirection: 'row',
+                  flexWrap: 'wrap',
+                  gap,
+                  ...(alignsItems ? { justifyContent: 'inherit' } : {}),
+                  ...(crossAligns ? { alignItems: 'inherit' } : {}),
+              }
             : layout === 'grid'
               ? { display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(220px, 100%), 1fr))', gap }
               : stack(gap);
@@ -460,9 +501,9 @@ export function buttonSurface(
     const link = variant === 'link';
     const base =
         variant === 'primary'
-            ? { background: 'var(--fnl-accent, #4f46e5)', color: '#fff', border: '1px solid transparent' }
+            ? { background: 'var(--fnl-accent, var(--site-button-bg, #4f46e5))', color: 'var(--site-button-fg, #fff)', border: 'var(--site-button-border, 1px solid transparent)' }
             : variant === 'secondary'
-              ? { background: 'rgba(15,23,42,.06)', color: 'inherit', border: '1px solid transparent' }
+              ? { background: 'color-mix(in srgb, var(--site-secondary, #0f172a) 8%, transparent)', color: 'inherit', border: '1px solid transparent' }
               : variant === 'outline'
                 ? { background: 'transparent', color: 'inherit', border: '1px solid currentColor' }
                 : { background: 'transparent', color: 'inherit', border: '0' };
@@ -473,7 +514,7 @@ export function buttonSurface(
         justifyContent: 'center',
         gap: '8px',
         width: fullWidth ? '100%' : undefined,
-        padding: `var(--fnl-padding, ${link ? '0' : BUTTON_PADDING[size]})`,
+        padding: `var(--fnl-padding, ${link ? '0' : size === 'md' ? `var(--site-button-padding, ${BUTTON_PADDING.md})` : BUTTON_PADDING[size]})`,
         backgroundColor: `var(--fnl-background-color, ${base.background})`,
         backgroundImage: 'var(--fnl-background-image, none)',
         backgroundSize: 'cover',
@@ -484,10 +525,11 @@ export function buttonSurface(
         borderRight: `var(--fnl-border-right, var(--fnl-border, ${base.border}))`,
         borderBottom: `var(--fnl-border-bottom, var(--fnl-border, ${base.border}))`,
         borderLeft: `var(--fnl-border-left, var(--fnl-border, ${base.border}))`,
-        borderRadius: `var(--fnl-border-radius, ${link ? '0' : '8px'})`,
+        borderRadius: `var(--fnl-border-radius, ${link ? '0' : 'var(--site-button-radius, 8px)'})`,
         boxShadow: 'var(--fnl-box-shadow, none)',
         font: 'inherit',
-        fontWeight: 600,
+        fontWeight: 'var(--site-button-weight, 600)' as CSSProperties['fontWeight'],
+        textTransform: 'var(--site-button-transform, none)' as CSSProperties['textTransform'],
         lineHeight: 1.2,
         cursor: 'pointer',
         textDecoration: link ? 'underline' : 'none',
@@ -699,7 +741,7 @@ export function LogoBlock({ block, mode, onPropsChange }: BlockComponentProps) {
     const href = safeHref(block.props['url']) ?? '/';
 
     const inner = src ? (
-        <img src={src} alt={alt} style={{ display: 'block', maxHeight: '48px', width: 'auto' }} />
+        <img src={src} alt={alt} style={{ display: 'block', maxHeight: '36px', maxWidth: '100%', width: 'auto', objectFit: 'contain' }} />
     ) : (
         <EditableText
             value={alt}
@@ -727,7 +769,47 @@ export function NavigationBlock({ block, mode, onPropsChange }: BlockComponentPr
     const orientation = oneOf(block.props, 'orientation', ['horizontal', 'vertical'] as const, 'horizontal');
     const behaviour = oneOf(block.props, 'mobileBehaviour', ['drawer', 'stack', 'hide', 'inline'] as const, 'drawer');
     const [open, setOpen] = useState(false);
+    const navRef = useRef<HTMLElement>(null);
     const scope = `[data-fnl-nav="${block.id.replace(/[^A-Za-z0-9]/g, '')}"]`;
+
+    const closeDetails = (except?: HTMLDetailsElement): void => {
+        navRef.current?.querySelectorAll<HTMLDetailsElement>('details.fnl-nav-details[open]').forEach((details) => {
+            if (details !== except) {
+                details.open = false;
+            }
+        });
+    };
+
+    useEffect(() => {
+        if (mode === 'editable') {
+            return;
+        }
+
+        const onPointerDown = (event: MouseEvent): void => {
+            const nav = navRef.current;
+            if (!nav || (event.target instanceof Node && nav.contains(event.target))) {
+                return;
+            }
+            closeDetails();
+            setOpen(false);
+        };
+
+        const onKeyDown = (event: KeyboardEvent): void => {
+            if (event.key !== 'Escape') {
+                return;
+            }
+            closeDetails();
+            setOpen(false);
+        };
+
+        document.addEventListener('mousedown', onPointerDown);
+        document.addEventListener('keydown', onKeyDown);
+
+        return () => {
+            document.removeEventListener('mousedown', onPointerDown);
+            document.removeEventListener('keydown', onKeyDown);
+        };
+    }, [mode]);
 
     // Mobile behaviour needs a media query, which inline styles cannot express,
     // so it is a scoped rule. It keys off both the real viewport (the public
@@ -736,11 +818,12 @@ export function NavigationBlock({ block, mode, onPropsChange }: BlockComponentPr
     // beat the list's inline display.
     const mobileRules = [
         `${scope}[data-mobile="hide"]{display:none!important}`,
-        `${scope}[data-mobile="drawer"] .fnl-nav-toggle{display:inline-flex!important}`,
+        `${scope}[data-mobile="drawer"]{display:flex!important;flex-direction:row!important;justify-content:var(--fnl-justify-content,flex-end)!important;align-items:center!important;position:relative!important;width:100%!important}`,
+        `${scope}[data-mobile="drawer"] .fnl-nav-toggle{display:inline-flex!important;margin-bottom:0!important;margin-left:auto!important;width:36px!important;height:36px!important;border-radius:999px!important;border:1px solid var(--site-border,rgba(9,9,11,0.14))!important;background:#ffffff!important;color:#09090b!important}`,
         `${scope}[data-mobile="drawer"]:not([data-open="true"]) ul{display:none!important}`,
-        `${scope}[data-mobile="drawer"][data-open="true"] ul{flex-direction:column!important;align-items:flex-start}`,
+        `${scope}[data-mobile="drawer"][data-open="true"] ul{display:flex!important;flex-direction:column!important;flex-wrap:nowrap!important;justify-content:flex-start!important;align-items:stretch!important;position:absolute!important;top:calc(100% + 12px)!important;right:0!important;min-width:210px!important;max-height:calc(100vh - 104px)!important;overflow-x:hidden!important;overflow-y:auto!important;background:var(--site-surface,#ffffff)!important;color:var(--site-heading,#09090b)!important;padding:16px 20px!important;border-radius:18px!important;border:1px solid var(--site-border,#e4e4e7)!important;box-shadow:0 20px 44px -14px rgba(9,9,11,0.18)!important;z-index:95!important;gap:14px!important}`,
         `${scope}[data-mobile="stack"] ul{flex-direction:column!important;align-items:var(--fnl-text-align, flex-start)}`,
-        `${scope}[data-mobile="drawer"] details>div{position:static!important;width:100%!important;grid-template-columns:1fr!important;box-shadow:none!important;padding:14px 0!important}`,
+        `${scope}[data-mobile="drawer"] details>div{position:static!important;left:auto!important;right:auto!important;transform:none!important;width:100%!important;min-width:0!important;box-sizing:border-box!important;grid-template-columns:minmax(0,1fr)!important;box-shadow:none!important;padding:10px 0!important}`,
     ].join('');
     const css = `@media (max-width:640px){${mobileRules}}${mobileRules
         .split('}')
@@ -750,6 +833,7 @@ export function NavigationBlock({ block, mode, onPropsChange }: BlockComponentPr
 
     return (
         <nav
+            ref={navRef}
             aria-label="Page navigation"
             data-fnl-nav={block.id.replace(/[^A-Za-z0-9]/g, '')}
             data-mobile={behaviour}
@@ -817,11 +901,86 @@ export function NavigationBlock({ block, mode, onPropsChange }: BlockComponentPr
                       const submenu = recordList(item, 'children');
                       if (submenu.length > 0) {
                           return (
-                              <li key={`${label}-${index}`} style={{ position: 'relative' }}>
-                                  <details>
-                                      <summary style={{ cursor: 'pointer', listStyle: 'none', whiteSpace: 'nowrap' }}>{label} <span aria-hidden style={{ fontSize: '.7em' }}>▾</span></summary>
-                                      <div style={{ position: 'absolute', top: 'calc(100% + 18px)', right: 0, width: 'min(460px, 85vw)', display: 'grid', gridTemplateColumns: 'repeat(2,minmax(0,1fr))', gap: '18px', padding: '28px', background: '#ffffff', color: '#444444', boxShadow: '0 8px 30px rgba(0,0,0,.16)', zIndex: 60, textAlign: 'left' }}>
-                                          {submenu.map((child, childIndex) => <a key={childIndex} href={safeHref(child['url']) ?? '#'} style={{ color: 'inherit', textDecoration: 'none', lineHeight: 1.5 }}>{typeof child['label'] === 'string' ? child['label'] : 'Link'}</a>)}
+                              <li key={`${label}-${index}`} className="fnl-nav-item-has-dropdown" style={{ position: 'relative' }}>
+                                  <details
+                                      className="fnl-nav-details"
+                                      onToggle={(event) => {
+                                          if (event.currentTarget.open) {
+                                              closeDetails(event.currentTarget);
+                                          }
+                                      }}
+                                  >
+                                      <summary className="fnl-nav-summary" style={{ cursor: 'pointer', listStyle: 'none', whiteSpace: 'nowrap' }}>{label} <span className="fnl-nav-caret" aria-hidden style={{ fontSize: '.7em' }}>▾</span></summary>
+                                      <div
+                                          className="fnl-nav-dropdown"
+                                          data-fnl-dropdown
+                                          style={{
+                                              position: 'absolute',
+                                              top: 'var(--fnl-dropdown-top, calc(100% + 18px))',
+                                              left: 'var(--fnl-dropdown-left, auto)',
+                                              right: 'var(--fnl-dropdown-right, 0)',
+                                              width: 'var(--fnl-dropdown-width, min(460px, 85vw))',
+                                              boxSizing: 'border-box',
+                                              display: 'grid',
+                                              gridTemplateColumns: 'var(--fnl-dropdown-cols, repeat(2,minmax(0,1fr)))',
+                                              gap: 'var(--fnl-dropdown-gap, 18px)',
+                                              padding: 'var(--fnl-dropdown-padding, 28px)',
+                                              borderRadius: 'var(--fnl-dropdown-radius, 0px)',
+                                              border: 'var(--fnl-dropdown-border, none)',
+                                              background: 'var(--fnl-dropdown-bg, #ffffff)',
+                                              color: 'var(--fnl-dropdown-color, #444444)',
+                                              boxShadow: 'var(--fnl-dropdown-shadow, 0 8px 30px rgba(0,0,0,.16))',
+                                              zIndex: 60,
+                                              textAlign: 'left',
+                                          }}
+                                      >
+                                          {submenu.map((child, childIndex) => {
+                                              const childLabel = typeof child['label'] === 'string' ? child['label'] : 'Link';
+                                              const childDesc = typeof child['description'] === 'string' && child['description'].trim() !== '' ? child['description'] : null;
+                                              const childIcon = typeof child['icon'] === 'string' && child['icon'].trim() !== '' ? child['icon'] : null;
+                                              const ChildIcon = childIcon ? iconFor(childIcon) : null;
+                                              const href = safeHref(child['url']) ?? '#';
+
+                                              if (ChildIcon === null && childDesc === null) {
+                                                  return (
+                                                      <a
+                                                          key={childIndex}
+                                                          className="fnl-nav-dropdown-link"
+                                                          href={href}
+                                                          onClick={() => {
+                                                              closeDetails();
+                                                              setOpen(false);
+                                                          }}
+                                                          style={{ color: 'inherit', textDecoration: 'none', lineHeight: 1.5 }}
+                                                      >
+                                                          {childLabel}
+                                                      </a>
+                                                  );
+                                              }
+
+                                              return (
+                                                  <a
+                                                      key={childIndex}
+                                                      className="fnl-nav-dropdown-link fnl-nav-dropdown-rich"
+                                                      href={href}
+                                                      onClick={() => {
+                                                          closeDetails();
+                                                          setOpen(false);
+                                                      }}
+                                                      style={{ color: 'inherit', textDecoration: 'none', lineHeight: 1.4, display: 'flex', alignItems: 'flex-start', gap: '12px', minWidth: 0, width: '100%', boxSizing: 'border-box', whiteSpace: 'normal' }}
+                                                  >
+                                                      {ChildIcon ? (
+                                                          <span className="fnl-nav-dropdown-icon" aria-hidden style={{ flexShrink: 0 }}>
+                                                              <ChildIcon style={{ width: '18px', height: '18px' }} />
+                                                          </span>
+                                                      ) : null}
+                                                      <span className="fnl-nav-dropdown-copy" style={{ display: 'flex', flexDirection: 'column', gap: '2px', minWidth: 0, flex: '1 1 0%', whiteSpace: 'normal' }}>
+                                                          <span className="fnl-nav-dropdown-title">{childLabel}</span>
+                                                          {childDesc ? <span className="fnl-nav-dropdown-desc">{childDesc}</span> : null}
+                                                      </span>
+                                                  </a>
+                                              );
+                                          })}
                                       </div>
                                   </details>
                               </li>
@@ -829,7 +988,14 @@ export function NavigationBlock({ block, mode, onPropsChange }: BlockComponentPr
                       }
                       return (
                           <li key={`${label}-${index}`}>
-                            <a href={safeHref(item['url']) ?? '#'} style={{ color: 'inherit', textDecoration: 'none' }}>
+                            <a
+                                href={safeHref(item['url']) ?? '#'}
+                                onClick={() => {
+                                    closeDetails();
+                                    setOpen(false);
+                                }}
+                                style={{ color: 'inherit', textDecoration: 'none' }}
+                            >
                                 {label}
                             </a>
                         </li>
@@ -1223,3 +1389,40 @@ const arrowStyle: CSSProperties = {
     color: 'inherit',
     cursor: 'pointer',
 };
+
+/**
+ * A saved form, drawn in full. The form's own public page is shown in a frame that
+ * grows to the form's height (the page reports it), so nothing scrolls inside a box
+ * and the form keeps its fields, layout and the active theme's styling.
+ */
+export function SiteFormBlock({ block, mode }: BlockComponentProps) {
+    const slug = str(block.props, 'formSlug', '').trim();
+    const frame = useRef<HTMLIFrameElement>(null);
+    const [height, setHeight] = useState(520);
+
+    useEffect(() => {
+        const onMessage = (event: MessageEvent) => {
+            const data = event.data as { type?: string; slug?: string; height?: number } | null;
+            if (data && data.type === 'modrix-form-height' && data.slug === slug && event.source === frame.current?.contentWindow && typeof data.height === 'number') {
+                setHeight(Math.max(120, Math.ceil(data.height)));
+            }
+        };
+        window.addEventListener('message', onMessage);
+
+        return () => window.removeEventListener('message', onMessage);
+    }, [slug]);
+
+    if (slug === '') {
+        return mode === 'editable' ? <Placeholder label="Saved form" detail="Choose a form in the properties panel." /> : null;
+    }
+
+    return (
+        <iframe
+            ref={frame}
+            src={`/forms/${encodeURIComponent(slug)}?embed=1`}
+            title="Form"
+            loading="lazy"
+            style={{ display: 'block', width: '100%', height, border: 0, background: 'transparent', pointerEvents: mode === 'editable' ? 'none' : undefined }}
+        />
+    );
+}

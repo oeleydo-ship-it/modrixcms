@@ -1,0 +1,29 @@
+{
+    "name": "modrix/seo-analytics",
+    "type": "plugin",
+    "display_name": "SEO & Analytics",
+    "description": "Privacy-friendly page view analytics, 301/302 URL redirects, dynamic XML sitemap (/sitemap.xml), SEO health audit, search verification tags, and Organization JSON-LD schema.",
+    "version": "1.0.0",
+    "cms_version": "^1.0",
+    "author": "Modrix",
+    "license": "MIT",
+    "autoload": { "psr-4": { "Modrix\\SeoAnalytics\\": "src/" } },
+    "provider": "Modrix\\SeoAnalytics\\SeoAnalyticsServiceProvider",
+    "routes": { "web": "routes/web.php", "admin": "routes/admin.php" },
+    "scripts": ["public/seo-analytics.js"],
+    "admin_navigation": [
+        { "title": "Analytics", "route": "analytics.index" },
+        { "title": "Redirects", "route": "redirects.index" },
+        { "title": "SEO & Sitemap", "route": "seo.index" }
+    ],
+    "settings": [
+        { "name": "track_views", "label": "Track privacy-first page views", "type": "toggle", "default": true },
+        { "name": "exclude_admins", "label": "Exclude signed-in admins from analytics", "type": "toggle", "default": true },
+        { "name": "org_name", "label": "Organization / Brand name", "type": "text", "default": "" },
+        { "name": "org_type", "label": "Schema type", "type": "select", "default": "Organization", "options": { "Organization": "Organization", "LocalBusiness": "LocalBusiness", "Store": "Store", "Person": "Person" } },
+        { "name": "org_logo_url", "label": "Organization logo URL", "type": "url", "default": "" },
+        { "name": "google_verification", "label": "Google Search Console verification token", "type": "text", "default": "" },
+        { "name": "bing_verification", "label": "Bing Webmaster verification token", "type": "text", "default": "" },
+        { "name": "canonical_base", "label": "Canonical base URL override (optional)", "type": "url", "default": "" }
+    ]
+}

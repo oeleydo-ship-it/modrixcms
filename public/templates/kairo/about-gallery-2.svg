@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 400" fill="none" width="360" height="400">
+  <rect width="360" height="400" rx="24" fill="#EEF4FF"/>
+  <rect x="28" y="36" width="304" height="328" rx="20" fill="#FFFFFF"/>
+  <circle cx="180" cy="128" r="46" fill="#DBEAFE"/>
+  <circle cx="180" cy="116" r="15" fill="#0066FF"/>
+  <path d="M150 162C156 144 166 138 180 138C194 138 204 144 210 162" fill="#0066FF"/>
+  <text x="180" y="216" text-anchor="middle" font-family="Inter, sans-serif" font-size="17" font-weight="700" fill="#0C0407">Built for Speed</text>
+  <text x="180" y="242" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" fill="#666666">One verified profile connects you</text>
+  <text x="180" y="260" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" fill="#666666">directly with hiring teams.</text>
+  <rect x="66" y="290" width="228" height="44" rx="22" fill="#0066FF"/>
+  <text x="180" y="317" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" font-weight="600" fill="#FFFFFF">40,000+ Active Members</text>
+</svg>

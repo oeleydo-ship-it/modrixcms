@@ -67,6 +67,7 @@ export const FONT_FAMILIES: readonly FontFamilyOption[] = [
     google('Source Sans 3', ALL, 'Sans serif', 'sans-serif'),
     google('Barlow', ALL, 'Sans serif', 'sans-serif'),
     google('Figtree', ALL, 'Sans serif', 'sans-serif'),
+    google('Instrument Sans', '400;500;600;700', 'Sans serif', 'sans-serif'),
     google('Space Grotesk', '300;400;500;600;700', 'Sans serif', 'sans-serif'),
 
     google('Playfair Display', '400;500;600;700;800', 'Serif', 'serif'),

@@ -19,7 +19,8 @@ trait InteractsWithCms
 
     protected function setUpInteractsWithCms(): void
     {
-        $this->cmsRoot = storage_path('framework/testing/cms');
+        // One folder per test process, so parallel test runs never delete each other's copy.
+        $this->cmsRoot = storage_path('framework/testing/cms-'.getmypid());
         File::deleteDirectory($this->cmsRoot);
         File::copyDirectory(base_path('extensions'), $this->cmsRoot.'/extensions');
 

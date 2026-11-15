@@ -1,0 +1,87 @@
+/* Kairo Career theme base styles driven dynamically by --site-* design tokens. */
+:root {
+  color-scheme: light;
+}
+
+::selection {
+  background: color-mix(in srgb, var(--site-primary, #0066ff) 18%, transparent);
+  color: var(--site-heading, #0c0407);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--site-background, #ffffff);
+  color: var(--site-body, #4c4c4c);
+  font-family: var(--site-body-font, 'Inter', system-ui, -apple-system, sans-serif);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Fallback CMS chrome styles for non-builder utility routes */
+.site-header,
+header.nav {
+  background: color-mix(in srgb, var(--site-header-bg, #ffffff) 92%, transparent);
+  color: var(--site-header-text, #0c0407);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--site-border, #eaeaea);
+}
+
+.site-footer {
+  background: var(--site-footer-bg, #ffffff);
+  color: var(--site-footer-text, #666666);
+  border-top: 1px solid var(--site-border, #eaeaea);
+}
+
+.btn-primary,
+button.btn-primary {
+  background-color: var(--site-primary, #0066ff);
+  border-color: var(--site-primary, #0066ff);
+  color: var(--site-on-primary, #ffffff);
+  border-radius: var(--site-button-radius, 999px);
+}
+
+/* Header scroll glass state */
+.fnl-page [data-kairo="header"] {
+  transition: box-shadow 240ms cubic-bezier(0.22, 1, 0.36, 1), background-color 240ms ease, border-color 240ms ease;
+}
+
+.fnl-page [data-kairo="header"].is-scrolled [data-kairo-role="header-bar"] {
+  box-shadow: 0 12px 32px -12px rgba(12, 4, 7, 0.09);
+  background: color-mix(in srgb, var(--site-header-bg, #ffffff) 94%, transparent) !important;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+/* Subtle interactive reveal states driven by theme.js */
+.fnl-page:not(.fnl-editable) [data-kairo] [data-kairo-role="bento-card"],
+.fnl-page:not(.fnl-editable) [data-kairo] [data-kairo-role="stage-card"],
+.fnl-page:not(.fnl-editable) [data-kairo] [data-kairo-role="review-card"],
+.fnl-page:not(.fnl-editable) [data-kairo] [data-kairo-role="pricing-card"],
+.fnl-page:not(.fnl-editable) [data-kairo] [data-kairo-role="value-card"] {
+  will-change: transform, opacity;
+}
+
+.fnl-page:not(.fnl-editable) [data-kairo-reveal="pending"] {
+  opacity: 0;
+  transform: translateY(18px);
+}
+
+.fnl-page:not(.fnl-editable) [data-kairo-reveal="visible"] {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 560ms cubic-bezier(0.22, 1, 0.36, 1), transform 560ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .fnl-page:not(.fnl-editable) [data-kairo-reveal="pending"] {
+    opacity: 1;
+    transform: none;
+  }
+}

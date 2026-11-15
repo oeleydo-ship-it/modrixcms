@@ -1,0 +1,23 @@
+{
+    "name": "modrix/testimonials",
+    "type": "plugin",
+    "display_name": "Testimonials & Reviews",
+    "description": "Collect verified customer reviews, moderate submissions in the admin, display showcase grids with star ratings, and output AggregateRating JSON-LD schema.",
+    "version": "1.0.0",
+    "cms_version": "^1.0",
+    "author": "Modrix",
+    "license": "MIT",
+    "autoload": { "psr-4": { "Modrix\\Testimonials\\": "src/" } },
+    "provider": "Modrix\\Testimonials\\TestimonialsServiceProvider",
+    "routes": { "web": "routes/web.php", "admin": "routes/admin.php" },
+    "scripts": ["public/testimonials.js"],
+    "admin_navigation": [
+        { "title": "Testimonials", "route": "items.index" }
+    ],
+    "settings": [
+        { "name": "require_moderation", "label": "Moderate public reviews before publishing", "type": "toggle", "default": true },
+        { "name": "allow_public_submissions", "label": "Allow public review submissions", "type": "toggle", "default": true },
+        { "name": "enable_schema", "label": "Output AggregateRating JSON-LD schema", "type": "toggle", "default": true },
+        { "name": "success_message", "label": "Thank-you message", "type": "text", "default": "Thank you for sharing your review!" }
+    ]
+}

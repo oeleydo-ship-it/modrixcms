@@ -229,6 +229,8 @@ const FIELD_INPUT_TYPE: Record<string, string> = {
     email: 'email',
     phone: 'tel',
     date: 'date',
+    time: 'time',
+    url: 'url',
     number: 'number',
 };
 
@@ -248,6 +250,28 @@ function FormFieldInput({ field, inline }: { field: PublicFormField; inline: boo
         return <input type="hidden" name={field.name} value={field.defaultValue ?? ''} />;
     }
 
+    if (field.type === 'divider') {
+        return <hr style={{ gridColumn: '1 / -1', border: 0, borderTop: '1px solid var(--color-border, #e2e8f0)', margin: '4px 0', width: '100%' }} />;
+    }
+
+    if (field.type === 'heading') {
+        return (
+            <div style={{ gridColumn: '1 / -1', textAlign: 'left', paddingTop: '6px' }}>
+                <h3 style={{ margin: 0, fontSize: '17px', fontWeight: 700 }}>{field.label}</h3>
+                {field.helpText && <p style={{ margin: '4px 0 0', fontSize: '13px', opacity: 0.75 }}>{field.helpText}</p>}
+            </div>
+        );
+    }
+
+    if (field.type === 'paragraph') {
+        return (
+            <div style={{ gridColumn: '1 / -1', textAlign: 'left', fontSize: '14px', opacity: 0.85 }}>
+                {field.label && <strong style={{ display: 'block', marginBottom: '2px' }}>{field.label}</strong>}
+                {field.helpText && <p style={{ margin: 0 }}>{field.helpText}</p>}
+            </div>
+        );
+    }
+
     const span = field.columnSpan !== null && field.columnSpan > 0 ? Math.min(12, field.columnSpan) : 12;
     const wrapper: CSSProperties = inline
         ? { ...stack('6px'), minWidth: 0, flex: '1 1 200px', textAlign: 'left' }
@@ -256,16 +280,16 @@ function FormFieldInput({ field, inline }: { field: PublicFormField; inline: boo
     const help = field.helpText ? <span style={{ fontSize: '12px', opacity: 0.7 }}>{field.helpText}</span> : null;
     const defaultValue = field.defaultValue ?? undefined;
 
-    if (field.type === 'checkbox' || field.type === 'radio') {
-        const multiple = field.type === 'checkbox' && field.options.length > 0;
+    if (field.type === 'checkbox' || field.type === 'consent' || field.type === 'checkbox_group' || field.type === 'radio') {
+        const multiple = field.type === 'checkbox_group' || (field.type === 'checkbox' && field.options.length > 0);
 
-        if (field.options.length === 0) {
+        if ((field.type === 'checkbox' || field.type === 'consent') && field.options.length === 0) {
             // A single checkbox: a consent box or a yes/no.
             return (
                 <label style={{ ...wrapper, flexDirection: 'row', alignItems: 'flex-start', gap: '8px', fontSize: '14px' }}>
-                    <input type="checkbox" name={field.name} value="1" required={field.required} style={{ marginTop: '3px' }} />
+                    <input type="checkbox" name={field.name} value="1" defaultChecked={defaultValue === '1' || defaultValue === 'true'} required={field.required} style={{ marginTop: '3px' }} />
                     <span>
-                        {field.label}
+                        {field.placeholder || field.label}
                         {required}
                         {help && <span style={{ display: 'block' }}>{help}</span>}
                     </span>
@@ -332,7 +356,7 @@ function FormFieldInput({ field, inline }: { field: PublicFormField; inline: boo
                 style={{ ...fieldStyle, resize: 'vertical' }}
             />
         );
-    } else if ((field.type === 'dropdown' || field.type === 'country') && field.options.length > 0) {
+    } else if ((field.type === 'select' || field.type === 'dropdown' || field.type === 'country') && field.options.length > 0) {
         control = (
             <select id={id} name={field.name} required={field.required} defaultValue={defaultValue ?? ''} style={fieldStyle}>
                 <option value="" disabled>
@@ -455,6 +479,10 @@ export function EmailOptinBlock({ block, mode, onPropsChange }: BlockComponentPr
     const runtime = useFunnel();
     const consent = optionalStr(block.props, 'consentText');
     const inline = oneOf(block.props, 'layout', ['inline', 'stacked'] as const, 'inline') === 'inline';
+    const label = str(block.props, 'label', 'Email address');
+    const showLabel = bool(block.props, 'showLabel', false);
+    const fieldName = str(block.props, 'fieldName', 'email') || 'email';
+    const required = bool(block.props, 'required', true);
     const id = useId();
     const { state, onSubmit } = useCaptureSubmit(block, mode);
 
@@ -469,17 +497,34 @@ export function EmailOptinBlock({ block, mode, onPropsChange }: BlockComponentPr
             onSubmit={onSubmit}
             aria-busy={state.kind === 'sending'}
             data-fnl-preview-next={runtime?.templatePreview ? optionalStr(block.props, 'previewNextHref') ?? undefined : undefined}
-            style={{ ...stack('10px'), position: 'relative' }}
+            style={{ ...stack('8px'), position: 'relative' }}
         >
-            <div style={{ display: 'flex', gap: '10px', flexDirection: inline ? 'row' : 'column', flexWrap: 'wrap' }}>
-                <label htmlFor={id} style={{ position: 'absolute', width: 1, height: 1, overflow: 'hidden' }}>
-                    Email address
+            {showLabel ? (
+                <label htmlFor={id} style={{ ...fieldLabel, textAlign: 'left' }}>
+                    {mode === 'editable' && onPropsChange ? (
+                        <EditableText
+                            value={label}
+                            mode={mode}
+                            placeholder="Field label"
+                            ariaLabel="Edit email field label"
+                            onChange={(next) => onPropsChange({ label: next })}
+                        />
+                    ) : (
+                        label
+                    )}
+                    {required && <span aria-hidden style={{ color: '#dc2626' }}> *</span>}
                 </label>
+            ) : (
+                <label htmlFor={id} style={{ position: 'absolute', width: 1, height: 1, overflow: 'hidden' }}>
+                    {label}
+                </label>
+            )}
+            <div style={{ display: 'flex', gap: '10px', flexDirection: inline ? 'row' : 'column', flexWrap: 'wrap' }}>
                 <input
                     id={id}
-                    name="email"
+                    name={fieldName}
                     type="email"
-                    required
+                    required={required}
                     autoComplete="email"
                     placeholder={str(block.props, 'placeholder', 'you@example.com')}
                     style={{ ...fieldStyle, flex: inline ? '1 1 220px' : undefined }}
@@ -492,7 +537,13 @@ export function EmailOptinBlock({ block, mode, onPropsChange }: BlockComponentPr
                 )}
                 </button>
             </div>
-            {consent && <p style={{ margin: 0, fontSize: '12px', opacity: 0.75 }}>{consent}</p>}
+            {consent && (
+                mode === 'editable' && onPropsChange ? (
+                    <EditableText as="p" multiline value={consent} mode={mode} placeholder="Consent text" ariaLabel="Edit consent text" style={{ margin: 0, fontSize: '12px', opacity: 0.75, textAlign: 'left' }} onChange={(next) => onPropsChange({ consentText: next })} />
+                ) : (
+                    <p style={{ margin: 0, fontSize: '12px', opacity: 0.75, textAlign: 'left' }}>{consent}</p>
+                )
+            )}
             <AntiSpamFields definition={formId ? (runtime?.forms[formId] ?? null) : null} />
             {state.kind === 'error' && <CaptureError message={state.message} />}
         </form>
@@ -513,6 +564,12 @@ export function PhoneInputBlock({ block, mode, onPropsChange }: BlockComponentPr
     const formId = optionalStr(block.props, 'formId');
     const runtime = useFunnel();
     const requireConsent = bool(block.props, 'requireConsent', true);
+    const consentText = str(block.props, 'consentText', 'I agree to receive text messages. Reply STOP to opt out.');
+    const label = str(block.props, 'label', 'Phone number');
+    const showLabel = bool(block.props, 'showLabel', true);
+    const fieldName = str(block.props, 'fieldName', 'phone') || 'phone';
+    const required = bool(block.props, 'required', true);
+    const inline = oneOf(block.props, 'layout', ['inline', 'stacked'] as const, 'inline') === 'inline';
     const dialCode = DIAL_CODES[str(block.props, 'defaultCountry', '').toUpperCase()] ?? null;
     const id = useId();
     const { state, onSubmit } = useCaptureSubmit(block, mode);
@@ -528,23 +585,40 @@ export function PhoneInputBlock({ block, mode, onPropsChange }: BlockComponentPr
             onSubmit={onSubmit}
             aria-busy={state.kind === 'sending'}
             data-fnl-preview-next={runtime?.templatePreview ? optionalStr(block.props, 'previewNextHref') ?? undefined : undefined}
-            style={{ ...stack('10px'), position: 'relative' }}
+            style={{ ...stack('8px'), position: 'relative' }}
         >
-            <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
-                <label htmlFor={id} style={{ position: 'absolute', width: 1, height: 1, overflow: 'hidden' }}>
-                    Phone number
+            {showLabel ? (
+                <label htmlFor={id} style={{ ...fieldLabel, textAlign: 'left' }}>
+                    {mode === 'editable' && onPropsChange ? (
+                        <EditableText
+                            value={label}
+                            mode={mode}
+                            placeholder="Phone field label"
+                            ariaLabel="Edit phone field label"
+                            onChange={(next) => onPropsChange({ label: next })}
+                        />
+                    ) : (
+                        label
+                    )}
+                    {required && <span aria-hidden style={{ color: '#dc2626' }}> *</span>}
                 </label>
+            ) : (
+                <label htmlFor={id} style={{ position: 'absolute', width: 1, height: 1, overflow: 'hidden' }}>
+                    {label}
+                </label>
+            )}
+            <div style={{ display: 'flex', gap: '10px', flexDirection: inline ? 'row' : 'column', flexWrap: 'wrap' }}>
                 <input
                     id={id}
-                    name="phone"
+                    name={fieldName}
                     type="tel"
-                    required
+                    required={required}
                     autoComplete="tel"
                     placeholder={str(block.props, 'placeholder', '+1 555 000 0000')}
                     // The default country pre-fills its dialling code, so a visitor
                     // only types the local number.
                     defaultValue={dialCode ? `+${dialCode} ` : undefined}
-                    style={{ ...fieldStyle, flex: '1 1 200px' }}
+                    style={{ ...fieldStyle, flex: inline ? '1 1 200px' : undefined }}
                 />
                 <button type="submit" style={{ ...submitStyle, opacity: state.kind === 'sending' ? 0.7 : 1 }}>
                     {mode === 'editable' && onPropsChange ? (
@@ -555,9 +629,21 @@ export function PhoneInputBlock({ block, mode, onPropsChange }: BlockComponentPr
                 </button>
             </div>
             {requireConsent && (
-                <label style={{ display: 'flex', gap: '8px', alignItems: 'flex-start', fontSize: '12px' }}>
+                <label style={{ display: 'flex', gap: '8px', alignItems: 'flex-start', fontSize: '12px', textAlign: 'left' }}>
                     <input type="checkbox" name="sms_consent" required />
-                    <span>I agree to receive text messages. Reply STOP to opt out.</span>
+                    <span>
+                        {mode === 'editable' && onPropsChange ? (
+                            <EditableText
+                                value={consentText}
+                                mode={mode}
+                                placeholder="SMS consent text"
+                                ariaLabel="Edit SMS consent text"
+                                onChange={(next) => onPropsChange({ consentText: next })}
+                            />
+                        ) : (
+                            consentText
+                        )}
+                    </span>
                 </label>
             )}
             <AntiSpamFields definition={formId ? (runtime?.forms[formId] ?? null) : null} />
@@ -1859,73 +1945,111 @@ export function TabsBlock({ block, children, mode, onPropsChange }: BlockCompone
     const editing = mode === 'editable' && onPropsChange !== undefined;
     const tabs = recordList(block.props, 'tabs');
     const vertical = oneOf(block.props, 'orientation', ['horizontal', 'vertical'] as const, 'horizontal') === 'vertical';
-    const [selectedIndex, setActive] = useState(0);
+    const initialTab = Math.max(0, Math.round(num(block.props, 'initialTab', 0)));
+    const [selectedIndex, setActive] = useState(initialTab);
     const active = Math.min(selectedIndex, Math.max(0, tabs.length - 1));
     const baseId = useId();
     const panels = Array.isArray(children) ? children : children ? [children] : [];
+    const scope = `fnl-tabs-${block.id.replace(/[^A-Za-z0-9]/g, '')}`;
+    const mobileCols = tabs.length === 4 ? 2 : Math.min(3, Math.max(1, tabs.length));
+    const responsiveCss = vertical
+        ? ''
+        : `@media (max-width:640px){[data-tabs-scope="${scope}"]>[role="tablist"]{grid-template-columns:repeat(${mobileCols},minmax(0,1fr))!important}[data-tabs-scope="${scope}"] [role="tab"]{padding:9px 8px!important;font-size:12px!important}}.fnl-page[data-fnl-breakpoint="mobile"] [data-tabs-scope="${scope}"]>[role="tablist"]{grid-template-columns:repeat(${mobileCols},minmax(0,1fr))!important}.fnl-page[data-fnl-breakpoint="mobile"] [data-tabs-scope="${scope}"] [role="tab"]{padding:9px 8px!important;font-size:12px!important}`;
 
     return (
-        <div style={{ display: 'flex', flexDirection: vertical ? 'row' : 'column', gap: '16px' }}>
+        <div
+            data-tabs-scope={scope}
+            style={{ display: 'flex', flexDirection: vertical ? 'row' : 'column', gap: 'var(--fnl-gap, 16px)' }}
+        >
+            {responsiveCss && <style>{responsiveCss}</style>}
             <div
                 role="tablist"
                 aria-orientation={vertical ? 'vertical' : 'horizontal'}
-                style={{
-                    display: 'flex',
-                    flexDirection: vertical ? 'column' : 'row',
-                    gap: '4px',
-                    borderBottom: vertical ? undefined : '1px solid var(--color-border, #e2e8f0)',
-                }}
+                style={
+                    vertical
+                        ? {
+                              display: 'flex',
+                              flexDirection: 'column',
+                              gap: '6px',
+                              background: 'var(--fnl-tablist-bg, #ffffff)',
+                              padding: '8px',
+                              borderRadius: 'var(--fnl-tablist-radius, 16px)',
+                              border: '1px solid var(--fnl-tablist-border, #e4e4e7)',
+                              minWidth: '180px',
+                          }
+                        : {
+                              display: 'grid',
+                              gridTemplateColumns: `repeat(${Math.max(1, tabs.length + (editing ? 1 : 0))}, minmax(0, 1fr))`,
+                              gap: '8px',
+                              background: 'var(--fnl-tablist-bg, #ffffff)',
+                              padding: '8px',
+                              borderRadius: 'var(--fnl-tablist-radius, 16px)',
+                              border: '1px solid var(--fnl-tablist-border, #e4e4e7)',
+                              alignItems: 'center',
+                          }
+                }
             >
-                {tabs.map((tab, index) => (
-                    <button
-                        key={`tab-${index}`}
-                        type="button"
-                        role="tab"
-                        id={`${baseId}-tab-${index}`}
-                        aria-selected={active === index}
-                        aria-controls={`${baseId}-panel-${index}`}
-                        tabIndex={active === index ? 0 : -1}
-                        onClick={() => setActive(index)}
-                        onKeyDown={(event) => {
-                            // Do not intercept cursor movement while editing the tab label.
-                            if (event.target !== event.currentTarget) return;
-                            const forward = vertical ? 'ArrowDown' : 'ArrowRight';
-                            const backward = vertical ? 'ArrowUp' : 'ArrowLeft';
-                            let next = active;
-                            if (event.key === forward) next = (active + 1) % tabs.length;
-                            else if (event.key === backward) next = (active - 1 + tabs.length) % tabs.length;
-                            else if (event.key === 'Home') next = 0;
-                            else if (event.key === 'End') next = tabs.length - 1;
-                            else return;
-                            event.preventDefault();
-                            setActive(next);
-                            event.currentTarget.parentElement?.querySelectorAll<HTMLButtonElement>('[role="tab"]')[next]?.focus();
-                        }}
-                        style={{
-                            padding: '10px 14px',
-                            background: 'transparent',
-                            border: 0,
-                            borderBottom: vertical ? 0 : `2px solid ${active === index ? 'currentColor' : 'transparent'}`,
-                            color: 'inherit',
-                            font: 'inherit',
-                            fontWeight: active === index ? 600 : 400,
-                            opacity: active === index ? 1 : 0.7,
-                            cursor: 'pointer',
-                        }}
-                    >
-                        {editing && active === index ? (
-                            <EditableText
-                                value={String(tab['label'] ?? `Tab ${index + 1}`)}
-                                mode={mode}
-                                placeholder="Tab label"
-                                ariaLabel={`Edit tab label ${index + 1}`}
-                                onChange={(next) => onPropsChange?.({ tabs: withItem(tabs, index, { label: next }) })}
-                            />
-                        ) : (
-                            String(tab['label'] ?? `Tab ${index + 1}`)
-                        )}
-                    </button>
-                ))}
+                {tabs.map((tab, index) => {
+                    const isSelected = active === index;
+                    return (
+                        <button
+                            key={`tab-${index}`}
+                            type="button"
+                            role="tab"
+                            id={`${baseId}-tab-${index}`}
+                            aria-selected={isSelected}
+                            aria-controls={`${baseId}-panel-${index}`}
+                            tabIndex={isSelected ? 0 : -1}
+                            onClick={() => setActive(index)}
+                            onKeyDown={(event) => {
+                                // Do not intercept cursor movement while editing the tab label.
+                                if (event.target !== event.currentTarget) return;
+                                const forward = vertical ? 'ArrowDown' : 'ArrowRight';
+                                const backward = vertical ? 'ArrowUp' : 'ArrowLeft';
+                                let next = active;
+                                if (event.key === forward) next = (active + 1) % tabs.length;
+                                else if (event.key === backward) next = (active - 1 + tabs.length) % tabs.length;
+                                else if (event.key === 'Home') next = 0;
+                                else if (event.key === 'End') next = tabs.length - 1;
+                                else return;
+                                event.preventDefault();
+                                setActive(next);
+                                event.currentTarget.parentElement?.querySelectorAll<HTMLButtonElement>('[role="tab"]')[next]?.focus();
+                            }}
+                            style={{
+                                padding: '12px 16px',
+                                background: isSelected ? 'var(--fnl-tab-active-bg, #f4f4f2)' : 'var(--fnl-tab-inactive-bg, transparent)',
+                                border: isSelected
+                                    ? '1px solid var(--fnl-tab-active-border, transparent)'
+                                    : '1px solid var(--fnl-tab-inactive-border, transparent)',
+                                borderRadius: 'var(--fnl-tab-radius, 12px)',
+                                boxShadow: isSelected ? 'var(--fnl-tab-active-shadow, none)' : 'none',
+                                color: isSelected ? 'var(--fnl-tab-active-color, #09090b)' : 'var(--fnl-tab-inactive-color, #71717a)',
+                                font: 'inherit',
+                                fontSize: 'var(--fnl-font-size, 15px)',
+                                fontWeight: isSelected ? 700 : 600,
+                                textAlign: 'center',
+                                cursor: 'pointer',
+                                transition: 'background-color 180ms ease, color 180ms ease, border-color 180ms ease, box-shadow 180ms ease',
+                                whiteSpace: 'nowrap',
+                                overflow: 'hidden',
+                                textOverflow: 'ellipsis',
+                            }}
+                        >
+                            {editing && isSelected ? (
+                                <EditableText
+                                    value={String(tab['label'] ?? `Tab ${index + 1}`)}
+                                    mode={mode}
+                                    placeholder="Tab label"
+                                    ariaLabel={`Edit tab label ${index + 1}`}
+                                    onChange={(next) => onPropsChange?.({ tabs: withItem(tabs, index, { label: next }) })}
+                                />
+                            ) : (
+                                String(tab['label'] ?? `Tab ${index + 1}`)
+                            )}
+                        </button>
+                    );
+                })}
                 {editing && (
                     <CanvasAddButton
                         mode={mode}

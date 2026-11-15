@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 190" fill="none" width="420" height="190">
+  <defs>
+    <filter id="stSh1" x="0" y="0" width="420" height="190" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#0C0407" flood-opacity="0.06"/>
+    </filter>
+  </defs>
+  <!-- Top left profile card -->
+  <g transform="translate(22 10)" filter="url(#stSh1)">
+    <rect x="0" y="0" width="256" height="90" rx="16" fill="#FFFFFF" stroke="#EAEAEA"/>
+    <circle cx="32" cy="34" r="16" fill="#DBEAFE"/>
+    <circle cx="32" cy="30" r="5" fill="#1D4ED8"/>
+    <path d="M23 44C25 39 28 37.5 32 37.5C36 37.5 39 39 41 44" fill="#1D4ED8"/>
+    <text x="58" y="30" font-family="Inter, sans-serif" font-size="12" font-weight="700" fill="#0C0407">Elena Rostova</text>
+    <text x="58" y="45" font-family="Inter, sans-serif" font-size="9.5" fill="#666666">5+ yrs Exp · Motion Designer</text>
+    <rect x="20" y="58" width="64" height="20" rx="6" fill="#F7F7F8"/>
+    <text x="52" y="71" text-anchor="middle" font-family="Inter, sans-serif" font-size="8.5" fill="#4C4C4C">15 Portfolio</text>
+    <rect x="90" y="58" width="54" height="20" rx="6" fill="#EEF4FF"/>
+    <text x="117" y="71" text-anchor="middle" font-family="Inter, sans-serif" font-size="8.5" font-weight="600" fill="#0066FF">94% Match</text>
+    <rect x="150" y="58" width="64" height="20" rx="6" fill="#F7F7F8"/>
+    <text x="182" y="71" text-anchor="middle" font-family="Inter, sans-serif" font-size="8.5" fill="#4C4C4C">12 Awards</text>
+  </g>
+  <!-- Bottom right overlapping profile card -->
+  <g transform="translate(142 88)" filter="url(#stSh1)">
+    <rect x="0" y="0" width="256" height="90" rx="16" fill="#FFFFFF" stroke="#EAEAEA"/>
+    <circle cx="32" cy="34" r="16" fill="#DCFCE7"/>
+    <circle cx="32" cy="30" r="5" fill="#15803D"/>
+    <path d="M23 44C25 39 28 37.5 32 37.5C36 37.5 39 39 41 44" fill="#15803D"/>
+    <text x="58" y="30" font-family="Inter, sans-serif" font-size="12" font-weight="700" fill="#0C0407">Marcus Vance</text>
+    <text x="58" y="45" font-family="Inter, sans-serif" font-size="9.5" fill="#666666">7+ yrs Exp · Web Architect</text>
+    <rect x="20" y="58" width="64" height="20" rx="6" fill="#F7F7F8"/>
+    <text x="52" y="71" text-anchor="middle" font-family="Inter, sans-serif" font-size="8.5" fill="#4C4C4C">18 Repos</text>
+    <rect x="90" y="58" width="54" height="20" rx="6" fill="#EEF4FF"/>
+    <text x="117" y="71" text-anchor="middle" font-family="Inter, sans-serif" font-size="8.5" font-weight="600" fill="#0066FF">96% Match</text>
+    <rect x="150" y="58" width="64" height="20" rx="6" fill="#F7F7F8"/>
+    <text x="182" y="71" text-anchor="middle" font-family="Inter, sans-serif" font-size="8.5" fill="#4C4C4C">Verified</text>
+  </g>
+</svg>

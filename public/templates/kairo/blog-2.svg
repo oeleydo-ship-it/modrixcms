@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" fill="none" width="640" height="360">
+  <rect width="640" height="360" rx="22" fill="#F7F7F8"/>
+  <rect x="36" y="36" width="568" height="288" rx="18" fill="#FFFFFF" stroke="#EAEAEA"/>
+  <rect x="64" y="64" width="110" height="26" rx="13" fill="#DCFCE7"/>
+  <text x="119" y="81" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" font-weight="600" fill="#15803D">Interviewing</text>
+  <text x="64" y="132" font-family="Inter, sans-serif" font-size="24" font-weight="700" letter-spacing="-0.02em" fill="#0C0407">Structured Portfolio Reviews</text>
+  <text x="64" y="164" font-family="Inter, sans-serif" font-size="24" font-weight="700" letter-spacing="-0.02em" fill="#0C0407">That Win Senior Offers</text>
+  <rect x="64" y="202" width="512" height="84" rx="14" fill="#F8FAFC" stroke="#EAEAEA"/>
+  <circle cx="106" cy="244" r="18" fill="#0066FF"/>
+  <path d="M99 244L104 249L114 238" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round"/>
+  <text x="142" y="238" font-family="Inter, sans-serif" font-size="14" font-weight="700" fill="#0C0407">Focus on quantifiable outcomes over slide count</text>
+  <text x="142" y="260" font-family="Inter, sans-serif" font-size="12" fill="#666666">Hiring panels respond fastest to crisp problem statements.</text>
+</svg>

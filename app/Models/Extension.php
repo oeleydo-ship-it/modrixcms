@@ -13,7 +13,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @property string $type plugin|theme
  * @property string $name vendor/package
  */
-#[Fillable(['type', 'name', 'version', 'enabled', 'trusted_at', 'trusted_by', 'settings', 'scan', 'error'])]
+#[Fillable(['type', 'name', 'version', 'enabled', 'trusted_at', 'trusted_by', 'settings', 'design', 'scan', 'error'])]
 class Extension extends Model
 {
     public const PLUGIN = 'plugin';
@@ -26,6 +26,7 @@ class Extension extends Model
             'enabled' => 'boolean',
             'trusted_at' => 'datetime',
             'settings' => 'array',
+            'design' => 'array',
             'scan' => 'array',
         ];
     }

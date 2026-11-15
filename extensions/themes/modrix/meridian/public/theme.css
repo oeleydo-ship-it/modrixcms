@@ -1,0 +1,56 @@
+/* Meridian Advisory base theme styles driven dynamically by --site-* design tokens. */
+:root {
+  color-scheme: light;
+}
+
+::selection {
+  background: color-mix(in srgb, var(--site-accent, #b98b43) 28%, transparent);
+  color: var(--site-heading, #15241b);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--site-background, #f7f8ee);
+  color: var(--site-body, #425349);
+  font-family: var(--site-body-font, 'DM Sans', system-ui, sans-serif);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Fallback theme shell harmony for standard CMS / commerce views */
+.site-header,
+header.nav {
+  background: color-mix(in srgb, var(--site-header-bg, #15241b) 90%, transparent);
+  color: var(--site-header-text, #f7f8ee);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+.site-footer {
+  background: var(--site-footer-bg, #15241b);
+  color: var(--site-footer-text, #f7f8ee);
+}
+
+.btn-primary,
+button.btn-primary {
+  background-color: var(--site-primary, #15241b);
+  border-color: var(--site-primary, #15241b);
+  color: var(--site-on-dark, #f7f8ee);
+  border-radius: var(--site-button-radius, 12px);
+}
+
+.btn-accent {
+  background-color: var(--site-accent, #b98b43);
+  border-color: var(--site-accent, #b98b43);
+  color: #15241b;
+  border-radius: var(--site-button-radius, 12px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}

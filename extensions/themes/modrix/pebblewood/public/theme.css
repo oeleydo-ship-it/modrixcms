@@ -1,0 +1,90 @@
+/*
+ * Pebblewood theme. Loaded after the core styles. Colours, fonts, radii and spacing come
+ * from Theme settings (--site-*), so changing a setting restyles everything below.
+ */
+:root {
+  --pw-ink: var(--site-heading, #1f1d3d);
+  --pw-body: var(--site-body, #5a5668);
+  --pw-cream: var(--site-background, #fffaf3);
+  --pw-card: var(--site-surface, #fbf3e2);
+  --pw-teal: var(--site-dark, #1f6b63);
+  --pw-coral: var(--site-accent, #ef7d45);
+  --pw-mint: #e6f3cf;
+  --pw-peach: #ffe7da;
+  --pw-butter: #fbecc7;
+  --pw-sky: #dbf0fb;
+  --pw-width: var(--site-content-width, 1144px);
+}
+
+body { background: var(--pw-cream); }
+h1 { letter-spacing: -0.04em; }
+h2 { letter-spacing: -0.03em; }
+
+.pw-wrap { width: min(100% - 40px, var(--pw-width)); margin-inline: auto; }
+
+/* Buttons: pills in ink, as in the Pebblewood templates. */
+.btn, .pw-btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: .5rem;
+  border-radius: 100px; background: var(--pw-ink); color: #fff; border: 1px solid var(--pw-ink);
+  padding: 14px 24px 13px; font-size: 14px; font-weight: 500; line-height: 1;
+  transition: transform .2s ease, background-color .2s ease, color .2s ease;
+}
+.btn:hover, .pw-btn:hover { transform: translateY(-2px); background: var(--pw-coral); border-color: var(--pw-coral); color: #fff; }
+.btn-light { background: transparent; color: var(--pw-ink); border-color: var(--pw-ink); }
+
+/* Announcement bar */
+.pw-announcement { background: var(--pw-coral); color: var(--pw-ink); text-align: center; padding: 8px 20px; font-size: 14px; }
+.pw-announcement p { margin: 0; }
+.pw-announcement a { font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
+
+/* Header */
+.pw-header { position: sticky; top: 0; z-index: 50; background: var(--site-header-bg, var(--pw-cream)); color: var(--site-header-text, var(--pw-ink)); }
+.pw-header-inner { display: flex; align-items: center; gap: 32px; min-height: var(--site-header-height, 84px); }
+.pw-brand { font-family: var(--site-heading-font, Parkinsans, sans-serif); font-size: 30px; font-weight: 700; letter-spacing: -0.04em; color: inherit; flex: none; }
+.pw-brand img { max-height: 44px; width: auto; }
+.pw-nav { display: flex; align-items: center; gap: 32px; flex: 1; font-size: 14px; font-weight: var(--site-nav-weight, 500); }
+.pw-nav a { color: #4b4754; transition: color .2s; }
+.pw-nav a:hover, .pw-nav a.current { color: var(--pw-coral); }
+.pw-nav .pw-nav-cta { display: none; }
+.pw-call { display: flex; flex-direction: column; font-size: 14px; line-height: 1.5; color: inherit; }
+.pw-call strong { font-weight: 600; }
+.pw-menu { display: none; width: 44px; height: 44px; border-radius: 100px; border: 1px solid var(--site-border, #ece4d4); background: #fff; cursor: pointer; flex-direction: column; align-items: center; justify-content: center; gap: 5px; margin-left: auto; }
+.pw-menu span { display: block; width: 18px; height: 2px; background: var(--pw-ink); border-radius: 2px; }
+
+/* Content */
+.pw-main { min-height: 50vh; }
+.card, .feature, .step, .pricing-card, .timeline-card, .window { border-radius: var(--site-card-radius, 32px); }
+.tag, .badge { border-radius: 100px; }
+.page-hero h1 { font-size: clamp(2.8rem, 7vw, 5.6rem); letter-spacing: -0.045em; }
+.prose a, .post-body a { color: var(--pw-coral); }
+
+/* Footer */
+.pw-footer { padding: 80px 0 0; background: var(--pw-cream); }
+.pw-footer-card { background: var(--site-footer-bg, var(--pw-card)); color: var(--site-footer-text, var(--pw-body)); border-radius: 32px 32px 0 0; padding: 62px 60px 34px; }
+.pw-footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px; }
+.pw-footer-about p { font-size: 14px; max-width: 360px; margin: 14px 0 0; }
+.pw-footer .pw-brand { color: var(--pw-ink); }
+.pw-footer-badge { color: var(--pw-ink); font-weight: 500; }
+.pw-footer h4 { font-size: 16px; font-weight: 600; margin: 0 0 14px; color: var(--pw-ink); letter-spacing: -0.01em; }
+.pw-footer nav, .pw-footer-contact { display: flex; flex-direction: column; align-items: flex-start; gap: 12px; font-size: 14px; }
+.pw-footer nav a:hover, .pw-footer-contact a:not(.pw-btn):hover { color: var(--pw-coral); }
+.pw-footer-contact .pw-btn { margin-top: 6px; }
+.pw-socials { display: flex; gap: 10px; margin-top: 18px; }
+.pw-socials a { width: 36px; height: 36px; border-radius: 100px; background: var(--pw-coral); color: #fff; display: grid; place-items: center; font-size: 11px; font-weight: 600; text-transform: uppercase; }
+.pw-copy { margin: 40px 0 0; padding-top: 16px; border-top: 1px solid rgba(75, 71, 84, .2); font-size: 13px; }
+
+@media (max-width: 960px) {
+  .pw-call { display: none; }
+}
+
+@media (max-width: 760px) {
+  .pw-header-inner { gap: 12px; min-height: 68px; }
+  .pw-brand { font-size: 26px; }
+  .pw-header-cta { display: none; }
+  .pw-menu { display: inline-flex; }
+  .pw-nav { display: none; position: absolute; top: 100%; left: 20px; right: 20px; flex-direction: column; align-items: flex-start; gap: 16px; padding: 20px 24px; background: #fff; border-radius: 20px; box-shadow: 0 20px 44px -14px rgba(31, 29, 61, .2); }
+  .pw-nav.open { display: flex; }
+  .pw-nav .pw-nav-cta { display: inline-flex; color: #fff; }
+  .pw-footer-card { padding: 40px 24px 26px; }
+  .pw-footer-grid { grid-template-columns: 1fr; gap: 28px; }
+}

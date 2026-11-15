@@ -1,0 +1,133 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 650 568" fill="none" width="650" height="568">
+  <defs>
+    <filter id="kairoShadowLg" x="-40" y="-40" width="730" height="648" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="0" dy="22" stdDeviation="24" flood-color="#0C0407" flood-opacity="0.14"/>
+    </filter>
+    <linearGradient id="kairoBlueGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0066FF"/>
+      <stop offset="100%" stop-color="#2B84FF"/>
+    </linearGradient>
+    <linearGradient id="kairoGlow" x1="0.5" y1="0" x2="0.5" y2="1">
+      <stop offset="0%" stop-color="#0066FF" stop-opacity="0.12"/>
+      <stop offset="100%" stop-color="#F7F7F8" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Subtle radial halo behind phones -->
+  <circle cx="340" cy="260" r="220" fill="url(#kairoGlow)"/>
+
+  <!-- Back/Right tilted device (Secondary screen) -->
+  <g transform="translate(320 68) rotate(12)" filter="url(#kairoShadowLg)">
+    <rect x="0" y="0" width="236" height="456" rx="34" fill="#141418"/>
+    <rect x="7" y="7" width="222" height="442" rx="28" fill="#FFFFFF"/>
+    <rect x="78" y="14" width="80" height="18" rx="9" fill="#0C0407"/>
+    <!-- Status & Title -->
+    <text x="24" y="54" font-family="Inter, sans-serif" font-size="13" font-weight="700" fill="#0C0407">Saved Roles</text>
+    <text x="180" y="54" font-family="Inter, sans-serif" font-size="10" font-weight="600" fill="#0066FF">24 Active</text>
+    <!-- Role Card A -->
+    <rect x="20" y="72" width="196" height="96" rx="14" fill="#F7F7F8" stroke="#EAEAEA"/>
+    <rect x="32" y="84" width="28" height="28" rx="8" fill="#0066FF"/>
+    <circle cx="46" cy="98" r="6" fill="#FFFFFF"/>
+    <text x="70" y="96" font-family="Inter, sans-serif" font-size="11" font-weight="700" fill="#0C0407">Product Designer</text>
+    <text x="70" y="110" font-family="Inter, sans-serif" font-size="9.5" fill="#666666">NovaStack · Austin</text>
+    <text x="32" y="136" font-family="Inter, sans-serif" font-size="10" font-weight="600" fill="#0066FF">$14,000 – $21,000 /mo</text>
+    <rect x="32" y="146" width="46" height="14" rx="4" fill="#FFFFFF" stroke="#E5E7EB"/>
+    <text x="55" y="156" text-anchor="middle" font-family="Inter, sans-serif" font-size="7.5" fill="#4C4C4C">Full Time</text>
+    <rect x="84" y="146" width="46" height="14" rx="4" fill="#FFFFFF" stroke="#E5E7EB"/>
+    <text x="107" y="156" text-anchor="middle" font-family="Inter, sans-serif" font-size="7.5" fill="#4C4C4C">Remote</text>
+    <!-- Role Card B -->
+    <rect x="20" y="180" width="196" height="96" rx="14" fill="#FFFFFF" stroke="#EAEAEA"/>
+    <rect x="32" y="192" width="28" height="28" rx="8" fill="#16A34A"/>
+    <path d="M40 206L45 211L53 201" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round"/>
+    <text x="70" y="204" font-family="Inter, sans-serif" font-size="11" font-weight="700" fill="#0C0407">Systems Lead</text>
+    <text x="70" y="218" font-family="Inter, sans-serif" font-size="9.5" fill="#666666">LoomGrid · Seattle</text>
+    <text x="32" y="244" font-family="Inter, sans-serif" font-size="10" font-weight="600" fill="#0066FF">$16,500 – $24,000 /mo</text>
+    <rect x="32" y="254" width="46" height="14" rx="4" fill="#F7F7F8"/>
+    <text x="55" y="264" text-anchor="middle" font-family="Inter, sans-serif" font-size="7.5" fill="#4C4C4C">Hybrid</text>
+    <!-- Match bar card -->
+    <rect x="20" y="290" width="196" height="72" rx="14" fill="#EEF4FF"/>
+    <text x="32" y="314" font-family="Inter, sans-serif" font-size="10.5" font-weight="700" fill="#0C0407">Weekly Match Score</text>
+    <text x="188" y="314" text-anchor="end" font-family="Inter, sans-serif" font-size="11" font-weight="700" fill="#0066FF">96%</text>
+    <rect x="32" y="328" width="172" height="8" rx="4" fill="#DBEAFE"/>
+    <rect x="32" y="328" width="154" height="8" rx="4" fill="#0066FF"/>
+    <text x="32" y="350" font-family="Inter, sans-serif" font-size="8.5" fill="#4C4C4C">4 hiring teams viewed your portfolio today</text>
+  </g>
+
+  <!-- Front Left upright Primary iPhone -->
+  <g transform="translate(88 26)" filter="url(#kairoShadowLg)">
+    <rect x="0" y="0" width="262" height="482" rx="38" fill="#0C0407"/>
+    <rect x="8" y="8" width="246" height="466" rx="31" fill="#FFFFFF"/>
+    <!-- Dynamic island + status bar -->
+    <text x="26" y="32" font-family="Inter, sans-serif" font-size="9.5" font-weight="700" fill="#0C0407">9:41</text>
+    <rect x="92" y="18" width="78" height="18" rx="9" fill="#0C0407"/>
+    <rect x="214" y="23" width="18" height="9" rx="2.5" stroke="#0C0407" stroke-width="1.2"/>
+    <rect x="216" y="25" width="12" height="5" rx="1" fill="#0C0407"/>
+
+    <!-- Profile greeting -->
+    <circle cx="38" cy="64" r="14" fill="#DBEAFE"/>
+    <circle cx="38" cy="61" r="4.5" fill="#1D4ED8"/>
+    <path d="M31 73C32.5 69 35 67.5 38 67.5C41 67.5 43.5 69 45 73" fill="#1D4ED8"/>
+    <text x="60" y="60" font-family="Inter, sans-serif" font-size="8.5" fill="#666666">Good Morning</text>
+    <text x="60" y="73" font-family="Inter, sans-serif" font-size="11.5" font-weight="700" fill="#0C0407">Maya Lin</text>
+    <circle cx="224" cy="64" r="13" fill="#F7F7F8" stroke="#EAEAEA"/>
+    <path d="M224 58V64L227 66" stroke="#0C0407" stroke-width="1.5" stroke-linecap="round"/>
+
+    <!-- Search input -->
+    <rect x="22" y="90" width="218" height="32" rx="11" fill="#F7F7F8" stroke="#EAEAEA"/>
+    <circle cx="36" cy="106" r="4.5" stroke="#666666" stroke-width="1.3"/>
+    <path d="M39.5 109.5L42 112" stroke="#666666" stroke-width="1.3" stroke-linecap="round"/>
+    <text x="48" y="109" font-family="Inter, sans-serif" font-size="9" fill="#666666">Search roles, skills or companies</text>
+
+    <!-- Smart Match Blue Banner -->
+    <rect x="22" y="132" width="218" height="92" rx="16" fill="url(#kairoBlueGrad)"/>
+    <text x="36" y="158" font-family="Inter, sans-serif" font-size="12" font-weight="700" fill="#FFFFFF">Find roles built for</text>
+    <text x="36" y="174" font-family="Inter, sans-serif" font-size="12" font-weight="700" fill="#FFFFFF">your exact trajectory</text>
+    <rect x="36" y="188" width="76" height="22" rx="11" fill="#FFFFFF"/>
+    <text x="74" y="202" text-anchor="middle" font-family="Inter, sans-serif" font-size="9" font-weight="600" fill="#0066FF">Explore Now</text>
+    <!-- Mini orbit badges inside blue card -->
+    <circle cx="196" cy="178" r="22" fill="#FFFFFF" fill-opacity="0.16"/>
+    <circle cx="196" cy="178" r="12" fill="#FFFFFF"/>
+    <path d="M196 171C197 175 198.5 176.5 202.5 177.5C198.5 178.5 197 180 196 184C195 180 193.5 178.5 189.5 177.5C193.5 176.5 195 175 196 171Z" fill="#0066FF"/>
+    <circle cx="174" cy="150" r="8" fill="#FFB600"/>
+    <circle cx="220" cy="204" r="7" fill="#22C55E"/>
+
+    <!-- Section Header: Recommendation -->
+    <text x="24" y="246" font-family="Inter, sans-serif" font-size="11.5" font-weight="700" fill="#0C0407">Recommendation</text>
+    <text x="238" y="246" text-anchor="end" font-family="Inter, sans-serif" font-size="9.5" font-weight="600" fill="#0066FF">See All</text>
+
+    <!-- Primary Featured Card -->
+    <rect x="22" y="256" width="218" height="104" rx="16" fill="#FFFFFF" stroke="#EAEAEA"/>
+    <rect x="34" y="268" width="34" height="34" rx="10" fill="#FEF2F2"/>
+    <circle cx="51" cy="285" r="8" fill="#EF4444"/>
+    <text x="78" y="281" font-family="Inter, sans-serif" font-size="11.5" font-weight="700" fill="#0C0407">UI/UX Designer</text>
+    <text x="78" y="296" font-family="Inter, sans-serif" font-size="9.5" fill="#666666">Linear Labs · San Francisco</text>
+    <path d="M220 272H228V283L224 280L220 283V272Z" stroke="#0066FF" stroke-width="1.4" fill="#EEF4FF"/>
+    <line x1="34" y1="312" x2="226" y2="312" stroke="#F1F5F9"/>
+    <text x="34" y="328" font-family="Inter, sans-serif" font-size="10.5" font-weight="700" fill="#0066FF">$14,000 – $22,000 /month</text>
+    <rect x="34" y="338" width="48" height="15" rx="5" fill="#F7F7F8"/>
+    <text x="58" y="348" text-anchor="middle" font-family="Inter, sans-serif" font-size="7.5" fill="#4C4C4C">Full Time</text>
+    <rect x="88" y="338" width="44" height="15" rx="5" fill="#F7F7F8"/>
+    <text x="110" y="348" text-anchor="middle" font-family="Inter, sans-serif" font-size="7.5" fill="#4C4C4C">Onsite</text>
+
+    <!-- Recent Jobs Filter Strip -->
+    <text x="24" y="380" font-family="Inter, sans-serif" font-size="11.5" font-weight="700" fill="#0C0407">Recent Jobs</text>
+    <text x="238" y="380" text-anchor="end" font-family="Inter, sans-serif" font-size="9.5" font-weight="600" fill="#0066FF">See All</text>
+    <rect x="22" y="390" width="46" height="22" rx="11" fill="#0066FF"/>
+    <text x="45" y="404" text-anchor="middle" font-family="Inter, sans-serif" font-size="8.5" font-weight="600" fill="#FFFFFF">All</text>
+    <rect x="74" y="390" width="54" height="22" rx="11" fill="#FFFFFF" stroke="#EAEAEA"/>
+    <text x="101" y="404" text-anchor="middle" font-family="Inter, sans-serif" font-size="8.5" font-weight="500" fill="#4C4C4C">Design</text>
+    <rect x="134" y="390" width="70" height="22" rx="11" fill="#FFFFFF" stroke="#EAEAEA"/>
+    <text x="169" y="404" text-anchor="middle" font-family="Inter, sans-serif" font-size="8.5" font-weight="500" fill="#4C4C4C">Technology</text>
+
+    <!-- Bottom Tab Navigation -->
+    <line x1="16" y1="426" x2="246" y2="426" stroke="#EAEAEA"/>
+    <circle cx="48" cy="444" r="4" fill="#0066FF"/>
+    <text x="48" y="460" text-anchor="middle" font-family="Inter, sans-serif" font-size="7.5" font-weight="600" fill="#0066FF">Home</text>
+    <circle cx="96" cy="444" r="4" fill="#CBD5E1"/>
+    <text x="96" y="460" text-anchor="middle" font-family="Inter, sans-serif" font-size="7.5" fill="#666666">Saved</text>
+    <circle cx="144" cy="444" r="4" fill="#CBD5E1"/>
+    <text x="144" y="460" text-anchor="middle" font-family="Inter, sans-serif" font-size="7.5" fill="#666666">Applies</text>
+    <circle cx="192" cy="444" r="4" fill="#CBD5E1"/>
+    <text x="192" y="460" text-anchor="middle" font-family="Inter, sans-serif" font-size="7.5" fill="#666666">Inbox</text>
+  </g>
+</svg>

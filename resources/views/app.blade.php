@@ -14,8 +14,9 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title inertia>{{ $pageTitle }}</title>
     <meta name="description" content="{{ $pageDescription }}">
-    <meta property="og:title" content="{{ $pageTitle }}">
-    <meta property="og:description" content="{{ $pageDescription }}">
+    <meta property="og:title" content="{{ $meta['ogTitle'] ?? $pageTitle }}">
+    <meta property="og:description" content="{{ $meta['ogDescription'] ?? $pageDescription }}">
+    <meta name="twitter:card" content="{{ ! empty($meta['image']) ? 'summary_large_image' : 'summary' }}">
     <meta property="og:site_name" content="{{ $siteName }}">
     <meta property="og:type" content="{{ $meta['type'] ?? 'website' }}">
     @if (! empty($meta['image']))
@@ -24,12 +25,19 @@
     @if (! empty($meta['noindex']))
         <meta name="robots" content="noindex">
     @endif
+    @if (! empty($meta['canonical']))
+        <link rel="canonical" href="{{ $meta['canonical'] }}">
+    @endif
+    @if (! empty($meta['jsonLd']))
+        <script type="application/ld+json">@json($meta['jsonLd'], JSON_HEX_TAG | JSON_HEX_AMP | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE)</script>
+    @endif
     <link rel="icon" href="{{ $settings->fileUrl('favicon') ?? asset('favicon.svg') }}">
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=bricolage-grotesque:500,700,800|inter:400,500,600|jetbrains-mono:400,500&display=swap" rel="stylesheet">
     @viteReactRefresh
     @vite(['resources/css/app.css', 'resources/js/app.jsx'])
     @themeStyles
+    @siteDesign(true)
     @hook('head')
     @include('partials.cms-packages', ['area' => 'site'])
 </head>

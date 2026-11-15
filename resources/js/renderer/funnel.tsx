@@ -106,7 +106,27 @@ export function normaliseForms(raw: unknown): Record<string, PublicFormDefinitio
                         : [],
                     required: field['required'] === true || field['is_required'] === true,
                     hidden: field['hidden'] === true || field['is_hidden'] === true,
-                    conditions: normaliseConditions(field['conditions']),
+                    conditions: normaliseConditions(
+                        field['conditions'] ??
+                            (typeof field['condition'] === 'object' && field['condition'] !== null && typeof (field['condition'] as Record<string, unknown>)['field'] === 'string' && (field['condition'] as Record<string, unknown>)['field'] !== ''
+                                ? {
+                                      action: 'show',
+                                      match: 'all',
+                                      rules: [
+                                          {
+                                              field: (field['condition'] as Record<string, unknown>)['field'],
+                                              operator:
+                                                  (field['condition'] as Record<string, unknown>)['operator'] === 'not_empty'
+                                                      ? 'is_not_empty'
+                                                      : (field['condition'] as Record<string, unknown>)['operator'] === 'is_empty'
+                                                        ? 'is_empty'
+                                                        : (field['condition'] as Record<string, unknown>)['operator'],
+                                              value: (field['condition'] as Record<string, unknown>)['value'] ?? null,
+                                          },
+                                      ],
+                                  }
+                                : null),
+                    ),
                     defaultValue:
                         typeof field['default_value'] === 'string'
                             ? field['default_value']

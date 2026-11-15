@@ -42,6 +42,8 @@ class PageBuilder
         $definitions = [
             'hero' => [
                 'label' => 'Hero',
+                'category' => 'hero',
+                'icon' => 'rocket',
                 'description' => 'Big headline, intro, buttons and key numbers.',
                 'fields' => [
                     ['name' => 'badge', 'label' => 'Badge', 'type' => 'text'],
@@ -74,6 +76,8 @@ class PageBuilder
 
             'page_header' => [
                 'label' => 'Page header',
+                'category' => 'hero',
+                'icon' => 'page',
                 'description' => 'Page title with an optional subtitle.',
                 'fields' => [
                     ['name' => 'eyebrow', 'label' => 'Small label', 'type' => 'text'],
@@ -85,6 +89,8 @@ class PageBuilder
 
             'text' => [
                 'label' => 'Text',
+                'category' => 'content',
+                'icon' => 'lines',
                 'description' => 'Rich text written in Markdown.',
                 'fields' => [
                     ['name' => 'content', 'label' => 'Content', 'type' => 'markdown', 'help' => '## Heading, **bold**, *italic*, [link](https://…), - list, > quote'],
@@ -95,6 +101,8 @@ class PageBuilder
 
             'image' => [
                 'label' => 'Image',
+                'category' => 'media',
+                'icon' => 'image',
                 'description' => 'A single image with a caption.',
                 'fields' => [
                     ['name' => 'image', 'label' => 'Image', 'type' => 'image'],
@@ -107,6 +115,8 @@ class PageBuilder
 
             'stack' => [
                 'label' => 'Logo strip',
+                'category' => 'social',
+                'icon' => 'award',
                 'description' => 'A row of names, e.g. the tech stack or customers.',
                 'fields' => [
                     ['name' => 'label', 'label' => 'Label', 'type' => 'text'],
@@ -120,6 +130,8 @@ class PageBuilder
 
             'features' => [
                 'label' => 'Feature grid',
+                'category' => 'content',
+                'icon' => 'layout',
                 'description' => 'Cards with an icon, title and text.',
                 'fields' => [
                     ...$heading,
@@ -155,8 +167,81 @@ class PageBuilder
                 ],
             ],
 
+            'banner_split' => [
+                'label' => 'Split content + showcase',
+                'category' => 'content',
+                'icon' => 'layers',
+                'description' => 'Two-column feature section with checklist points, image or highlight card, and dual buttons.',
+                'fields' => [
+                    ...$heading,
+                    ['name' => 'position', 'label' => 'Visual placement', 'type' => 'select', 'options' => ['right' => 'Visual on the right', 'left' => 'Visual on the left']],
+                    ['name' => 'theme', 'label' => 'Section style', 'type' => 'select', 'options' => ['plain' => 'Warm paper', 'white' => 'White card', 'dark' => 'Dark contrast']],
+                    ['name' => 'points', 'label' => 'Checklist points', 'type' => 'list'],
+                    ...$button('primary', 'Main button'),
+                    ...$button('secondary', 'Second button'),
+                    ['name' => 'image', 'label' => 'Showcase image (optional)', 'type' => 'image'],
+                    ['name' => 'alt', 'label' => 'Image alt text', 'type' => 'text'],
+                    ['name' => 'stat_value', 'label' => 'Highlight metric value', 'type' => 'text'],
+                    ['name' => 'stat_label', 'label' => 'Highlight metric label', 'type' => 'text'],
+                ],
+                'defaults' => [
+                    'eyebrow' => 'Own your stack',
+                    'title' => 'Designed for speed, built for complete ownership.',
+                    'text' => 'Run your storefront with zero recurring SaaS lock-in, full access to every template and database table, and instant theme customization.',
+                    'position' => 'right',
+                    'theme' => 'white',
+                    'points' => [
+                        'Full source code access with zero transaction fees',
+                        'Sub-50ms server response time with built-in caching',
+                        'One-click switch between block editor and visual canvas',
+                    ],
+                    'primary_label' => 'Explore features',
+                    'primary_url' => '#features',
+                    'secondary_label' => 'Read documentation →',
+                    'secondary_url' => '@github',
+                    'image' => '',
+                    'alt' => 'Platform architecture preview',
+                    'stat_value' => '99.98%',
+                    'stat_label' => 'Uptime across self-hosted stores',
+                ],
+            ],
+
+            'stats' => [
+                'label' => 'Stats & metrics band',
+                'category' => 'social',
+                'icon' => 'chart',
+                'description' => 'High-impact numbers and proof metrics in 3 or 4 columns.',
+                'fields' => [
+                    ...$heading,
+                    ['name' => 'theme', 'label' => 'Theme style', 'type' => 'select', 'options' => ['dark' => 'Dark band', 'light' => 'Light cards', 'brand' => 'Brand gradient']],
+                    ['name' => 'columns', 'label' => 'Columns', 'type' => 'select', 'options' => ['4' => '4 columns', '3' => '3 columns']],
+                    ['name' => 'items', 'label' => 'Metrics', 'type' => 'repeater', 'max' => 8, 'fields' => [
+                        ['name' => 'icon', 'label' => 'Icon', 'type' => 'icon'],
+                        ['name' => 'value', 'label' => 'Number / Value', 'type' => 'text'],
+                        ['name' => 'label', 'label' => 'Title', 'type' => 'text'],
+                        ['name' => 'detail', 'label' => 'Supporting note', 'type' => 'text'],
+                    ]],
+                ],
+                'defaults' => [
+                    'anchor' => 'metrics',
+                    'eyebrow' => 'Proven performance',
+                    'title' => 'Numbers that speak for themselves.',
+                    'text' => 'Engineered to stay fast under flash-sale traffic while keeping hosting costs low.',
+                    'theme' => 'dark',
+                    'columns' => '4',
+                    'items' => [
+                        ['icon' => 'bolt', 'value' => '38ms', 'label' => 'Median response', 'detail' => 'Cached edge-ready pages'],
+                        ['icon' => 'shield', 'value' => '$0', 'label' => 'Platform cut', 'detail' => 'Keep 100% of every sale'],
+                        ['icon' => 'globe', 'value' => '40+', 'label' => 'Extensions & themes', 'detail' => 'Signed & verified packages'],
+                        ['icon' => 'star', 'value' => '4.9/5', 'label' => 'Developer rating', 'detail' => 'Clean Laravel 13 codebase'],
+                    ],
+                ],
+            ],
+
             'marketplace' => [
                 'label' => 'Marketplace showcase',
+                'category' => 'commerce',
+                'icon' => 'cart',
                 'description' => 'Dark panel with checkpoints, module tags and theme tiles.',
                 'fields' => [
                     ...$heading,
@@ -177,8 +262,257 @@ class PageBuilder
                 ],
             ],
 
+            'pricing' => [
+                'label' => 'Pricing plans',
+                'category' => 'commerce',
+                'icon' => 'tag',
+                'description' => 'Tiered pricing table with feature checklists, badges and highlighted plan.',
+                'fields' => [
+                    ...$heading,
+                    ['name' => 'note', 'label' => 'Bottom guarantee or billing note', 'type' => 'text'],
+                    ['name' => 'plans', 'label' => 'Plans', 'type' => 'repeater', 'max' => 4, 'fields' => [
+                        ['name' => 'name', 'label' => 'Plan name', 'type' => 'text'],
+                        ['name' => 'badge', 'label' => 'Badge (e.g. Most popular)', 'type' => 'text'],
+                        ['name' => 'price', 'label' => 'Price', 'type' => 'text'],
+                        ['name' => 'period', 'label' => 'Billing period', 'type' => 'text'],
+                        ['name' => 'description', 'label' => 'Short description', 'type' => 'textarea'],
+                        ['name' => 'features', 'label' => 'Included features', 'type' => 'list'],
+                        ['name' => 'button_label', 'label' => 'Button text', 'type' => 'text'],
+                        ['name' => 'button_url', 'label' => 'Button link', 'type' => 'url'],
+                        ['name' => 'featured', 'label' => 'Highlight this plan', 'type' => 'toggle'],
+                    ]],
+                ],
+                'defaults' => [
+                    'anchor' => 'pricing',
+                    'eyebrow' => 'Transparent pricing',
+                    'title' => 'Start free, scale without limits.',
+                    'text' => 'Self-host the open-source core for free forever, or pick a managed cloud plan when you want zero server maintenance.',
+                    'note' => 'All plans include SSL certificates, unlimited staff accounts and 30-day money-back guarantee.',
+                    'plans' => [
+                        [
+                            'name' => 'Community Self-Hosted',
+                            'badge' => 'MIT Open Source',
+                            'price' => '$0',
+                            'period' => 'forever',
+                            'description' => 'Full platform source code to run on your own VPS or shared hosting.',
+                            'features' => ['Unlimited products & orders', 'Visual & block page builders', 'All free marketplace themes', 'Community forum support'],
+                            'button_label' => 'Download free',
+                            'button_url' => '@github',
+                            'featured' => false,
+                        ],
+                        [
+                            'name' => 'Growth Cloud',
+                            'badge' => 'Most popular',
+                            'price' => '$29',
+                            'period' => '/ month',
+                            'description' => 'Managed high-speed cloud hosting with automated daily backups and updates.',
+                            'features' => ['Everything in Community', 'Managed global CDN & SSL', 'Automated daily backups', 'Priority email support'],
+                            'button_label' => 'Start 14-day trial',
+                            'button_url' => '@marketplace',
+                            'featured' => true,
+                        ],
+                        [
+                            'name' => 'Scale Enterprise',
+                            'badge' => 'High volume',
+                            'price' => '$99',
+                            'period' => '/ month',
+                            'description' => 'Dedicated compute resources, staging environments and SLA guarantee.',
+                            'features' => ['Everything in Growth Cloud', 'Dedicated Redis & database', 'Staging & Git deploy pipeline', '99.99% uptime SLA & Slack support'],
+                            'button_label' => 'Talk to sales',
+                            'button_url' => '#contact',
+                            'featured' => false,
+                        ],
+                    ],
+                ],
+            ],
+
+            'testimonials' => [
+                'label' => 'Customer testimonials',
+                'category' => 'social',
+                'icon' => 'message',
+                'description' => 'Customer quotes with star ratings, author roles and layout variations.',
+                'fields' => [
+                    ...$heading,
+                    ['name' => 'layout', 'label' => 'Layout style', 'type' => 'select', 'options' => ['grid' => '3-column cards', 'spotlight' => 'Featured spotlight + grid', 'minimal' => 'Minimal editorial']],
+                    ['name' => 'theme', 'label' => 'Color theme', 'type' => 'select', 'options' => ['plain' => 'Light cards', 'dark' => 'Dark contrast']],
+                    ['name' => 'items', 'label' => 'Testimonials', 'type' => 'repeater', 'max' => 12, 'fields' => [
+                        ['name' => 'quote', 'label' => 'Quote', 'type' => 'textarea'],
+                        ['name' => 'author', 'label' => 'Author name', 'type' => 'text'],
+                        ['name' => 'role', 'label' => 'Role / Company', 'type' => 'text'],
+                        ['name' => 'badge', 'label' => 'Result badge (optional)', 'type' => 'text'],
+                        ['name' => 'rating', 'label' => 'Star rating (1–5)', 'type' => 'number', 'min' => 1, 'max' => 5],
+                    ]],
+                ],
+                'defaults' => [
+                    'anchor' => 'testimonials',
+                    'eyebrow' => 'Trusted by merchants',
+                    'title' => 'Why store owners switch to Modrix.',
+                    'text' => 'From independent studios to multi-warehouse brands, teams love owning their storefront.',
+                    'layout' => 'grid',
+                    'theme' => 'plain',
+                    'items' => [
+                        [
+                            'quote' => 'We migrated from a $299/mo hosted platform in one weekend. Our pages load twice as fast and our checkout fees dropped to zero.',
+                            'author' => 'Elena Rostova',
+                            'role' => 'Founder, Studio Nord',
+                            'badge' => '+42% conversion',
+                            'rating' => 5,
+                        ],
+                        [
+                            'quote' => 'Having both a structured block editor and a full visual canvas means our marketing team ships landing pages without waiting on engineering.',
+                            'author' => 'Marcus Vance',
+                            'role' => 'Head of Digital, Kinetix Gear',
+                            'badge' => '3x faster launches',
+                            'rating' => 5,
+                        ],
+                        [
+                            'quote' => 'The codebase is clean Laravel and React. Writing a custom ERP sync plugin took less than an afternoon.',
+                            'author' => 'Priya Nair',
+                            'role' => 'Lead Developer, Atelier Supply',
+                            'badge' => '100% extensible',
+                            'rating' => 5,
+                        ],
+                    ],
+                ],
+            ],
+
+            'faq' => [
+                'label' => 'FAQ accordion',
+                'category' => 'social',
+                'icon' => 'check',
+                'description' => 'Collapsible questions and answers in split, centered or two-column layout.',
+                'fields' => [
+                    ...$heading,
+                    ['name' => 'layout', 'label' => 'Layout', 'type' => 'select', 'options' => ['split' => 'Heading beside questions', 'centered' => 'Centered single column', 'two_col' => 'Two-column grid']],
+                    ...$button('contact', 'Support button (optional)'),
+                    ['name' => 'items', 'label' => 'Questions', 'type' => 'repeater', 'max' => 20, 'fields' => [
+                        ['name' => 'question', 'label' => 'Question', 'type' => 'text'],
+                        ['name' => 'answer', 'label' => 'Answer', 'type' => 'textarea', 'help' => 'Supports **bold**, `code` and [links](https://…).'],
+                    ]],
+                ],
+                'defaults' => [
+                    'anchor' => 'faq',
+                    'eyebrow' => 'Common questions',
+                    'title' => 'Everything you need to know.',
+                    'text' => 'Have another question? Reach out to our community or support team anytime.',
+                    'layout' => 'split',
+                    'contact_label' => 'Ask in community →',
+                    'contact_url' => '@github',
+                    'items' => [
+                        [
+                            'question' => 'Is Modrix Commerce really free for commercial stores?',
+                            'answer' => 'Yes. Modrix Commerce is released under the **MIT license**. You can use it for unlimited commercial stores, client projects and custom deployments without royalties or license fees.',
+                        ],
+                        [
+                            'question' => 'Can I switch between the Block Editor and Visual Builder?',
+                            'answer' => 'Yes. Any block page can be converted into a visual-builder document in one click while keeping your original blocks intact so you can switch back whenever you like.',
+                        ],
+                        [
+                            'question' => 'What server requirements do I need?',
+                            'answer' => 'Any host running **PHP 8.3+** and **MySQL 8 / MariaDB / SQLite** works out of the box — from shared cPanel hosting to dedicated cloud servers.',
+                        ],
+                        [
+                            'question' => 'Can I build custom themes and plugins?',
+                            'answer' => 'Absolutely. Themes and plugins live in `extensions/` and can register custom blocks, admin pages, hooks and storefront styles.',
+                        ],
+                    ],
+                ],
+            ],
+
+            'gallery' => [
+                'label' => 'Bento media gallery',
+                'category' => 'media',
+                'icon' => 'image',
+                'description' => 'Visual showcase grid for screenshots, lookbooks or portfolio items.',
+                'fields' => [
+                    ...$heading,
+                    ['name' => 'columns', 'label' => 'Grid columns', 'type' => 'select', 'options' => ['3' => '3 columns', '2' => '2 columns', '4' => '4 columns']],
+                    ['name' => 'items', 'label' => 'Gallery items', 'type' => 'repeater', 'max' => 12, 'fields' => [
+                        ['name' => 'image', 'label' => 'Image (optional)', 'type' => 'image'],
+                        ['name' => 'tag', 'label' => 'Category tag', 'type' => 'text'],
+                        ['name' => 'title', 'label' => 'Title', 'type' => 'text'],
+                        ['name' => 'caption', 'label' => 'Caption', 'type' => 'textarea'],
+                        ['name' => 'accent', 'label' => 'Placeholder / card accent', 'type' => 'select', 'options' => ['violet' => 'Violet glow', 'lime' => 'Lime studio', 'coral' => 'Warm coral', 'slate' => 'Midnight slate']],
+                        ['name' => 'url', 'label' => 'Optional link', 'type' => 'url'],
+                    ]],
+                ],
+                'defaults' => [
+                    'anchor' => 'showcase',
+                    'eyebrow' => 'Storefront showcase',
+                    'title' => 'Crafted for modern commerce.',
+                    'text' => 'Every screen is tuned for readability, fast interaction and mobile conversion.',
+                    'columns' => '3',
+                    'items' => [
+                        ['image' => '', 'tag' => 'Storefront', 'title' => 'Minimal product discovery', 'caption' => 'Clean typography and instant filtering keep shoppers focused on your catalog.', 'accent' => 'violet', 'url' => ''],
+                        ['image' => '', 'tag' => 'Admin UI', 'title' => 'Polaris-inspired workspace', 'caption' => 'Dark sidebar, command palette and customizable density for daily operations.', 'accent' => 'slate', 'url' => ''],
+                        ['image' => '', 'tag' => 'Visual Builder', 'title' => 'Live responsive canvas', 'caption' => 'Preview desktop, tablet and mobile breakpoints side by side as you edit.', 'accent' => 'lime', 'url' => ''],
+                    ],
+                ],
+            ],
+
+            'video_showcase' => [
+                'label' => 'Video & demo showcase',
+                'category' => 'media',
+                'icon' => 'play',
+                'description' => 'Embedded video player or interactive demo frame with key takeaways.',
+                'fields' => [
+                    ...$heading,
+                    ['name' => 'video_url', 'label' => 'Video URL (YouTube, Vimeo or MP4)', 'type' => 'url', 'help' => 'Leave empty to display an interactive product preview frame.'],
+                    ['name' => 'caption', 'label' => 'Video caption / duration', 'type' => 'text'],
+                    ['name' => 'theme', 'label' => 'Section style', 'type' => 'select', 'options' => ['dark' => 'Dark theater', 'light' => 'Light surface']],
+                    ['name' => 'highlights', 'label' => 'Key takeaways', 'type' => 'list'],
+                    ...$button('primary', 'Call to action button'),
+                ],
+                'defaults' => [
+                    'anchor' => 'demo',
+                    'eyebrow' => 'Product walkthrough',
+                    'title' => 'See how a store comes together in minutes.',
+                    'text' => 'Watch the full workflow from installing Modrix Commerce to customizing your theme and publishing your first landing page.',
+                    'video_url' => '',
+                    'caption' => '4 min walkthrough · No plugins required',
+                    'theme' => 'dark',
+                    'highlights' => [
+                        'Zero-config web installer',
+                        'Drag-and-drop section & block editing',
+                        'Instant theme color & typography tokens',
+                    ],
+                    'primary_label' => 'Try it yourself',
+                    'primary_url' => '@github',
+                ],
+            ],
+
+            'timeline' => [
+                'label' => 'Roadmap & timeline',
+                'category' => 'content',
+                'icon' => 'clock',
+                'description' => 'Vertical or horizontal milestones for company history, process or product roadmap.',
+                'fields' => [
+                    ...$heading,
+                    ['name' => 'items', 'label' => 'Milestones', 'type' => 'repeater', 'max' => 10, 'fields' => [
+                        ['name' => 'phase', 'label' => 'Date / Phase', 'type' => 'text'],
+                        ['name' => 'title', 'label' => 'Title', 'type' => 'text'],
+                        ['name' => 'status', 'label' => 'Status badge', 'type' => 'select', 'options' => ['done' => 'Completed', 'active' => 'In progress', 'upcoming' => 'Planned']],
+                        ['name' => 'text', 'label' => 'Description', 'type' => 'textarea'],
+                    ]],
+                ],
+                'defaults' => [
+                    'anchor' => 'roadmap',
+                    'eyebrow' => 'Product roadmap',
+                    'title' => 'Continuous improvements, shipped openly.',
+                    'text' => 'Every release is tracked in the open with community feedback driving what we build next.',
+                    'items' => [
+                        ['phase' => 'Phase 01', 'title' => 'Core CMS & Block Builder', 'status' => 'done', 'text' => 'Pages, blog posts, categories, markdown editor and extensible block architecture.'],
+                        ['phase' => 'Phase 02', 'title' => 'Visual Canvas & Theme Tokens', 'status' => 'done', 'text' => 'Live drag-and-drop visual builder, responsive device preview and design library.'],
+                        ['phase' => 'Phase 03', 'title' => 'Commerce & Marketplace Sync', 'status' => 'active', 'text' => 'One-click extension installer, payment gateways and automated cloud backups.'],
+                        ['phase' => 'Phase 04', 'title' => 'Multi-store & Headless API', 'status' => 'upcoming', 'text' => 'GraphQL & REST storefront APIs for custom mobile apps and multi-region catalogs.'],
+                    ],
+                ],
+            ],
+
             'steps' => [
                 'label' => 'Steps + code',
+                'category' => 'content',
+                'icon' => 'code',
                 'description' => 'Numbered columns with an optional code box.',
                 'fields' => [
                     ...$heading,
@@ -206,6 +540,8 @@ class PageBuilder
 
             'comparison' => [
                 'label' => 'Comparison',
+                'category' => 'commerce',
+                'icon' => 'shield',
                 'description' => 'Text beside a “us vs. them” table.',
                 'fields' => [
                     ...$heading,
@@ -231,6 +567,8 @@ class PageBuilder
 
             'latest_posts' => [
                 'label' => 'Latest blog posts',
+                'category' => 'content',
+                'icon' => 'page',
                 'description' => 'The newest published posts. Hidden when there are none.',
                 'fields' => [
                     ['name' => 'eyebrow', 'label' => 'Small label', 'type' => 'text'],
@@ -240,8 +578,37 @@ class PageBuilder
                 'defaults' => ['anchor' => 'blog', 'eyebrow' => 'From the blog', 'title' => 'News and guides.', 'count' => 3],
             ],
 
+            'newsletter_cta' => [
+                'label' => 'Newsletter & promo bar',
+                'category' => 'conversion',
+                'icon' => 'mail',
+                'description' => 'Email capture or promotional callout bar with perks list and theme styles.',
+                'fields' => [
+                    ['name' => 'badge', 'label' => 'Small badge', 'type' => 'text'],
+                    ['name' => 'title', 'label' => 'Heading', 'type' => 'text'],
+                    ['name' => 'text', 'label' => 'Supporting text', 'type' => 'textarea'],
+                    ['name' => 'placeholder', 'label' => 'Email input placeholder', 'type' => 'text'],
+                    ...$button('button', 'Submit / Action button'),
+                    ['name' => 'perks', 'label' => 'Reassurance perks', 'type' => 'list'],
+                    ['name' => 'theme', 'label' => 'Banner style', 'type' => 'select', 'options' => ['dark' => 'Dark card', 'brand' => 'Brand gradient', 'lime' => 'High-contrast lime']],
+                ],
+                'defaults' => [
+                    'anchor' => 'newsletter',
+                    'badge' => 'Release notes & updates',
+                    'title' => 'Get new themes, modules and tips in your inbox.',
+                    'text' => 'One concise email when we ship major features or new free extensions. Never shared, unsubscribe in one click.',
+                    'placeholder' => 'you@example.com',
+                    'button_label' => 'Subscribe',
+                    'button_url' => '#newsletter',
+                    'perks' => ['Monthly digest', 'Free starter themes', 'One-click unsubscribe'],
+                    'theme' => 'dark',
+                ],
+            ],
+
             'cta' => [
                 'label' => 'Call to action',
+                'category' => 'conversion',
+                'icon' => 'bolt',
                 'description' => 'Coloured banner with a heading and buttons.',
                 'fields' => [
                     ['name' => 'title', 'label' => 'Heading', 'type' => 'text'],
@@ -276,6 +643,52 @@ class PageBuilder
         return [
             'blocks' => self::definitions(),
             'icons' => Icons::ALL,
+            'categories' => [
+                'all' => 'All blocks',
+                'hero' => 'Hero & Headers',
+                'content' => 'Content & Layout',
+                'commerce' => 'Commerce & Pricing',
+                'social' => 'Social Proof & FAQ',
+                'media' => 'Media & Video',
+                'conversion' => 'Conversion & CTA',
+                'plugin' => 'Extensions',
+            ],
+            'presets' => self::presets(),
+        ];
+    }
+
+    /**
+     * Multi-block page presets for starting or appending full section flows in one click.
+     *
+     * @return list<array{key: string, label: string, description: string, types: list<string>}>
+     */
+    public static function presets(): array
+    {
+        return [
+            [
+                'key' => 'full_landing',
+                'label' => 'Complete Landing Page',
+                'description' => 'Hero, logo strip, feature bento grid, marketplace, steps, comparison, blog and CTA.',
+                'types' => ['hero', 'stack', 'features', 'marketplace', 'steps', 'comparison', 'latest_posts', 'cta'],
+            ],
+            [
+                'key' => 'saas_pricing',
+                'label' => 'Pricing & Comparison',
+                'description' => 'Page header, 3-tier pricing plans, us-vs-them comparison, FAQ accordion and final CTA.',
+                'types' => ['page_header', 'pricing', 'comparison', 'faq', 'cta'],
+            ],
+            [
+                'key' => 'product_showcase',
+                'label' => 'Product & Demo Showcase',
+                'description' => 'Hero, stats band, split content showcase, video walkthrough, customer testimonials and newsletter.',
+                'types' => ['hero', 'stats', 'banner_split', 'video_showcase', 'testimonials', 'newsletter_cta'],
+            ],
+            [
+                'key' => 'company_story',
+                'label' => 'About, Roadmap & Gallery',
+                'description' => 'Page header, split story section, stats band, milestone timeline, bento gallery and CTA.',
+                'types' => ['page_header', 'banner_split', 'stats', 'timeline', 'gallery', 'cta'],
+            ],
         ];
     }
 
@@ -357,6 +770,7 @@ class PageBuilder
             'number' => max($field['min'] ?? 0, min($field['max'] ?? 1000, (int) (is_numeric($value) ? $value : ($field['min'] ?? 0)))),
             'toggle' => filter_var($value, FILTER_VALIDATE_BOOLEAN),
             'select' => is_string($value) && isset($field['options'][$value]) ? $value : array_key_first($field['options']),
+            'color' => is_string($value) && preg_match('/^#[0-9a-fA-F]{6}$/', trim($value)) ? strtolower(trim($value)) : (string) ($field['default'] ?? ''),
             'icon' => is_string($value) && isset(Icons::ALL[$value]) ? $value : 'sparkle',
             'image' => is_string($value) && preg_match('#^pages/[A-Za-z0-9_\-]+\.(jpe?g|png|webp|gif)$#', $value) ? $value : '',
             'list' => array_values(array_filter(array_map(

@@ -28,7 +28,9 @@ class BlockPageConverter
         'mail' => 'mail', 'globe' => 'globe', 'layout' => 'panels-top-left', 'page' => 'book-open',
         'lines' => 'layers', 'settings' => 'workflow', 'image' => 'video', 'cart' => 'package',
         'receipt' => 'clipboard-check', 'refresh' => 'workflow', 'code' => 'boxes', 'chart' => 'chart-no-axes-combined',
-        'sparkle' => 'star',
+        'sparkle' => 'star', 'check' => 'check', 'play' => 'play', 'clock' => 'clock', 'tag' => 'star',
+        'truck' => 'package', 'award' => 'star', 'lock' => 'shield', 'layers' => 'layers',
+        'message' => 'mail', 'rocket' => 'zap',
     ];
 
     /** @var list<string> */
@@ -74,7 +76,7 @@ class BlockPageConverter
         }
 
         return [
-            'document' => ['schema_version' => DocumentUpgrader::CURRENT_VERSION, 'settings' => [], 'sections' => $sections],
+            'document' => ['schema_version' => DocumentUpgrader::CURRENT_VERSION, 'settings' => PageDocuments::themedSettings(), 'sections' => $sections],
             'skipped' => array_values(array_unique($this->skipped)),
         ];
     }
@@ -112,6 +114,15 @@ class BlockPageConverter
                 ]),
             ])],
             'marketplace' => [$this->marketplace($data)],
+            'banner_split' => [$this->bannerSplit($data)],
+            'stats' => [$this->stats($data)],
+            'pricing' => [$this->pricing($data)],
+            'testimonials' => [$this->testimonials($data)],
+            'faq' => [$this->faq($data)],
+            'gallery' => [$this->gallery($data)],
+            'video_showcase' => [$this->videoShowcase($data)],
+            'timeline' => [$this->timeline($data)],
+            'newsletter_cta' => [$this->newsletterCta($data)],
             'steps' => [$this->steps($data)],
             'comparison' => [$this->comparison($data)],
             'latest_posts' => [$this->band([
@@ -125,6 +136,186 @@ class BlockPageConverter
             ], DesignTokens::ref('dark'))],
             default => $this->skip($label),
         };
+    }
+
+    /** @return array<string, mixed> */
+    private function bannerSplit(array $data): array
+    {
+        $copy = array_values(array_filter([
+            ...$this->eyebrow($data['eyebrow'] ?? '', false),
+            $this->filled($data['title'] ?? '') ? $this->heading((string) $data['title'], 'h2') : null,
+            ...$this->text($data['text'] ?? ''),
+            ($data['points'] ?? []) !== [] ? $this->blockNode(BlockType::Html, ['html' => '<ul>'.implode('', array_map(fn ($point) => '<li>'.e($point).'</li>', (array) $data['points'])).'</ul>']) : null,
+            $this->buttons($data, 'primary', 'secondary', false),
+        ]));
+
+        $visual = array_values(array_filter([
+            $this->filled($data['image'] ?? '') ? $this->image((string) ($data['alt'] ?? ''), ['borderRadius' => $this->responsive('16px')], Storage::disk('public')->url($data['image'])) : null,
+            $this->filled($data['stat_value'] ?? '') ? $this->heading((string) $data['stat_value'], 'h3', ['color' => $this->responsive(DesignTokens::ref('primary')), 'fontSize' => $this->font('40px', '30px')]) : null,
+            $this->filled($data['stat_label'] ?? '') ? $this->paragraph((string) $data['stat_label'], ['color' => $this->responsive(DesignTokens::ref('muted'))]) : null,
+        ]));
+
+        $left = ($data['position'] ?? 'right') === 'left';
+        $cols = $visual === []
+            ? [$this->column(12, $copy)]
+            : ($left ? [$this->column(5, $visual), $this->column(7, $copy)] : [$this->column(7, $copy), $this->column(5, $visual)]);
+
+        return $this->section([$this->row($cols)], ['padding' => $this->pad('88px', '24px', '56px')]);
+    }
+
+    /** @return array<string, mixed> */
+    private function stats(array $data): array
+    {
+        $items = (array) ($data['items'] ?? []);
+        $span = max(3, intdiv(12, max(1, min(4, count($items)))));
+        $cols = array_map(fn ($item) => $this->column($span, array_values(array_filter([
+            $this->heading((string) ($item['value'] ?? ''), 'h3', $this->center(['fontSize' => $this->font('38px', '28px'), 'color' => $this->responsive(DesignTokens::ref('on_dark'))])),
+            $this->paragraph((string) ($item['label'] ?? ''), $this->center(['color' => $this->responsive(DesignTokens::ref('on_dark')), 'fontWeight' => $this->responsive('600')])),
+            $this->filled($item['detail'] ?? '') ? $this->paragraph((string) $item['detail'], $this->center(['color' => $this->responsive(DesignTokens::ref('on_dark_muted')), 'fontSize' => $this->responsive('13px')])) : null,
+        ]))), $items);
+
+        $rows = [];
+        $intro = $this->intro($data);
+        if ($intro !== []) {
+            $rows[] = $this->row([$this->column(12, $intro)]);
+        }
+        if ($cols !== []) {
+            $rows[] = $this->row($cols);
+        }
+
+        return $this->section($rows, [
+            'padding' => $this->pad('72px', '24px', '48px'),
+            'backgroundColor' => $this->responsive(DesignTokens::ref('dark')),
+        ]);
+    }
+
+    /** @return array<string, mixed> */
+    private function pricing(array $data): array
+    {
+        $plans = array_map(fn ($plan) => [
+            'name' => (string) ($plan['name'] ?? 'Plan'),
+            'price' => (string) ($plan['price'] ?? '$0'),
+            'interval' => ltrim((string) ($plan['period'] ?? 'month'), '/ '),
+            'features' => array_values((array) ($plan['features'] ?? ['Included'])),
+            'buttonLabel' => (string) ($plan['button_label'] ?? 'Get started'),
+            'buttonUrl' => $this->builder->url($plan['button_url'] ?? ''),
+            'highlighted' => (bool) ($plan['featured'] ?? false),
+        ], (array) ($data['plans'] ?? []));
+
+        return $this->band([
+            ...$this->intro($data),
+            $plans !== [] ? $this->blockNode(BlockType::PricingTable, [
+                'plans' => $plans,
+                'columns' => max(1, min(4, count($plans))),
+            ]) : null,
+            ...$this->text($data['note'] ?? '', true, DesignTokens::ref('muted')),
+        ]);
+    }
+
+    /** @return array<string, mixed> */
+    private function testimonials(array $data): array
+    {
+        $items = (array) ($data['items'] ?? []);
+        $span = max(4, intdiv(12, max(1, min(3, count($items)))));
+        $cols = array_map(fn ($item) => $this->column($span, [
+            $this->blockNode(BlockType::Testimonial, [
+                'quote' => (string) ($item['quote'] ?? ''),
+                'authorName' => (string) ($item['author'] ?? ''),
+                'authorTitle' => (string) ($item['role'] ?? ''),
+                'rating' => (int) ($item['rating'] ?? 5),
+                'layout' => 'card',
+            ]),
+        ]), array_slice($items, 0, 3));
+
+        $rows = [$this->row([$this->column(12, $this->intro($data))])];
+        if ($cols !== []) {
+            $rows[] = $this->row($cols);
+        }
+
+        return $this->section($rows, [
+            'padding' => $this->pad('88px', '24px', '56px'),
+            'backgroundColor' => $this->responsive(DesignTokens::ref('surface')),
+        ]);
+    }
+
+    /** @return array<string, mixed> */
+    private function faq(array $data): array
+    {
+        $items = array_values(array_map(fn ($item) => [
+            'question' => (string) ($item['question'] ?? 'Question'),
+            'answer' => (string) ($item['answer'] ?? ''),
+        ], (array) ($data['items'] ?? [])));
+
+        return $this->band([
+            ...$this->intro($data),
+            $items !== [] ? $this->blockNode(BlockType::Faq, [
+                'items' => $items,
+                'allowMultipleOpen' => false,
+                'emitSchemaOrg' => true,
+            ]) : null,
+        ]);
+    }
+
+    /** @return array<string, mixed> */
+    private function gallery(array $data): array
+    {
+        $items = (array) ($data['items'] ?? []);
+
+        return $this->band([
+            ...$this->intro($data),
+            $this->blockNode(BlockType::FeatureCards, [
+                'columns' => max(2, min(4, (int) ($data['columns'] ?? 3))),
+                'items' => array_map(fn ($item) => [
+                    'icon' => 'star',
+                    'title' => (string) ($item['title'] ?? 'Showcase'),
+                    'body' => (string) ($item['caption'] ?? ''),
+                ], $items),
+            ]),
+        ]);
+    }
+
+    /** @return array<string, mixed> */
+    private function videoShowcase(array $data): array
+    {
+        return $this->band([
+            ...$this->intro($data),
+            $this->blockNode(BlockType::Video, [
+                'provider' => 'youtube',
+                'url' => $this->filled($data['video_url'] ?? '') ? $data['video_url'] : null,
+                'controls' => true,
+                'aspectRatio' => '16:9',
+            ]),
+            $this->filled($data['primary_label'] ?? '') ? $this->linkButton((string) $data['primary_label'], $this->builder->url($data['primary_url'] ?? ''), 'primary', 'lg', $this->center()) : null,
+        ], DesignTokens::ref('surface'));
+    }
+
+    /** @return array<string, mixed> */
+    private function timeline(array $data): array
+    {
+        $items = (array) ($data['items'] ?? []);
+
+        return $this->band([
+            ...$this->intro($data),
+            $this->blockNode(BlockType::FeatureCards, [
+                'columns' => 2,
+                'items' => array_map(fn ($item) => [
+                    'icon' => 'check',
+                    'title' => trim(($item['phase'] ?? '').' · '.($item['title'] ?? '')),
+                    'body' => (string) ($item['text'] ?? ''),
+                ], $items),
+            ]),
+        ]);
+    }
+
+    /** @return array<string, mixed> */
+    private function newsletterCta(array $data): array
+    {
+        return $this->band([
+            ...$this->eyebrow($data['badge'] ?? '', true),
+            $this->filled($data['title'] ?? '') ? $this->heading((string) $data['title'], 'h2', $this->center(['color' => $this->responsive(DesignTokens::ref('on_dark'))])) : null,
+            ...$this->text($data['text'] ?? '', true, DesignTokens::ref('on_dark_muted')),
+            $this->filled($data['button_label'] ?? '') ? $this->linkButton((string) $data['button_label'], $this->builder->url($data['button_url'] ?? ''), 'primary', 'lg', $this->center()) : null,
+        ], DesignTokens::ref('dark'));
     }
 
     /** @return array<string, mixed> */

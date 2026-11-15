@@ -17,7 +17,7 @@ import { adjacentStep, funnelStepOptions } from '../funnelWidgets';
 import { PanelNote } from './controls';
 import { FileField, GalleryImagesField, ImageField } from './MediaPicker';
 import { ProductMultiSelect, ProductSelect } from './ProductPicker';
-import { FormPicker } from './FormPicker';
+import { FormPicker, SiteFormPicker } from './FormPicker';
 import { PopupPicker } from './PopupPicker';
 import { BookingServicePicker, BookingStaffPicker } from './BookingPickers';
 import { ItemListEditor, type ItemListChange, type ItemRecord } from './ItemListEditor';
@@ -610,7 +610,7 @@ export function BlockContentFields({
                     <Textarea
                         label="HTML"
                         rows={6}
-                        hint="HTML and script tags are supported here, including external scripts. Scripts execute only on published pages."
+                        hint='HTML and script tags are supported, including external ones such as <script src="https://…"></script>. Scripts run only on published pages, not on the canvas.'
                         value={propText(props, 'html')}
                         onChange={(event) => set({ html: event.currentTarget.value })}
                     />
@@ -628,8 +628,9 @@ export function BlockContentFields({
                         onChange={(event) => set({ js: event.currentTarget.value })}
                     />
                     <Select
-                        label="Placement"
+                        label="Where the script runs"
                         size="sm"
+                        hint="Tracking pixels and analytics belong in the page head; chat widgets and most other scripts at the end of the page."
                         options={[
                             { value: 'inline', label: 'Where the block is' },
                             { value: 'head', label: 'In the page head' },
@@ -639,6 +640,14 @@ export function BlockContentFields({
                         onChange={(event) => set({ placement: event.currentTarget.value })}
                     />
                 </>
+            );
+
+        case 'site_form':
+            return (
+                <SiteFormPicker
+                    value={propText(props, 'formSlug')}
+                    onChange={(formSlug) => set({ formSlug })}
+                />
             );
 
         case 'form':
@@ -671,6 +680,27 @@ export function BlockContentFields({
             return (
                 <>
                     <Input
+                        label="Field label"
+                        size="sm"
+                        value={propText(props, 'label', 'Email address')}
+                        onChange={(event) => set({ label: event.currentTarget.value })}
+                    />
+                    <Switch
+                        size="sm"
+                        label="Show field label"
+                        checked={propBool(props, 'showLabel')}
+                        onCheckedChange={(checked) => set({ showLabel: checked })}
+                    />
+                    <Input
+                        label="Field name"
+                        size="sm"
+                        hint="Key used when storing or forwarding submissions."
+                        value={propText(props, 'fieldName', 'email')}
+                        onChange={(event) =>
+                            set({ fieldName: event.currentTarget.value.replace(/[^a-z0-9_]/gi, '_').toLowerCase() })
+                        }
+                    />
+                    <Input
                         label="Placeholder"
                         size="sm"
                         value={propText(props, 'placeholder')}
@@ -681,6 +711,12 @@ export function BlockContentFields({
                         size="sm"
                         value={propText(props, 'submitLabel')}
                         onChange={(event) => set({ submitLabel: event.currentTarget.value })}
+                    />
+                    <Switch
+                        size="sm"
+                        label="Required field"
+                        checked={props['required'] !== false}
+                        onCheckedChange={(checked) => set({ required: checked })}
                     />
                     <Textarea
                         label="Consent text"
@@ -708,6 +744,27 @@ export function BlockContentFields({
             return (
                 <>
                     <Input
+                        label="Field label"
+                        size="sm"
+                        value={propText(props, 'label', 'Phone number')}
+                        onChange={(event) => set({ label: event.currentTarget.value })}
+                    />
+                    <Switch
+                        size="sm"
+                        label="Show field label"
+                        checked={props['showLabel'] !== false}
+                        onCheckedChange={(checked) => set({ showLabel: checked })}
+                    />
+                    <Input
+                        label="Field name"
+                        size="sm"
+                        hint="Key used when storing or forwarding submissions."
+                        value={propText(props, 'fieldName', 'phone')}
+                        onChange={(event) =>
+                            set({ fieldName: event.currentTarget.value.replace(/[^a-z0-9_]/gi, '_').toLowerCase() })
+                        }
+                    />
+                    <Input
                         label="Placeholder"
                         size="sm"
                         value={propText(props, 'placeholder')}
@@ -726,12 +783,33 @@ export function BlockContentFields({
                         value={propText(props, 'submitLabel')}
                         onChange={(event) => set({ submitLabel: event.currentTarget.value })}
                     />
+                    <Select
+                        label="Layout"
+                        size="sm"
+                        options={options(['inline', 'stacked'], TITLE_CASE)}
+                        value={propChoice(props, 'layout', 'inline')}
+                        onChange={(event) => set({ layout: event.currentTarget.value })}
+                    />
+                    <Switch
+                        size="sm"
+                        label="Required field"
+                        checked={props['required'] !== false}
+                        onCheckedChange={(checked) => set({ required: checked })}
+                    />
                     <Switch
                         size="sm"
                         label="Require consent"
-                        checked={propBool(props, 'requireConsent')}
+                        checked={propBool(props, 'requireConsent', true)}
                         onCheckedChange={(checked) => set({ requireConsent: checked })}
                     />
+                    {propBool(props, 'requireConsent', true) && (
+                        <Textarea
+                            label="Consent text"
+                            rows={2}
+                            value={propText(props, 'consentText', 'I agree to receive text messages. Reply STOP to opt out.')}
+                            onChange={(event) => set({ consentText: event.currentTarget.value })}
+                        />
+                    )}
                     <FormPicker value={propText(props, 'formId')} onChange={(formId) => set({ formId })} />
                     <SuccessActionFields props={props} set={set} />
                 </>
@@ -1277,7 +1355,12 @@ export function BlockContentFields({
                             <PanelNote>{String(item['label'] ?? 'Link')} submenu</PanelNote>
                             <ItemListEditor noun="submenu links" singular="submenu link"
                                 items={Array.isArray(item['children']) ? item['children'] as ItemRecord[] : []}
-                                fields={[{ key: 'label', label: 'Label', kind: 'text' }, { key: 'url', label: 'URL', kind: 'text', placeholder: '/products' }]}
+                                fields={[
+                                    { key: 'label', label: 'Label', kind: 'text' },
+                                    { key: 'url', label: 'URL', kind: 'text', placeholder: '/products' },
+                                    { key: 'description', label: 'Subtitle', kind: 'text', placeholder: 'Optional short summary' },
+                                    { key: 'icon', label: 'Icon', kind: 'select', options: [{ value: '', label: 'None' }, ...ICON_OPTIONS] },
+                                ]}
                                 create={() => ({ label: 'New submenu link', url: '#' })}
                                 title={(child) => String(child['label'] ?? '')}
                                 onChange={(children) => set({ items: records(props, 'items').map((link, i) => i === index ? { ...link, children } : link) })} />

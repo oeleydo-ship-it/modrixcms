@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-#[Fillable(['title', 'slug', 'blocks', 'editor', 'meta_title', 'meta_description', 'is_published', 'is_home', 'show_in_menu', 'menu_order'])]
+#[Fillable(['title', 'slug', 'blocks', 'editor', 'meta_title', 'meta_description', 'is_published', 'is_home', 'show_in_menu', 'menu_order', 'show_site_header', 'show_site_footer'])]
 class Page extends Model
 {
     /** @use HasFactory<PageFactory> */
@@ -38,6 +38,8 @@ class Page extends Model
             'is_home' => 'boolean',
             'show_in_menu' => 'boolean',
             'menu_order' => 'integer',
+            'show_site_header' => 'boolean',
+            'show_site_footer' => 'boolean',
         ];
     }
 
@@ -57,9 +59,21 @@ class Page extends Model
         return $this->usesBuilder() && $this->published_version !== $this->version;
     }
 
+    /** The site header page (shown on top of visual-builder pages). */
+    public const ROLE_HEADER = 'header';
+
+    /** The site footer page (shown below visual-builder pages). */
+    public const ROLE_FOOTER = 'footer';
+
     public function scopePublished(Builder $query): Builder
     {
-        return $query->where('is_published', true);
+        return $query->where('is_published', true)->whereNull('role');
+    }
+
+    /** Ordinary pages: not the site header or footer. */
+    public function scopeRegular(Builder $query): Builder
+    {
+        return $query->whereNull('role');
     }
 
     public function scopeInMenu(Builder $query): Builder

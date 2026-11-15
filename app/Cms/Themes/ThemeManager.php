@@ -59,6 +59,49 @@ class ThemeManager
         return $this->theme()?->settings() ?? [];
     }
 
+    /**
+     * The design settings of a theme (the active one by default): its saved values, else
+     * the defaults it ships in theme.json ("design"), else the CMS defaults.
+     *
+     * @return array<string, mixed>
+     */
+    public function design(?Package $theme = null): array
+    {
+        $theme ??= $this->theme();
+        $shipped = (array) ($theme?->manifest?->data['design'] ?? []);
+
+        return DesignTokens::clean((array) ($theme?->record?->design ?? []), DesignTokens::clean($shipped));
+    }
+
+    /**
+     * The design settings as CSS: the fonts stylesheet and `:root{--site-…}`. On the
+     * block-based site ($blockSite) the core stylesheet's own variables are pointed at
+     * them too, so it follows the same colours and fonts.
+     */
+    public function designStyles(bool $blockSite = false, ?array $values = null): HtmlString
+    {
+        $values ??= $this->design();
+        $html = '';
+
+        if ($url = DesignTokens::fontsUrl($values)) {
+            $html .= '<link rel="preconnect" href="https://fonts.bunny.net">'.PHP_EOL
+                .'<link rel="stylesheet" href="'.e($url).'">'.PHP_EOL;
+        }
+
+        $css = DesignTokens::stylesheet($values);
+
+        if ($blockSite) {
+            $css .= ':root{--brand:var(--site-primary);--brand-2:var(--site-primary-soft);--lime:var(--site-accent);'
+                .'--ink:var(--site-heading);--ink-2:var(--site-secondary);--muted:var(--site-muted);'
+                .'--paper:var(--site-background);--white:var(--site-surface);--line:var(--site-border);'
+                .'--radius:var(--site-card-radius);--shadow:var(--site-shadow);--display:var(--site-heading-font);--body:var(--site-body-font)}'
+                .'body{background:var(--site-background);color:var(--site-body);font-size:var(--site-font-size);line-height:var(--site-line-height)}'
+                .'h1,h2,h3,h4{color:var(--site-heading);font-weight:var(--site-heading-weight);letter-spacing:var(--site-heading-tracking);line-height:var(--site-heading-line-height)}';
+        }
+
+        return new HtmlString($html.'<style id="site-design">'.$css.'</style>'.PHP_EOL);
+    }
+
     /** @return array<int, string> URLs of the theme's compiled scripts */
     public function scripts(): array
     {
