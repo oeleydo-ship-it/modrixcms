@@ -4,10 +4,19 @@ use App\Cms\PluginLoader;
 use App\Http\Controllers\Admin;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\Builder;
+use App\Http\Controllers\ExtensionAssetController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\SetupController;
+use App\Http\Middleware\ApplyTheme;
+use App\Http\Middleware\HandleInertiaRequests;
+use App\Http\Middleware\RedirectToSetupWhenNoAdmin;
+use Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse;
+use Illuminate\Cookie\Middleware\EncryptCookies;
+use Illuminate\Foundation\Http\Middleware\PreventRequestForgery;
+use Illuminate\Session\Middleware\StartSession;
 use Illuminate\Support\Facades\Route;
+use Illuminate\View\Middleware\ShareErrorsFromSession;
 
 /*
 | The visual page builder's API (session auth, admins only).
@@ -148,6 +157,22 @@ Route::get('/', HomeController::class)->name('home');
 Route::get('blog', [BlogController::class, 'index'])->name('blog.index');
 Route::get('blog/category/{category:slug}', [BlogController::class, 'category'])->name('blog.category');
 Route::get('blog/{post:slug}', [BlogController::class, 'show'])->name('blog.show');
+
+// Theme and plugin files, for when the published copy in public/extensions is missing (fresh
+// deploy, read-only public folder). Cookie- and session-free so the files stay cacheable.
+Route::get('extensions/{type}/{vendor}/{name}/{path}', ExtensionAssetController::class)
+    ->where(['type' => 'themes|plugins', 'vendor' => '[a-z0-9-]+', 'name' => '[a-z0-9-]+', 'path' => '.+'])
+    ->withoutMiddleware([
+        EncryptCookies::class,
+        AddQueuedCookiesToResponse::class,
+        StartSession::class,
+        ShareErrorsFromSession::class,
+        PreventRequestForgery::class,
+        ApplyTheme::class,
+        HandleInertiaRequests::class,
+        RedirectToSetupWhenNoAdmin::class,
+    ])
+    ->name('extensions.asset');
 
 // Routes of enabled plugins: after the core routes, before the page catch-all.
 app(PluginLoader::class)->routes();
