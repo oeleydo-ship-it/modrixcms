@@ -1,0 +1,13 @@
+:root {
+  --vertex-hero-end: #165187;
+  --vertex-banner-bg: #005f87;
+  --vertex-stripe-start: #6cc04a;
+  --vertex-stripe-end: #5b3df5;
+  --vertex-utility-display: block;
+}
+
+.vertex-shell {
+  font-family: var(--site-body-font, 'Plus Jakarta Sans', 'Inter', system-ui, sans-serif);
+  color: var(--site-body, #596573);
+  background: var(--site-background, #ffffff);
+}

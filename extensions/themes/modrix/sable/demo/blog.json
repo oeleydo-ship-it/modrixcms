@@ -1,0 +1,1917 @@
+{
+    "schemaVersion": 1,
+    "sections": [
+        {
+            "id": "01J9SB000000000000000000MM",
+            "name": "Inner Hero \u00b7 Sable",
+            "width": "full",
+            "sticky": false,
+            "style": {
+                "fontFamily": {
+                    "desktop": "var(--site-body-font, \"Inter\", system-ui, sans-serif)"
+                },
+                "color": {
+                    "desktop": "var(--site-body, #475569)"
+                },
+                "backgroundColor": {
+                    "desktop": "var(--site-background, #ffffff)"
+                },
+                "padding": {
+                    "desktop": {
+                        "top": "68px",
+                        "bottom": "56px",
+                        "left": "28px",
+                        "right": "28px"
+                    },
+                    "mobile": {
+                        "top": "42px",
+                        "bottom": "36px",
+                        "left": "18px",
+                        "right": "18px"
+                    }
+                }
+            },
+            "rows": [
+                {
+                    "id": "01J9SB000000000000000000MK",
+                    "stackBelow": "mobile",
+                    "style": {
+                        "margin": {
+                            "desktop": {
+                                "left": "auto",
+                                "right": "auto"
+                            }
+                        },
+                        "gap": {
+                            "desktop": "var(--site-grid-gap, 16px)",
+                            "mobile": "16px"
+                        },
+                        "maxWidth": {
+                            "desktop": "var(--site-content-width, 1140px)"
+                        }
+                    },
+                    "columns": [
+                        {
+                            "id": "01J9SB000000000000000000MJ",
+                            "span": {
+                                "desktop": 10,
+                                "tablet": 12,
+                                "mobile": 12
+                            },
+                            "style": {
+                                "gap": {
+                                    "desktop": "14px"
+                                }
+                            },
+                            "blocks": [
+                                {
+                                    "id": "01J9SB000000000000000000MF",
+                                    "type": "paragraph",
+                                    "props": {
+                                        "text": "JOURNAL"
+                                    },
+                                    "style": {
+                                        "color": {
+                                            "desktop": "var(--sable-accent, var(--site-accent, #eb812c))"
+                                        },
+                                        "fontSize": {
+                                            "desktop": "12.5px"
+                                        },
+                                        "textAlign": {
+                                            "desktop": "left"
+                                        },
+                                        "fontWeight": {
+                                            "desktop": "600"
+                                        },
+                                        "letterSpacing": {
+                                            "desktop": "0.08em"
+                                        },
+                                        "lineHeight": {
+                                            "desktop": "1.65"
+                                        },
+                                        "maxWidth": {
+                                            "desktop": "66ch"
+                                        },
+                                        "custom": {
+                                            "text-wrap": "pretty"
+                                        }
+                                    }
+                                },
+                                {
+                                    "id": "01J9SB000000000000000000MG",
+                                    "type": "heading",
+                                    "props": {
+                                        "text": "Field notes on<br><em>applied AI systems</em>",
+                                        "level": "h1",
+                                        "link": null
+                                    },
+                                    "style": {
+                                        "fontFamily": {
+                                            "desktop": "var(--site-heading-font, \"Inter\", system-ui, sans-serif)"
+                                        },
+                                        "fontSize": {
+                                            "desktop": "48px",
+                                            "tablet": "38px",
+                                            "mobile": "32px"
+                                        },
+                                        "fontWeight": {
+                                            "desktop": "500"
+                                        },
+                                        "lineHeight": {
+                                            "desktop": "1.06"
+                                        },
+                                        "letterSpacing": {
+                                            "desktop": "-2.2px"
+                                        },
+                                        "color": {
+                                            "desktop": "var(--site-heading, #0f172a)"
+                                        },
+                                        "margin": {
+                                            "desktop": "0"
+                                        },
+                                        "custom": {
+                                            "text-wrap": "balance"
+                                        }
+                                    }
+                                },
+                                {
+                                    "id": "01J9SB000000000000000000MH",
+                                    "type": "paragraph",
+                                    "props": {
+                                        "text": "Engineering essays, evaluation patterns and architectural postmortems from live enterprise rollouts."
+                                    },
+                                    "style": {
+                                        "color": {
+                                            "desktop": "var(--site-muted, #64748b)"
+                                        },
+                                        "fontSize": {
+                                            "desktop": "17px"
+                                        },
+                                        "textAlign": {
+                                            "desktop": "left"
+                                        },
+                                        "lineHeight": {
+                                            "desktop": "1.55"
+                                        },
+                                        "maxWidth": {
+                                            "desktop": "620px"
+                                        },
+                                        "custom": {
+                                            "text-wrap": "pretty"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "settings": {
+                "designCollection": "sable",
+                "designBlock": "inner-hero"
+            }
+        },
+        {
+            "id": "01J9SB000000000000000000NH",
+            "name": "Articles \u00b7 Editorial Row",
+            "width": "full",
+            "sticky": false,
+            "style": {
+                "fontFamily": {
+                    "desktop": "var(--site-body-font, \"Inter\", system-ui, sans-serif)"
+                },
+                "color": {
+                    "desktop": "var(--site-body, #475569)"
+                },
+                "backgroundColor": {
+                    "desktop": "var(--site-background, #ffffff)"
+                },
+                "padding": {
+                    "desktop": {
+                        "top": "76px",
+                        "bottom": "76px",
+                        "left": "28px",
+                        "right": "28px"
+                    },
+                    "mobile": {
+                        "top": "48px",
+                        "bottom": "48px",
+                        "left": "18px",
+                        "right": "18px"
+                    }
+                }
+            },
+            "rows": [
+                {
+                    "id": "01J9SB000000000000000000MT",
+                    "stackBelow": "tablet",
+                    "style": {
+                        "margin": {
+                            "desktop": {
+                                "bottom": "28px"
+                            }
+                        },
+                        "gap": {
+                            "desktop": "var(--site-grid-gap, 16px)",
+                            "mobile": "16px"
+                        },
+                        "maxWidth": {
+                            "desktop": "var(--site-content-width, 1140px)"
+                        },
+                        "alignItems": {
+                            "desktop": "center"
+                        }
+                    },
+                    "columns": [
+                        {
+                            "id": "01J9SB000000000000000000MQ",
+                            "span": {
+                                "desktop": 8,
+                                "tablet": 12,
+                                "mobile": 12
+                            },
+                            "style": {
+                                "gap": {
+                                    "desktop": "8px"
+                                }
+                            },
+                            "blocks": [
+                                {
+                                    "id": "01J9SB000000000000000000MN",
+                                    "type": "heading",
+                                    "props": {
+                                        "text": "Latest articles",
+                                        "level": "h2",
+                                        "link": null
+                                    },
+                                    "style": {
+                                        "fontFamily": {
+                                            "desktop": "var(--site-heading-font, \"Inter\", system-ui, sans-serif)"
+                                        },
+                                        "fontSize": {
+                                            "desktop": "32px",
+                                            "mobile": "28px"
+                                        },
+                                        "fontWeight": {
+                                            "desktop": "500"
+                                        },
+                                        "letterSpacing": {
+                                            "desktop": "-1.2px"
+                                        },
+                                        "color": {
+                                            "desktop": "var(--site-heading, #0f172a)"
+                                        },
+                                        "lineHeight": {
+                                            "desktop": "1.12"
+                                        },
+                                        "margin": {
+                                            "desktop": "0"
+                                        },
+                                        "custom": {
+                                            "text-wrap": "balance"
+                                        }
+                                    }
+                                },
+                                {
+                                    "id": "01J9SB000000000000000000MP",
+                                    "type": "paragraph",
+                                    "props": {
+                                        "text": "Notes from production evaluations, agent routing and latency tuning."
+                                    },
+                                    "style": {
+                                        "color": {
+                                            "desktop": "var(--site-muted, #64748b)"
+                                        },
+                                        "fontSize": {
+                                            "desktop": "16px"
+                                        },
+                                        "textAlign": {
+                                            "desktop": "left"
+                                        },
+                                        "lineHeight": {
+                                            "desktop": "1.65"
+                                        },
+                                        "maxWidth": {
+                                            "desktop": "66ch"
+                                        },
+                                        "custom": {
+                                            "text-wrap": "pretty"
+                                        }
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "id": "01J9SB000000000000000000MS",
+                            "span": {
+                                "desktop": 4,
+                                "tablet": 6,
+                                "mobile": 12
+                            },
+                            "style": {
+                                "justifyContent": {
+                                    "desktop": "center"
+                                },
+                                "alignItems": {
+                                    "desktop": "flex-end",
+                                    "mobile": "flex-start"
+                                }
+                            },
+                            "blocks": [
+                                {
+                                    "id": "01J9SB000000000000000000MR",
+                                    "type": "button",
+                                    "props": {
+                                        "label": "View all articles",
+                                        "action": "url",
+                                        "url": "/blog",
+                                        "targetStepId": null,
+                                        "targetBlockId": null,
+                                        "newTab": false,
+                                        "iconLeft": null,
+                                        "iconRight": null,
+                                        "fullWidth": false,
+                                        "size": "md",
+                                        "variant": "outline",
+                                        "sableRole": "btn-soft"
+                                    },
+                                    "style": {
+                                        "backgroundColor": {
+                                            "desktop": "var(--sable-surface, var(--site-surface, #f5f3f1))"
+                                        },
+                                        "color": {
+                                            "desktop": "var(--site-heading, #0f172a)"
+                                        },
+                                        "border": {
+                                            "desktop": {
+                                                "style": "solid",
+                                                "width": "1px",
+                                                "color": "var(--site-border, #e2e8f0)"
+                                            }
+                                        },
+                                        "borderRadius": {
+                                            "desktop": "999px"
+                                        },
+                                        "fontSize": {
+                                            "desktop": "14px"
+                                        },
+                                        "fontWeight": {
+                                            "desktop": "500"
+                                        },
+                                        "padding": {
+                                            "desktop": {
+                                                "top": "12px",
+                                                "bottom": "12px",
+                                                "left": "22px",
+                                                "right": "22px"
+                                            }
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "id": "01J9SB000000000000000000NG",
+                    "stackBelow": "tablet",
+                    "style": {
+                        "margin": {
+                            "desktop": {
+                                "left": "auto",
+                                "right": "auto"
+                            }
+                        },
+                        "gap": {
+                            "desktop": "22px",
+                            "mobile": "28px"
+                        },
+                        "maxWidth": {
+                            "desktop": "var(--site-content-width, 1140px)"
+                        }
+                    },
+                    "columns": [
+                        {
+                            "id": "01J9SB000000000000000000N1",
+                            "span": {
+                                "desktop": 4,
+                                "tablet": 6,
+                                "mobile": 12
+                            },
+                            "style": [],
+                            "blocks": [
+                                {
+                                    "id": "01J9SB000000000000000000MV",
+                                    "type": "container",
+                                    "props": {
+                                        "layout": "stack",
+                                        "gap": "12px"
+                                    },
+                                    "style": [],
+                                    "children": [
+                                        {
+                                            "id": "01J9SB000000000000000000MW",
+                                            "type": "image",
+                                            "props": {
+                                                "src": "/templates/sable/article-1.svg",
+                                                "alt": "Why deterministic routers beat giant multi-agent swarms",
+                                                "caption": null,
+                                                "link": "/blog",
+                                                "loading": "lazy",
+                                                "objectFit": "cover"
+                                            },
+                                            "style": {
+                                                "width": {
+                                                    "desktop": "100%"
+                                                },
+                                                "borderRadius": {
+                                                    "desktop": "14px"
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "id": "01J9SB000000000000000000MX",
+                                            "type": "paragraph",
+                                            "props": {
+                                                "text": "Oct 2026"
+                                            },
+                                            "style": {
+                                                "color": {
+                                                    "desktop": "var(--site-muted, #64748b)"
+                                                },
+                                                "fontSize": {
+                                                    "desktop": "13px"
+                                                },
+                                                "textAlign": {
+                                                    "desktop": "left"
+                                                },
+                                                "lineHeight": {
+                                                    "desktop": "1.65"
+                                                },
+                                                "maxWidth": {
+                                                    "desktop": "66ch"
+                                                },
+                                                "custom": {
+                                                    "text-wrap": "pretty"
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "id": "01J9SB000000000000000000MY",
+                                            "type": "heading",
+                                            "props": {
+                                                "text": "Why deterministic routers beat giant multi-agent swarms",
+                                                "level": "h4",
+                                                "link": "/blog"
+                                            },
+                                            "style": {
+                                                "fontFamily": {
+                                                    "desktop": "var(--site-heading-font, \"Inter\", system-ui, sans-serif)"
+                                                },
+                                                "fontSize": {
+                                                    "desktop": "19px"
+                                                },
+                                                "fontWeight": {
+                                                    "desktop": "500"
+                                                },
+                                                "letterSpacing": {
+                                                    "desktop": "-0.4px"
+                                                },
+                                                "color": {
+                                                    "desktop": "var(--site-heading, #0f172a)"
+                                                },
+                                                "lineHeight": {
+                                                    "desktop": "1.3"
+                                                },
+                                                "margin": {
+                                                    "desktop": "0"
+                                                },
+                                                "custom": {
+                                                    "text-wrap": "balance"
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "id": "01J9SB000000000000000000MZ",
+                                            "type": "paragraph",
+                                            "props": {
+                                                "text": "Keeping tool selection predictable cuts p95 latency in half while making failures trivial to trace."
+                                            },
+                                            "style": {
+                                                "color": {
+                                                    "desktop": "var(--site-muted, #64748b)"
+                                                },
+                                                "fontSize": {
+                                                    "desktop": "14px"
+                                                },
+                                                "textAlign": {
+                                                    "desktop": "left"
+                                                },
+                                                "lineHeight": {
+                                                    "desktop": "1.55"
+                                                },
+                                                "maxWidth": {
+                                                    "desktop": "66ch"
+                                                },
+                                                "custom": {
+                                                    "text-wrap": "pretty"
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "id": "01J9SB000000000000000000N0",
+                                            "type": "button",
+                                            "props": {
+                                                "label": "Read more \u2192",
+                                                "action": "url",
+                                                "url": "/blog",
+                                                "targetStepId": null,
+                                                "targetBlockId": null,
+                                                "newTab": false,
+                                                "iconLeft": null,
+                                                "iconRight": null,
+                                                "fullWidth": false,
+                                                "size": "sm",
+                                                "variant": "link"
+                                            },
+                                            "style": {
+                                                "textAlign": {
+                                                    "desktop": "left"
+                                                },
+                                                "color": {
+                                                    "desktop": "var(--site-heading, #0f172a)"
+                                                },
+                                                "fontSize": {
+                                                    "desktop": "14px"
+                                                },
+                                                "fontWeight": {
+                                                    "desktop": "500"
+                                                }
+                                            }
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "id": "01J9SB000000000000000000N8",
+                            "span": {
+                                "desktop": 4,
+                                "tablet": 6,
+                                "mobile": 12
+                            },
+                            "style": [],
+                            "blocks": [
+                                {
+                                    "id": "01J9SB000000000000000000N2",
+                                    "type": "container",
+                                    "props": {
+                                        "layout": "stack",
+                                        "gap": "12px"
+                                    },
+                                    "style": [],
+                                    "children": [
+                                        {
+                                            "id": "01J9SB000000000000000000N3",
+                                            "type": "image",
+                                            "props": {
+                                                "src": "/templates/sable/article-2.svg",
+                                                "alt": "Building an eval harness before writing your first prompt",
+                                                "caption": null,
+                                                "link": "/blog",
+                                                "loading": "lazy",
+                                                "objectFit": "cover"
+                                            },
+                                            "style": {
+                                                "width": {
+                                                    "desktop": "100%"
+                                                },
+                                                "borderRadius": {
+                                                    "desktop": "14px"
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "id": "01J9SB000000000000000000N4",
+                                            "type": "paragraph",
+                                            "props": {
+                                                "text": "Sep 2026"
+                                            },
+                                            "style": {
+                                                "color": {
+                                                    "desktop": "var(--site-muted, #64748b)"
+                                                },
+                                                "fontSize": {
+                                                    "desktop": "13px"
+                                                },
+                                                "textAlign": {
+                                                    "desktop": "left"
+                                                },
+                                                "lineHeight": {
+                                                    "desktop": "1.65"
+                                                },
+                                                "maxWidth": {
+                                                    "desktop": "66ch"
+                                                },
+                                                "custom": {
+                                                    "text-wrap": "pretty"
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "id": "01J9SB000000000000000000N5",
+                                            "type": "heading",
+                                            "props": {
+                                                "text": "Building an eval harness before writing your first prompt",
+                                                "level": "h4",
+                                                "link": "/blog"
+                                            },
+                                            "style": {
+                                                "fontFamily": {
+                                                    "desktop": "var(--site-heading-font, \"Inter\", system-ui, sans-serif)"
+                                                },
+                                                "fontSize": {
+                                                    "desktop": "19px"
+                                                },
+                                                "fontWeight": {
+                                                    "desktop": "500"
+                                                },
+                                                "letterSpacing": {
+                                                    "desktop": "-0.4px"
+                                                },
+                                                "color": {
+                                                    "desktop": "var(--site-heading, #0f172a)"
+                                                },
+                                                "lineHeight": {
+                                                    "desktop": "1.3"
+                                                },
+                                                "margin": {
+                                                    "desktop": "0"
+                                                },
+                                                "custom": {
+                                                    "text-wrap": "balance"
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "id": "01J9SB000000000000000000N6",
+                                            "type": "paragraph",
+                                            "props": {
+                                                "text": "Three practical datasets that stop silent quality regressions across weekly model upgrades."
+                                            },
+                                            "style": {
+                                                "color": {
+                                                    "desktop": "var(--site-muted, #64748b)"
+                                                },
+                                                "fontSize": {
+                                                    "desktop": "14px"
+                                                },
+                                                "textAlign": {
+                                                    "desktop": "left"
+                                                },
+                                                "lineHeight": {
+                                                    "desktop": "1.55"
+                                                },
+                                                "maxWidth": {
+                                                    "desktop": "66ch"
+                                                },
+                                                "custom": {
+                                                    "text-wrap": "pretty"
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "id": "01J9SB000000000000000000N7",
+                                            "type": "button",
+                                            "props": {
+                                                "label": "Read more \u2192",
+                                                "action": "url",
+                                                "url": "/blog",
+                                                "targetStepId": null,
+                                                "targetBlockId": null,
+                                                "newTab": false,
+                                                "iconLeft": null,
+                                                "iconRight": null,
+                                                "fullWidth": false,
+                                                "size": "sm",
+                                                "variant": "link"
+                                            },
+                                            "style": {
+                                                "textAlign": {
+                                                    "desktop": "left"
+                                                },
+                                                "color": {
+                                                    "desktop": "var(--site-heading, #0f172a)"
+                                                },
+                                                "fontSize": {
+                                                    "desktop": "14px"
+                                                },
+                                                "fontWeight": {
+                                                    "desktop": "500"
+                                                }
+                                            }
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "id": "01J9SB000000000000000000NF",
+                            "span": {
+                                "desktop": 4,
+                                "tablet": 6,
+                                "mobile": 12
+                            },
+                            "style": [],
+                            "blocks": [
+                                {
+                                    "id": "01J9SB000000000000000000N9",
+                                    "type": "container",
+                                    "props": {
+                                        "layout": "stack",
+                                        "gap": "12px"
+                                    },
+                                    "style": [],
+                                    "children": [
+                                        {
+                                            "id": "01J9SB000000000000000000NA",
+                                            "type": "image",
+                                            "props": {
+                                                "src": "/templates/sable/article-3.svg",
+                                                "alt": "Grounded retrieval over complex product & policy catalogs",
+                                                "caption": null,
+                                                "link": "/blog",
+                                                "loading": "lazy",
+                                                "objectFit": "cover"
+                                            },
+                                            "style": {
+                                                "width": {
+                                                    "desktop": "100%"
+                                                },
+                                                "borderRadius": {
+                                                    "desktop": "14px"
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "id": "01J9SB000000000000000000NB",
+                                            "type": "paragraph",
+                                            "props": {
+                                                "text": "Aug 2026"
+                                            },
+                                            "style": {
+                                                "color": {
+                                                    "desktop": "var(--site-muted, #64748b)"
+                                                },
+                                                "fontSize": {
+                                                    "desktop": "13px"
+                                                },
+                                                "textAlign": {
+                                                    "desktop": "left"
+                                                },
+                                                "lineHeight": {
+                                                    "desktop": "1.65"
+                                                },
+                                                "maxWidth": {
+                                                    "desktop": "66ch"
+                                                },
+                                                "custom": {
+                                                    "text-wrap": "pretty"
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "id": "01J9SB000000000000000000NC",
+                                            "type": "heading",
+                                            "props": {
+                                                "text": "Grounded retrieval over complex product & policy catalogs",
+                                                "level": "h4",
+                                                "link": "/blog"
+                                            },
+                                            "style": {
+                                                "fontFamily": {
+                                                    "desktop": "var(--site-heading-font, \"Inter\", system-ui, sans-serif)"
+                                                },
+                                                "fontSize": {
+                                                    "desktop": "19px"
+                                                },
+                                                "fontWeight": {
+                                                    "desktop": "500"
+                                                },
+                                                "letterSpacing": {
+                                                    "desktop": "-0.4px"
+                                                },
+                                                "color": {
+                                                    "desktop": "var(--site-heading, #0f172a)"
+                                                },
+                                                "lineHeight": {
+                                                    "desktop": "1.3"
+                                                },
+                                                "margin": {
+                                                    "desktop": "0"
+                                                },
+                                                "custom": {
+                                                    "text-wrap": "balance"
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "id": "01J9SB000000000000000000ND",
+                                            "type": "paragraph",
+                                            "props": {
+                                                "text": "Hybrid BM25 plus semantic chunking patterns for high-SKU commerce support desks."
+                                            },
+                                            "style": {
+                                                "color": {
+                                                    "desktop": "var(--site-muted, #64748b)"
+                                                },
+                                                "fontSize": {
+                                                    "desktop": "14px"
+                                                },
+                                                "textAlign": {
+                                                    "desktop": "left"
+                                                },
+                                                "lineHeight": {
+                                                    "desktop": "1.55"
+                                                },
+                                                "maxWidth": {
+                                                    "desktop": "66ch"
+                                                },
+                                                "custom": {
+                                                    "text-wrap": "pretty"
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "id": "01J9SB000000000000000000NE",
+                                            "type": "button",
+                                            "props": {
+                                                "label": "Read more \u2192",
+                                                "action": "url",
+                                                "url": "/blog",
+                                                "targetStepId": null,
+                                                "targetBlockId": null,
+                                                "newTab": false,
+                                                "iconLeft": null,
+                                                "iconRight": null,
+                                                "fullWidth": false,
+                                                "size": "sm",
+                                                "variant": "link"
+                                            },
+                                            "style": {
+                                                "textAlign": {
+                                                    "desktop": "left"
+                                                },
+                                                "color": {
+                                                    "desktop": "var(--site-heading, #0f172a)"
+                                                },
+                                                "fontSize": {
+                                                    "desktop": "14px"
+                                                },
+                                                "fontWeight": {
+                                                    "desktop": "500"
+                                                }
+                                            }
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "settings": {
+                "designCollection": "sable",
+                "designBlock": "articles"
+            }
+        },
+        {
+            "id": "01J9SB000000000000000000PG",
+            "name": "Bento \u00b7 4-Card Asymmetric Grid",
+            "width": "full",
+            "sticky": false,
+            "style": {
+                "fontFamily": {
+                    "desktop": "var(--site-body-font, \"Inter\", system-ui, sans-serif)"
+                },
+                "color": {
+                    "desktop": "var(--site-body, #475569)"
+                },
+                "backgroundColor": {
+                    "desktop": "var(--site-background, #ffffff)"
+                },
+                "padding": {
+                    "desktop": {
+                        "top": "76px",
+                        "bottom": "76px",
+                        "left": "28px",
+                        "right": "28px"
+                    },
+                    "mobile": {
+                        "top": "48px",
+                        "bottom": "48px",
+                        "left": "18px",
+                        "right": "18px"
+                    }
+                }
+            },
+            "rows": [
+                {
+                    "id": "01J9SB000000000000000000NN",
+                    "stackBelow": "mobile",
+                    "style": {
+                        "margin": {
+                            "desktop": {
+                                "bottom": "36px"
+                            }
+                        },
+                        "gap": {
+                            "desktop": "var(--site-grid-gap, 16px)",
+                            "mobile": "16px"
+                        },
+                        "maxWidth": {
+                            "desktop": "var(--site-content-width, 1140px)"
+                        }
+                    },
+                    "columns": [
+                        {
+                            "id": "01J9SB000000000000000000NM",
+                            "span": {
+                                "desktop": 12,
+                                "tablet": 12,
+                                "mobile": 12
+                            },
+                            "style": {
+                                "alignItems": {
+                                    "desktop": "center"
+                                },
+                                "gap": {
+                                    "desktop": "8px"
+                                }
+                            },
+                            "blocks": [
+                                {
+                                    "id": "01J9SB000000000000000000NJ",
+                                    "type": "heading",
+                                    "props": {
+                                        "text": "Systems engineered for daily operations",
+                                        "level": "h2",
+                                        "link": null
+                                    },
+                                    "style": {
+                                        "fontFamily": {
+                                            "desktop": "var(--site-heading-font, \"Inter\", system-ui, sans-serif)"
+                                        },
+                                        "fontSize": {
+                                            "desktop": "34px",
+                                            "mobile": "28px"
+                                        },
+                                        "fontWeight": {
+                                            "desktop": "500"
+                                        },
+                                        "letterSpacing": {
+                                            "desktop": "-1.2px"
+                                        },
+                                        "color": {
+                                            "desktop": "var(--site-heading, #0f172a)"
+                                        },
+                                        "textAlign": {
+                                            "desktop": "center"
+                                        },
+                                        "lineHeight": {
+                                            "desktop": "1.12"
+                                        },
+                                        "margin": {
+                                            "desktop": "0"
+                                        },
+                                        "custom": {
+                                            "text-wrap": "balance"
+                                        }
+                                    }
+                                },
+                                {
+                                    "id": "01J9SB000000000000000000NK",
+                                    "type": "paragraph",
+                                    "props": {
+                                        "text": "Built for speed, auditability and clean handoffs to human teams."
+                                    },
+                                    "style": {
+                                        "color": {
+                                            "desktop": "var(--site-muted, #64748b)"
+                                        },
+                                        "fontSize": {
+                                            "desktop": "16px"
+                                        },
+                                        "textAlign": {
+                                            "desktop": "center"
+                                        },
+                                        "lineHeight": {
+                                            "desktop": "1.65"
+                                        },
+                                        "maxWidth": {
+                                            "desktop": "66ch"
+                                        },
+                                        "custom": {
+                                            "text-wrap": "pretty"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "id": "01J9SB000000000000000000P2",
+                    "stackBelow": "tablet",
+                    "style": {
+                        "margin": {
+                            "desktop": {
+                                "bottom": "18px"
+                            }
+                        },
+                        "gap": {
+                            "desktop": "18px",
+                            "mobile": "18px"
+                        },
+                        "maxWidth": {
+                            "desktop": "var(--site-content-width, 1140px)"
+                        },
+                        "alignItems": {
+                            "desktop": "stretch"
+                        }
+                    },
+                    "columns": [
+                        {
+                            "id": "01J9SB000000000000000000NV",
+                            "span": {
+                                "desktop": 7,
+                                "tablet": 12,
+                                "mobile": 12
+                            },
+                            "style": [],
+                            "blocks": [
+                                {
+                                    "id": "01J9SB000000000000000000NP",
+                                    "type": "container",
+                                    "props": {
+                                        "layout": "stack",
+                                        "gap": "16px",
+                                        "sableRole": "bento-card-dark"
+                                    },
+                                    "style": {
+                                        "backgroundColor": {
+                                            "desktop": "#171413"
+                                        },
+                                        "borderRadius": {
+                                            "desktop": "18px"
+                                        },
+                                        "padding": {
+                                            "desktop": {
+                                                "top": "22px",
+                                                "bottom": "26px",
+                                                "left": "22px",
+                                                "right": "22px"
+                                            }
+                                        },
+                                        "height": {
+                                            "desktop": "100%"
+                                        },
+                                        "justifyContent": {
+                                            "desktop": "space-between"
+                                        }
+                                    },
+                                    "children": [
+                                        {
+                                            "id": "01J9SB000000000000000000NQ",
+                                            "type": "image",
+                                            "props": {
+                                                "src": "/templates/sable/bento-action.svg",
+                                                "alt": "Agents that take real action",
+                                                "caption": null,
+                                                "link": null,
+                                                "loading": "lazy",
+                                                "objectFit": "cover"
+                                            },
+                                            "style": {
+                                                "width": {
+                                                    "desktop": "100%"
+                                                },
+                                                "borderRadius": {
+                                                    "desktop": "12px"
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "id": "01J9SB000000000000000000NR",
+                                            "type": "container",
+                                            "props": {
+                                                "layout": "stack",
+                                                "gap": "6px"
+                                            },
+                                            "style": {
+                                                "padding": {
+                                                    "desktop": {
+                                                        "left": "4px",
+                                                        "right": "4px"
+                                                    }
+                                                }
+                                            },
+                                            "children": [
+                                                {
+                                                    "id": "01J9SB000000000000000000NS",
+                                                    "type": "heading",
+                                                    "props": {
+                                                        "text": "Agents that take real action",
+                                                        "level": "h4",
+                                                        "link": null
+                                                    },
+                                                    "style": {
+                                                        "fontFamily": {
+                                                            "desktop": "var(--site-heading-font, \"Inter\", system-ui, sans-serif)"
+                                                        },
+                                                        "fontSize": {
+                                                            "desktop": "21px"
+                                                        },
+                                                        "fontWeight": {
+                                                            "desktop": "500"
+                                                        },
+                                                        "letterSpacing": {
+                                                            "desktop": "-0.5px"
+                                                        },
+                                                        "color": {
+                                                            "desktop": "#fdfcfc"
+                                                        },
+                                                        "lineHeight": {
+                                                            "desktop": "1.12"
+                                                        },
+                                                        "margin": {
+                                                            "desktop": "0"
+                                                        },
+                                                        "custom": {
+                                                            "text-wrap": "balance"
+                                                        }
+                                                    }
+                                                },
+                                                {
+                                                    "id": "01J9SB000000000000000000NT",
+                                                    "type": "paragraph",
+                                                    "props": {
+                                                        "text": "Read tickets, query databases, update CRMs and post verified summaries safely."
+                                                    },
+                                                    "style": {
+                                                        "color": {
+                                                            "desktop": "#c7c2bc"
+                                                        },
+                                                        "fontSize": {
+                                                            "desktop": "14.5px"
+                                                        },
+                                                        "textAlign": {
+                                                            "desktop": "left"
+                                                        },
+                                                        "lineHeight": {
+                                                            "desktop": "1.5"
+                                                        },
+                                                        "maxWidth": {
+                                                            "desktop": "66ch"
+                                                        },
+                                                        "custom": {
+                                                            "text-wrap": "pretty"
+                                                        }
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "id": "01J9SB000000000000000000P1",
+                            "span": {
+                                "desktop": 5,
+                                "tablet": 6,
+                                "mobile": 12
+                            },
+                            "style": [],
+                            "blocks": [
+                                {
+                                    "id": "01J9SB000000000000000000NW",
+                                    "type": "container",
+                                    "props": {
+                                        "layout": "stack",
+                                        "gap": "16px"
+                                    },
+                                    "style": {
+                                        "backgroundColor": {
+                                            "desktop": "var(--sable-surface, var(--site-surface, #f5f3f1))"
+                                        },
+                                        "borderRadius": {
+                                            "desktop": "18px"
+                                        },
+                                        "padding": {
+                                            "desktop": {
+                                                "top": "22px",
+                                                "bottom": "26px",
+                                                "left": "22px",
+                                                "right": "22px"
+                                            }
+                                        },
+                                        "height": {
+                                            "desktop": "100%"
+                                        },
+                                        "justifyContent": {
+                                            "desktop": "space-between"
+                                        }
+                                    },
+                                    "children": [
+                                        {
+                                            "id": "01J9SB000000000000000000NX",
+                                            "type": "image",
+                                            "props": {
+                                                "src": "/templates/sable/bento-workflow.svg",
+                                                "alt": "Workflow automation",
+                                                "caption": null,
+                                                "link": null,
+                                                "loading": "lazy",
+                                                "objectFit": "cover"
+                                            },
+                                            "style": {
+                                                "width": {
+                                                    "desktop": "100%"
+                                                },
+                                                "borderRadius": {
+                                                    "desktop": "12px"
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "id": "01J9SB000000000000000000NY",
+                                            "type": "container",
+                                            "props": {
+                                                "layout": "stack",
+                                                "gap": "6px"
+                                            },
+                                            "style": {
+                                                "padding": {
+                                                    "desktop": {
+                                                        "left": "4px",
+                                                        "right": "4px"
+                                                    }
+                                                }
+                                            },
+                                            "children": [
+                                                {
+                                                    "id": "01J9SB000000000000000000NZ",
+                                                    "type": "heading",
+                                                    "props": {
+                                                        "text": "Workflow automation",
+                                                        "level": "h4",
+                                                        "link": null
+                                                    },
+                                                    "style": {
+                                                        "fontFamily": {
+                                                            "desktop": "var(--site-heading-font, \"Inter\", system-ui, sans-serif)"
+                                                        },
+                                                        "fontSize": {
+                                                            "desktop": "21px"
+                                                        },
+                                                        "fontWeight": {
+                                                            "desktop": "500"
+                                                        },
+                                                        "letterSpacing": {
+                                                            "desktop": "-0.5px"
+                                                        },
+                                                        "color": {
+                                                            "desktop": "var(--site-heading, #0f172a)"
+                                                        },
+                                                        "lineHeight": {
+                                                            "desktop": "1.12"
+                                                        },
+                                                        "margin": {
+                                                            "desktop": "0"
+                                                        },
+                                                        "custom": {
+                                                            "text-wrap": "balance"
+                                                        }
+                                                    }
+                                                },
+                                                {
+                                                    "id": "01J9SB000000000000000000P0",
+                                                    "type": "paragraph",
+                                                    "props": {
+                                                        "text": "Cut repetitive copy-paste triage by 12 hours per week across ops and finance."
+                                                    },
+                                                    "style": {
+                                                        "color": {
+                                                            "desktop": "var(--site-muted, #64748b)"
+                                                        },
+                                                        "fontSize": {
+                                                            "desktop": "14.5px"
+                                                        },
+                                                        "textAlign": {
+                                                            "desktop": "left"
+                                                        },
+                                                        "lineHeight": {
+                                                            "desktop": "1.5"
+                                                        },
+                                                        "maxWidth": {
+                                                            "desktop": "66ch"
+                                                        },
+                                                        "custom": {
+                                                            "text-wrap": "pretty"
+                                                        }
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "id": "01J9SB000000000000000000PF",
+                    "stackBelow": "tablet",
+                    "style": {
+                        "margin": {
+                            "desktop": {
+                                "left": "auto",
+                                "right": "auto"
+                            }
+                        },
+                        "gap": {
+                            "desktop": "18px",
+                            "mobile": "18px"
+                        },
+                        "maxWidth": {
+                            "desktop": "var(--site-content-width, 1140px)"
+                        },
+                        "alignItems": {
+                            "desktop": "stretch"
+                        }
+                    },
+                    "columns": [
+                        {
+                            "id": "01J9SB000000000000000000P8",
+                            "span": {
+                                "desktop": 5,
+                                "tablet": 6,
+                                "mobile": 12
+                            },
+                            "style": [],
+                            "blocks": [
+                                {
+                                    "id": "01J9SB000000000000000000P3",
+                                    "type": "container",
+                                    "props": {
+                                        "layout": "stack",
+                                        "gap": "16px"
+                                    },
+                                    "style": {
+                                        "backgroundColor": {
+                                            "desktop": "var(--sable-surface, var(--site-surface, #f5f3f1))"
+                                        },
+                                        "borderRadius": {
+                                            "desktop": "18px"
+                                        },
+                                        "padding": {
+                                            "desktop": {
+                                                "top": "22px",
+                                                "bottom": "26px",
+                                                "left": "22px",
+                                                "right": "22px"
+                                            }
+                                        },
+                                        "height": {
+                                            "desktop": "100%"
+                                        },
+                                        "justifyContent": {
+                                            "desktop": "space-between"
+                                        }
+                                    },
+                                    "children": [
+                                        {
+                                            "id": "01J9SB000000000000000000P4",
+                                            "type": "image",
+                                            "props": {
+                                                "src": "/templates/sable/bento-ml.svg",
+                                                "alt": "Custom ML & Fine-tuning",
+                                                "caption": null,
+                                                "link": null,
+                                                "loading": "lazy",
+                                                "objectFit": "cover"
+                                            },
+                                            "style": {
+                                                "width": {
+                                                    "desktop": "100%"
+                                                },
+                                                "borderRadius": {
+                                                    "desktop": "12px"
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "id": "01J9SB000000000000000000P5",
+                                            "type": "container",
+                                            "props": {
+                                                "layout": "stack",
+                                                "gap": "6px"
+                                            },
+                                            "style": {
+                                                "padding": {
+                                                    "desktop": {
+                                                        "left": "4px",
+                                                        "right": "4px"
+                                                    }
+                                                }
+                                            },
+                                            "children": [
+                                                {
+                                                    "id": "01J9SB000000000000000000P6",
+                                                    "type": "heading",
+                                                    "props": {
+                                                        "text": "Custom ML & Fine-tuning",
+                                                        "level": "h4",
+                                                        "link": null
+                                                    },
+                                                    "style": {
+                                                        "fontFamily": {
+                                                            "desktop": "var(--site-heading-font, \"Inter\", system-ui, sans-serif)"
+                                                        },
+                                                        "fontSize": {
+                                                            "desktop": "21px"
+                                                        },
+                                                        "fontWeight": {
+                                                            "desktop": "500"
+                                                        },
+                                                        "letterSpacing": {
+                                                            "desktop": "-0.5px"
+                                                        },
+                                                        "color": {
+                                                            "desktop": "var(--site-heading, #0f172a)"
+                                                        },
+                                                        "lineHeight": {
+                                                            "desktop": "1.12"
+                                                        },
+                                                        "margin": {
+                                                            "desktop": "0"
+                                                        },
+                                                        "custom": {
+                                                            "text-wrap": "balance"
+                                                        }
+                                                    }
+                                                },
+                                                {
+                                                    "id": "01J9SB000000000000000000P7",
+                                                    "type": "paragraph",
+                                                    "props": {
+                                                        "text": "Task-specific domain tuning lifts classification precision from 72% to 92%."
+                                                    },
+                                                    "style": {
+                                                        "color": {
+                                                            "desktop": "var(--site-muted, #64748b)"
+                                                        },
+                                                        "fontSize": {
+                                                            "desktop": "14.5px"
+                                                        },
+                                                        "textAlign": {
+                                                            "desktop": "left"
+                                                        },
+                                                        "lineHeight": {
+                                                            "desktop": "1.5"
+                                                        },
+                                                        "maxWidth": {
+                                                            "desktop": "66ch"
+                                                        },
+                                                        "custom": {
+                                                            "text-wrap": "pretty"
+                                                        }
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "id": "01J9SB000000000000000000PE",
+                            "span": {
+                                "desktop": 7,
+                                "tablet": 12,
+                                "mobile": 12
+                            },
+                            "style": [],
+                            "blocks": [
+                                {
+                                    "id": "01J9SB000000000000000000P9",
+                                    "type": "container",
+                                    "props": {
+                                        "layout": "stack",
+                                        "gap": "16px",
+                                        "sableRole": "bento-card-dark"
+                                    },
+                                    "style": {
+                                        "backgroundColor": {
+                                            "desktop": "#171413"
+                                        },
+                                        "borderRadius": {
+                                            "desktop": "18px"
+                                        },
+                                        "padding": {
+                                            "desktop": {
+                                                "top": "22px",
+                                                "bottom": "26px",
+                                                "left": "22px",
+                                                "right": "22px"
+                                            }
+                                        },
+                                        "height": {
+                                            "desktop": "100%"
+                                        },
+                                        "justifyContent": {
+                                            "desktop": "space-between"
+                                        }
+                                    },
+                                    "children": [
+                                        {
+                                            "id": "01J9SB000000000000000000PA",
+                                            "type": "image",
+                                            "props": {
+                                                "src": "/templates/sable/bento-clarity.svg",
+                                                "alt": "A clear yes or no, not a maybe",
+                                                "caption": null,
+                                                "link": null,
+                                                "loading": "lazy",
+                                                "objectFit": "cover"
+                                            },
+                                            "style": {
+                                                "width": {
+                                                    "desktop": "100%"
+                                                },
+                                                "borderRadius": {
+                                                    "desktop": "12px"
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "id": "01J9SB000000000000000000PB",
+                                            "type": "container",
+                                            "props": {
+                                                "layout": "stack",
+                                                "gap": "6px"
+                                            },
+                                            "style": {
+                                                "padding": {
+                                                    "desktop": {
+                                                        "left": "4px",
+                                                        "right": "4px"
+                                                    }
+                                                }
+                                            },
+                                            "children": [
+                                                {
+                                                    "id": "01J9SB000000000000000000PC",
+                                                    "type": "heading",
+                                                    "props": {
+                                                        "text": "A clear yes or no, not a maybe",
+                                                        "level": "h4",
+                                                        "link": null
+                                                    },
+                                                    "style": {
+                                                        "fontFamily": {
+                                                            "desktop": "var(--site-heading-font, \"Inter\", system-ui, sans-serif)"
+                                                        },
+                                                        "fontSize": {
+                                                            "desktop": "21px"
+                                                        },
+                                                        "fontWeight": {
+                                                            "desktop": "500"
+                                                        },
+                                                        "letterSpacing": {
+                                                            "desktop": "-0.5px"
+                                                        },
+                                                        "color": {
+                                                            "desktop": "#fdfcfc"
+                                                        },
+                                                        "lineHeight": {
+                                                            "desktop": "1.12"
+                                                        },
+                                                        "margin": {
+                                                            "desktop": "0"
+                                                        },
+                                                        "custom": {
+                                                            "text-wrap": "balance"
+                                                        }
+                                                    }
+                                                },
+                                                {
+                                                    "id": "01J9SB000000000000000000PD",
+                                                    "type": "paragraph",
+                                                    "props": {
+                                                        "text": "Every output crosses deterministic confidence gates before touching customer accounts."
+                                                    },
+                                                    "style": {
+                                                        "color": {
+                                                            "desktop": "#c7c2bc"
+                                                        },
+                                                        "fontSize": {
+                                                            "desktop": "14.5px"
+                                                        },
+                                                        "textAlign": {
+                                                            "desktop": "left"
+                                                        },
+                                                        "lineHeight": {
+                                                            "desktop": "1.5"
+                                                        },
+                                                        "maxWidth": {
+                                                            "desktop": "66ch"
+                                                        },
+                                                        "custom": {
+                                                            "text-wrap": "pretty"
+                                                        }
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "settings": {
+                "designCollection": "sable",
+                "designBlock": "bento"
+            }
+        },
+        {
+            "id": "01J9SB000000000000000000PS",
+            "name": "CTA \u00b7 Get Started with Sable",
+            "width": "full",
+            "sticky": false,
+            "style": {
+                "fontFamily": {
+                    "desktop": "var(--site-body-font, \"Inter\", system-ui, sans-serif)"
+                },
+                "color": {
+                    "desktop": "var(--site-body, #475569)"
+                },
+                "backgroundColor": {
+                    "desktop": "var(--site-background, #ffffff)"
+                },
+                "padding": {
+                    "desktop": {
+                        "top": "76px",
+                        "bottom": "76px",
+                        "left": "28px",
+                        "right": "28px"
+                    },
+                    "mobile": {
+                        "top": "48px",
+                        "bottom": "48px",
+                        "left": "18px",
+                        "right": "18px"
+                    }
+                }
+            },
+            "rows": [
+                {
+                    "id": "01J9SB000000000000000000PR",
+                    "stackBelow": "tablet",
+                    "style": {
+                        "margin": {
+                            "desktop": {
+                                "left": "auto",
+                                "right": "auto"
+                            }
+                        },
+                        "gap": {
+                            "desktop": "24px",
+                            "mobile": "20px"
+                        },
+                        "maxWidth": {
+                            "desktop": "var(--site-content-width, 1140px)"
+                        },
+                        "alignItems": {
+                            "desktop": "center"
+                        }
+                    },
+                    "columns": [
+                        {
+                            "id": "01J9SB000000000000000000PK",
+                            "span": {
+                                "desktop": 7,
+                                "tablet": 12,
+                                "mobile": 12
+                            },
+                            "style": {
+                                "gap": {
+                                    "desktop": "10px"
+                                }
+                            },
+                            "blocks": [
+                                {
+                                    "id": "01J9SB000000000000000000PH",
+                                    "type": "heading",
+                                    "props": {
+                                        "text": "Get started with Sable",
+                                        "level": "h2",
+                                        "link": null
+                                    },
+                                    "style": {
+                                        "fontFamily": {
+                                            "desktop": "var(--site-heading-font, \"Inter\", system-ui, sans-serif)"
+                                        },
+                                        "fontSize": {
+                                            "desktop": "40px",
+                                            "mobile": "30px"
+                                        },
+                                        "fontWeight": {
+                                            "desktop": "500"
+                                        },
+                                        "letterSpacing": {
+                                            "desktop": "-1.4px"
+                                        },
+                                        "color": {
+                                            "desktop": "var(--site-heading, #0f172a)"
+                                        },
+                                        "lineHeight": {
+                                            "desktop": "1.12"
+                                        },
+                                        "margin": {
+                                            "desktop": "0"
+                                        },
+                                        "custom": {
+                                            "text-wrap": "balance"
+                                        }
+                                    }
+                                },
+                                {
+                                    "id": "01J9SB000000000000000000PJ",
+                                    "type": "paragraph",
+                                    "props": {
+                                        "text": "Book a 25-minute scoping session to identify your highest-impact automation candidate."
+                                    },
+                                    "style": {
+                                        "color": {
+                                            "desktop": "var(--site-muted, #64748b)"
+                                        },
+                                        "fontSize": {
+                                            "desktop": "16.5px"
+                                        },
+                                        "textAlign": {
+                                            "desktop": "left"
+                                        },
+                                        "lineHeight": {
+                                            "desktop": "1.65"
+                                        },
+                                        "maxWidth": {
+                                            "desktop": "66ch"
+                                        },
+                                        "custom": {
+                                            "text-wrap": "pretty"
+                                        }
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "id": "01J9SB000000000000000000PQ",
+                            "span": {
+                                "desktop": 5,
+                                "tablet": 6,
+                                "mobile": 12
+                            },
+                            "style": {
+                                "justifyContent": {
+                                    "desktop": "center"
+                                }
+                            },
+                            "blocks": [
+                                {
+                                    "id": "01J9SB000000000000000000PM",
+                                    "type": "container",
+                                    "props": {
+                                        "layout": "row",
+                                        "gap": "12px"
+                                    },
+                                    "style": {
+                                        "alignItems": {
+                                            "desktop": "center"
+                                        },
+                                        "justifyContent": {
+                                            "desktop": "flex-end",
+                                            "mobile": "flex-start"
+                                        }
+                                    },
+                                    "children": [
+                                        {
+                                            "id": "01J9SB000000000000000000PN",
+                                            "type": "button",
+                                            "props": {
+                                                "label": "View all services",
+                                                "action": "url",
+                                                "url": "/services",
+                                                "targetStepId": null,
+                                                "targetBlockId": null,
+                                                "newTab": false,
+                                                "iconLeft": null,
+                                                "iconRight": null,
+                                                "fullWidth": false,
+                                                "size": "md",
+                                                "variant": "outline",
+                                                "sableRole": "btn-soft"
+                                            },
+                                            "style": {
+                                                "backgroundColor": {
+                                                    "desktop": "var(--sable-surface, var(--site-surface, #f5f3f1))"
+                                                },
+                                                "color": {
+                                                    "desktop": "var(--site-heading, #0f172a)"
+                                                },
+                                                "border": {
+                                                    "desktop": {
+                                                        "style": "solid",
+                                                        "width": "1px",
+                                                        "color": "var(--site-border, #e2e8f0)"
+                                                    }
+                                                },
+                                                "borderRadius": {
+                                                    "desktop": "999px"
+                                                },
+                                                "fontSize": {
+                                                    "desktop": "14px"
+                                                },
+                                                "fontWeight": {
+                                                    "desktop": "500"
+                                                },
+                                                "padding": {
+                                                    "desktop": {
+                                                        "top": "12px",
+                                                        "bottom": "12px",
+                                                        "left": "22px",
+                                                        "right": "22px"
+                                                    }
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "id": "01J9SB000000000000000000PP",
+                                            "type": "button",
+                                            "props": {
+                                                "label": "Start a project",
+                                                "action": "url",
+                                                "url": "/contact",
+                                                "targetStepId": null,
+                                                "targetBlockId": null,
+                                                "newTab": false,
+                                                "iconLeft": null,
+                                                "iconRight": null,
+                                                "fullWidth": false,
+                                                "size": "md",
+                                                "variant": "primary",
+                                                "sableRole": "btn-primary"
+                                            },
+                                            "style": {
+                                                "backgroundColor": {
+                                                    "desktop": "var(--site-heading, #0f172a)"
+                                                },
+                                                "color": {
+                                                    "desktop": "#ffffff"
+                                                },
+                                                "borderRadius": {
+                                                    "desktop": "999px"
+                                                },
+                                                "fontSize": {
+                                                    "desktop": "14px"
+                                                },
+                                                "fontWeight": {
+                                                    "desktop": "500"
+                                                },
+                                                "padding": {
+                                                    "desktop": {
+                                                        "top": "12px",
+                                                        "bottom": "12px",
+                                                        "left": "22px",
+                                                        "right": "22px"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "settings": {
+                "designCollection": "sable",
+                "designBlock": "cta-band"
+            }
+        }
+    ]
+}

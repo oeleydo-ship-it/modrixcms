@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 520" fill="none">
+  <defs>
+    <linearGradient id="heroBg" x1="0" y1="0" x2="800" y2="210" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#0c2340"/>
+      <stop offset="0.6" stop-color="#0f3c68"/>
+      <stop offset="1" stop-color="#165187"/>
+    </linearGradient>
+    <linearGradient id="stripe" x1="0" y1="0" x2="800" y2="0" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#6cc04a"/>
+      <stop offset="0.36" stop-color="#00a99d"/>
+      <stop offset="0.7" stop-color="#006994"/>
+      <stop offset="1" stop-color="#5b3df5"/>
+    </linearGradient>
+    <linearGradient id="accentGrad" x1="480" y1="80" x2="730" y2="180" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#6f4ef7"/>
+      <stop offset="1" stop-color="#19b5ef"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="520" fill="#ffffff"/>
+  <!-- Top Header -->
+  <rect width="800" height="52" fill="#ffffff"/>
+  <rect x="44" y="20" width="74" height="10" rx="2" fill="#2d3748"/>
+  <rect x="44" y="34" width="44" height="4" rx="1" fill="#718096"/>
+  <g fill="#64748b">
+    <rect x="165" y="24" width="46" height="6" rx="2"/>
+    <rect x="228" y="24" width="46" height="6" rx="2"/>
+    <rect x="291" y="24" width="52" height="6" rx="2"/>
+    <rect x="360" y="24" width="54" height="6" rx="2"/>
+  </g>
+  <rect x="676" y="16" width="80" height="22" rx="2" fill="#006994"/>
+  <!-- Hero -->
+  <rect y="52" width="800" height="162" fill="url(#heroBg)"/>
+  <rect x="52" y="88" width="290" height="16" rx="2" fill="#ffffff"/>
+  <rect x="52" y="112" width="230" height="16" rx="2" fill="#e2eff8"/>
+  <rect x="52" y="138" width="310" height="8" rx="2" fill="#9cc3e4"/>
+  <rect x="52" y="152" width="260" height="8" rx="2" fill="#9cc3e4"/>
+  <rect x="52" y="172" width="122" height="24" rx="2" stroke="#ffffff" stroke-width="1.5" fill="none"/>
+  <polygon points="560,74 730,74 682,190 512,190" fill="url(#accentGrad)" opacity="0.88"/>
+  <circle cx="622" cy="132" r="28" stroke="#ffffff" stroke-width="2" stroke-opacity="0.85" fill="#0c2340" fill-opacity="0.45"/>
+  <!-- Announcement Bar -->
+  <rect y="214" width="800" height="46" fill="#005f87"/>
+  <rect x="52" y="225" width="44" height="24" rx="2" fill="#19b5ef" fill-opacity="0.35" stroke="#7cd4f8"/>
+  <rect x="114" y="227" width="220" height="10" rx="2" fill="#ffffff"/>
+  <rect x="114" y="242" width="310" height="6" rx="2" fill="#bfe6f7"/>
+  <rect x="668" y="226" width="88" height="22" rx="2" stroke="#ffffff" stroke-width="1.2" fill="none"/>
+  <!-- 3 Spotlight Cards -->
+  <rect y="260" width="800" height="142" fill="#eef2f5"/>
+  <g>
+    <rect x="44" y="280" width="226" height="104" rx="4" fill="#ffffff" stroke="#dce3ec"/>
+    <polygon points="122,296 200,296 184,332 106,332" fill="#00a99d" opacity="0.22"/>
+    <rect x="78" y="346" width="158" height="9" rx="2" fill="#006994"/>
+    <rect x="96" y="362" width="122" height="6" rx="2" fill="#94a3b8"/>
+  </g>
+  <g>
+    <rect x="287" y="280" width="226" height="104" rx="4" fill="#ffffff" stroke="#dce3ec"/>
+    <polygon points="365,296 443,296 427,332 349,332" fill="#6cc04a" opacity="0.22"/>
+    <rect x="321" y="346" width="158" height="9" rx="2" fill="#006994"/>
+    <rect x="339" y="362" width="122" height="6" rx="2" fill="#94a3b8"/>
+  </g>
+  <g>
+    <rect x="530" y="280" width="226" height="104" rx="4" fill="#ffffff" stroke="#dce3ec"/>
+    <polygon points="608,296 686,296 670,332 592,332" fill="#5b3df5" opacity="0.2"/>
+    <rect x="564" y="346" width="158" height="9" rx="2" fill="#006994"/>
+    <rect x="582" y="362" width="122" height="6" rx="2" fill="#94a3b8"/>
+  </g>
+  <!-- White section & Dark CTA & Spectrum Footer -->
+  <rect y="402" width="800" height="58" fill="#0c2340"/>
+  <rect x="300" y="416" width="200" height="10" rx="2" fill="#ffffff"/>
+  <rect x="322" y="434" width="72" height="14" rx="2" stroke="#ffffff" fill="none"/>
+  <rect x="406" y="434" width="72" height="14" rx="2" stroke="#ffffff" fill="none"/>
+  <rect y="460" width="800" height="4" fill="url(#stripe)"/>
+  <rect y="464" width="800" height="56" fill="#ffffff"/>
+  <rect x="44" y="482" width="72" height="10" rx="2" fill="#2d3748"/>
+  <rect x="230" y="482" width="90" height="6" rx="2" fill="#94a3b8"/>
+  <rect x="410" y="482" width="90" height="6" rx="2" fill="#94a3b8"/>
+  <rect x="610" y="482" width="90" height="6" rx="2" fill="#94a3b8"/>
+</svg>

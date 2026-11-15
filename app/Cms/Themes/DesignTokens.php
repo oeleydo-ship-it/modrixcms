@@ -15,6 +15,7 @@ class DesignTokens
 {
     public const FONTS = [
         'Inter' => 'inter:400,500,600,700,800',
+        'Geist' => 'geist:400,500,600,700',
         'Bricolage Grotesque' => 'bricolage-grotesque:500,700,800',
         'DM Sans' => 'dm-sans:400,500,700',
         'Manrope' => 'manrope:400,500,600,700,800',

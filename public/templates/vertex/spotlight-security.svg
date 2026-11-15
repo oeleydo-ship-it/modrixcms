@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 140" fill="none" width="280" height="140">
+  <defs>
+    <linearGradient id="sp2" x1="40" y1="120" x2="245" y2="20" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#6CC04A"/>
+      <stop offset="55%" stop-color="#0D9488"/>
+      <stop offset="100%" stop-color="#006994"/>
+    </linearGradient>
+  </defs>
+  <ellipse cx="140" cy="70" rx="74" ry="42" transform="rotate(-10 140 70)" stroke="#94A3B8" stroke-opacity="0.35" stroke-dasharray="3 4"/>
+  <path d="M116 24h112c6 0 9 7 5 12l-62 78c-3 4-8 6-14 6H48c-6 0-10-7-6-12l62-78c3-4 7-6 12-6z" fill="url(#sp2)"/>
+  <circle cx="96" cy="54" r="18" fill="#FFFFFF" fill-opacity="0.22"/>
+  <path d="M140 36l36 12v28c0 23-15 41-36 49-21-8-36-26-36-49V48l36-12z" fill="#006994" stroke="#E0F2FE" stroke-width="2"/>
+  <path d="M140 46l24 8v21c0 16-10 29-24 35V46z" fill="#38BDF8" fill-opacity="0.35"/>
+  <path d="M128 73l8 8 16-16" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="204" cy="48" r="4" fill="#0D9488"/>
+  <circle cx="76" cy="96" r="4" fill="#6CC04A"/>
+</svg>

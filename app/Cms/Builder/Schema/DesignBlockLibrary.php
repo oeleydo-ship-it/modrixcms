@@ -10,6 +10,8 @@ use App\Cms\Builder\Schema\Collections\LarkspurDesigns;
 use App\Cms\Builder\Schema\Collections\LumikinDesigns;
 use App\Cms\Builder\Schema\Collections\MeridianDesigns;
 use App\Cms\Builder\Schema\Collections\PebblewoodDesigns;
+use App\Cms\Builder\Schema\Collections\SableDesigns;
+use App\Cms\Builder\Schema\Collections\VertexDesigns;
 use App\Cms\Builder\SiteChrome;
 use App\Cms\Extensions\ExtensionInstaller;
 use App\Cms\Themes\DesignTokens;
@@ -196,6 +198,12 @@ final class DesignBlockLibrary
 
             /* Larkspur family health clinic collection */
             ...(new LarkspurDesigns)->all(),
+
+            /* Vertex enterprise open-source commerce collection */
+            ...(new VertexDesigns)->all(),
+
+            /* Sable architectural AI studio collection */
+            ...(new SableDesigns)->all(),
         ];
 
         // Modrix CMS builds single pages: funnel-step designs (upsells, order bumps…) are left out.

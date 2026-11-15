@@ -1,0 +1,13 @@
+:root {
+  --sable-accent: #eb812c;
+  --sable-surface: #f5f3f1;
+  --sable-grid-color: #edebe9;
+  --sable-crosshair-display: flex;
+  --sable-watermark-display: block;
+}
+
+.sable-shell {
+  font-family: var(--site-body-font, 'Geist', 'Inter', system-ui, sans-serif);
+  color: var(--site-body, #716b63);
+  background: var(--site-background, #fdfcfc);
+}

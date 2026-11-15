@@ -1,0 +1,183 @@
+{
+    "name": "modrix/sable",
+    "type": "theme",
+    "display_name": "Sable Systems",
+    "version": "1.0.0",
+    "description": "Warm editorial studio theme for AI engineering & workflow consultancies, featuring architectural frame hairlines with crosshair markers, floating translucent capsule navigation with a 4-column mega dropdown, Geist typography, two-tone split hero with interactive chat mockup, 3-step workflow switcher, 4-card asymmetric bento grid, FAQ accordion and giant cropped bottom watermark footer.",
+    "cms_version": "^1.0",
+    "author": "Modrix",
+    "license": "MIT",
+    "styles": [
+        "public/theme.css"
+    ],
+    "scripts": [
+        "public/theme.js"
+    ],
+    "screenshot": "public/screenshot.svg",
+    "settings": [
+        {
+            "name": "accent_color",
+            "type": "color",
+            "label": "Highlight & Orange Accent Color",
+            "default": "#eb812c",
+            "css_var": "--sable-accent"
+        },
+        {
+            "name": "surface_color",
+            "type": "color",
+            "label": "Warm Sand Surface Color",
+            "default": "#f5f3f1",
+            "css_var": "--sable-surface"
+        },
+        {
+            "name": "grid_color",
+            "type": "color",
+            "label": "Architectural Frame Gridline Color",
+            "default": "#edebe9",
+            "css_var": "--sable-grid-color"
+        },
+        {
+            "name": "show_crosshairs",
+            "type": "toggle",
+            "label": "Show Frame + Crosshair Markers",
+            "default": true,
+            "css_var": "--sable-crosshair-display",
+            "css_values": {
+                "1": "flex",
+                "0": "none"
+            }
+        },
+        {
+            "name": "show_watermark",
+            "type": "toggle",
+            "label": "Show Giant Footer Watermark",
+            "default": true,
+            "css_var": "--sable-watermark-display",
+            "css_values": {
+                "1": "block",
+                "0": "none"
+            }
+        }
+    ],
+    "design": {
+        "primary": "#131314",
+        "on_primary": "#ffffff",
+        "primary_soft": "#f5f3f1",
+        "secondary": "#eb812c",
+        "accent": "#eb812c",
+        "heading": "#131314",
+        "body": "#716b63",
+        "muted": "#716b63",
+        "background": "#fdfcfc",
+        "surface": "#f5f3f1",
+        "dark": "#131314",
+        "on_dark": "#fdfcfc",
+        "on_dark_muted": "#c7c2bc",
+        "border": "#edebe9",
+        "header_bg": "#fdfcfc",
+        "header_text": "#131314",
+        "footer_bg": "#fdfcfc",
+        "footer_text": "#716b63",
+        "link": "#131314",
+        "link_hover": "#eb812c",
+        "heading_font": "Geist",
+        "body_font": "Geist",
+        "base_size": "16",
+        "heading_scale": "normal",
+        "heading_weight": "500",
+        "heading_line_height": "1.08",
+        "heading_tracking": "tight",
+        "line_height": "1.5",
+        "eyebrow_style": "uppercase",
+        "button_shape": "pill",
+        "button_size": "md",
+        "button_style": "filled",
+        "button_weight": "500",
+        "button_border_width": "1px",
+        "button_hover": "none",
+        "header_height": "76",
+        "header_sticky": true,
+        "header_blur": true,
+        "header_border": true,
+        "nav_weight": "500",
+        "nav_gap": "normal",
+        "hero_padding": "tall",
+        "hero_highlight": "plain",
+        "badge_radius": "pill",
+        "hero_glow": false,
+        "section_spacing": "roomy",
+        "content_width": "1180",
+        "grid_gap": "normal",
+        "card_radius": "rounded",
+        "card_padding": "normal",
+        "section_radius": "rounded",
+        "shadow": "none",
+        "card_hover": true,
+        "link_underline": false,
+        "footer_padding": "roomy",
+        "footer_border": true
+    },
+    "demo": {
+        "header": "demo/header.json",
+        "footer": "demo/footer.json",
+        "pages": [
+            {
+                "title": "Home",
+                "slug": "home",
+                "file": "demo/home.json",
+                "home": true,
+                "menu": true,
+                "site_header": true,
+                "site_footer": true
+            },
+            {
+                "title": "About",
+                "slug": "about",
+                "file": "demo/about.json",
+                "menu": true,
+                "site_header": true,
+                "site_footer": true
+            },
+            {
+                "title": "Services",
+                "slug": "services",
+                "file": "demo/services.json",
+                "menu": true,
+                "site_header": true,
+                "site_footer": true
+            },
+            {
+                "title": "Case studies",
+                "slug": "case-studies",
+                "file": "demo/case-studies.json",
+                "menu": false,
+                "site_header": true,
+                "site_footer": true
+            },
+            {
+                "title": "Pricing",
+                "slug": "pricing",
+                "file": "demo/pricing.json",
+                "menu": false,
+                "site_header": true,
+                "site_footer": true
+            },
+            {
+                "title": "Blog",
+                "slug": "blog",
+                "file": "demo/blog.json",
+                "menu": true,
+                "site_header": true,
+                "site_footer": true
+            },
+            {
+                "title": "Contact",
+                "slug": "contact",
+                "file": "demo/contact.json",
+                "menu": false,
+                "site_header": true,
+                "site_footer": true
+            }
+        ]
+    }
+}

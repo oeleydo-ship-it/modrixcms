@@ -1,0 +1,274 @@
+{
+    "schemaVersion": 1,
+    "sections": [
+        {
+            "id": "01J9SB00000000000000000009",
+            "name": "Header \u00b7 Sable Capsule",
+            "width": "full",
+            "sticky": true,
+            "style": {
+                "fontFamily": {
+                    "desktop": "var(--site-body-font, \"Inter\", system-ui, sans-serif)"
+                },
+                "color": {
+                    "desktop": "var(--site-body, #475569)"
+                },
+                "backgroundColor": {
+                    "desktop": "var(--site-header-bg, #ffffff)"
+                },
+                "padding": {
+                    "desktop": {
+                        "top": "14px",
+                        "bottom": "14px",
+                        "left": "24px",
+                        "right": "24px"
+                    },
+                    "mobile": {
+                        "top": "12px",
+                        "bottom": "12px",
+                        "left": "16px",
+                        "right": "16px"
+                    }
+                }
+            },
+            "rows": [
+                {
+                    "id": "01J9SB00000000000000000008",
+                    "stackBelow": "tablet",
+                    "style": {
+                        "margin": {
+                            "desktop": {
+                                "left": "auto",
+                                "right": "auto"
+                            }
+                        },
+                        "gap": {
+                            "desktop": "16px",
+                            "mobile": "12px"
+                        },
+                        "maxWidth": {
+                            "desktop": "var(--site-content-width, 1140px)"
+                        },
+                        "alignItems": {
+                            "desktop": "center"
+                        }
+                    },
+                    "columns": [
+                        {
+                            "id": "01J9SB00000000000000000005",
+                            "span": {
+                                "desktop": 3,
+                                "tablet": 6,
+                                "mobile": 12
+                            },
+                            "style": {
+                                "justifyContent": {
+                                    "desktop": "center"
+                                }
+                            },
+                            "blocks": [
+                                {
+                                    "id": "01J9SB00000000000000000001",
+                                    "type": "logo",
+                                    "props": {
+                                        "src": "/templates/sable/logo.svg",
+                                        "alt": "Sable Systems",
+                                        "url": "/",
+                                        "text": "Sable",
+                                        "link": "/",
+                                        "width": "124px"
+                                    },
+                                    "style": {
+                                        "maxWidth": {
+                                            "desktop": "124px"
+                                        }
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "id": "01J9SB00000000000000000006",
+                            "span": {
+                                "desktop": 6,
+                                "tablet": 12,
+                                "mobile": 12
+                            },
+                            "style": {
+                                "justifyContent": {
+                                    "desktop": "center"
+                                },
+                                "alignItems": {
+                                    "desktop": "center"
+                                }
+                            },
+                            "blocks": [
+                                {
+                                    "id": "01J9SB00000000000000000003",
+                                    "type": "container",
+                                    "props": {
+                                        "layout": "row",
+                                        "gap": "0px",
+                                        "sableRole": "nav-capsule"
+                                    },
+                                    "style": {
+                                        "justifyContent": {
+                                            "desktop": "center"
+                                        },
+                                        "alignItems": {
+                                            "desktop": "center"
+                                        }
+                                    },
+                                    "children": [
+                                        {
+                                            "id": "01J9SB00000000000000000002",
+                                            "type": "navigation",
+                                            "props": {
+                                                "items": [
+                                                    {
+                                                        "label": "Pages",
+                                                        "url": "/",
+                                                        "children": [
+                                                            {
+                                                                "label": "Home",
+                                                                "url": "/",
+                                                                "description": "Company \u00b7 Overview",
+                                                                "icon": "home"
+                                                            },
+                                                            {
+                                                                "label": "About",
+                                                                "url": "/about",
+                                                                "description": "Company \u00b7 Team",
+                                                                "icon": "users"
+                                                            },
+                                                            {
+                                                                "label": "Services",
+                                                                "url": "/services",
+                                                                "description": "Resources \u00b7 Capabilities",
+                                                                "icon": "workflow"
+                                                            },
+                                                            {
+                                                                "label": "Case studies",
+                                                                "url": "/case-studies",
+                                                                "description": "Resources \u00b7 Outcomes",
+                                                                "icon": "layers"
+                                                            },
+                                                            {
+                                                                "label": "Pricing",
+                                                                "url": "/pricing",
+                                                                "description": "Resources \u00b7 Sprints",
+                                                                "icon": "calculator"
+                                                            },
+                                                            {
+                                                                "label": "Blog",
+                                                                "url": "/blog",
+                                                                "description": "Resources \u00b7 Articles",
+                                                                "icon": "book-open"
+                                                            },
+                                                            {
+                                                                "label": "Contact",
+                                                                "url": "/contact",
+                                                                "description": "Reach Out \u00b7 Brief",
+                                                                "icon": "mail"
+                                                            },
+                                                            {
+                                                                "label": "FAQ & Support",
+                                                                "url": "/contact#faq",
+                                                                "description": "Legal \u00b7 Direct Desk",
+                                                                "icon": "shield-check"
+                                                            }
+                                                        ]
+                                                    },
+                                                    {
+                                                        "label": "About",
+                                                        "url": "/about"
+                                                    },
+                                                    {
+                                                        "label": "Services",
+                                                        "url": "/services"
+                                                    },
+                                                    {
+                                                        "label": "Blog",
+                                                        "url": "/blog"
+                                                    }
+                                                ],
+                                                "orientation": "horizontal",
+                                                "mobileBehaviour": "drawer"
+                                            },
+                                            "style": []
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "id": "01J9SB00000000000000000007",
+                            "span": {
+                                "desktop": 3,
+                                "tablet": 6,
+                                "mobile": 12
+                            },
+                            "style": {
+                                "justifyContent": {
+                                    "desktop": "center"
+                                },
+                                "alignItems": {
+                                    "desktop": "flex-end",
+                                    "mobile": "flex-start"
+                                }
+                            },
+                            "blocks": [
+                                {
+                                    "id": "01J9SB00000000000000000004",
+                                    "type": "button",
+                                    "props": {
+                                        "label": "Start a project",
+                                        "action": "url",
+                                        "url": "/contact",
+                                        "targetStepId": null,
+                                        "targetBlockId": null,
+                                        "newTab": false,
+                                        "iconLeft": null,
+                                        "iconRight": null,
+                                        "fullWidth": false,
+                                        "size": "md",
+                                        "variant": "primary",
+                                        "sableRole": "btn-primary"
+                                    },
+                                    "style": {
+                                        "backgroundColor": {
+                                            "desktop": "var(--site-heading, #0f172a)"
+                                        },
+                                        "color": {
+                                            "desktop": "#ffffff"
+                                        },
+                                        "borderRadius": {
+                                            "desktop": "999px"
+                                        },
+                                        "fontSize": {
+                                            "desktop": "14px"
+                                        },
+                                        "fontWeight": {
+                                            "desktop": "500"
+                                        },
+                                        "padding": {
+                                            "desktop": {
+                                                "top": "12px",
+                                                "bottom": "12px",
+                                                "left": "22px",
+                                                "right": "22px"
+                                            }
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "settings": {
+                "designCollection": "sable",
+                "designBlock": "header"
+            }
+        }
+    ]
+}

@@ -47,6 +47,7 @@ export const FONT_FAMILIES: readonly FontFamilyOption[] = [
     { value: "'Geist Mono', monospace", label: 'Geist Mono', group: 'System' },
 
     google('Inter', ALL, 'Sans serif', 'sans-serif'),
+    google('Geist', '400;500;600;700', 'Sans serif', 'sans-serif'),
     google('Be Vietnam Pro', ALL, 'Sans serif', 'sans-serif'),
     google('Roboto', '300;400;500;700', 'Sans serif', 'sans-serif'),
     google('Dosis', '300;400;500;600;700;800', 'Sans serif', 'sans-serif'),

@@ -1,0 +1,623 @@
+{
+    "schemaVersion": 1,
+    "sections": [
+        {
+            "id": "01J9SB00000000000000000014",
+            "name": "Footer \u00b7 Sable Editorial",
+            "width": "full",
+            "sticky": false,
+            "style": {
+                "fontFamily": {
+                    "desktop": "var(--site-body-font, \"Inter\", system-ui, sans-serif)"
+                },
+                "color": {
+                    "desktop": "var(--site-body, #475569)"
+                },
+                "backgroundColor": {
+                    "desktop": "var(--site-footer-bg, #ffffff)"
+                },
+                "padding": {
+                    "desktop": {
+                        "top": "64px",
+                        "bottom": "0px",
+                        "left": "28px",
+                        "right": "28px"
+                    },
+                    "mobile": {
+                        "top": "44px",
+                        "bottom": "0px",
+                        "left": "18px",
+                        "right": "18px"
+                    }
+                }
+            },
+            "rows": [
+                {
+                    "id": "01J9SB00000000000000000011",
+                    "stackBelow": "tablet",
+                    "style": {
+                        "margin": {
+                            "desktop": {
+                                "left": "auto",
+                                "right": "auto"
+                            }
+                        },
+                        "gap": {
+                            "desktop": "36px",
+                            "mobile": "28px"
+                        },
+                        "maxWidth": {
+                            "desktop": "var(--site-content-width, 1140px)"
+                        }
+                    },
+                    "columns": [
+                        {
+                            "id": "01J9SB0000000000000000000D",
+                            "span": {
+                                "desktop": 4,
+                                "tablet": 6,
+                                "mobile": 12
+                            },
+                            "style": {
+                                "gap": {
+                                    "desktop": "14px"
+                                }
+                            },
+                            "blocks": [
+                                {
+                                    "id": "01J9SB0000000000000000000A",
+                                    "type": "logo",
+                                    "props": {
+                                        "src": "/templates/sable/logo.svg",
+                                        "alt": "Sable Systems",
+                                        "url": "/",
+                                        "text": "Sable",
+                                        "link": "/",
+                                        "width": "120px"
+                                    },
+                                    "style": {
+                                        "maxWidth": {
+                                            "desktop": "120px"
+                                        }
+                                    }
+                                },
+                                {
+                                    "id": "01J9SB0000000000000000000B",
+                                    "type": "paragraph",
+                                    "props": {
+                                        "text": "Practical AI agents, internal automations and custom ML models shipped for revenue and operations teams."
+                                    },
+                                    "style": {
+                                        "color": {
+                                            "desktop": "var(--site-muted, #64748b)"
+                                        },
+                                        "fontSize": {
+                                            "desktop": "14px"
+                                        },
+                                        "textAlign": {
+                                            "desktop": "left"
+                                        },
+                                        "maxWidth": {
+                                            "desktop": "260px"
+                                        },
+                                        "lineHeight": {
+                                            "desktop": "1.55"
+                                        },
+                                        "custom": {
+                                            "text-wrap": "pretty"
+                                        }
+                                    }
+                                },
+                                {
+                                    "id": "01J9SB0000000000000000000C",
+                                    "type": "paragraph",
+                                    "props": {
+                                        "text": "\u00a9 2026 Sable Systems \u00b7 hello@sablesystems.ai"
+                                    },
+                                    "style": {
+                                        "color": {
+                                            "desktop": "var(--site-muted, #64748b)"
+                                        },
+                                        "fontSize": {
+                                            "desktop": "13px"
+                                        },
+                                        "textAlign": {
+                                            "desktop": "left"
+                                        },
+                                        "lineHeight": {
+                                            "desktop": "1.65"
+                                        },
+                                        "maxWidth": {
+                                            "desktop": "66ch"
+                                        },
+                                        "custom": {
+                                            "text-wrap": "pretty"
+                                        }
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "id": "01J9SB00000000000000000010",
+                            "span": {
+                                "desktop": 8,
+                                "tablet": 12,
+                                "mobile": 12
+                            },
+                            "style": [],
+                            "blocks": [
+                                {
+                                    "id": "01J9SB0000000000000000000E",
+                                    "type": "container",
+                                    "props": {
+                                        "layout": "columns",
+                                        "gap": "20px",
+                                        "columns": [
+                                            1,
+                                            1,
+                                            1,
+                                            1,
+                                            1
+                                        ],
+                                        "stackBelow": "tablet"
+                                    },
+                                    "style": [],
+                                    "children": [
+                                        {
+                                            "id": "01J9SB0000000000000000000F",
+                                            "type": "container",
+                                            "props": {
+                                                "layout": "stack",
+                                                "gap": "10px"
+                                            },
+                                            "style": [],
+                                            "children": [
+                                                {
+                                                    "id": "01J9SB0000000000000000000G",
+                                                    "type": "paragraph",
+                                                    "props": {
+                                                        "text": "Company"
+                                                    },
+                                                    "style": {
+                                                        "color": {
+                                                            "desktop": "var(--site-heading, #0f172a)"
+                                                        },
+                                                        "fontSize": {
+                                                            "desktop": "13.5px"
+                                                        },
+                                                        "textAlign": {
+                                                            "desktop": "left"
+                                                        },
+                                                        "fontWeight": {
+                                                            "desktop": "600"
+                                                        },
+                                                        "lineHeight": {
+                                                            "desktop": "1.65"
+                                                        },
+                                                        "maxWidth": {
+                                                            "desktop": "66ch"
+                                                        },
+                                                        "custom": {
+                                                            "text-wrap": "pretty"
+                                                        }
+                                                    }
+                                                },
+                                                {
+                                                    "id": "01J9SB0000000000000000000H",
+                                                    "type": "navigation",
+                                                    "props": {
+                                                        "items": [
+                                                            {
+                                                                "label": "Home",
+                                                                "url": "/"
+                                                            },
+                                                            {
+                                                                "label": "About",
+                                                                "url": "/about"
+                                                            },
+                                                            {
+                                                                "label": "Pricing",
+                                                                "url": "/pricing"
+                                                            },
+                                                            {
+                                                                "label": "Contact",
+                                                                "url": "/contact"
+                                                            }
+                                                        ],
+                                                        "orientation": "vertical",
+                                                        "mobileBehaviour": "drawer",
+                                                        "alignment": "left"
+                                                    },
+                                                    "style": {
+                                                        "fontSize": {
+                                                            "desktop": "13.5px"
+                                                        },
+                                                        "color": {
+                                                            "desktop": "var(--site-footer-text, #64748b)"
+                                                        },
+                                                        "gap": {
+                                                            "desktop": "8px"
+                                                        }
+                                                    }
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "id": "01J9SB0000000000000000000J",
+                                            "type": "container",
+                                            "props": {
+                                                "layout": "stack",
+                                                "gap": "10px"
+                                            },
+                                            "style": [],
+                                            "children": [
+                                                {
+                                                    "id": "01J9SB0000000000000000000K",
+                                                    "type": "paragraph",
+                                                    "props": {
+                                                        "text": "Resources"
+                                                    },
+                                                    "style": {
+                                                        "color": {
+                                                            "desktop": "var(--site-heading, #0f172a)"
+                                                        },
+                                                        "fontSize": {
+                                                            "desktop": "13.5px"
+                                                        },
+                                                        "textAlign": {
+                                                            "desktop": "left"
+                                                        },
+                                                        "fontWeight": {
+                                                            "desktop": "600"
+                                                        },
+                                                        "lineHeight": {
+                                                            "desktop": "1.65"
+                                                        },
+                                                        "maxWidth": {
+                                                            "desktop": "66ch"
+                                                        },
+                                                        "custom": {
+                                                            "text-wrap": "pretty"
+                                                        }
+                                                    }
+                                                },
+                                                {
+                                                    "id": "01J9SB0000000000000000000M",
+                                                    "type": "navigation",
+                                                    "props": {
+                                                        "items": [
+                                                            {
+                                                                "label": "Blog",
+                                                                "url": "/blog"
+                                                            },
+                                                            {
+                                                                "label": "Case studies",
+                                                                "url": "/case-studies"
+                                                            },
+                                                            {
+                                                                "label": "FAQ",
+                                                                "url": "/contact#faq"
+                                                            }
+                                                        ],
+                                                        "orientation": "vertical",
+                                                        "mobileBehaviour": "drawer",
+                                                        "alignment": "left"
+                                                    },
+                                                    "style": {
+                                                        "fontSize": {
+                                                            "desktop": "13.5px"
+                                                        },
+                                                        "color": {
+                                                            "desktop": "var(--site-footer-text, #64748b)"
+                                                        },
+                                                        "gap": {
+                                                            "desktop": "8px"
+                                                        }
+                                                    }
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "id": "01J9SB0000000000000000000N",
+                                            "type": "container",
+                                            "props": {
+                                                "layout": "stack",
+                                                "gap": "10px"
+                                            },
+                                            "style": [],
+                                            "children": [
+                                                {
+                                                    "id": "01J9SB0000000000000000000P",
+                                                    "type": "paragraph",
+                                                    "props": {
+                                                        "text": "Services"
+                                                    },
+                                                    "style": {
+                                                        "color": {
+                                                            "desktop": "var(--site-heading, #0f172a)"
+                                                        },
+                                                        "fontSize": {
+                                                            "desktop": "13.5px"
+                                                        },
+                                                        "textAlign": {
+                                                            "desktop": "left"
+                                                        },
+                                                        "fontWeight": {
+                                                            "desktop": "600"
+                                                        },
+                                                        "lineHeight": {
+                                                            "desktop": "1.65"
+                                                        },
+                                                        "maxWidth": {
+                                                            "desktop": "66ch"
+                                                        },
+                                                        "custom": {
+                                                            "text-wrap": "pretty"
+                                                        }
+                                                    }
+                                                },
+                                                {
+                                                    "id": "01J9SB0000000000000000000Q",
+                                                    "type": "navigation",
+                                                    "props": {
+                                                        "items": [
+                                                            {
+                                                                "label": "AI Agents",
+                                                                "url": "/services"
+                                                            },
+                                                            {
+                                                                "label": "Automation",
+                                                                "url": "/services#process"
+                                                            },
+                                                            {
+                                                                "label": "Fine-tuning",
+                                                                "url": "/services#bento"
+                                                            },
+                                                            {
+                                                                "label": "Advisory",
+                                                                "url": "/services"
+                                                            }
+                                                        ],
+                                                        "orientation": "vertical",
+                                                        "mobileBehaviour": "drawer",
+                                                        "alignment": "left"
+                                                    },
+                                                    "style": {
+                                                        "fontSize": {
+                                                            "desktop": "13.5px"
+                                                        },
+                                                        "color": {
+                                                            "desktop": "var(--site-footer-text, #64748b)"
+                                                        },
+                                                        "gap": {
+                                                            "desktop": "8px"
+                                                        }
+                                                    }
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "id": "01J9SB0000000000000000000R",
+                                            "type": "container",
+                                            "props": {
+                                                "layout": "stack",
+                                                "gap": "10px"
+                                            },
+                                            "style": [],
+                                            "children": [
+                                                {
+                                                    "id": "01J9SB0000000000000000000S",
+                                                    "type": "paragraph",
+                                                    "props": {
+                                                        "text": "Social"
+                                                    },
+                                                    "style": {
+                                                        "color": {
+                                                            "desktop": "var(--site-heading, #0f172a)"
+                                                        },
+                                                        "fontSize": {
+                                                            "desktop": "13.5px"
+                                                        },
+                                                        "textAlign": {
+                                                            "desktop": "left"
+                                                        },
+                                                        "fontWeight": {
+                                                            "desktop": "600"
+                                                        },
+                                                        "lineHeight": {
+                                                            "desktop": "1.65"
+                                                        },
+                                                        "maxWidth": {
+                                                            "desktop": "66ch"
+                                                        },
+                                                        "custom": {
+                                                            "text-wrap": "pretty"
+                                                        }
+                                                    }
+                                                },
+                                                {
+                                                    "id": "01J9SB0000000000000000000T",
+                                                    "type": "navigation",
+                                                    "props": {
+                                                        "items": [
+                                                            {
+                                                                "label": "LinkedIn",
+                                                                "url": "/contact"
+                                                            },
+                                                            {
+                                                                "label": "X / Twitter",
+                                                                "url": "/contact"
+                                                            },
+                                                            {
+                                                                "label": "GitHub",
+                                                                "url": "/contact"
+                                                            }
+                                                        ],
+                                                        "orientation": "vertical",
+                                                        "mobileBehaviour": "drawer",
+                                                        "alignment": "left"
+                                                    },
+                                                    "style": {
+                                                        "fontSize": {
+                                                            "desktop": "13.5px"
+                                                        },
+                                                        "color": {
+                                                            "desktop": "var(--site-footer-text, #64748b)"
+                                                        },
+                                                        "gap": {
+                                                            "desktop": "8px"
+                                                        }
+                                                    }
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "id": "01J9SB0000000000000000000V",
+                                            "type": "container",
+                                            "props": {
+                                                "layout": "stack",
+                                                "gap": "10px"
+                                            },
+                                            "style": [],
+                                            "children": [
+                                                {
+                                                    "id": "01J9SB0000000000000000000W",
+                                                    "type": "paragraph",
+                                                    "props": {
+                                                        "text": "Legal"
+                                                    },
+                                                    "style": {
+                                                        "color": {
+                                                            "desktop": "var(--site-heading, #0f172a)"
+                                                        },
+                                                        "fontSize": {
+                                                            "desktop": "13.5px"
+                                                        },
+                                                        "textAlign": {
+                                                            "desktop": "left"
+                                                        },
+                                                        "fontWeight": {
+                                                            "desktop": "600"
+                                                        },
+                                                        "lineHeight": {
+                                                            "desktop": "1.65"
+                                                        },
+                                                        "maxWidth": {
+                                                            "desktop": "66ch"
+                                                        },
+                                                        "custom": {
+                                                            "text-wrap": "pretty"
+                                                        }
+                                                    }
+                                                },
+                                                {
+                                                    "id": "01J9SB0000000000000000000X",
+                                                    "type": "navigation",
+                                                    "props": {
+                                                        "items": [
+                                                            {
+                                                                "label": "Privacy Policy",
+                                                                "url": "/contact#faq"
+                                                            },
+                                                            {
+                                                                "label": "Terms of Use",
+                                                                "url": "/contact#faq"
+                                                            },
+                                                            {
+                                                                "label": "Security",
+                                                                "url": "/about"
+                                                            }
+                                                        ],
+                                                        "orientation": "vertical",
+                                                        "mobileBehaviour": "drawer",
+                                                        "alignment": "left"
+                                                    },
+                                                    "style": {
+                                                        "fontSize": {
+                                                            "desktop": "13.5px"
+                                                        },
+                                                        "color": {
+                                                            "desktop": "var(--site-footer-text, #64748b)"
+                                                        },
+                                                        "gap": {
+                                                            "desktop": "8px"
+                                                        }
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "id": "01J9SB00000000000000000013",
+                    "stackBelow": "mobile",
+                    "style": {
+                        "margin": {
+                            "desktop": {
+                                "left": "auto",
+                                "right": "auto"
+                            }
+                        },
+                        "gap": {
+                            "desktop": "var(--site-grid-gap, 16px)",
+                            "mobile": "16px"
+                        },
+                        "maxWidth": {
+                            "desktop": "var(--site-content-width, 1140px)"
+                        }
+                    },
+                    "columns": [
+                        {
+                            "id": "01J9SB00000000000000000012",
+                            "span": {
+                                "desktop": 12,
+                                "tablet": 12,
+                                "mobile": 12
+                            },
+                            "style": [],
+                            "blocks": [
+                                {
+                                    "id": "01J9SB0000000000000000000Y",
+                                    "type": "container",
+                                    "props": {
+                                        "layout": "stack",
+                                        "gap": "0px",
+                                        "sableRole": "footer-watermark"
+                                    },
+                                    "style": [],
+                                    "children": [
+                                        {
+                                            "id": "01J9SB0000000000000000000Z",
+                                            "type": "image",
+                                            "props": {
+                                                "src": "/templates/sable/footer-watermark.svg",
+                                                "alt": "Sable editorial wordmark",
+                                                "caption": null,
+                                                "link": null,
+                                                "loading": "lazy",
+                                                "objectFit": "cover"
+                                            },
+                                            "style": {
+                                                "width": {
+                                                    "desktop": "100%"
+                                                }
+                                            }
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "settings": {
+                "designCollection": "sable",
+                "designBlock": "footer"
+            }
+        }
+    ]
+}

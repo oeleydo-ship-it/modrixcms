@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 320" fill="none" width="560" height="320">
+  <defs>
+    <linearGradient id="vfPlaneA" x1="120" y1="280" x2="480" y2="30" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#8B5CF6" stop-opacity="0.88"/>
+      <stop offset="48%" stop-color="#3B82F6" stop-opacity="0.86"/>
+      <stop offset="100%" stop-color="#22D3EE" stop-opacity="0.95"/>
+    </linearGradient>
+    <linearGradient id="vfPlaneB" x1="180" y1="250" x2="520" y2="40" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#0EA5E9" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#38BDF8" stop-opacity="0.9"/>
+    </linearGradient>
+    <linearGradient id="vfShield" x1="255" y1="90" x2="320" y2="215" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#38BDF8"/>
+      <stop offset="100%" stop-color="#7C3AED"/>
+    </linearGradient>
+  </defs>
+  <!-- Background atmospheric clouds -->
+  <path d="M125 205c0-18 14-32 32-32 5 0 9 1 13 3 7-15 22-25 39-25 24 0 43 19 43 43 0 2 0 4-1 6h14c12 0 22 10 22 22s-10 22-22 22H145c-11 0-20-9-20-20 0-7 4-14 10-19z" fill="#0B2340" opacity="0.72"/>
+  <path d="M350 225c0-14 11-25 25-25 4 0 8 1 11 2 6-12 18-20 32-20 20 0 36 16 36 36h10c10 0 18 8 18 18s-8 18-18 18H366c-9 0-16-7-16-16 0-5 2-10 6-13z" fill="#0E3056" opacity="0.8"/>
+
+  <!-- Primary skewed isometric ribbons -->
+  <path d="M180 62h168c9 0 13 11 6 18L228 248c-5 5-12 8-19 8H74c-9 0-14-10-8-18L165 70c4-5 10-8 15-8z" transform="translate(88 26)" fill="url(#vfPlaneA)"/>
+  <path d="M210 46h168c8 0 13 10 7 17L262 224c-5 6-12 9-19 9H122c-9 0-14-10-8-18L196 54c4-5 9-8 14-8z" transform="translate(152 2)" fill="url(#vfPlaneB)" stroke="#7DD3FC" stroke-opacity="0.45" stroke-width="1.5"/>
+
+  <!-- Dashed planetary orbit & nodes -->
+  <ellipse cx="290" cy="155" rx="146" ry="96" transform="rotate(-18 290 155)" stroke="#BAE6FD" stroke-opacity="0.45" stroke-width="1.5" stroke-dasharray="4 5"/>
+  <circle cx="152" cy="182" r="4" fill="#A78BFA"/>
+  <circle cx="292" cy="59" r="3.5" fill="#FFFFFF"/>
+  <circle cx="428" cy="138" r="4.5" fill="#6CC04A"/>
+  <circle cx="332" cy="249" r="3.5" fill="#38BDF8"/>
+
+  <!-- Cloud upper right icon -->
+  <circle cx="408" cy="108" r="40" stroke="#E0F2FE" stroke-opacity="0.4" stroke-width="1.5" fill="#0EA5E9" fill-opacity="0.16"/>
+  <path d="M386 118c-7 0-12-5-12-12 0-6 4-11 10-12 3-10 12-17 23-17 13 0 24 10 25 23 5 1 9 6 9 11 0 7-6 12-13 12h-42z" fill="#0EA5E9" fill-opacity="0.55" stroke="#E0F2FE" stroke-width="1.6"/>
+  <path d="M408 118V95m0 0-7 7m7-7 7 7" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- Upward growth arrows -->
+  <path d="M126 268l40-40m0 0h-16m16 0v16" stroke="#C4B5FD" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M352 252l42-42m0 0h-16m16 0v16" stroke="#7DD3FC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- Center Modular Core Shield -->
+  <circle cx="276" cy="154" r="66" fill="#0B2239" fill-opacity="0.34" stroke="#E0F2FE" stroke-opacity="0.35" stroke-width="1.5"/>
+  <path d="M276 92l52 17v44c0 35-22 61-52 73-30-12-52-38-52-73v-44l52-17z" fill="url(#vfShield)" stroke="#BAE6FD" stroke-width="2"/>
+  <path d="M276 112v86" stroke="#E0F2FE" stroke-width="2.2" stroke-linecap="round"/>
+  <!-- Modular nodes left & right inside shield (Laravel monolith + React storefronts) -->
+  <path d="M276 128c-14 0-22 8-22 18 0 7 4 12 10 15-4 4-6 10-4 17 2 8 9 13 16 14" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round"/>
+  <circle cx="295" cy="132" r="4" fill="#FFFFFF"/>
+  <circle cx="301" cy="154" r="4" fill="#FFFFFF"/>
+  <circle cx="294" cy="175" r="4" fill="#FFFFFF"/>
+  <path d="M276 132h15m-15 22h21m-21 21h14" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round"/>
+</svg>

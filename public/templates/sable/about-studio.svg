@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 440" fill="none">
+  <rect width="720" height="440" rx="16" fill="#F5F3F1"/>
+  <g stroke="#E3DFDA" stroke-width="1">
+    <line x1="180" y1="0" x2="180" y2="440"/>
+    <line x1="360" y1="0" x2="360" y2="440"/>
+    <line x1="540" y1="0" x2="540" y2="440"/>
+    <line x1="0" y1="146" x2="720" y2="146"/>
+    <line x1="0" y1="294" x2="720" y2="294"/>
+  </g>
+  <rect x="64" y="64" width="268" height="312" rx="14" fill="#FDFCFC" stroke="#EDEBE9"/>
+  <text x="92" y="108" fill="#EB812C" font-family="Geist, Inter, sans-serif" font-size="12.5" font-weight="600">PRINCIPLES</text>
+  <text x="92" y="146" fill="#131314" font-family="Geist, Inter, sans-serif" font-size="22" font-weight="500" letter-spacing="-0.6">Production first</text>
+  <rect x="92" y="178" width="212" height="44" rx="10" fill="#F5F3F1"/>
+  <text x="108" y="205" fill="#131314" font-family="Geist, Inter, sans-serif" font-size="13.5" font-weight="500">99.94% guardrail pass</text>
+  <rect x="92" y="234" width="212" height="44" rx="10" fill="#F5F3F1"/>
+  <text x="108" y="261" fill="#131314" font-family="Geist, Inter, sans-serif" font-size="13.5" font-weight="500">Zero black-box prompts</text>
+  <rect x="92" y="290" width="212" height="44" rx="10" fill="#131314"/>
+  <text x="108" y="317" fill="#FDFCFC" font-family="Geist, Inter, sans-serif" font-size="13.5" font-weight="500">Full ownership on handover</text>
+
+  <rect x="364" y="64" width="292" height="312" rx="14" fill="#211713"/>
+  <circle cx="510" cy="220" r="105" stroke="#EB812C" stroke-opacity="0.4" stroke-dasharray="5 5"/>
+  <circle cx="510" cy="220" r="56" fill="#EB812C" fill-opacity="0.18" stroke="#EB812C"/>
+  <circle cx="510" cy="220" r="10" fill="#EB812C"/>
+</svg>

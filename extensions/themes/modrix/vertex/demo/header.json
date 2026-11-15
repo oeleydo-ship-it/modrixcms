@@ -1,0 +1,539 @@
+{
+    "schemaVersion": 1,
+    "sections": [
+        {
+            "id": "01J9VTX000000000000000000H",
+            "name": "Header · Vertex Navigation",
+            "width": "full",
+            "sticky": true,
+            "style": {
+                "fontFamily": {
+                    "desktop": "var(--site-body-font, \"Inter\", system-ui, sans-serif)"
+                },
+                "color": {
+                    "desktop": "var(--site-body, #475569)"
+                },
+                "backgroundColor": {
+                    "desktop": "var(--site-header-bg, #ffffff)"
+                },
+                "padding": {
+                    "desktop": {
+                        "top": "2px",
+                        "bottom": "2px",
+                        "left": "28px",
+                        "right": "28px"
+                    },
+                    "mobile": {
+                        "top": "4px",
+                        "bottom": "4px",
+                        "left": "16px",
+                        "right": "16px"
+                    }
+                }
+            },
+            "rows": [
+                {
+                    "id": "01J9VTX000000000000000000G",
+                    "stackBelow": "mobile",
+                    "style": {
+                        "margin": {
+                            "desktop": {
+                                "left": "auto",
+                                "right": "auto"
+                            }
+                        },
+                        "gap": {
+                            "desktop": "0px",
+                            "mobile": "12px"
+                        },
+                        "maxWidth": {
+                            "desktop": "var(--site-content-width, 1140px)"
+                        }
+                    },
+                    "columns": [
+                        {
+                            "id": "01J9VTX000000000000000000F",
+                            "span": {
+                                "desktop": 12,
+                                "tablet": 12,
+                                "mobile": 12
+                            },
+                            "style": [],
+                            "blocks": [
+                                {
+                                    "id": "01J9VTX0000000000000000001",
+                                    "type": "container",
+                                    "props": {
+                                        "layout": "row",
+                                        "gap": "20px",
+                                        "vertexRole": "utility-bar"
+                                    },
+                                    "style": {
+                                        "justifyContent": {
+                                            "desktop": "flex-end"
+                                        },
+                                        "alignItems": {
+                                            "desktop": "center"
+                                        },
+                                        "width": {
+                                            "desktop": "100%"
+                                        }
+                                    },
+                                    "children": [
+                                        {
+                                            "id": "01J9VTX0000000000000000002",
+                                            "type": "button",
+                                            "props": {
+                                                "label": "Free and open source · MIT license",
+                                                "action": "url",
+                                                "url": "/platform",
+                                                "targetStepId": null,
+                                                "targetBlockId": null,
+                                                "newTab": false,
+                                                "iconLeft": null,
+                                                "iconRight": null,
+                                                "fullWidth": false,
+                                                "size": "sm",
+                                                "variant": "link",
+                                                "vertexRole": "inline-link"
+                                            },
+                                            "style": {
+                                                "textAlign": {
+                                                    "desktop": "left"
+                                                },
+                                                "fontSize": {
+                                                    "desktop": "12px"
+                                                },
+                                                "fontWeight": {
+                                                    "desktop": "400"
+                                                },
+                                                "color": {
+                                                    "desktop": "var(--site-muted, #64748b)"
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "id": "01J9VTX0000000000000000003",
+                                            "type": "button",
+                                            "props": {
+                                                "label": "Themes & modules",
+                                                "action": "url",
+                                                "url": "/modules",
+                                                "targetStepId": null,
+                                                "targetBlockId": null,
+                                                "newTab": false,
+                                                "iconLeft": null,
+                                                "iconRight": null,
+                                                "fullWidth": false,
+                                                "size": "sm",
+                                                "variant": "link",
+                                                "vertexRole": "inline-link"
+                                            },
+                                            "style": {
+                                                "textAlign": {
+                                                    "desktop": "left"
+                                                },
+                                                "fontSize": {
+                                                    "desktop": "12px"
+                                                },
+                                                "fontWeight": {
+                                                    "desktop": "400"
+                                                },
+                                                "color": {
+                                                    "desktop": "var(--site-muted, #64748b)"
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "id": "01J9VTX0000000000000000004",
+                                            "type": "button",
+                                            "props": {
+                                                "label": "Install guide",
+                                                "action": "url",
+                                                "url": "/developers",
+                                                "targetStepId": null,
+                                                "targetBlockId": null,
+                                                "newTab": false,
+                                                "iconLeft": null,
+                                                "iconRight": null,
+                                                "fullWidth": false,
+                                                "size": "sm",
+                                                "variant": "link",
+                                                "vertexRole": "inline-link"
+                                            },
+                                            "style": {
+                                                "textAlign": {
+                                                    "desktop": "left"
+                                                },
+                                                "fontSize": {
+                                                    "desktop": "12px"
+                                                },
+                                                "fontWeight": {
+                                                    "desktop": "400"
+                                                },
+                                                "color": {
+                                                    "desktop": "var(--site-muted, #64748b)"
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "id": "01J9VTX0000000000000000005",
+                                            "type": "button",
+                                            "props": {
+                                                "label": "Source code",
+                                                "action": "url",
+                                                "url": "/developers#cli",
+                                                "targetStepId": null,
+                                                "targetBlockId": null,
+                                                "newTab": false,
+                                                "iconLeft": null,
+                                                "iconRight": null,
+                                                "fullWidth": false,
+                                                "size": "sm",
+                                                "variant": "link",
+                                                "vertexRole": "inline-link"
+                                            },
+                                            "style": {
+                                                "textAlign": {
+                                                    "desktop": "left"
+                                                },
+                                                "fontSize": {
+                                                    "desktop": "12px"
+                                                },
+                                                "fontWeight": {
+                                                    "desktop": "400"
+                                                },
+                                                "color": {
+                                                    "desktop": "var(--site-muted, #64748b)"
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "id": "01J9VTX0000000000000000006",
+                                            "type": "button",
+                                            "props": {
+                                                "label": "Demo",
+                                                "action": "url",
+                                                "url": "/demo",
+                                                "targetStepId": null,
+                                                "targetBlockId": null,
+                                                "newTab": false,
+                                                "iconLeft": null,
+                                                "iconRight": null,
+                                                "fullWidth": false,
+                                                "size": "sm",
+                                                "variant": "link",
+                                                "vertexRole": "inline-link"
+                                            },
+                                            "style": {
+                                                "textAlign": {
+                                                    "desktop": "left"
+                                                },
+                                                "fontSize": {
+                                                    "desktop": "12px"
+                                                },
+                                                "fontWeight": {
+                                                    "desktop": "400"
+                                                },
+                                                "color": {
+                                                    "desktop": "var(--site-muted, #64748b)"
+                                                }
+                                            }
+                                        }
+                                    ]
+                                },
+                                {
+                                    "id": "01J9VTX000000000000000000C",
+                                    "type": "container",
+                                    "props": {
+                                        "layout": "columns",
+                                        "gap": "24px",
+                                        "columns": [
+                                            3,
+                                            6,
+                                            3
+                                        ],
+                                        "stackBelow": "mobile",
+                                        "vertexRole": "header-bar"
+                                    },
+                                    "style": [],
+                                    "children": [
+                                        {
+                                            "id": "01J9VTX000000000000000000D",
+                                            "type": "container",
+                                            "props": {
+                                                "layout": "row",
+                                                "gap": "0px",
+                                                "vertexRole": "header-logo-col"
+                                            },
+                                            "style": {
+                                                "alignItems": {
+                                                    "desktop": "center"
+                                                }
+                                            },
+                                            "children": [
+                                                {
+                                                    "id": "01J9VTX0000000000000000007",
+                                                    "type": "logo",
+                                                    "props": {
+                                                        "src": "/templates/vertex/logo.svg",
+                                                        "alt": "Modrix Commerce · Laravel 13",
+                                                        "url": "/",
+                                                        "text": "modrix",
+                                                        "link": "/",
+                                                        "width": "184px"
+                                                    },
+                                                    "style": {
+                                                        "maxWidth": {
+                                                            "desktop": "184px"
+                                                        }
+                                                    }
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "id": "01J9VTX000000000000000000E",
+                                            "type": "container",
+                                            "props": {
+                                                "layout": "row",
+                                                "gap": "0px",
+                                                "vertexRole": "header-nav-col"
+                                            },
+                                            "style": {
+                                                "alignItems": {
+                                                    "desktop": "center"
+                                                }
+                                            },
+                                            "children": [
+                                                {
+                                                    "id": "01J9VTX0000000000000000008",
+                                                    "type": "navigation",
+                                                    "props": {
+                                                        "items": [
+                                                            {
+                                                                "label": "Features",
+                                                                "url": "/platform",
+                                                                "children": [
+                                                                    {
+                                                                        "label": "Products & checkout",
+                                                                        "url": "/platform#domains",
+                                                                        "description": "Products, variants, coupons, taxes, shipping and guest checkout.",
+                                                                        "icon": "package"
+                                                                    },
+                                                                    {
+                                                                        "label": "Orders & invoices",
+                                                                        "url": "/platform#domains",
+                                                                        "description": "Manage orders, create PDF invoices and sell digital downloads.",
+                                                                        "icon": "layers"
+                                                                    },
+                                                                    {
+                                                                        "label": "Pages & SEO",
+                                                                        "url": "/platform#domains",
+                                                                        "description": "Write pages, design your home page and get an automatic sitemap.",
+                                                                        "icon": "panels-top-left"
+                                                                    },
+                                                                    {
+                                                                        "label": "Admin & security",
+                                                                        "url": "/platform#domains",
+                                                                        "description": "Staff roles, an audit log, two-factor sign-in and backups.",
+                                                                        "icon": "shield-check"
+                                                                    }
+                                                                ]
+                                                            },
+                                                            {
+                                                                "label": "Themes & modules",
+                                                                "url": "/modules",
+                                                                "children": [
+                                                                    {
+                                                                        "label": "How it works",
+                                                                        "url": "/modules",
+                                                                        "description": "Install from the admin, or upload a ZIP file.",
+                                                                        "icon": "boxes"
+                                                                    },
+                                                                    {
+                                                                        "label": "Payment modules",
+                                                                        "url": "/modules#catalog",
+                                                                        "description": "Add payment providers such as PayPal and Razorpay.",
+                                                                        "icon": "globe"
+                                                                    },
+                                                                    {
+                                                                        "label": "Marketing modules",
+                                                                        "url": "/modules#catalog",
+                                                                        "description": "Reviews, wishlists, newsletters, flash sales and cart reminders.",
+                                                                        "icon": "target"
+                                                                    },
+                                                                    {
+                                                                        "label": "Build your own",
+                                                                        "url": "/developers",
+                                                                        "description": "Themes and modules are plain packages in the extensions folder.",
+                                                                        "icon": "sparkle"
+                                                                    }
+                                                                ]
+                                                            },
+                                                            {
+                                                                "label": "Use cases",
+                                                                "url": "/solutions",
+                                                                "children": [
+                                                                    {
+                                                                        "label": "Small shops",
+                                                                        "url": "/solutions#tracks",
+                                                                        "description": "Run your own store on regular hosting.",
+                                                                        "icon": "users"
+                                                                    },
+                                                                    {
+                                                                        "label": "Agency and client work",
+                                                                        "url": "/solutions#tracks",
+                                                                        "description": "Use one free core for every client project.",
+                                                                        "icon": "building-2"
+                                                                    },
+                                                                    {
+                                                                        "label": "Developers",
+                                                                        "url": "/solutions#tracks",
+                                                                        "description": "A standard Laravel application you can read and change.",
+                                                                        "icon": "compass"
+                                                                    }
+                                                                ]
+                                                            },
+                                                            {
+                                                                "label": "Get started",
+                                                                "url": "/developers",
+                                                                "children": [
+                                                                    {
+                                                                        "label": "Install guide",
+                                                                        "url": "/developers#cli",
+                                                                        "description": "Install with Composer and Artisan.",
+                                                                        "icon": "book-open"
+                                                                    },
+                                                                    {
+                                                                        "label": "Try the demo",
+                                                                        "url": "/demo",
+                                                                        "description": "Import the example pages of this theme.",
+                                                                        "icon": "play"
+                                                                    },
+                                                                    {
+                                                                        "label": "License and hosting",
+                                                                        "url": "/developers#security",
+                                                                        "description": "MIT license and plain hosting requirements.",
+                                                                        "icon": "workflow"
+                                                                    }
+                                                                ]
+                                                            }
+                                                        ],
+                                                        "orientation": "horizontal",
+                                                        "mobileBehaviour": "drawer",
+                                                        "alignment": "left"
+                                                    },
+                                                    "style": {
+                                                        "fontSize": {
+                                                            "desktop": "14.5px"
+                                                        },
+                                                        "fontWeight": {
+                                                            "desktop": "500"
+                                                        },
+                                                        "color": {
+                                                            "desktop": "var(--site-heading, #0f172a)"
+                                                        },
+                                                        "gap": {
+                                                            "desktop": "26px"
+                                                        }
+                                                    }
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "id": "01J9VTX000000000000000000B",
+                                            "type": "container",
+                                            "props": {
+                                                "layout": "row",
+                                                "gap": "12px",
+                                                "vertexRole": "header-actions"
+                                            },
+                                            "style": {
+                                                "alignItems": {
+                                                    "desktop": "center"
+                                                },
+                                                "justifyContent": {
+                                                    "desktop": "flex-end"
+                                                }
+                                            },
+                                            "children": [
+                                                {
+                                                    "id": "01J9VTX0000000000000000009",
+                                                    "type": "button",
+                                                    "props": {
+                                                        "label": "Search",
+                                                        "action": "url",
+                                                        "url": "#search",
+                                                        "targetStepId": null,
+                                                        "targetBlockId": null,
+                                                        "newTab": false,
+                                                        "iconLeft": null,
+                                                        "iconRight": null,
+                                                        "fullWidth": false,
+                                                        "size": "sm",
+                                                        "variant": "outline",
+                                                        "vertexRole": "header-search"
+                                                    },
+                                                    "style": []
+                                                },
+                                                {
+                                                    "id": "01J9VTX000000000000000000A",
+                                                    "type": "button",
+                                                    "props": {
+                                                        "label": "TRY DEMO",
+                                                        "action": "url",
+                                                        "url": "/demo",
+                                                        "targetStepId": null,
+                                                        "targetBlockId": null,
+                                                        "newTab": false,
+                                                        "iconLeft": null,
+                                                        "iconRight": null,
+                                                        "fullWidth": false,
+                                                        "size": "sm",
+                                                        "variant": "primary"
+                                                    },
+                                                    "style": {
+                                                        "backgroundColor": {
+                                                            "desktop": "var(--site-primary, #4f46e5)"
+                                                        },
+                                                        "color": {
+                                                            "desktop": "var(--site-on-primary, #ffffff)"
+                                                        },
+                                                        "borderRadius": {
+                                                            "desktop": "3px"
+                                                        },
+                                                        "fontSize": {
+                                                            "desktop": "12px"
+                                                        },
+                                                        "fontWeight": {
+                                                            "desktop": "600"
+                                                        },
+                                                        "letterSpacing": {
+                                                            "desktop": "0.05em"
+                                                        },
+                                                        "padding": {
+                                                            "desktop": {
+                                                                "top": "10px",
+                                                                "bottom": "10px",
+                                                                "left": "18px",
+                                                                "right": "18px"
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "settings": {
+                "designCollection": "vertex",
+                "designBlock": "header"
+            }
+        }
+    ]
+}

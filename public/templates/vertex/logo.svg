@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 186 42" fill="none" width="186" height="42">
+  <text x="2" y="24" font-family="'Plus Jakarta Sans', 'Inter', system-ui, -apple-system, sans-serif" font-size="25" font-weight="600" letter-spacing="-0.03em" fill="#1B2430">modrix</text>
+  <rect x="89" y="10" width="6" height="6" rx="1.5" fill="#006994"/>
+  <rect x="97" y="10" width="6" height="6" rx="1.5" fill="#00A99D" opacity="0.85"/>
+  <text x="2" y="37" font-family="'Plus Jakarta Sans', 'Inter', system-ui, -apple-system, sans-serif" font-size="9.5" font-weight="600" letter-spacing="0.06em" fill="#4A5565">COMMERCE · LARAVEL 13</text>
+</svg>

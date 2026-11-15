@@ -80,6 +80,7 @@ class ThemeManager
      */
     public function designStyles(bool $blockSite = false, ?array $values = null): HtmlString
     {
+        $customValuesOnly = $values === null;
         $values ??= $this->design();
         $html = '';
 
@@ -99,7 +100,34 @@ class ThemeManager
                 .'h1,h2,h3,h4{color:var(--site-heading);font-weight:var(--site-heading-weight);letter-spacing:var(--site-heading-tracking);line-height:var(--site-heading-line-height)}';
         }
 
-        return new HtmlString($html.'<style id="site-design">'.$css.'</style>'.PHP_EOL);
+        $extra = $customValuesOnly ? $this->settingsStyles()->toHtml() : '';
+
+        return new HtmlString($html.'<style id="site-design">'.$css.'</style>'.PHP_EOL.$extra);
+    }
+
+    /** Custom theme settings (`theme.json` "settings" with `css_var`) rendered as `:root` CSS properties. */
+    public function settingsStyles(): HtmlString
+    {
+        $theme = $this->theme();
+
+        if ($theme?->manifest === null) {
+            return new HtmlString('');
+        }
+
+        $values = $theme->settings();
+        $vars = [];
+
+        foreach ($theme->manifest->settings() as $field) {
+            if (isset($field['css_var'])) {
+                $vars[] = $field['css_var'].': '.$this->cssValue($field, $values[$field['name']] ?? null).';';
+            }
+        }
+
+        if ($vars === []) {
+            return new HtmlString('');
+        }
+
+        return new HtmlString('<style id="theme-settings">:root{'.implode('', $vars).'}</style>'.PHP_EOL);
     }
 
     /** @return array<int, string> URLs of the theme's compiled scripts */
@@ -122,19 +150,7 @@ class ThemeManager
             return new HtmlString('');
         }
 
-        $html = '';
-        $values = $theme->settings();
-        $vars = [];
-
-        foreach ($theme->manifest->settings() as $field) {
-            if (isset($field['css_var'])) {
-                $vars[] = $field['css_var'].': '.$this->cssValue($field, $values[$field['name']] ?? null).';';
-            }
-        }
-
-        if ($vars !== []) {
-            $html .= '<style id="theme-settings">:root{'.implode('', $vars).'}</style>'.PHP_EOL;
-        }
+        $html = $this->settingsStyles()->toHtml();
 
         foreach ($theme->manifest->data['styles'] ?? [] as $file) {
             $html .= '<link rel="stylesheet" href="'.e(Cms::publicUrl(Extension::THEME, $theme->name, $file).'?v='.$theme->version()).'">'.PHP_EOL;
@@ -148,7 +164,7 @@ class ThemeManager
     {
         $value = is_bool($value) ? ($value ? '1' : '0') : (string) $value;
 
-        if ($field['type'] === 'select' && isset($field['css_values'][$value])) {
+        if (in_array($field['type'], ['select', 'toggle'], true) && isset($field['css_values'][$value])) {
             $value = (string) $field['css_values'][$value];
         }
 

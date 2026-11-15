@@ -1,0 +1,509 @@
+{
+    "schemaVersion": 1,
+    "sections": [
+        {
+            "id": "01J9SB000000000000000000PZ",
+            "name": "Inner Hero \u00b7 Sable",
+            "width": "full",
+            "sticky": false,
+            "style": {
+                "fontFamily": {
+                    "desktop": "var(--site-body-font, \"Inter\", system-ui, sans-serif)"
+                },
+                "color": {
+                    "desktop": "var(--site-body, #475569)"
+                },
+                "backgroundColor": {
+                    "desktop": "var(--site-background, #ffffff)"
+                },
+                "padding": {
+                    "desktop": {
+                        "top": "68px",
+                        "bottom": "56px",
+                        "left": "28px",
+                        "right": "28px"
+                    },
+                    "mobile": {
+                        "top": "42px",
+                        "bottom": "36px",
+                        "left": "18px",
+                        "right": "18px"
+                    }
+                }
+            },
+            "rows": [
+                {
+                    "id": "01J9SB000000000000000000PY",
+                    "stackBelow": "mobile",
+                    "style": {
+                        "margin": {
+                            "desktop": {
+                                "left": "auto",
+                                "right": "auto"
+                            }
+                        },
+                        "gap": {
+                            "desktop": "var(--site-grid-gap, 16px)",
+                            "mobile": "16px"
+                        },
+                        "maxWidth": {
+                            "desktop": "var(--site-content-width, 1140px)"
+                        }
+                    },
+                    "columns": [
+                        {
+                            "id": "01J9SB000000000000000000PX",
+                            "span": {
+                                "desktop": 10,
+                                "tablet": 12,
+                                "mobile": 12
+                            },
+                            "style": {
+                                "gap": {
+                                    "desktop": "14px"
+                                }
+                            },
+                            "blocks": [
+                                {
+                                    "id": "01J9SB000000000000000000PT",
+                                    "type": "paragraph",
+                                    "props": {
+                                        "text": "START A PROJECT"
+                                    },
+                                    "style": {
+                                        "color": {
+                                            "desktop": "var(--sable-accent, var(--site-accent, #eb812c))"
+                                        },
+                                        "fontSize": {
+                                            "desktop": "12.5px"
+                                        },
+                                        "textAlign": {
+                                            "desktop": "left"
+                                        },
+                                        "fontWeight": {
+                                            "desktop": "600"
+                                        },
+                                        "letterSpacing": {
+                                            "desktop": "0.08em"
+                                        },
+                                        "lineHeight": {
+                                            "desktop": "1.65"
+                                        },
+                                        "maxWidth": {
+                                            "desktop": "66ch"
+                                        },
+                                        "custom": {
+                                            "text-wrap": "pretty"
+                                        }
+                                    }
+                                },
+                                {
+                                    "id": "01J9SB000000000000000000PV",
+                                    "type": "heading",
+                                    "props": {
+                                        "text": "Tell us what you need<br><em>automated first</em>",
+                                        "level": "h1",
+                                        "link": null
+                                    },
+                                    "style": {
+                                        "fontFamily": {
+                                            "desktop": "var(--site-heading-font, \"Inter\", system-ui, sans-serif)"
+                                        },
+                                        "fontSize": {
+                                            "desktop": "48px",
+                                            "tablet": "38px",
+                                            "mobile": "32px"
+                                        },
+                                        "fontWeight": {
+                                            "desktop": "500"
+                                        },
+                                        "lineHeight": {
+                                            "desktop": "1.06"
+                                        },
+                                        "letterSpacing": {
+                                            "desktop": "-2.2px"
+                                        },
+                                        "color": {
+                                            "desktop": "var(--site-heading, #0f172a)"
+                                        },
+                                        "margin": {
+                                            "desktop": "0"
+                                        },
+                                        "custom": {
+                                            "text-wrap": "balance"
+                                        }
+                                    }
+                                },
+                                {
+                                    "id": "01J9SB000000000000000000PW",
+                                    "type": "paragraph",
+                                    "props": {
+                                        "text": "Share your current workflow bottlenecks and target timeline. An engineering partner replies within one business day."
+                                    },
+                                    "style": {
+                                        "color": {
+                                            "desktop": "var(--site-muted, #64748b)"
+                                        },
+                                        "fontSize": {
+                                            "desktop": "17px"
+                                        },
+                                        "textAlign": {
+                                            "desktop": "left"
+                                        },
+                                        "lineHeight": {
+                                            "desktop": "1.55"
+                                        },
+                                        "maxWidth": {
+                                            "desktop": "620px"
+                                        },
+                                        "custom": {
+                                            "text-wrap": "pretty"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "settings": {
+                "designCollection": "sable",
+                "designBlock": "inner-hero"
+            }
+        },
+        {
+            "id": "01J9SB000000000000000000Q5",
+            "name": "Contact \u00b7 Project Intake Card",
+            "width": "full",
+            "sticky": false,
+            "style": {
+                "fontFamily": {
+                    "desktop": "var(--site-body-font, \"Inter\", system-ui, sans-serif)"
+                },
+                "color": {
+                    "desktop": "var(--site-body, #475569)"
+                },
+                "backgroundColor": {
+                    "desktop": "var(--site-background, #ffffff)"
+                },
+                "padding": {
+                    "desktop": {
+                        "top": "76px",
+                        "bottom": "76px",
+                        "left": "28px",
+                        "right": "28px"
+                    },
+                    "mobile": {
+                        "top": "48px",
+                        "bottom": "48px",
+                        "left": "18px",
+                        "right": "18px"
+                    }
+                }
+            },
+            "rows": [
+                {
+                    "id": "01J9SB000000000000000000Q4",
+                    "stackBelow": "mobile",
+                    "style": {
+                        "margin": {
+                            "desktop": {
+                                "left": "auto",
+                                "right": "auto"
+                            }
+                        },
+                        "gap": {
+                            "desktop": "var(--site-grid-gap, 16px)",
+                            "mobile": "16px"
+                        },
+                        "maxWidth": {
+                            "desktop": "var(--site-content-width, 1140px)"
+                        },
+                        "justifyContent": {
+                            "desktop": "center"
+                        }
+                    },
+                    "columns": [
+                        {
+                            "id": "01J9SB000000000000000000Q3",
+                            "span": {
+                                "desktop": 8,
+                                "tablet": 12,
+                                "mobile": 12
+                            },
+                            "style": [],
+                            "blocks": [
+                                {
+                                    "id": "01J9SB000000000000000000Q0",
+                                    "type": "container",
+                                    "props": {
+                                        "layout": "stack",
+                                        "gap": "14px",
+                                        "sableRole": "contact-form-mount"
+                                    },
+                                    "style": {
+                                        "backgroundColor": {
+                                            "desktop": "var(--sable-surface, var(--site-surface, #f5f3f1))"
+                                        },
+                                        "borderRadius": {
+                                            "desktop": "20px"
+                                        },
+                                        "padding": {
+                                            "desktop": {
+                                                "top": "40px",
+                                                "bottom": "40px",
+                                                "left": "40px",
+                                                "right": "40px"
+                                            },
+                                            "mobile": {
+                                                "top": "26px",
+                                                "bottom": "26px",
+                                                "left": "22px",
+                                                "right": "22px"
+                                            }
+                                        }
+                                    },
+                                    "children": [
+                                        {
+                                            "id": "01J9SB000000000000000000Q1",
+                                            "type": "heading",
+                                            "props": {
+                                                "text": "Send us your project scope",
+                                                "level": "h3",
+                                                "link": null
+                                            },
+                                            "style": {
+                                                "fontFamily": {
+                                                    "desktop": "var(--site-heading-font, \"Inter\", system-ui, sans-serif)"
+                                                },
+                                                "fontSize": {
+                                                    "desktop": "26px"
+                                                },
+                                                "fontWeight": {
+                                                    "desktop": "500"
+                                                },
+                                                "letterSpacing": {
+                                                    "desktop": "-0.8px"
+                                                },
+                                                "color": {
+                                                    "desktop": "var(--site-heading, #0f172a)"
+                                                },
+                                                "lineHeight": {
+                                                    "desktop": "1.12"
+                                                },
+                                                "margin": {
+                                                    "desktop": "0"
+                                                },
+                                                "custom": {
+                                                    "text-wrap": "balance"
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "id": "01J9SB000000000000000000Q2",
+                                            "type": "paragraph",
+                                            "props": {
+                                                "text": "Or email hello@sablesystems.ai / call +1 (415) 890-4210 directly."
+                                            },
+                                            "style": {
+                                                "color": {
+                                                    "desktop": "var(--site-muted, #64748b)"
+                                                },
+                                                "fontSize": {
+                                                    "desktop": "15px"
+                                                },
+                                                "textAlign": {
+                                                    "desktop": "left"
+                                                },
+                                                "lineHeight": {
+                                                    "desktop": "1.65"
+                                                },
+                                                "maxWidth": {
+                                                    "desktop": "66ch"
+                                                },
+                                                "custom": {
+                                                    "text-wrap": "pretty"
+                                                }
+                                            }
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "settings": {
+                "designCollection": "sable",
+                "designBlock": "contact"
+            }
+        },
+        {
+            "id": "01J9SB000000000000000000QC",
+            "name": "FAQ \u00b7 Common Questions",
+            "width": "full",
+            "sticky": false,
+            "style": {
+                "fontFamily": {
+                    "desktop": "var(--site-body-font, \"Inter\", system-ui, sans-serif)"
+                },
+                "color": {
+                    "desktop": "var(--site-body, #475569)"
+                },
+                "backgroundColor": {
+                    "desktop": "var(--site-background, #ffffff)"
+                },
+                "padding": {
+                    "desktop": {
+                        "top": "76px",
+                        "bottom": "76px",
+                        "left": "28px",
+                        "right": "28px"
+                    },
+                    "mobile": {
+                        "top": "48px",
+                        "bottom": "48px",
+                        "left": "18px",
+                        "right": "18px"
+                    }
+                }
+            },
+            "rows": [
+                {
+                    "id": "01J9SB000000000000000000Q8",
+                    "stackBelow": "mobile",
+                    "style": {
+                        "margin": {
+                            "desktop": {
+                                "bottom": "28px"
+                            }
+                        },
+                        "gap": {
+                            "desktop": "var(--site-grid-gap, 16px)",
+                            "mobile": "16px"
+                        },
+                        "maxWidth": {
+                            "desktop": "var(--site-content-width, 1140px)"
+                        }
+                    },
+                    "columns": [
+                        {
+                            "id": "01J9SB000000000000000000Q7",
+                            "span": {
+                                "desktop": 12,
+                                "tablet": 12,
+                                "mobile": 12
+                            },
+                            "style": [],
+                            "blocks": [
+                                {
+                                    "id": "01J9SB000000000000000000Q6",
+                                    "type": "heading",
+                                    "props": {
+                                        "text": "Common questions",
+                                        "level": "h2",
+                                        "link": null
+                                    },
+                                    "style": {
+                                        "fontFamily": {
+                                            "desktop": "var(--site-heading-font, \"Inter\", system-ui, sans-serif)"
+                                        },
+                                        "fontSize": {
+                                            "desktop": "32px",
+                                            "mobile": "26px"
+                                        },
+                                        "fontWeight": {
+                                            "desktop": "500"
+                                        },
+                                        "letterSpacing": {
+                                            "desktop": "-1.2px"
+                                        },
+                                        "color": {
+                                            "desktop": "var(--site-heading, #0f172a)"
+                                        },
+                                        "textAlign": {
+                                            "desktop": "center"
+                                        },
+                                        "lineHeight": {
+                                            "desktop": "1.12"
+                                        },
+                                        "margin": {
+                                            "desktop": "0"
+                                        },
+                                        "custom": {
+                                            "text-wrap": "balance"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "id": "01J9SB000000000000000000QB",
+                    "stackBelow": "mobile",
+                    "style": {
+                        "margin": {
+                            "desktop": {
+                                "left": "auto",
+                                "right": "auto"
+                            }
+                        },
+                        "gap": {
+                            "desktop": "var(--site-grid-gap, 16px)",
+                            "mobile": "16px"
+                        },
+                        "maxWidth": {
+                            "desktop": "820px"
+                        }
+                    },
+                    "columns": [
+                        {
+                            "id": "01J9SB000000000000000000QA",
+                            "span": {
+                                "desktop": 12,
+                                "tablet": 12,
+                                "mobile": 12
+                            },
+                            "style": [],
+                            "blocks": [
+                                {
+                                    "id": "01J9SB000000000000000000Q9",
+                                    "type": "faq",
+                                    "props": {
+                                        "initialOpen": true,
+                                        "items": [
+                                            {
+                                                "question": "Do we own the prompts, code and fine-tuned weights at handover?",
+                                                "answer": "Yes. Everything runs in your own cloud or private VPC and transfers to your GitHub organization with zero lock-in licensing."
+                                            },
+                                            {
+                                                "question": "How long does a typical AI agent deployment take?",
+                                                "answer": "Discovery sprints finish in 2 weeks. Full production rollouts with telemetry and human escalation typically launch within 4 to 6 weeks."
+                                            },
+                                            {
+                                                "question": "How do you prevent hallucinations on customer-facing actions?",
+                                                "answer": "Every external tool call passes deterministic JSON schema validation, confidence thresholds and automatic human escalation rules."
+                                            },
+                                            {
+                                                "question": "Can you integrate directly with Modrix Commerce and our existing ERP?",
+                                                "answer": "Yes. We connect cleanly with REST/GraphQL commerce backends, HubSpot, Salesforce, Postgres, Stripe and internal webhooks."
+                                            }
+                                        ],
+                                        "allowMultipleOpen": false,
+                                        "emitSchemaOrg": true
+                                    },
+                                    "style": []
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "settings": {
+                "designCollection": "sable",
+                "designBlock": "faq"
+            }
+        }
+    ]
+}

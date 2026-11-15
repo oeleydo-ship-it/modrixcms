@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 400" fill="none">
+  <defs>
+    <linearGradient id="p_team-1.svg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#F2EDE6"/>
+      <stop offset="100%" stop-color="#EB812C" stop-opacity="0.28"/>
+    </linearGradient>
+  </defs>
+  <rect width="360" height="400" rx="16" fill="url(#p_team-1.svg)"/>
+  <circle cx="180" cy="148" r="54" fill="#131314" fill-opacity="0.1"/>
+  <circle cx="180" cy="148" r="44" fill="#EB812C" fill-opacity="0.22"/>
+  <path d="M90 360c0-58 40-100 90-100s90 42 90 100" fill="#131314" fill-opacity="0.14"/>
+  <text x="180" y="159" text-anchor="middle" fill="#131314" font-family="Geist, Inter, sans-serif" font-size="28" font-weight="600" letter-spacing="-1">ER</text>
+</svg>

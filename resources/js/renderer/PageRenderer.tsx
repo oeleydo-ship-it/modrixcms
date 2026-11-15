@@ -36,6 +36,8 @@ import { LUMIKIN_CSS } from './lumikin';
 import { MERIDIAN_CSS } from './meridian';
 import { KAIRO_CSS, useKairoMotion } from './kairo';
 import { LARKSPUR_CSS, useLarkspurMotion } from './larkspur';
+import { VERTEX_CSS, useVertexMotion } from './vertex';
+import { SABLE_CSS, useSableMotion } from './sable';
 import { columnExtra, nodeCss, valueAt } from './style';
 import { responsivePropReset } from './responsiveProps';
 import { componentFor, INLINE_EDITABLE } from './registry';
@@ -645,7 +647,7 @@ function RenderBlock({ block, context }: { block: BlockData; context: RenderCont
     const tw = tailwindClassesOf(block.style, context.breakpoint);
 
     const element = (
-        <div className={['fnl-block', tw].filter(Boolean).join(' ')} data-fnl-type={block.type} data-aurelle-role={typeof block.props.aurelleRole === 'string' ? block.props.aurelleRole : undefined} data-forma-role={typeof block.props.formaRole === 'string' ? block.props.formaRole : undefined} data-york-role={typeof block.props.yorkRole === 'string' ? block.props.yorkRole : undefined} data-meridian-role={typeof block.props.meridianRole === 'string' ? block.props.meridianRole : undefined} data-kairo-role={typeof block.props.kairoRole === 'string' ? block.props.kairoRole : undefined} data-larkspur-role={typeof block.props.larkspurRole === 'string' ? block.props.larkspurRole : undefined} style={{ maxWidth: 'min(100%, var(--fnl-max-width, 100%))', overflowWrap: 'anywhere' }} {...backgroundLayerAttributes(block.style, context.breakpoint)} {...nodeAttributes(context, ref)}>
+        <div className={['fnl-block', tw].filter(Boolean).join(' ')} data-fnl-type={block.type} data-aurelle-role={typeof block.props.aurelleRole === 'string' ? block.props.aurelleRole : undefined} data-forma-role={typeof block.props.formaRole === 'string' ? block.props.formaRole : undefined} data-york-role={typeof block.props.yorkRole === 'string' ? block.props.yorkRole : undefined} data-meridian-role={typeof block.props.meridianRole === 'string' ? block.props.meridianRole : undefined} data-kairo-role={typeof block.props.kairoRole === 'string' ? block.props.kairoRole : undefined} data-larkspur-role={typeof block.props.larkspurRole === 'string' ? block.props.larkspurRole : undefined} data-vertex-role={typeof block.props.vertexRole === 'string' ? block.props.vertexRole : undefined} data-vertex-filter={typeof block.props.vertexFilter === 'string' ? block.props.vertexFilter : undefined} data-vertex-module-cat={typeof block.props.vertexModuleCat === 'string' ? block.props.vertexModuleCat : undefined} data-vertex-copy={typeof block.props.vertexCopy === 'string' ? block.props.vertexCopy : undefined} data-sable-role={typeof block.props.sableRole === 'string' ? block.props.sableRole : undefined} style={{ maxWidth: 'min(100%, var(--fnl-max-width, 100%))', overflowWrap: 'anywhere' }} {...backgroundLayerAttributes(block.style, context.breakpoint)} {...nodeAttributes(context, ref)}>
             {block.props.formaRole === 'film' && context.mode !== 'editable' ? <FormaFilm block={block} /> : block.props.yorkRole === 'announcement' && context.mode !== 'editable' ? <YorkAnnouncement text={String(block.props.text ?? '')} /> : <Component
                 block={block}
                 mode={context.mode}
@@ -724,6 +726,8 @@ function RenderSection({ section, context }: { section: SectionData; context: Re
             data-meridian={section.settings?.designCollection === 'meridian' ? String(section.settings.designBlock ?? '') : undefined}
             data-kairo={section.settings?.designCollection === 'kairo' ? String(section.settings.designBlock ?? '') : undefined}
             data-larkspur={section.settings?.designCollection === 'larkspur' ? String(section.settings.designBlock ?? '') : undefined}
+            data-vertex={section.settings?.designCollection === 'vertex' ? String(section.settings.designBlock ?? '') : undefined}
+            data-sable={section.settings?.designCollection === 'sable' ? String(section.settings.designBlock ?? '') : undefined}
             data-width={section.width}
             style={section.width === 'full' ? { width: '100%', maxWidth: 'none', marginInline: 'auto' } : { marginInline: 'auto' }}
             data-sticky={section.sticky ? 'true' : 'false'}
@@ -762,6 +766,8 @@ export function PageRenderer({
     useAurelleMotion(root, mode === 'editable', document);
     useKairoMotion(root, mode === 'editable', document);
     useLarkspurMotion(root, mode === 'editable', document);
+    useVertexMotion(root, mode === 'editable', document);
+    useSableMotion(root, mode === 'editable', document);
     useBuilderMotion(root, mode === 'editable', document);
 
     const context: RenderContext = {
@@ -780,7 +786,7 @@ export function PageRenderer({
             <style>{`${googleFontsImport(css)}
 ${VISTAHAVEN_CSS}
 ${SOLENNE_CSS}
-${METROPOLIS_FONTS}\n${SCALEFORGE_FONTS}\n${SPAZIO_FONTS}\n${BASE_CSS}\n${EDEFY_CSS}\n${NURSING_CARE_CSS}\n${YORK_CITY_CSS}\n${FORMA_BUILD_CSS}\n${AURELLE_APARTMENTS_CSS}\n${CANDID_CSS}\n${FLUENT_CSS}\n${PEBBLEWOOD_CSS}\n${LUMIKIN_CSS}\n${MERIDIAN_CSS}\n${KAIRO_CSS}\n${LARKSPUR_CSS}\n${mode === 'editable' ? EDITABLE_CSS : ''}\n${css}\n${customCss}`}</style>
+${METROPOLIS_FONTS}\n${SCALEFORGE_FONTS}\n${SPAZIO_FONTS}\n${BASE_CSS}\n${EDEFY_CSS}\n${NURSING_CARE_CSS}\n${YORK_CITY_CSS}\n${FORMA_BUILD_CSS}\n${AURELLE_APARTMENTS_CSS}\n${CANDID_CSS}\n${FLUENT_CSS}\n${PEBBLEWOOD_CSS}\n${LUMIKIN_CSS}\n${MERIDIAN_CSS}\n${KAIRO_CSS}\n${LARKSPUR_CSS}\n${VERTEX_CSS}\n${SABLE_CSS}\n${mode === 'editable' ? EDITABLE_CSS : ''}\n${css}\n${customCss}`}</style>
             <div
                 ref={root}
                 className={['fnl-page', mode === 'editable' ? 'fnl-editable' : '', className ?? '']

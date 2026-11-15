@@ -1,0 +1,1807 @@
+{
+    "schemaVersion": 1,
+    "sections": [
+        {
+            "id": "01J9SB000000000000000000J9",
+            "name": "Inner Hero \u00b7 Sable",
+            "width": "full",
+            "sticky": false,
+            "style": {
+                "fontFamily": {
+                    "desktop": "var(--site-body-font, \"Inter\", system-ui, sans-serif)"
+                },
+                "color": {
+                    "desktop": "var(--site-body, #475569)"
+                },
+                "backgroundColor": {
+                    "desktop": "var(--site-background, #ffffff)"
+                },
+                "padding": {
+                    "desktop": {
+                        "top": "68px",
+                        "bottom": "56px",
+                        "left": "28px",
+                        "right": "28px"
+                    },
+                    "mobile": {
+                        "top": "42px",
+                        "bottom": "36px",
+                        "left": "18px",
+                        "right": "18px"
+                    }
+                }
+            },
+            "rows": [
+                {
+                    "id": "01J9SB000000000000000000J8",
+                    "stackBelow": "mobile",
+                    "style": {
+                        "margin": {
+                            "desktop": {
+                                "left": "auto",
+                                "right": "auto"
+                            }
+                        },
+                        "gap": {
+                            "desktop": "var(--site-grid-gap, 16px)",
+                            "mobile": "16px"
+                        },
+                        "maxWidth": {
+                            "desktop": "var(--site-content-width, 1140px)"
+                        }
+                    },
+                    "columns": [
+                        {
+                            "id": "01J9SB000000000000000000J7",
+                            "span": {
+                                "desktop": 10,
+                                "tablet": 12,
+                                "mobile": 12
+                            },
+                            "style": {
+                                "gap": {
+                                    "desktop": "14px"
+                                }
+                            },
+                            "blocks": [
+                                {
+                                    "id": "01J9SB000000000000000000J4",
+                                    "type": "paragraph",
+                                    "props": {
+                                        "text": "PRICING"
+                                    },
+                                    "style": {
+                                        "color": {
+                                            "desktop": "var(--sable-accent, var(--site-accent, #eb812c))"
+                                        },
+                                        "fontSize": {
+                                            "desktop": "12.5px"
+                                        },
+                                        "textAlign": {
+                                            "desktop": "left"
+                                        },
+                                        "fontWeight": {
+                                            "desktop": "600"
+                                        },
+                                        "letterSpacing": {
+                                            "desktop": "0.08em"
+                                        },
+                                        "lineHeight": {
+                                            "desktop": "1.65"
+                                        },
+                                        "maxWidth": {
+                                            "desktop": "66ch"
+                                        },
+                                        "custom": {
+                                            "text-wrap": "pretty"
+                                        }
+                                    }
+                                },
+                                {
+                                    "id": "01J9SB000000000000000000J5",
+                                    "type": "heading",
+                                    "props": {
+                                        "text": "Transparent scope with<br><em>fixed weekly cadence</em>",
+                                        "level": "h1",
+                                        "link": null
+                                    },
+                                    "style": {
+                                        "fontFamily": {
+                                            "desktop": "var(--site-heading-font, \"Inter\", system-ui, sans-serif)"
+                                        },
+                                        "fontSize": {
+                                            "desktop": "48px",
+                                            "tablet": "38px",
+                                            "mobile": "32px"
+                                        },
+                                        "fontWeight": {
+                                            "desktop": "500"
+                                        },
+                                        "lineHeight": {
+                                            "desktop": "1.06"
+                                        },
+                                        "letterSpacing": {
+                                            "desktop": "-2.2px"
+                                        },
+                                        "color": {
+                                            "desktop": "var(--site-heading, #0f172a)"
+                                        },
+                                        "margin": {
+                                            "desktop": "0"
+                                        },
+                                        "custom": {
+                                            "text-wrap": "balance"
+                                        }
+                                    }
+                                },
+                                {
+                                    "id": "01J9SB000000000000000000J6",
+                                    "type": "paragraph",
+                                    "props": {
+                                        "text": "Start with a two-week Discovery Sprint or move straight to a production agent rollout with clear deliverables."
+                                    },
+                                    "style": {
+                                        "color": {
+                                            "desktop": "var(--site-muted, #64748b)"
+                                        },
+                                        "fontSize": {
+                                            "desktop": "17px"
+                                        },
+                                        "textAlign": {
+                                            "desktop": "left"
+                                        },
+                                        "lineHeight": {
+                                            "desktop": "1.55"
+                                        },
+                                        "maxWidth": {
+                                            "desktop": "620px"
+                                        },
+                                        "custom": {
+                                            "text-wrap": "pretty"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "settings": {
+                "designCollection": "sable",
+                "designBlock": "inner-hero"
+            }
+        },
+        {
+            "id": "01J9SB000000000000000000KY",
+            "name": "Pricing \u00b7 Engagement Models",
+            "width": "full",
+            "sticky": false,
+            "style": {
+                "fontFamily": {
+                    "desktop": "var(--site-body-font, \"Inter\", system-ui, sans-serif)"
+                },
+                "color": {
+                    "desktop": "var(--site-body, #475569)"
+                },
+                "backgroundColor": {
+                    "desktop": "var(--site-background, #ffffff)"
+                },
+                "padding": {
+                    "desktop": {
+                        "top": "76px",
+                        "bottom": "76px",
+                        "left": "28px",
+                        "right": "28px"
+                    },
+                    "mobile": {
+                        "top": "48px",
+                        "bottom": "48px",
+                        "left": "18px",
+                        "right": "18px"
+                    }
+                }
+            },
+            "rows": [
+                {
+                    "id": "01J9SB000000000000000000KX",
+                    "stackBelow": "tablet",
+                    "style": {
+                        "margin": {
+                            "desktop": {
+                                "left": "auto",
+                                "right": "auto"
+                            }
+                        },
+                        "gap": {
+                            "desktop": "18px",
+                            "mobile": "18px"
+                        },
+                        "maxWidth": {
+                            "desktop": "var(--site-content-width, 1140px)"
+                        },
+                        "alignItems": {
+                            "desktop": "stretch"
+                        }
+                    },
+                    "columns": [
+                        {
+                            "id": "01J9SB000000000000000000JT",
+                            "span": {
+                                "desktop": 4,
+                                "tablet": 6,
+                                "mobile": 12
+                            },
+                            "style": [],
+                            "blocks": [
+                                {
+                                    "id": "01J9SB000000000000000000JA",
+                                    "type": "container",
+                                    "props": {
+                                        "layout": "stack",
+                                        "gap": "18px"
+                                    },
+                                    "style": {
+                                        "backgroundColor": {
+                                            "desktop": "var(--sable-surface, var(--site-surface, #f5f3f1))"
+                                        },
+                                        "borderRadius": {
+                                            "desktop": "18px"
+                                        },
+                                        "padding": {
+                                            "desktop": {
+                                                "top": "30px",
+                                                "bottom": "30px",
+                                                "left": "26px",
+                                                "right": "26px"
+                                            }
+                                        },
+                                        "height": {
+                                            "desktop": "100%"
+                                        },
+                                        "justifyContent": {
+                                            "desktop": "space-between"
+                                        }
+                                    },
+                                    "children": [
+                                        {
+                                            "id": "01J9SB000000000000000000JB",
+                                            "type": "container",
+                                            "props": {
+                                                "layout": "stack",
+                                                "gap": "12px"
+                                            },
+                                            "style": [],
+                                            "children": [
+                                                {
+                                                    "id": "01J9SB000000000000000000JC",
+                                                    "type": "paragraph",
+                                                    "props": {
+                                                        "text": "Discovery Sprint"
+                                                    },
+                                                    "style": {
+                                                        "color": {
+                                                            "desktop": "var(--site-heading, #0f172a)"
+                                                        },
+                                                        "fontSize": {
+                                                            "desktop": "14px"
+                                                        },
+                                                        "textAlign": {
+                                                            "desktop": "left"
+                                                        },
+                                                        "fontWeight": {
+                                                            "desktop": "600"
+                                                        },
+                                                        "lineHeight": {
+                                                            "desktop": "1.65"
+                                                        },
+                                                        "maxWidth": {
+                                                            "desktop": "66ch"
+                                                        },
+                                                        "custom": {
+                                                            "text-wrap": "pretty"
+                                                        }
+                                                    }
+                                                },
+                                                {
+                                                    "id": "01J9SB000000000000000000JD",
+                                                    "type": "heading",
+                                                    "props": {
+                                                        "text": "$6,500 \u00b7 2 weeks",
+                                                        "level": "h3",
+                                                        "link": null
+                                                    },
+                                                    "style": {
+                                                        "fontFamily": {
+                                                            "desktop": "var(--site-heading-font, \"Inter\", system-ui, sans-serif)"
+                                                        },
+                                                        "fontSize": {
+                                                            "desktop": "32px"
+                                                        },
+                                                        "fontWeight": {
+                                                            "desktop": "500"
+                                                        },
+                                                        "letterSpacing": {
+                                                            "desktop": "-1px"
+                                                        },
+                                                        "color": {
+                                                            "desktop": "#131314"
+                                                        },
+                                                        "lineHeight": {
+                                                            "desktop": "1.12"
+                                                        },
+                                                        "margin": {
+                                                            "desktop": "0"
+                                                        },
+                                                        "custom": {
+                                                            "text-wrap": "balance"
+                                                        }
+                                                    }
+                                                },
+                                                {
+                                                    "id": "01J9SB000000000000000000JE",
+                                                    "type": "paragraph",
+                                                    "props": {
+                                                        "text": "Audit data quality, latency budgets and launch a working benchmark prototype."
+                                                    },
+                                                    "style": {
+                                                        "color": {
+                                                            "desktop": "var(--site-muted, #64748b)"
+                                                        },
+                                                        "fontSize": {
+                                                            "desktop": "14.5px"
+                                                        },
+                                                        "textAlign": {
+                                                            "desktop": "left"
+                                                        },
+                                                        "lineHeight": {
+                                                            "desktop": "1.65"
+                                                        },
+                                                        "maxWidth": {
+                                                            "desktop": "66ch"
+                                                        },
+                                                        "custom": {
+                                                            "text-wrap": "pretty"
+                                                        }
+                                                    }
+                                                },
+                                                {
+                                                    "id": "01J9SB000000000000000000JF",
+                                                    "type": "container",
+                                                    "props": {
+                                                        "layout": "stack",
+                                                        "gap": "10px"
+                                                    },
+                                                    "style": {
+                                                        "margin": {
+                                                            "desktop": {
+                                                                "top": "8px"
+                                                            }
+                                                        }
+                                                    },
+                                                    "children": [
+                                                        {
+                                                            "id": "01J9SB000000000000000000JG",
+                                                            "type": "container",
+                                                            "props": {
+                                                                "layout": "row",
+                                                                "gap": "10px"
+                                                            },
+                                                            "style": {
+                                                                "alignItems": {
+                                                                    "desktop": "center"
+                                                                }
+                                                            },
+                                                            "children": [
+                                                                {
+                                                                    "id": "01J9SB000000000000000000JH",
+                                                                    "type": "icon",
+                                                                    "props": {
+                                                                        "name": "check",
+                                                                        "library": "lucide",
+                                                                        "size": "15px",
+                                                                        "link": null
+                                                                    },
+                                                                    "style": {
+                                                                        "color": {
+                                                                            "desktop": "var(--site-heading, #0f172a)"
+                                                                        }
+                                                                    }
+                                                                },
+                                                                {
+                                                                    "id": "01J9SB000000000000000000JJ",
+                                                                    "type": "paragraph",
+                                                                    "props": {
+                                                                        "text": "Architecture & ROI blueprint"
+                                                                    },
+                                                                    "style": {
+                                                                        "color": {
+                                                                            "desktop": "var(--site-muted, #64748b)"
+                                                                        },
+                                                                        "fontSize": {
+                                                                            "desktop": "14px"
+                                                                        },
+                                                                        "textAlign": {
+                                                                            "desktop": "left"
+                                                                        },
+                                                                        "lineHeight": {
+                                                                            "desktop": "1.65"
+                                                                        },
+                                                                        "maxWidth": {
+                                                                            "desktop": "66ch"
+                                                                        },
+                                                                        "custom": {
+                                                                            "text-wrap": "pretty"
+                                                                        }
+                                                                    }
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "id": "01J9SB000000000000000000JK",
+                                                            "type": "container",
+                                                            "props": {
+                                                                "layout": "row",
+                                                                "gap": "10px"
+                                                            },
+                                                            "style": {
+                                                                "alignItems": {
+                                                                    "desktop": "center"
+                                                                }
+                                                            },
+                                                            "children": [
+                                                                {
+                                                                    "id": "01J9SB000000000000000000JM",
+                                                                    "type": "icon",
+                                                                    "props": {
+                                                                        "name": "check",
+                                                                        "library": "lucide",
+                                                                        "size": "15px",
+                                                                        "link": null
+                                                                    },
+                                                                    "style": {
+                                                                        "color": {
+                                                                            "desktop": "var(--site-heading, #0f172a)"
+                                                                        }
+                                                                    }
+                                                                },
+                                                                {
+                                                                    "id": "01J9SB000000000000000000JN",
+                                                                    "type": "paragraph",
+                                                                    "props": {
+                                                                        "text": "Eval dataset + golden benchmark"
+                                                                    },
+                                                                    "style": {
+                                                                        "color": {
+                                                                            "desktop": "var(--site-muted, #64748b)"
+                                                                        },
+                                                                        "fontSize": {
+                                                                            "desktop": "14px"
+                                                                        },
+                                                                        "textAlign": {
+                                                                            "desktop": "left"
+                                                                        },
+                                                                        "lineHeight": {
+                                                                            "desktop": "1.65"
+                                                                        },
+                                                                        "maxWidth": {
+                                                                            "desktop": "66ch"
+                                                                        },
+                                                                        "custom": {
+                                                                            "text-wrap": "pretty"
+                                                                        }
+                                                                    }
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "id": "01J9SB000000000000000000JP",
+                                                            "type": "container",
+                                                            "props": {
+                                                                "layout": "row",
+                                                                "gap": "10px"
+                                                            },
+                                                            "style": {
+                                                                "alignItems": {
+                                                                    "desktop": "center"
+                                                                }
+                                                            },
+                                                            "children": [
+                                                                {
+                                                                    "id": "01J9SB000000000000000000JQ",
+                                                                    "type": "icon",
+                                                                    "props": {
+                                                                        "name": "check",
+                                                                        "library": "lucide",
+                                                                        "size": "15px",
+                                                                        "link": null
+                                                                    },
+                                                                    "style": {
+                                                                        "color": {
+                                                                            "desktop": "var(--site-heading, #0f172a)"
+                                                                        }
+                                                                    }
+                                                                },
+                                                                {
+                                                                    "id": "01J9SB000000000000000000JR",
+                                                                    "type": "paragraph",
+                                                                    "props": {
+                                                                        "text": "Interactive staging prototype"
+                                                                    },
+                                                                    "style": {
+                                                                        "color": {
+                                                                            "desktop": "var(--site-muted, #64748b)"
+                                                                        },
+                                                                        "fontSize": {
+                                                                            "desktop": "14px"
+                                                                        },
+                                                                        "textAlign": {
+                                                                            "desktop": "left"
+                                                                        },
+                                                                        "lineHeight": {
+                                                                            "desktop": "1.65"
+                                                                        },
+                                                                        "maxWidth": {
+                                                                            "desktop": "66ch"
+                                                                        },
+                                                                        "custom": {
+                                                                            "text-wrap": "pretty"
+                                                                        }
+                                                                    }
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "id": "01J9SB000000000000000000JS",
+                                            "type": "button",
+                                            "props": {
+                                                "label": "Start sprint",
+                                                "action": "url",
+                                                "url": "/contact",
+                                                "targetStepId": null,
+                                                "targetBlockId": null,
+                                                "newTab": false,
+                                                "iconLeft": null,
+                                                "iconRight": null,
+                                                "fullWidth": false,
+                                                "size": "md",
+                                                "variant": "primary",
+                                                "sableRole": "btn-primary"
+                                            },
+                                            "style": {
+                                                "backgroundColor": {
+                                                    "desktop": "var(--site-heading, #0f172a)"
+                                                },
+                                                "color": {
+                                                    "desktop": "#ffffff"
+                                                },
+                                                "borderRadius": {
+                                                    "desktop": "999px"
+                                                },
+                                                "fontSize": {
+                                                    "desktop": "14px"
+                                                },
+                                                "fontWeight": {
+                                                    "desktop": "500"
+                                                },
+                                                "padding": {
+                                                    "desktop": {
+                                                        "top": "12px",
+                                                        "bottom": "12px",
+                                                        "left": "22px",
+                                                        "right": "22px"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "id": "01J9SB000000000000000000KB",
+                            "span": {
+                                "desktop": 4,
+                                "tablet": 6,
+                                "mobile": 12
+                            },
+                            "style": [],
+                            "blocks": [
+                                {
+                                    "id": "01J9SB000000000000000000JV",
+                                    "type": "container",
+                                    "props": {
+                                        "layout": "stack",
+                                        "gap": "18px"
+                                    },
+                                    "style": {
+                                        "backgroundColor": {
+                                            "desktop": "#131314"
+                                        },
+                                        "borderRadius": {
+                                            "desktop": "18px"
+                                        },
+                                        "padding": {
+                                            "desktop": {
+                                                "top": "30px",
+                                                "bottom": "30px",
+                                                "left": "26px",
+                                                "right": "26px"
+                                            }
+                                        },
+                                        "height": {
+                                            "desktop": "100%"
+                                        },
+                                        "justifyContent": {
+                                            "desktop": "space-between"
+                                        }
+                                    },
+                                    "children": [
+                                        {
+                                            "id": "01J9SB000000000000000000JW",
+                                            "type": "container",
+                                            "props": {
+                                                "layout": "stack",
+                                                "gap": "12px"
+                                            },
+                                            "style": [],
+                                            "children": [
+                                                {
+                                                    "id": "01J9SB000000000000000000JX",
+                                                    "type": "paragraph",
+                                                    "props": {
+                                                        "text": "Production Agent"
+                                                    },
+                                                    "style": {
+                                                        "color": {
+                                                            "desktop": "#eb812c"
+                                                        },
+                                                        "fontSize": {
+                                                            "desktop": "14px"
+                                                        },
+                                                        "textAlign": {
+                                                            "desktop": "left"
+                                                        },
+                                                        "fontWeight": {
+                                                            "desktop": "600"
+                                                        },
+                                                        "lineHeight": {
+                                                            "desktop": "1.65"
+                                                        },
+                                                        "maxWidth": {
+                                                            "desktop": "66ch"
+                                                        },
+                                                        "custom": {
+                                                            "text-wrap": "pretty"
+                                                        }
+                                                    }
+                                                },
+                                                {
+                                                    "id": "01J9SB000000000000000000JY",
+                                                    "type": "heading",
+                                                    "props": {
+                                                        "text": "$18,000 \u00b7 6 weeks",
+                                                        "level": "h3",
+                                                        "link": null
+                                                    },
+                                                    "style": {
+                                                        "fontFamily": {
+                                                            "desktop": "var(--site-heading-font, \"Inter\", system-ui, sans-serif)"
+                                                        },
+                                                        "fontSize": {
+                                                            "desktop": "32px"
+                                                        },
+                                                        "fontWeight": {
+                                                            "desktop": "500"
+                                                        },
+                                                        "letterSpacing": {
+                                                            "desktop": "-1px"
+                                                        },
+                                                        "color": {
+                                                            "desktop": "#fdfcfc"
+                                                        },
+                                                        "lineHeight": {
+                                                            "desktop": "1.12"
+                                                        },
+                                                        "margin": {
+                                                            "desktop": "0"
+                                                        },
+                                                        "custom": {
+                                                            "text-wrap": "balance"
+                                                        }
+                                                    }
+                                                },
+                                                {
+                                                    "id": "01J9SB000000000000000000JZ",
+                                                    "type": "paragraph",
+                                                    "props": {
+                                                        "text": "End-to-end engineering of a production AI workflow wired into your live tools."
+                                                    },
+                                                    "style": {
+                                                        "color": {
+                                                            "desktop": "#b6b0a8"
+                                                        },
+                                                        "fontSize": {
+                                                            "desktop": "14.5px"
+                                                        },
+                                                        "textAlign": {
+                                                            "desktop": "left"
+                                                        },
+                                                        "lineHeight": {
+                                                            "desktop": "1.65"
+                                                        },
+                                                        "maxWidth": {
+                                                            "desktop": "66ch"
+                                                        },
+                                                        "custom": {
+                                                            "text-wrap": "pretty"
+                                                        }
+                                                    }
+                                                },
+                                                {
+                                                    "id": "01J9SB000000000000000000K0",
+                                                    "type": "container",
+                                                    "props": {
+                                                        "layout": "stack",
+                                                        "gap": "10px"
+                                                    },
+                                                    "style": {
+                                                        "margin": {
+                                                            "desktop": {
+                                                                "top": "8px"
+                                                            }
+                                                        }
+                                                    },
+                                                    "children": [
+                                                        {
+                                                            "id": "01J9SB000000000000000000K1",
+                                                            "type": "container",
+                                                            "props": {
+                                                                "layout": "row",
+                                                                "gap": "10px"
+                                                            },
+                                                            "style": {
+                                                                "alignItems": {
+                                                                    "desktop": "center"
+                                                                }
+                                                            },
+                                                            "children": [
+                                                                {
+                                                                    "id": "01J9SB000000000000000000K2",
+                                                                    "type": "icon",
+                                                                    "props": {
+                                                                        "name": "check",
+                                                                        "library": "lucide",
+                                                                        "size": "15px",
+                                                                        "link": null
+                                                                    },
+                                                                    "style": {
+                                                                        "color": {
+                                                                            "desktop": "#eb812c"
+                                                                        }
+                                                                    }
+                                                                },
+                                                                {
+                                                                    "id": "01J9SB000000000000000000K3",
+                                                                    "type": "paragraph",
+                                                                    "props": {
+                                                                        "text": "Full CRM, ERP & API integrations"
+                                                                    },
+                                                                    "style": {
+                                                                        "color": {
+                                                                            "desktop": "#e5e1dc"
+                                                                        },
+                                                                        "fontSize": {
+                                                                            "desktop": "14px"
+                                                                        },
+                                                                        "textAlign": {
+                                                                            "desktop": "left"
+                                                                        },
+                                                                        "lineHeight": {
+                                                                            "desktop": "1.65"
+                                                                        },
+                                                                        "maxWidth": {
+                                                                            "desktop": "66ch"
+                                                                        },
+                                                                        "custom": {
+                                                                            "text-wrap": "pretty"
+                                                                        }
+                                                                    }
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "id": "01J9SB000000000000000000K4",
+                                                            "type": "container",
+                                                            "props": {
+                                                                "layout": "row",
+                                                                "gap": "10px"
+                                                            },
+                                                            "style": {
+                                                                "alignItems": {
+                                                                    "desktop": "center"
+                                                                }
+                                                            },
+                                                            "children": [
+                                                                {
+                                                                    "id": "01J9SB000000000000000000K5",
+                                                                    "type": "icon",
+                                                                    "props": {
+                                                                        "name": "check",
+                                                                        "library": "lucide",
+                                                                        "size": "15px",
+                                                                        "link": null
+                                                                    },
+                                                                    "style": {
+                                                                        "color": {
+                                                                            "desktop": "#eb812c"
+                                                                        }
+                                                                    }
+                                                                },
+                                                                {
+                                                                    "id": "01J9SB000000000000000000K6",
+                                                                    "type": "paragraph",
+                                                                    "props": {
+                                                                        "text": "Confidence gates + human escalation"
+                                                                    },
+                                                                    "style": {
+                                                                        "color": {
+                                                                            "desktop": "#e5e1dc"
+                                                                        },
+                                                                        "fontSize": {
+                                                                            "desktop": "14px"
+                                                                        },
+                                                                        "textAlign": {
+                                                                            "desktop": "left"
+                                                                        },
+                                                                        "lineHeight": {
+                                                                            "desktop": "1.65"
+                                                                        },
+                                                                        "maxWidth": {
+                                                                            "desktop": "66ch"
+                                                                        },
+                                                                        "custom": {
+                                                                            "text-wrap": "pretty"
+                                                                        }
+                                                                    }
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "id": "01J9SB000000000000000000K7",
+                                                            "type": "container",
+                                                            "props": {
+                                                                "layout": "row",
+                                                                "gap": "10px"
+                                                            },
+                                                            "style": {
+                                                                "alignItems": {
+                                                                    "desktop": "center"
+                                                                }
+                                                            },
+                                                            "children": [
+                                                                {
+                                                                    "id": "01J9SB000000000000000000K8",
+                                                                    "type": "icon",
+                                                                    "props": {
+                                                                        "name": "check",
+                                                                        "library": "lucide",
+                                                                        "size": "15px",
+                                                                        "link": null
+                                                                    },
+                                                                    "style": {
+                                                                        "color": {
+                                                                            "desktop": "#eb812c"
+                                                                        }
+                                                                    }
+                                                                },
+                                                                {
+                                                                    "id": "01J9SB000000000000000000K9",
+                                                                    "type": "paragraph",
+                                                                    "props": {
+                                                                        "text": "Telemetry dashboard & source repo"
+                                                                    },
+                                                                    "style": {
+                                                                        "color": {
+                                                                            "desktop": "#e5e1dc"
+                                                                        },
+                                                                        "fontSize": {
+                                                                            "desktop": "14px"
+                                                                        },
+                                                                        "textAlign": {
+                                                                            "desktop": "left"
+                                                                        },
+                                                                        "lineHeight": {
+                                                                            "desktop": "1.65"
+                                                                        },
+                                                                        "maxWidth": {
+                                                                            "desktop": "66ch"
+                                                                        },
+                                                                        "custom": {
+                                                                            "text-wrap": "pretty"
+                                                                        }
+                                                                    }
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "id": "01J9SB000000000000000000KA",
+                                            "type": "button",
+                                            "props": {
+                                                "label": "Book discovery",
+                                                "action": "url",
+                                                "url": "/contact",
+                                                "targetStepId": null,
+                                                "targetBlockId": null,
+                                                "newTab": false,
+                                                "iconLeft": null,
+                                                "iconRight": null,
+                                                "fullWidth": false,
+                                                "size": "md",
+                                                "variant": "outline",
+                                                "sableRole": "btn-soft"
+                                            },
+                                            "style": {
+                                                "backgroundColor": {
+                                                    "desktop": "var(--sable-surface, var(--site-surface, #f5f3f1))"
+                                                },
+                                                "color": {
+                                                    "desktop": "var(--site-heading, #0f172a)"
+                                                },
+                                                "border": {
+                                                    "desktop": {
+                                                        "style": "solid",
+                                                        "width": "1px",
+                                                        "color": "var(--site-border, #e2e8f0)"
+                                                    }
+                                                },
+                                                "borderRadius": {
+                                                    "desktop": "999px"
+                                                },
+                                                "fontSize": {
+                                                    "desktop": "14px"
+                                                },
+                                                "fontWeight": {
+                                                    "desktop": "500"
+                                                },
+                                                "padding": {
+                                                    "desktop": {
+                                                        "top": "12px",
+                                                        "bottom": "12px",
+                                                        "left": "22px",
+                                                        "right": "22px"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "id": "01J9SB000000000000000000KW",
+                            "span": {
+                                "desktop": 4,
+                                "tablet": 6,
+                                "mobile": 12
+                            },
+                            "style": [],
+                            "blocks": [
+                                {
+                                    "id": "01J9SB000000000000000000KC",
+                                    "type": "container",
+                                    "props": {
+                                        "layout": "stack",
+                                        "gap": "18px"
+                                    },
+                                    "style": {
+                                        "backgroundColor": {
+                                            "desktop": "var(--sable-surface, var(--site-surface, #f5f3f1))"
+                                        },
+                                        "borderRadius": {
+                                            "desktop": "18px"
+                                        },
+                                        "padding": {
+                                            "desktop": {
+                                                "top": "30px",
+                                                "bottom": "30px",
+                                                "left": "26px",
+                                                "right": "26px"
+                                            }
+                                        },
+                                        "height": {
+                                            "desktop": "100%"
+                                        },
+                                        "justifyContent": {
+                                            "desktop": "space-between"
+                                        }
+                                    },
+                                    "children": [
+                                        {
+                                            "id": "01J9SB000000000000000000KD",
+                                            "type": "container",
+                                            "props": {
+                                                "layout": "stack",
+                                                "gap": "12px"
+                                            },
+                                            "style": [],
+                                            "children": [
+                                                {
+                                                    "id": "01J9SB000000000000000000KE",
+                                                    "type": "paragraph",
+                                                    "props": {
+                                                        "text": "Embedded Partner"
+                                                    },
+                                                    "style": {
+                                                        "color": {
+                                                            "desktop": "var(--site-heading, #0f172a)"
+                                                        },
+                                                        "fontSize": {
+                                                            "desktop": "14px"
+                                                        },
+                                                        "textAlign": {
+                                                            "desktop": "left"
+                                                        },
+                                                        "fontWeight": {
+                                                            "desktop": "600"
+                                                        },
+                                                        "lineHeight": {
+                                                            "desktop": "1.65"
+                                                        },
+                                                        "maxWidth": {
+                                                            "desktop": "66ch"
+                                                        },
+                                                        "custom": {
+                                                            "text-wrap": "pretty"
+                                                        }
+                                                    }
+                                                },
+                                                {
+                                                    "id": "01J9SB000000000000000000KF",
+                                                    "type": "heading",
+                                                    "props": {
+                                                        "text": "$9,500 \u00b7 / month",
+                                                        "level": "h3",
+                                                        "link": null
+                                                    },
+                                                    "style": {
+                                                        "fontFamily": {
+                                                            "desktop": "var(--site-heading-font, \"Inter\", system-ui, sans-serif)"
+                                                        },
+                                                        "fontSize": {
+                                                            "desktop": "32px"
+                                                        },
+                                                        "fontWeight": {
+                                                            "desktop": "500"
+                                                        },
+                                                        "letterSpacing": {
+                                                            "desktop": "-1px"
+                                                        },
+                                                        "color": {
+                                                            "desktop": "#131314"
+                                                        },
+                                                        "lineHeight": {
+                                                            "desktop": "1.12"
+                                                        },
+                                                        "margin": {
+                                                            "desktop": "0"
+                                                        },
+                                                        "custom": {
+                                                            "text-wrap": "balance"
+                                                        }
+                                                    }
+                                                },
+                                                {
+                                                    "id": "01J9SB000000000000000000KG",
+                                                    "type": "paragraph",
+                                                    "props": {
+                                                        "text": "Dedicated senior AI engineering pod expanding automations every sprint."
+                                                    },
+                                                    "style": {
+                                                        "color": {
+                                                            "desktop": "var(--site-muted, #64748b)"
+                                                        },
+                                                        "fontSize": {
+                                                            "desktop": "14.5px"
+                                                        },
+                                                        "textAlign": {
+                                                            "desktop": "left"
+                                                        },
+                                                        "lineHeight": {
+                                                            "desktop": "1.65"
+                                                        },
+                                                        "maxWidth": {
+                                                            "desktop": "66ch"
+                                                        },
+                                                        "custom": {
+                                                            "text-wrap": "pretty"
+                                                        }
+                                                    }
+                                                },
+                                                {
+                                                    "id": "01J9SB000000000000000000KH",
+                                                    "type": "container",
+                                                    "props": {
+                                                        "layout": "stack",
+                                                        "gap": "10px"
+                                                    },
+                                                    "style": {
+                                                        "margin": {
+                                                            "desktop": {
+                                                                "top": "8px"
+                                                            }
+                                                        }
+                                                    },
+                                                    "children": [
+                                                        {
+                                                            "id": "01J9SB000000000000000000KJ",
+                                                            "type": "container",
+                                                            "props": {
+                                                                "layout": "row",
+                                                                "gap": "10px"
+                                                            },
+                                                            "style": {
+                                                                "alignItems": {
+                                                                    "desktop": "center"
+                                                                }
+                                                            },
+                                                            "children": [
+                                                                {
+                                                                    "id": "01J9SB000000000000000000KK",
+                                                                    "type": "icon",
+                                                                    "props": {
+                                                                        "name": "check",
+                                                                        "library": "lucide",
+                                                                        "size": "15px",
+                                                                        "link": null
+                                                                    },
+                                                                    "style": {
+                                                                        "color": {
+                                                                            "desktop": "var(--site-heading, #0f172a)"
+                                                                        }
+                                                                    }
+                                                                },
+                                                                {
+                                                                    "id": "01J9SB000000000000000000KM",
+                                                                    "type": "paragraph",
+                                                                    "props": {
+                                                                        "text": "Continuous model tuning & evals"
+                                                                    },
+                                                                    "style": {
+                                                                        "color": {
+                                                                            "desktop": "var(--site-muted, #64748b)"
+                                                                        },
+                                                                        "fontSize": {
+                                                                            "desktop": "14px"
+                                                                        },
+                                                                        "textAlign": {
+                                                                            "desktop": "left"
+                                                                        },
+                                                                        "lineHeight": {
+                                                                            "desktop": "1.65"
+                                                                        },
+                                                                        "maxWidth": {
+                                                                            "desktop": "66ch"
+                                                                        },
+                                                                        "custom": {
+                                                                            "text-wrap": "pretty"
+                                                                        }
+                                                                    }
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "id": "01J9SB000000000000000000KN",
+                                                            "type": "container",
+                                                            "props": {
+                                                                "layout": "row",
+                                                                "gap": "10px"
+                                                            },
+                                                            "style": {
+                                                                "alignItems": {
+                                                                    "desktop": "center"
+                                                                }
+                                                            },
+                                                            "children": [
+                                                                {
+                                                                    "id": "01J9SB000000000000000000KP",
+                                                                    "type": "icon",
+                                                                    "props": {
+                                                                        "name": "check",
+                                                                        "library": "lucide",
+                                                                        "size": "15px",
+                                                                        "link": null
+                                                                    },
+                                                                    "style": {
+                                                                        "color": {
+                                                                            "desktop": "var(--site-heading, #0f172a)"
+                                                                        }
+                                                                    }
+                                                                },
+                                                                {
+                                                                    "id": "01J9SB000000000000000000KQ",
+                                                                    "type": "paragraph",
+                                                                    "props": {
+                                                                        "text": "Priority Slack & SLA channel"
+                                                                    },
+                                                                    "style": {
+                                                                        "color": {
+                                                                            "desktop": "var(--site-muted, #64748b)"
+                                                                        },
+                                                                        "fontSize": {
+                                                                            "desktop": "14px"
+                                                                        },
+                                                                        "textAlign": {
+                                                                            "desktop": "left"
+                                                                        },
+                                                                        "lineHeight": {
+                                                                            "desktop": "1.65"
+                                                                        },
+                                                                        "maxWidth": {
+                                                                            "desktop": "66ch"
+                                                                        },
+                                                                        "custom": {
+                                                                            "text-wrap": "pretty"
+                                                                        }
+                                                                    }
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "id": "01J9SB000000000000000000KR",
+                                                            "type": "container",
+                                                            "props": {
+                                                                "layout": "row",
+                                                                "gap": "10px"
+                                                            },
+                                                            "style": {
+                                                                "alignItems": {
+                                                                    "desktop": "center"
+                                                                }
+                                                            },
+                                                            "children": [
+                                                                {
+                                                                    "id": "01J9SB000000000000000000KS",
+                                                                    "type": "icon",
+                                                                    "props": {
+                                                                        "name": "check",
+                                                                        "library": "lucide",
+                                                                        "size": "15px",
+                                                                        "link": null
+                                                                    },
+                                                                    "style": {
+                                                                        "color": {
+                                                                            "desktop": "var(--site-heading, #0f172a)"
+                                                                        }
+                                                                    }
+                                                                },
+                                                                {
+                                                                    "id": "01J9SB000000000000000000KT",
+                                                                    "type": "paragraph",
+                                                                    "props": {
+                                                                        "text": "Unlimited workflow expansions"
+                                                                    },
+                                                                    "style": {
+                                                                        "color": {
+                                                                            "desktop": "var(--site-muted, #64748b)"
+                                                                        },
+                                                                        "fontSize": {
+                                                                            "desktop": "14px"
+                                                                        },
+                                                                        "textAlign": {
+                                                                            "desktop": "left"
+                                                                        },
+                                                                        "lineHeight": {
+                                                                            "desktop": "1.65"
+                                                                        },
+                                                                        "maxWidth": {
+                                                                            "desktop": "66ch"
+                                                                        },
+                                                                        "custom": {
+                                                                            "text-wrap": "pretty"
+                                                                        }
+                                                                    }
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "id": "01J9SB000000000000000000KV",
+                                            "type": "button",
+                                            "props": {
+                                                "label": "Start sprint",
+                                                "action": "url",
+                                                "url": "/contact",
+                                                "targetStepId": null,
+                                                "targetBlockId": null,
+                                                "newTab": false,
+                                                "iconLeft": null,
+                                                "iconRight": null,
+                                                "fullWidth": false,
+                                                "size": "md",
+                                                "variant": "primary",
+                                                "sableRole": "btn-primary"
+                                            },
+                                            "style": {
+                                                "backgroundColor": {
+                                                    "desktop": "var(--site-heading, #0f172a)"
+                                                },
+                                                "color": {
+                                                    "desktop": "#ffffff"
+                                                },
+                                                "borderRadius": {
+                                                    "desktop": "999px"
+                                                },
+                                                "fontSize": {
+                                                    "desktop": "14px"
+                                                },
+                                                "fontWeight": {
+                                                    "desktop": "500"
+                                                },
+                                                "padding": {
+                                                    "desktop": {
+                                                        "top": "12px",
+                                                        "bottom": "12px",
+                                                        "left": "22px",
+                                                        "right": "22px"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "settings": {
+                "designCollection": "sable",
+                "designBlock": "pricing"
+            }
+        },
+        {
+            "id": "01J9SB000000000000000000M5",
+            "name": "FAQ \u00b7 Common Questions",
+            "width": "full",
+            "sticky": false,
+            "style": {
+                "fontFamily": {
+                    "desktop": "var(--site-body-font, \"Inter\", system-ui, sans-serif)"
+                },
+                "color": {
+                    "desktop": "var(--site-body, #475569)"
+                },
+                "backgroundColor": {
+                    "desktop": "var(--site-background, #ffffff)"
+                },
+                "padding": {
+                    "desktop": {
+                        "top": "76px",
+                        "bottom": "76px",
+                        "left": "28px",
+                        "right": "28px"
+                    },
+                    "mobile": {
+                        "top": "48px",
+                        "bottom": "48px",
+                        "left": "18px",
+                        "right": "18px"
+                    }
+                }
+            },
+            "rows": [
+                {
+                    "id": "01J9SB000000000000000000M1",
+                    "stackBelow": "mobile",
+                    "style": {
+                        "margin": {
+                            "desktop": {
+                                "bottom": "28px"
+                            }
+                        },
+                        "gap": {
+                            "desktop": "var(--site-grid-gap, 16px)",
+                            "mobile": "16px"
+                        },
+                        "maxWidth": {
+                            "desktop": "var(--site-content-width, 1140px)"
+                        }
+                    },
+                    "columns": [
+                        {
+                            "id": "01J9SB000000000000000000M0",
+                            "span": {
+                                "desktop": 12,
+                                "tablet": 12,
+                                "mobile": 12
+                            },
+                            "style": [],
+                            "blocks": [
+                                {
+                                    "id": "01J9SB000000000000000000KZ",
+                                    "type": "heading",
+                                    "props": {
+                                        "text": "Common questions",
+                                        "level": "h2",
+                                        "link": null
+                                    },
+                                    "style": {
+                                        "fontFamily": {
+                                            "desktop": "var(--site-heading-font, \"Inter\", system-ui, sans-serif)"
+                                        },
+                                        "fontSize": {
+                                            "desktop": "32px",
+                                            "mobile": "26px"
+                                        },
+                                        "fontWeight": {
+                                            "desktop": "500"
+                                        },
+                                        "letterSpacing": {
+                                            "desktop": "-1.2px"
+                                        },
+                                        "color": {
+                                            "desktop": "var(--site-heading, #0f172a)"
+                                        },
+                                        "textAlign": {
+                                            "desktop": "center"
+                                        },
+                                        "lineHeight": {
+                                            "desktop": "1.12"
+                                        },
+                                        "margin": {
+                                            "desktop": "0"
+                                        },
+                                        "custom": {
+                                            "text-wrap": "balance"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "id": "01J9SB000000000000000000M4",
+                    "stackBelow": "mobile",
+                    "style": {
+                        "margin": {
+                            "desktop": {
+                                "left": "auto",
+                                "right": "auto"
+                            }
+                        },
+                        "gap": {
+                            "desktop": "var(--site-grid-gap, 16px)",
+                            "mobile": "16px"
+                        },
+                        "maxWidth": {
+                            "desktop": "820px"
+                        }
+                    },
+                    "columns": [
+                        {
+                            "id": "01J9SB000000000000000000M3",
+                            "span": {
+                                "desktop": 12,
+                                "tablet": 12,
+                                "mobile": 12
+                            },
+                            "style": [],
+                            "blocks": [
+                                {
+                                    "id": "01J9SB000000000000000000M2",
+                                    "type": "faq",
+                                    "props": {
+                                        "initialOpen": true,
+                                        "items": [
+                                            {
+                                                "question": "Do we own the prompts, code and fine-tuned weights at handover?",
+                                                "answer": "Yes. Everything runs in your own cloud or private VPC and transfers to your GitHub organization with zero lock-in licensing."
+                                            },
+                                            {
+                                                "question": "How long does a typical AI agent deployment take?",
+                                                "answer": "Discovery sprints finish in 2 weeks. Full production rollouts with telemetry and human escalation typically launch within 4 to 6 weeks."
+                                            },
+                                            {
+                                                "question": "How do you prevent hallucinations on customer-facing actions?",
+                                                "answer": "Every external tool call passes deterministic JSON schema validation, confidence thresholds and automatic human escalation rules."
+                                            },
+                                            {
+                                                "question": "Can you integrate directly with Modrix Commerce and our existing ERP?",
+                                                "answer": "Yes. We connect cleanly with REST/GraphQL commerce backends, HubSpot, Salesforce, Postgres, Stripe and internal webhooks."
+                                            }
+                                        ],
+                                        "allowMultipleOpen": false,
+                                        "emitSchemaOrg": true
+                                    },
+                                    "style": []
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "settings": {
+                "designCollection": "sable",
+                "designBlock": "faq"
+            }
+        },
+        {
+            "id": "01J9SB000000000000000000ME",
+            "name": "CTA \u00b7 Get Started with Sable",
+            "width": "full",
+            "sticky": false,
+            "style": {
+                "fontFamily": {
+                    "desktop": "var(--site-body-font, \"Inter\", system-ui, sans-serif)"
+                },
+                "color": {
+                    "desktop": "var(--site-body, #475569)"
+                },
+                "backgroundColor": {
+                    "desktop": "var(--site-background, #ffffff)"
+                },
+                "padding": {
+                    "desktop": {
+                        "top": "76px",
+                        "bottom": "76px",
+                        "left": "28px",
+                        "right": "28px"
+                    },
+                    "mobile": {
+                        "top": "48px",
+                        "bottom": "48px",
+                        "left": "18px",
+                        "right": "18px"
+                    }
+                }
+            },
+            "rows": [
+                {
+                    "id": "01J9SB000000000000000000MD",
+                    "stackBelow": "tablet",
+                    "style": {
+                        "margin": {
+                            "desktop": {
+                                "left": "auto",
+                                "right": "auto"
+                            }
+                        },
+                        "gap": {
+                            "desktop": "24px",
+                            "mobile": "20px"
+                        },
+                        "maxWidth": {
+                            "desktop": "var(--site-content-width, 1140px)"
+                        },
+                        "alignItems": {
+                            "desktop": "center"
+                        }
+                    },
+                    "columns": [
+                        {
+                            "id": "01J9SB000000000000000000M8",
+                            "span": {
+                                "desktop": 7,
+                                "tablet": 12,
+                                "mobile": 12
+                            },
+                            "style": {
+                                "gap": {
+                                    "desktop": "10px"
+                                }
+                            },
+                            "blocks": [
+                                {
+                                    "id": "01J9SB000000000000000000M6",
+                                    "type": "heading",
+                                    "props": {
+                                        "text": "Get started with Sable",
+                                        "level": "h2",
+                                        "link": null
+                                    },
+                                    "style": {
+                                        "fontFamily": {
+                                            "desktop": "var(--site-heading-font, \"Inter\", system-ui, sans-serif)"
+                                        },
+                                        "fontSize": {
+                                            "desktop": "40px",
+                                            "mobile": "30px"
+                                        },
+                                        "fontWeight": {
+                                            "desktop": "500"
+                                        },
+                                        "letterSpacing": {
+                                            "desktop": "-1.4px"
+                                        },
+                                        "color": {
+                                            "desktop": "var(--site-heading, #0f172a)"
+                                        },
+                                        "lineHeight": {
+                                            "desktop": "1.12"
+                                        },
+                                        "margin": {
+                                            "desktop": "0"
+                                        },
+                                        "custom": {
+                                            "text-wrap": "balance"
+                                        }
+                                    }
+                                },
+                                {
+                                    "id": "01J9SB000000000000000000M7",
+                                    "type": "paragraph",
+                                    "props": {
+                                        "text": "Book a 25-minute scoping session to identify your highest-impact automation candidate."
+                                    },
+                                    "style": {
+                                        "color": {
+                                            "desktop": "var(--site-muted, #64748b)"
+                                        },
+                                        "fontSize": {
+                                            "desktop": "16.5px"
+                                        },
+                                        "textAlign": {
+                                            "desktop": "left"
+                                        },
+                                        "lineHeight": {
+                                            "desktop": "1.65"
+                                        },
+                                        "maxWidth": {
+                                            "desktop": "66ch"
+                                        },
+                                        "custom": {
+                                            "text-wrap": "pretty"
+                                        }
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "id": "01J9SB000000000000000000MC",
+                            "span": {
+                                "desktop": 5,
+                                "tablet": 6,
+                                "mobile": 12
+                            },
+                            "style": {
+                                "justifyContent": {
+                                    "desktop": "center"
+                                }
+                            },
+                            "blocks": [
+                                {
+                                    "id": "01J9SB000000000000000000M9",
+                                    "type": "container",
+                                    "props": {
+                                        "layout": "row",
+                                        "gap": "12px"
+                                    },
+                                    "style": {
+                                        "alignItems": {
+                                            "desktop": "center"
+                                        },
+                                        "justifyContent": {
+                                            "desktop": "flex-end",
+                                            "mobile": "flex-start"
+                                        }
+                                    },
+                                    "children": [
+                                        {
+                                            "id": "01J9SB000000000000000000MA",
+                                            "type": "button",
+                                            "props": {
+                                                "label": "View all services",
+                                                "action": "url",
+                                                "url": "/services",
+                                                "targetStepId": null,
+                                                "targetBlockId": null,
+                                                "newTab": false,
+                                                "iconLeft": null,
+                                                "iconRight": null,
+                                                "fullWidth": false,
+                                                "size": "md",
+                                                "variant": "outline",
+                                                "sableRole": "btn-soft"
+                                            },
+                                            "style": {
+                                                "backgroundColor": {
+                                                    "desktop": "var(--sable-surface, var(--site-surface, #f5f3f1))"
+                                                },
+                                                "color": {
+                                                    "desktop": "var(--site-heading, #0f172a)"
+                                                },
+                                                "border": {
+                                                    "desktop": {
+                                                        "style": "solid",
+                                                        "width": "1px",
+                                                        "color": "var(--site-border, #e2e8f0)"
+                                                    }
+                                                },
+                                                "borderRadius": {
+                                                    "desktop": "999px"
+                                                },
+                                                "fontSize": {
+                                                    "desktop": "14px"
+                                                },
+                                                "fontWeight": {
+                                                    "desktop": "500"
+                                                },
+                                                "padding": {
+                                                    "desktop": {
+                                                        "top": "12px",
+                                                        "bottom": "12px",
+                                                        "left": "22px",
+                                                        "right": "22px"
+                                                    }
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "id": "01J9SB000000000000000000MB",
+                                            "type": "button",
+                                            "props": {
+                                                "label": "Start a project",
+                                                "action": "url",
+                                                "url": "/contact",
+                                                "targetStepId": null,
+                                                "targetBlockId": null,
+                                                "newTab": false,
+                                                "iconLeft": null,
+                                                "iconRight": null,
+                                                "fullWidth": false,
+                                                "size": "md",
+                                                "variant": "primary",
+                                                "sableRole": "btn-primary"
+                                            },
+                                            "style": {
+                                                "backgroundColor": {
+                                                    "desktop": "var(--site-heading, #0f172a)"
+                                                },
+                                                "color": {
+                                                    "desktop": "#ffffff"
+                                                },
+                                                "borderRadius": {
+                                                    "desktop": "999px"
+                                                },
+                                                "fontSize": {
+                                                    "desktop": "14px"
+                                                },
+                                                "fontWeight": {
+                                                    "desktop": "500"
+                                                },
+                                                "padding": {
+                                                    "desktop": {
+                                                        "top": "12px",
+                                                        "bottom": "12px",
+                                                        "left": "22px",
+                                                        "right": "22px"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "settings": {
+                "designCollection": "sable",
+                "designBlock": "cta-band"
+            }
+        }
+    ]
+}

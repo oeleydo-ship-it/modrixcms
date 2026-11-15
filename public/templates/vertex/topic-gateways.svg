@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 150" fill="none" width="220" height="150">
+  <defs>
+    <linearGradient id="tc3" x1="30" y1="130" x2="195" y2="25" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#0F172A"/>
+      <stop offset="60%" stop-color="#0369A1"/>
+      <stop offset="100%" stop-color="#0EA5E9"/>
+    </linearGradient>
+    <linearGradient id="tc3o" x1="90" y1="45" x2="132" y2="95" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#A855F7"/>
+      <stop offset="100%" stop-color="#2563EB"/>
+    </linearGradient>
+  </defs>
+  <ellipse cx="110" cy="76" rx="68" ry="40" transform="rotate(-12 110 76)" stroke="#CBD5E1" stroke-dasharray="3 4"/>
+  <path d="M95 28h88c5 0 8 6 4 10l-48 68c-3 4-7 6-12 6H44c-5 0-8-6-5-10l48-68c2-4 5-6 8-6z" fill="url(#tc3)"/>
+  <circle cx="112" cy="72" r="24" fill="url(#tc3o)" stroke="#BAE6FD" stroke-width="1.6"/>
+  <path d="M112 56v32M98 72h28" stroke="#E0F2FE" stroke-width="1.8" stroke-linecap="round"/>
+  <circle cx="112" cy="72" r="7" fill="#FFFFFF"/>
+  <circle cx="144" cy="54" r="3.5" fill="#6CC04A"/>
+  <circle cx="76" cy="90" r="3.5" fill="#38BDF8"/>
+</svg>

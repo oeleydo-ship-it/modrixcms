@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 220" fill="none">
+  <rect x="148" y="26" width="168" height="168" rx="34" fill="#F2EFEA"/>
+  <path d="M188 76C188 68.268 194.268 62 202 62H276V96H222V112H260C271.598 112 281 121.402 281 133V150C281 161.598 271.598 171 260 171H194V137H248V121H210C198.402 121 188 111.598 188 100V76Z" fill="#FDFCFC"/>
+  <text x="352" y="196" fill="#F2EFEA" font-family="Geist, Inter, system-ui, sans-serif" font-size="226" font-weight="600" letter-spacing="-9">Sable</text>
+</svg>

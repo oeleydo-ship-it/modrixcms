@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" fill="none">
+  <rect width="800" height="500" fill="#FDFCFC"/>
+  <line x1="60" y1="0" x2="60" y2="500" stroke="#EDEBE9"/>
+  <line x1="740" y1="0" x2="740" y2="500" stroke="#EDEBE9"/>
+  <line x1="0" y1="54" x2="800" y2="54" stroke="#EDEBE9"/>
+  <line x1="0" y1="316" x2="800" y2="316" stroke="#EDEBE9"/>
+  <text x="55" y="60" fill="#B7B1A9" font-family="monospace" font-size="14">+</text>
+  <text x="735" y="60" fill="#B7B1A9" font-family="monospace" font-size="14">+</text>
+  <text x="55" y="322" fill="#B7B1A9" font-family="monospace" font-size="14">+</text>
+  <text x="735" y="322" fill="#B7B1A9" font-family="monospace" font-size="14">+</text>
+
+  <!-- Header capsule bar -->
+  <rect x="86" y="16" width="20" height="20" rx="5" fill="#131314"/>
+  <text x="114" y="31" fill="#131314" font-family="Geist, sans-serif" font-size="14" font-weight="600">Sable</text>
+  <rect x="280" y="13" width="240" height="28" rx="14" fill="#FFFFFF" stroke="#EDEBE9"/>
+  <text x="400" y="31" text-anchor="middle" fill="#131314" font-family="Geist, sans-serif" font-size="11" font-weight="500">Pages ▾   About   Services   Blog</text>
+  <rect x="616" y="13" width="98" height="28" rx="14" fill="#131314"/>
+  <text x="665" y="31" text-anchor="middle" fill="#FDFCFC" font-family="Geist, sans-serif" font-size="11" font-weight="500">Start project</text>
+
+  <!-- Two-tone Hero -->
+  <text x="88" y="130" fill="#EB812C" font-family="Geist, sans-serif" font-size="30" font-weight="500" letter-spacing="-1">Get better leads</text>
+  <text x="88" y="164" fill="#131314" font-family="Geist, sans-serif" font-size="30" font-weight="500" letter-spacing="-1">using AI systems</text>
+  <rect x="88" y="182" width="220" height="8" rx="4" fill="#EDEBE9"/>
+  <rect x="88" y="196" width="170" height="8" rx="4" fill="#EDEBE9"/>
+  <rect x="88" y="220" width="110" height="30" rx="15" fill="#131314"/>
+  <circle cx="94" cy="272" r="4" fill="#EB812C"/>
+  <rect x="106" y="268" width="142" height="7" rx="3.5" fill="#EDEBE9"/>
+
+  <!-- Hero Chat Gradient Mockup -->
+  <defs>
+    <radialGradient id="sh" cx="75%" cy="25%" r="75%">
+      <stop offset="0%" stop-color="#EB812C"/>
+      <stop offset="70%" stop-color="#4A2516"/>
+      <stop offset="100%" stop-color="#1E1613"/>
+    </radialGradient>
+  </defs>
+  <rect x="424" y="84" width="290" height="206" rx="14" fill="url(#sh)"/>
+  <rect x="442" y="104" width="186" height="36" rx="10" fill="#FDFCFC" fill-opacity="0.95"/>
+  <rect x="506" y="150" width="190" height="32" rx="10" fill="#FFFFFF" fill-opacity="0.22"/>
+  <rect x="442" y="240" width="254" height="32" rx="16" fill="#131314" fill-opacity="0.5"/>
+
+  <!-- 4 Service Cards + Watermark Hint -->
+  <rect x="88" y="338" width="144" height="106" rx="12" fill="#F5F3F1"/>
+  <rect x="246" y="338" width="144" height="106" rx="12" fill="#F5F3F1"/>
+  <rect x="404" y="338" width="144" height="106" rx="12" fill="#F5F3F1"/>
+  <rect x="562" y="338" width="152" height="106" rx="12" fill="#F5F3F1"/>
+  <text x="400" y="498" text-anchor="middle" fill="#F2EFEA" font-family="Geist, sans-serif" font-size="68" font-weight="600" letter-spacing="-3">Sable</text>
+</svg>

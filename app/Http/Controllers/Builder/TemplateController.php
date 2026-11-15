@@ -9,6 +9,8 @@ use App\Cms\Builder\Schema\Collections\LarkspurDesigns;
 use App\Cms\Builder\Schema\Collections\LumikinDesigns;
 use App\Cms\Builder\Schema\Collections\MeridianDesigns;
 use App\Cms\Builder\Schema\Collections\PebblewoodDesigns;
+use App\Cms\Builder\Schema\Collections\SableDesigns;
+use App\Cms\Builder\Schema\Collections\VertexDesigns;
 use App\Cms\Builder\Schema\DesignBlockLibrary;
 use App\Cms\Builder\Schema\DocumentUpgrader;
 use App\Cms\Builder\Schema\DocumentValidator;
@@ -37,6 +39,8 @@ class TemplateController extends Controller
         'advisory' => 'Global advisory',
         'saas' => 'SaaS & mobile app',
         'healthcare' => 'Healthcare & clinics',
+        'enterprise' => 'Enterprise commerce',
+        'ai_agency' => 'AI & automation studio',
     ];
 
     public function __construct(
@@ -387,6 +391,24 @@ class TemplateController extends Controller
                 'category' => 'healthcare',
                 'payload' => fn (): array => ['document' => $page['document']],
             ], (new LarkspurDesigns)->pages()),
+
+            ...array_map(fn (array $page): array => [
+                'id' => $page['key'],
+                'name' => $page['name'],
+                'description' => $page['description'],
+                'type' => 'page',
+                'category' => 'enterprise',
+                'payload' => fn (): array => ['document' => $page['document']],
+            ], (new VertexDesigns)->pages()),
+
+            ...array_map(fn (array $page): array => [
+                'id' => $page['key'],
+                'name' => $page['name'],
+                'description' => $page['description'],
+                'type' => 'page',
+                'category' => 'ai_agency',
+                'payload' => fn (): array => ['document' => $page['document']],
+            ], (new SableDesigns)->pages()),
         ];
     }
 
