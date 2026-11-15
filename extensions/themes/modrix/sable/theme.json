@@ -163,9 +163,9 @@
                 "site_footer": true
             },
             {
-                "title": "Blog",
-                "slug": "blog",
-                "file": "demo/blog.json",
+                "title": "Journal",
+                "slug": "journal",
+                "file": "demo/journal.json",
                 "menu": true,
                 "site_header": true,
                 "site_footer": true

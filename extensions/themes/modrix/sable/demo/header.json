@@ -159,8 +159,8 @@
                                                                 "icon": "calculator"
                                                             },
                                                             {
-                                                                "label": "Blog",
-                                                                "url": "/blog",
+                                                                "label": "Journal",
+                                                                "url": "/journal",
                                                                 "description": "Resources \u00b7 Articles",
                                                                 "icon": "book-open"
                                                             },
@@ -187,8 +187,8 @@
                                                         "url": "/services"
                                                     },
                                                     {
-                                                        "label": "Blog",
-                                                        "url": "/blog"
+                                                        "label": "Journal",
+                                                        "url": "/journal"
                                                     }
                                                 ],
                                                 "orientation": "horizontal",

@@ -5603,7 +5603,7 @@
                                     "props": {
                                         "label": "View all articles",
                                         "action": "url",
-                                        "url": "/blog",
+                                        "url": "/journal",
                                         "targetStepId": null,
                                         "targetBlockId": null,
                                         "newTab": false,
@@ -5695,7 +5695,7 @@
                                                 "src": "/templates/sable/article-1.svg",
                                                 "alt": "Why deterministic routers beat giant multi-agent swarms",
                                                 "caption": null,
-                                                "link": "/blog",
+                                                "link": "/journal",
                                                 "loading": "lazy",
                                                 "objectFit": "cover"
                                             },
@@ -5741,7 +5741,7 @@
                                             "props": {
                                                 "text": "Why deterministic routers beat giant multi-agent swarms",
                                                 "level": "h4",
-                                                "link": "/blog"
+                                                "link": "/journal"
                                             },
                                             "style": {
                                                 "fontFamily": {
@@ -5803,7 +5803,7 @@
                                             "props": {
                                                 "label": "Read more \u2192",
                                                 "action": "url",
-                                                "url": "/blog",
+                                                "url": "/journal",
                                                 "targetStepId": null,
                                                 "targetBlockId": null,
                                                 "newTab": false,
@@ -5857,7 +5857,7 @@
                                                 "src": "/templates/sable/article-2.svg",
                                                 "alt": "Building an eval harness before writing your first prompt",
                                                 "caption": null,
-                                                "link": "/blog",
+                                                "link": "/journal",
                                                 "loading": "lazy",
                                                 "objectFit": "cover"
                                             },
@@ -5903,7 +5903,7 @@
                                             "props": {
                                                 "text": "Building an eval harness before writing your first prompt",
                                                 "level": "h4",
-                                                "link": "/blog"
+                                                "link": "/journal"
                                             },
                                             "style": {
                                                 "fontFamily": {
@@ -5965,7 +5965,7 @@
                                             "props": {
                                                 "label": "Read more \u2192",
                                                 "action": "url",
-                                                "url": "/blog",
+                                                "url": "/journal",
                                                 "targetStepId": null,
                                                 "targetBlockId": null,
                                                 "newTab": false,
@@ -6019,7 +6019,7 @@
                                                 "src": "/templates/sable/article-3.svg",
                                                 "alt": "Grounded retrieval over complex product & policy catalogs",
                                                 "caption": null,
-                                                "link": "/blog",
+                                                "link": "/journal",
                                                 "loading": "lazy",
                                                 "objectFit": "cover"
                                             },
@@ -6065,7 +6065,7 @@
                                             "props": {
                                                 "text": "Grounded retrieval over complex product & policy catalogs",
                                                 "level": "h4",
-                                                "link": "/blog"
+                                                "link": "/journal"
                                             },
                                             "style": {
                                                 "fontFamily": {
@@ -6127,7 +6127,7 @@
                                             "props": {
                                                 "label": "Read more \u2192",
                                                 "action": "url",
-                                                "url": "/blog",
+                                                "url": "/journal",
                                                 "targetStepId": null,
                                                 "targetBlockId": null,
                                                 "newTab": false,

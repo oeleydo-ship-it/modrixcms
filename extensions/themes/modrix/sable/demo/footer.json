@@ -287,8 +287,8 @@
                                                     "props": {
                                                         "items": [
                                                             {
-                                                                "label": "Blog",
-                                                                "url": "/blog"
+                                                                "label": "Journal",
+                                                                "url": "/journal"
                                                             },
                                                             {
                                                                 "label": "Case studies",

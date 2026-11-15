@@ -294,7 +294,7 @@ final class SableDesigns
             [
                 'key' => 'sable-blog',
                 'name' => 'Sable · Journal',
-                'slug' => 'blog',
+                'slug' => 'journal',
                 'category' => 'ai_agency',
                 'description' => 'Field notes on retrieval evaluation, deterministic routing guardrails and production latency engineering.',
                 'sections' => fn (): array => [
@@ -351,14 +351,14 @@ final class SableDesigns
                         ['label' => 'Services', 'url' => '/services', 'description' => 'Resources · Capabilities', 'icon' => 'workflow'],
                         ['label' => 'Case studies', 'url' => '/case-studies', 'description' => 'Resources · Outcomes', 'icon' => 'layers'],
                         ['label' => 'Pricing', 'url' => '/pricing', 'description' => 'Resources · Sprints', 'icon' => 'calculator'],
-                        ['label' => 'Blog', 'url' => '/blog', 'description' => 'Resources · Articles', 'icon' => 'book-open'],
+                        ['label' => 'Journal', 'url' => '/journal', 'description' => 'Resources · Articles', 'icon' => 'book-open'],
                         ['label' => 'Contact', 'url' => '/contact', 'description' => 'Reach Out · Brief', 'icon' => 'mail'],
                         ['label' => 'FAQ & Support', 'url' => '/contact#faq', 'description' => 'Legal · Direct Desk', 'icon' => 'shield-check'],
                     ],
                 ],
                 ['label' => 'About', 'url' => '/about'],
                 ['label' => 'Services', 'url' => '/services'],
-                ['label' => 'Blog', 'url' => '/blog'],
+                ['label' => 'Journal', 'url' => '/journal'],
             ],
             'orientation' => 'horizontal',
             'mobileBehaviour' => 'drawer',
@@ -429,7 +429,7 @@ final class SableDesigns
                     ['label' => 'Contact', 'url' => '/contact'],
                 ]),
                 $colGroup('Resources', [
-                    ['label' => 'Blog', 'url' => '/blog'],
+                    ['label' => 'Journal', 'url' => '/journal'],
                     ['label' => 'Case studies', 'url' => '/case-studies'],
                     ['label' => 'FAQ', 'url' => '/contact#faq'],
                 ]),
@@ -1108,7 +1108,7 @@ final class SableDesigns
                 $this->image(self::ASSETS.$img, $title, [
                     'width' => $this->responsive('100%'),
                     'borderRadius' => $this->responsive('14px'),
-                ], '/blog'),
+                ], '/journal'),
                 $this->paragraph($date, DesignTokens::ref('muted', '#716b63'), '13px'),
                 $this->h4($title, [
                     'fontSize' => $this->responsive('19px'),
@@ -1116,9 +1116,9 @@ final class SableDesigns
                     'letterSpacing' => $this->responsive('-0.4px'),
                     'color' => $this->responsive(DesignTokens::ref('heading', '#131314')),
                     'lineHeight' => $this->responsive('1.3'),
-                ], '/blog'),
+                ], '/journal'),
                 $this->paragraph($excerpt, DesignTokens::ref('muted', '#716b63'), '14px', 'left', ['lineHeight' => $this->responsive('1.55')]),
-                $this->inlineLink('Read more →', '/blog'),
+                $this->inlineLink('Read more →', '/journal'),
             ],
         ]]);
 
@@ -1132,7 +1132,7 @@ final class SableDesigns
                 ]),
                 $this->paragraph('Notes from production evaluations, agent routing and latency tuning.', DesignTokens::ref('muted', '#716b63'), '16px'),
             ], ['gap' => $this->responsive('8px')]),
-            $this->column(4, [$this->softPill('View all articles', '/blog')], [
+            $this->column(4, [$this->softPill('View all articles', '/journal')], [
                 'justifyContent' => $this->responsive('center'),
                 'alignItems' => ['desktop' => 'flex-end', 'mobile' => 'flex-start'],
             ]),

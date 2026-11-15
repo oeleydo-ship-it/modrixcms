@@ -99,7 +99,7 @@ class SableThemeTest extends TestCase
         $this->assertStringContainsString('--sable-watermark-display: none;', $homeHtml);
         $this->assertStringContainsString('"designCollection":"sable"', $homeHtml);
 
-        foreach (['about', 'services', 'case-studies', 'pricing', 'blog', 'contact'] as $slug) {
+        foreach (['about', 'services', 'case-studies', 'pricing', 'journal', 'contact'] as $slug) {
             $body = (string) $this->get('/'.$slug)->assertOk()->getContent();
             $this->assertStringContainsString('"designCollection":"sable"', $body);
         }
