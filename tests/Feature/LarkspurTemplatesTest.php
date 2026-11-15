@@ -46,12 +46,12 @@ class LarkspurTemplatesTest extends TestCase
             'key',
         );
 
-        foreach (['larkspur-header', 'larkspur-hero', 'larkspur-marquee', 'larkspur-visit-types', 'larkspur-treat', 'larkspur-clinics', 'larkspur-providers', 'larkspur-coverage', 'larkspur-reviews', 'larkspur-faq', 'larkspur-book-band', 'larkspur-footer', 'larkspur-stats', 'larkspur-services-grid', 'larkspur-steps', 'larkspur-spotlight', 'larkspur-hours', 'larkspur-contact', 'larkspur-cta-banner', 'larkspur-health-notes', 'larkspur-services-catalog', 'larkspur-wide-photo'] as $key) {
+        foreach (['larkspur-header', 'larkspur-hero', 'larkspur-marquee', 'larkspur-visit-types', 'larkspur-treat', 'larkspur-clinics', 'larkspur-providers', 'larkspur-coverage', 'larkspur-reviews', 'larkspur-faq', 'larkspur-book-band', 'larkspur-footer', 'larkspur-stats', 'larkspur-services-grid', 'larkspur-steps', 'larkspur-spotlight', 'larkspur-hours', 'larkspur-contact', 'larkspur-cta-banner', 'larkspur-health-notes', 'larkspur-services-catalog', 'larkspur-wide-photo', 'larkspur-service-hero', 'larkspur-service-details'] as $key) {
             $this->assertContains($key, $keys);
         }
     }
 
-    public function test_all_seven_larkspur_page_templates_list_and_install_cleanly(): void
+    public function test_all_larkspur_page_templates_list_and_install_cleanly(): void
     {
         $admin = $this->admin();
 
@@ -65,7 +65,7 @@ class LarkspurTemplatesTest extends TestCase
             fn (array $row): bool => str_starts_with((string) ($row['id'] ?? ''), 'larkspur-'),
         ));
 
-        $this->assertCount(7, $larkspurTemplates);
+        $this->assertCount(8, $larkspurTemplates);
 
         foreach ($larkspurTemplates as $template) {
             $this->assertSame('Healthcare & clinics', $template['category_label']);

@@ -39,11 +39,11 @@ class LarkspurThemeTest extends TestCase
 
         $json = file_get_contents(base_path('extensions/themes/modrix/larkspur/theme.json'));
         $this->assertNotFalse($json);
-        $this->assertCount(7, json_decode($json, true)['demo']['pages']);
+        $this->assertCount(15, json_decode($json, true)['demo']['pages']);
         $this->assertStringNotContainsStringIgnoringCase('housecall', $json);
     }
 
-    public function test_larkspur_demo_imports_seven_pages_that_follow_theme_settings(): void
+    public function test_larkspur_demo_imports_main_and_service_pages_that_follow_theme_settings(): void
     {
         $this->confirmedAdmin();
 
@@ -51,9 +51,10 @@ class LarkspurThemeTest extends TestCase
 
         $this->post(route('admin.themes.demo', ['modrix', 'larkspur']), ['set_home' => true, 'replace' => true])
             ->assertRedirect(route('admin.themes.index'))
-            ->assertSessionHas('status', fn ($status) => str_contains($status, '7 new and 0 updated pages'));
+            ->assertSessionHas('status', fn ($status) => str_contains($status, '15 new and 0 updated pages'));
 
-        $this->assertSame(7, Page::query()->regular()->where('theme', 'modrix/larkspur')->count());
+        $this->assertSame(15, Page::query()->regular()->where('theme', 'modrix/larkspur')->count());
+        $this->assertFalse(Page::query()->regular()->where('slug', 'annual-physical')->firstOrFail()->show_in_menu);
         $this->assertTrue(Page::query()->regular()->where('theme', 'modrix/larkspur')->where('slug', 'home')->firstOrFail()->is_home);
 
         $header = Page::query()->where('role', Page::ROLE_HEADER)->where('theme', 'modrix/larkspur')->firstOrFail();
@@ -74,7 +75,9 @@ class LarkspurThemeTest extends TestCase
         $this->assertStringContainsString('--site-button-radius:10px;', $homeHtml);
         $this->assertStringContainsString('"designCollection":"larkspur"', $homeHtml);
 
-        foreach (['services', 'clinicians', 'locations', 'fees', 'new-patients', 'contact'] as $slug) {
+        $this->assertStringContainsString('annual-physical', (string) $this->get('/services')->assertOk()->getContent());
+
+        foreach (['services', 'clinicians', 'locations', 'fees', 'new-patients', 'contact', 'colds-flu-and-fevers', 'annual-physical'] as $slug) {
             $this->assertStringContainsString('"designCollection":"larkspur"', (string) $this->get('/'.$slug)->assertOk()->getContent());
         }
     }

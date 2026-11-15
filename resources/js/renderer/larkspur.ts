@@ -53,6 +53,90 @@ function splitWords(heading: HTMLElement): void {
     walk(heading);
 }
 
+/**
+ * Makes pill tab bars slide: drag with a mouse (touch already swipes), the clicked tab
+ * glides to the centre, and `data-lk-more` tells the CSS which edge has more tabs.
+ */
+function wireTabSliders(page: HTMLElement): Array<() => void> {
+    const cleanups: Array<() => void> = [];
+
+    page.querySelectorAll<HTMLElement>('[data-larkspur-role~="faq-tabs"] [role="tablist"]').forEach((list) => {
+        const update = (): void => {
+            const max = list.scrollWidth - list.clientWidth;
+            list.dataset.lkMore = max <= 1 ? 'none' : list.scrollLeft <= 8 ? 'end' : list.scrollLeft >= max - 8 ? 'start' : 'both';
+        };
+
+        let startX = 0;
+        let startScroll = 0;
+        let dragging = false;
+        let moved = false;
+
+        const onMove = (event: PointerEvent): void => {
+            const dx = event.clientX - startX;
+            if (Math.abs(dx) > 4) {
+                moved = true;
+                list.classList.add('is-dragging');
+            }
+            list.scrollLeft = startScroll - dx;
+        };
+        const onUp = (): void => {
+            dragging = false;
+            // The click that follows a drag fires right after this; clear the flag once it has passed.
+            window.setTimeout(() => {
+                moved = false;
+            }, 0);
+            list.classList.remove('is-dragging');
+            window.removeEventListener('pointermove', onMove);
+            window.removeEventListener('pointerup', onUp);
+        };
+        const onDown = (event: PointerEvent): void => {
+            if (event.pointerType !== 'mouse' || event.button !== 0 || list.scrollWidth <= list.clientWidth + 1) {
+                return;
+            }
+            dragging = true;
+            moved = false;
+            startX = event.clientX;
+            startScroll = list.scrollLeft;
+            window.addEventListener('pointermove', onMove);
+            window.addEventListener('pointerup', onUp);
+        };
+        // A drag must not count as a click on the tab it ended over.
+        const onClickCapture = (event: MouseEvent): void => {
+            if (moved) {
+                event.stopPropagation();
+                event.preventDefault();
+                moved = false;
+            }
+        };
+        const onClick = (event: MouseEvent): void => {
+            const tab = (event.target as HTMLElement).closest<HTMLElement>('[role="tab"]');
+            if (!tab || dragging) {
+                return;
+            }
+            const listRect = list.getBoundingClientRect();
+            const tabRect = tab.getBoundingClientRect();
+            list.scrollBy({ left: tabRect.left - listRect.left - (listRect.width - tabRect.width) / 2, behavior: 'smooth' });
+        };
+
+        update();
+        list.addEventListener('scroll', update, { passive: true });
+        list.addEventListener('pointerdown', onDown);
+        list.addEventListener('click', onClickCapture, true);
+        list.addEventListener('click', onClick);
+        window.addEventListener('resize', update);
+        cleanups.push(() => {
+            list.removeEventListener('scroll', update);
+            list.removeEventListener('pointerdown', onDown);
+            list.removeEventListener('click', onClickCapture, true);
+            list.removeEventListener('click', onClick);
+            window.removeEventListener('resize', update);
+            onUp();
+        });
+    });
+
+    return cleanups;
+}
+
 export function useLarkspurMotion(root: RefObject<HTMLDivElement | null>, editable: boolean, revision: unknown): void {
     useEffect(() => {
         const page = root.current;
@@ -60,7 +144,7 @@ export function useLarkspurMotion(root: RefObject<HTMLDivElement | null>, editab
             return;
         }
 
-        const cleanups: Array<() => void> = [];
+        const cleanups: Array<() => void> = [...wireTabSliders(page)];
 
         const headers = Array.from(page.querySelectorAll<HTMLElement>('[data-larkspur="header"]'));
         const onScroll = (): void => {
@@ -191,6 +275,28 @@ const mobileHeaderRules = (scope: string): string => `
   }
 `;
 
+/** Pill tab bars (services filter, FAQ topics) scroll sideways on phones and keep their full labels. */
+const mobileTabRules = (scope: string): string => `
+  ${scope} [data-larkspur-role~="faq-tabs"] [role="tablist"] {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow-x: auto !important;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+  ${scope} [data-larkspur-role~="faq-tabs"] [role="tablist"]::-webkit-scrollbar { display: none; }
+  ${scope} [data-larkspur-role~="faq-tabs"] [role="tab"] {
+    flex: 0 0 auto !important;
+    overflow: visible !important;
+    text-overflow: clip !important;
+    white-space: nowrap !important;
+    font-size: 14px !important;
+    padding: 8px 16px !important;
+  }
+`;
+
 export const LARKSPUR_CSS = `
 .fnl-page [data-larkspur] { font-family: var(--site-body-font, 'Mulish', sans-serif); letter-spacing: -0.01rem; }
 .fnl-page [data-larkspur] :is(h1, h2, h3, h4) { font-family: var(--site-heading-font, 'Instrument Sans', sans-serif); }
@@ -271,6 +377,20 @@ export const LARKSPUR_CSS = `
 .fnl-page [data-larkspur-role~="eyebrow"] > div { align-items: center; flex-wrap: nowrap; }
 .fnl-page [data-larkspur-role~="eyebrow-dot"] svg { padding: 3px; }
 
+/* Photo cards: captions, plaques and badges sit at the bottom of the photo */
+.fnl-page [data-larkspur-role~="clinic-photo"],
+.fnl-page [data-larkspur-role~="photo-card"],
+.fnl-page [data-larkspur-role~="provider-photo"] { display: flex; flex-direction: column; justify-content: flex-end; }
+.fnl-page [data-larkspur-role~="clinic-photo"] > div,
+.fnl-page [data-larkspur-role~="photo-card"] > div,
+.fnl-page [data-larkspur-role~="provider-photo"] > div { flex: 0 0 auto; }
+
+/* Icon + text lines stay on one row; the text takes the remaining width */
+.fnl-page [data-larkspur-role~="icon-line"] > div { flex-wrap: nowrap !important; }
+.fnl-page [data-larkspur-role~="icon-line"] > div > :last-child { flex: 1 1 0; min-width: 0; }
+.fnl-page [data-larkspur-role~="clinic-plaque"] > div { flex-wrap: nowrap !important; align-items: center; }
+.fnl-page [data-larkspur-role~="clinic-plaque"] img { width: 32px; height: 32px; }
+
 /* Chips with a leading dot */
 .fnl-page [data-larkspur-role~="chip"] p { display: inline-flex; align-items: center; gap: 6px; }
 .fnl-page [data-larkspur-role~="chip"] p::before {
@@ -335,6 +455,23 @@ export const LARKSPUR_CSS = `
 .fnl-page [data-larkspur-role~="faq-tabs"] [role="tab"] { padding: 8px 16px !important; font-weight: 500 !important; }
 .fnl-page [data-larkspur-role~="faq-tabs"] [role="tabpanel"] { border-top: 1px solid var(--site-border, #e1e4e8); animation: lk-fade 400ms ease both; }
 
+/* Sliding tab bars: grab cursor and a soft fade on the edge that has more tabs */
+.fnl-page [data-larkspur-role~="faq-tabs"] [role="tablist"][data-lk-more]:not([data-lk-more="none"]) { cursor: grab; }
+.fnl-page [data-larkspur-role~="faq-tabs"] [role="tablist"].is-dragging { cursor: grabbing; user-select: none; scroll-snap-type: none; }
+.fnl-page [data-larkspur-role~="faq-tabs"] [role="tablist"].is-dragging [role="tab"] { pointer-events: none; }
+.fnl-page [data-larkspur-role~="faq-tabs"] [role="tablist"][data-lk-more="end"] {
+  -webkit-mask-image: linear-gradient(to right, #000 calc(100% - 48px), transparent);
+  mask-image: linear-gradient(to right, #000 calc(100% - 48px), transparent);
+}
+.fnl-page [data-larkspur-role~="faq-tabs"] [role="tablist"][data-lk-more="start"] {
+  -webkit-mask-image: linear-gradient(to left, #000 calc(100% - 48px), transparent);
+  mask-image: linear-gradient(to left, #000 calc(100% - 48px), transparent);
+}
+.fnl-page [data-larkspur-role~="faq-tabs"] [role="tablist"][data-lk-more="both"] {
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 48px, #000 calc(100% - 48px), transparent);
+  mask-image: linear-gradient(to right, transparent, #000 48px, #000 calc(100% - 48px), transparent);
+}
+
 /* Service filter tabs: pill bar like the FAQ, cards below without a rule */
 .fnl-page [data-larkspur-role~="service-tabs"] { --fnl-gap: 32px; }
 .fnl-page [data-larkspur-role~="service-tabs"] [role="tabpanel"] { border-top: 0 !important; }
@@ -345,6 +482,11 @@ export const LARKSPUR_CSS = `
 .fnl-page [data-larkspur-role~="service-photo-card"] > .fnl-nested-columns > .fnl-block:first-child { overflow: hidden; border-radius: 12px; }
 .fnl-page:not(.fnl-editable) [data-larkspur-role~="service-photo-card"]:hover img { transform: scale(1.05); }
 .fnl-page [data-larkspur-role~="service-foot"] > div { flex-wrap: nowrap !important; }
+
+/* Service pages: breadcrumb and numbered expect steps */
+.fnl-page [data-larkspur-role~="breadcrumb"] a { color: var(--site-primary, #1a6083); }
+.fnl-page [data-larkspur-role~="expect-step"] > div { flex-wrap: nowrap !important; align-items: flex-start; }
+.fnl-page [data-larkspur-role~="expect-list"] > div { border-bottom: 1px solid var(--site-border, #e1e4e8); }
 
 /* FAQ rows */
 .fnl-page [data-larkspur-role~="faq-list"] > div > div { border-bottom-color: var(--site-border, #e1e4e8) !important; }
@@ -389,6 +531,10 @@ export const LARKSPUR_CSS = `
   .fnl-page [data-larkspur-role~="category-tabs"] [role="tablist"] { flex-direction: row !important; flex-wrap: wrap; min-width: 0 !important; }
   .fnl-page [data-larkspur-role~="category-tabs"] [role="tablist"]::before { display: none; }
 }
+@media (max-width: 767px) {
+  ${mobileTabRules('.fnl-page')}
+}
+${mobileTabRules('.fnl-page[data-fnl-breakpoint="mobile"]')}
 ${mobileHeaderRules('.fnl-page[data-fnl-breakpoint="mobile"]')}
 ${mobileHeaderRules('.fnl-page[data-fnl-breakpoint="tablet"]')}
 

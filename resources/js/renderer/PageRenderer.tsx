@@ -80,7 +80,7 @@ const BASE_CSS = `
 :where(.fnl-block[data-fnl-type="feature_cards"],.fnl-block[data-fnl-type="testimonial"],.fnl-block[data-fnl-type="pricing_table"]) :where(article,li,figure,blockquote){border-radius:var(--site-card-radius,inherit)}
 .fnl-page,.fnl-page *,.fnl-page *::before,.fnl-page *::after{box-sizing:border-box}
 /* Section content limits must not inherit the body maximum width. */
-.fnl-section{position:relative;width:100%;--fnl-max-width:initial}
+:where(.fnl-section){position:relative;width:100%;--fnl-max-width:initial}
 .fnl-section[data-width="boxed"]{max-width:var(--fnl-content-width,1140px);margin-inline:auto}
 .fnl-section[data-width="narrow"]{max-width:720px;margin-inline:auto}
 .fnl-section-inner{position:relative;z-index:1;margin-inline:auto;width:100%;max-width:var(--fnl-content-width,1140px)}
@@ -103,7 +103,7 @@ const BASE_CSS = `
 [data-fnl-background-image="true"]>* ,[data-fnl-background-video="true"]>*,[data-fnl-overlay="true"]>*{position:relative;z-index:1}
 .fnl-row{margin-inline:auto;position:relative;display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:24px;width:100%}
 .fnl-column{max-width:100%;position:relative;display:flex;flex-direction:column;gap:16px;min-width:0}
-.fnl-block{position:relative;min-width:0;--fnl-padding:initial;--fnl-background-color:initial;--fnl-background-image:initial;--fnl-color:initial;--fnl-border:initial;--fnl-border-top:initial;--fnl-border-right:initial;--fnl-border-bottom:initial;--fnl-border-left:initial;--fnl-border-radius:initial;--fnl-box-shadow:initial;--fnl-gap:initial;--fnl-height:initial}
+:where(.fnl-block){position:relative;min-width:0;--fnl-padding:initial;--fnl-background-color:initial;--fnl-background-image:initial;--fnl-color:initial;--fnl-border:initial;--fnl-border-top:initial;--fnl-border-right:initial;--fnl-border-bottom:initial;--fnl-border-left:initial;--fnl-border-radius:initial;--fnl-box-shadow:initial;--fnl-gap:initial;--fnl-height:initial}
 .fnl-block[data-fnl-raw]{display:block}
 .fnl-page img{max-width:100%}
 .fnl-page [data-fnl-effect~="lift"]{transition:transform .45s cubic-bezier(.2,.7,.2,1),box-shadow .45s cubic-bezier(.2,.7,.2,1)}

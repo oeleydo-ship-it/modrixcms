@@ -3,12 +3,16 @@
     "type": "theme",
     "display_name": "Larkspur Family Health",
     "version": "1.0.0",
-    "description": "Calm family clinic theme with Instrument Sans headlines, Mulish body text and an ink-blue and copper palette. Includes a full-bleed photo hero with word-by-word headline reveals, a promise marquee, visit price tickets, tabbed care categories, clinic and clinician cards, an insurance and fee card, a review carousel, a tabbed FAQ and a booking band, plus 21 reusable blocks and 7 page templates, all editable in Theme settings.",
+    "description": "Calm family clinic theme with Instrument Sans headlines, Mulish body text and an ink-blue and copper palette. Includes a full-bleed photo hero with word-by-word headline reveals, a promise marquee, visit price tickets, tabbed care categories, clinic and clinician cards, an insurance and fee card, a review carousel, a tabbed FAQ and a booking band, plus 25 reusable blocks, 8 page templates and 8 service pages, all editable in Theme settings.",
     "cms_version": "^1.0",
     "author": "Modrix",
     "license": "MIT",
-    "styles": ["public/theme.css"],
-    "scripts": ["public/theme.js"],
+    "styles": [
+        "public/theme.css"
+    ],
+    "scripts": [
+        "public/theme.js"
+    ],
     "screenshot": "public/screenshot.svg",
     "settings": [],
     "design": {
@@ -73,13 +77,127 @@
         "header": "demo/header.json",
         "footer": "demo/footer.json",
         "pages": [
-            { "title": "Home", "slug": "home", "file": "demo/home.json", "home": true, "menu": true, "site_header": true, "site_footer": true },
-            { "title": "Services", "slug": "services", "file": "demo/services.json", "menu": true, "site_header": true, "site_footer": true },
-            { "title": "Clinicians", "slug": "clinicians", "file": "demo/clinicians.json", "menu": true, "site_header": true, "site_footer": true },
-            { "title": "Locations", "slug": "locations", "file": "demo/locations.json", "menu": true, "site_header": true, "site_footer": true },
-            { "title": "Fees & insurance", "slug": "fees", "file": "demo/fees.json", "menu": true, "site_header": true, "site_footer": true },
-            { "title": "New patients", "slug": "new-patients", "file": "demo/new-patients.json", "menu": true, "site_header": true, "site_footer": true },
-            { "title": "Contact", "slug": "contact", "file": "demo/contact.json", "menu": true, "site_header": true, "site_footer": true }
+            {
+                "title": "Home",
+                "slug": "home",
+                "file": "demo/home.json",
+                "home": true,
+                "menu": true,
+                "site_header": true,
+                "site_footer": true
+            },
+            {
+                "title": "Services",
+                "slug": "services",
+                "file": "demo/services.json",
+                "menu": true,
+                "site_header": true,
+                "site_footer": true
+            },
+            {
+                "title": "Clinicians",
+                "slug": "clinicians",
+                "file": "demo/clinicians.json",
+                "menu": true,
+                "site_header": true,
+                "site_footer": true
+            },
+            {
+                "title": "Locations",
+                "slug": "locations",
+                "file": "demo/locations.json",
+                "menu": true,
+                "site_header": true,
+                "site_footer": true
+            },
+            {
+                "title": "Fees & insurance",
+                "slug": "fees",
+                "file": "demo/fees.json",
+                "menu": true,
+                "site_header": true,
+                "site_footer": true
+            },
+            {
+                "title": "New patients",
+                "slug": "new-patients",
+                "file": "demo/new-patients.json",
+                "menu": true,
+                "site_header": true,
+                "site_footer": true
+            },
+            {
+                "title": "Contact",
+                "slug": "contact",
+                "file": "demo/contact.json",
+                "menu": true,
+                "site_header": true,
+                "site_footer": true
+            },
+            {
+                "title": "Colds, flu and fevers",
+                "slug": "colds-flu-and-fevers",
+                "file": "demo/colds-flu-and-fevers.json",
+                "menu": false,
+                "site_header": true,
+                "site_footer": true
+            },
+            {
+                "title": "Annual physical",
+                "slug": "annual-physical",
+                "file": "demo/annual-physical.json",
+                "menu": false,
+                "site_header": true,
+                "site_footer": true
+            },
+            {
+                "title": "Well-child visits",
+                "slug": "well-child-visits",
+                "file": "demo/well-child-visits.json",
+                "menu": false,
+                "site_header": true,
+                "site_footer": true
+            },
+            {
+                "title": "High blood pressure",
+                "slug": "high-blood-pressure",
+                "file": "demo/high-blood-pressure.json",
+                "menu": false,
+                "site_header": true,
+                "site_footer": true
+            },
+            {
+                "title": "Diabetes care",
+                "slug": "diabetes-care",
+                "file": "demo/diabetes-care.json",
+                "menu": false,
+                "site_header": true,
+                "site_footer": true
+            },
+            {
+                "title": "Anxiety and low mood",
+                "slug": "anxiety-and-low-mood",
+                "file": "demo/anxiety-and-low-mood.json",
+                "menu": false,
+                "site_header": true,
+                "site_footer": true
+            },
+            {
+                "title": "Flu and COVID shots",
+                "slug": "flu-and-covid-shots",
+                "file": "demo/flu-and-covid-shots.json",
+                "menu": false,
+                "site_header": true,
+                "site_footer": true
+            },
+            {
+                "title": "Bloodwork and labs",
+                "slug": "bloodwork-and-labs",
+                "file": "demo/bloodwork-and-labs.json",
+                "menu": false,
+                "site_header": true,
+                "site_footer": true
+            }
         ]
     }
 }

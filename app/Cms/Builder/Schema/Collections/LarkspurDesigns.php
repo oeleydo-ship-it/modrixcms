@@ -83,6 +83,8 @@ final class LarkspurDesigns
             $this->design('larkspur-page-hero', 'Larkspur · Inner Page Header', 'hero', 'Quiet inner page header with eyebrow pill, two-tone headline and supporting text on a soft blue band.', [$this->pageHeroSection('Our services', 'Care for', 'every stage of life', 'From same-day sick visits to long-term care, our family clinicians look after children, adults and older patients under one roof.')]),
             $this->design('larkspur-stats', 'Larkspur · Clinic Numbers Band', 'social_proof', 'Four large figures with captions separated by hairlines on a white band.', [$this->statsSection()]),
             $this->design('larkspur-services-catalog', 'Larkspur · Filterable Photo Service Cards', 'content', 'Pill filter tabs (All services plus each care area) over two-column photo cards with search aliases, chips, price and a view link.', [$this->servicesCatalogSection()]),
+            $this->design('larkspur-service-hero', 'Larkspur · Service Photo Header', 'hero', 'Breadcrumb, care-area eyebrow, service name, lead text, visit and price chips and booking buttons beside a rounded photo.', [$this->serviceHeroSection($this->services()[0])]),
+            $this->design('larkspur-service-details', 'Larkspur · Service Details & Visit Card', 'content', 'What we help with tick list and numbered what-to-expect steps beside a sticky visit details card with price, length, clinician and booking.', [$this->serviceInfoSection($this->services()[0])]),
             $this->design('larkspur-wide-photo', 'Larkspur · Wide Rounded Photo Band', 'media', 'Full content-width rounded photo that settles from a gentle zoom, for page openers and story breaks.', [$this->widePhotoSection()]),
             $this->design('larkspur-services-grid', 'Larkspur · Services Icon Grid', 'content', 'Six service cards with soft icon wells, short descriptions and arrow links.', [$this->servicesGridSection()]),
             $this->design('larkspur-steps', 'Larkspur · New Patient Steps', 'content', 'Three numbered steps for joining the practice, each in a bordered card with a checklist.', [$this->stepsSection()]),
@@ -113,7 +115,12 @@ final class LarkspurDesigns
                     $this->footerSection(),
                 ]),
             ];
-        }, $this->pageDefinitions());
+        }, [...$this->pageDefinitions(), [
+            ...$this->servicePageDefinitions()[0],
+            'key' => 'larkspur-service-detail',
+            'name' => 'Larkspur · Service Detail',
+            'description' => 'Single service page: photo header with price chips, what we help with, what to expect steps, sticky visit details card, FAQ and booking band.',
+        ]]);
     }
 
     /**
@@ -130,7 +137,24 @@ final class LarkspurDesigns
             'category' => $definition['category'],
             'description' => $definition['description'],
             'document' => $this->document($definition['sections']()),
-        ], $this->pageDefinitions());
+        ], [...$this->pageDefinitions(), ...$this->servicePageDefinitions()]);
+    }
+
+    /**
+     * One page per service, linked from the "View service" buttons on the Services page.
+     *
+     * @return list<array{key: string, name: string, slug: string, category: string, description: string, sections: callable(): list<array<string, mixed>>}>
+     */
+    public function servicePageDefinitions(): array
+    {
+        return array_map(fn (array $service): array => [
+            'key' => 'larkspur-service-'.$service['slug'],
+            'name' => 'Larkspur · '.$service['title'],
+            'slug' => $service['slug'],
+            'category' => 'healthcare',
+            'description' => 'Service page for '.strtolower($service['title']).': photo header, what we help with, what to expect, visit details card, FAQ and booking band.',
+            'sections' => fn (): array => $this->serviceDetailSections($service),
+        ], $this->services());
     }
 
     /** @return array<string, mixed> */
@@ -542,7 +566,7 @@ final class LarkspurDesigns
                 'backgroundSize' => $this->responsive('cover'),
                 'backgroundPosition' => $this->responsive('center'),
                 'borderRadius' => $this->responsive('2rem'),
-                'minHeight' => ['desktop' => '100%', 'mobile' => '420px'],
+                'minHeight' => ['desktop' => '560px', 'mobile' => '420px'],
                 'justifyContent' => $this->responsive('flex-end'),
                 'padding' => $this->responsive(['top' => '16px', 'right' => '16px', 'bottom' => '16px', 'left' => '16px']),
             ]),
@@ -649,21 +673,29 @@ final class LarkspurDesigns
                             'backgroundImage' => $this->responsive(sprintf('url("%sclinic-%d.jpg")', self::ASSETS, $index + 1)),
                             'backgroundSize' => $this->responsive('cover'),
                             'backgroundPosition' => $this->responsive('center'),
-                            'minHeight' => $this->responsive('220px'),
+                            'minHeight' => ['desktop' => '320px', 'mobile' => '260px'],
                             'justifyContent' => $this->responsive('flex-end'),
                             'padding' => $this->responsive(['top' => '16px', 'right' => '16px', 'bottom' => '16px', 'left' => '16px']),
                         ]),
                         'children' => [[
-                            ...$this->container('stack', '2px', 'clinic-plaque', [
+                            ...$this->container('row', '16px', 'clinic-plaque', [
                                 'backgroundColor' => $this->responsive(DesignTokens::ref('secondary')),
                                 'borderRadius' => $this->responsive('12px'),
-                                'padding' => $this->responsive(['top' => '12px', 'right' => '20px', 'bottom' => '12px', 'left' => '20px']),
+                                'padding' => $this->responsive(['top' => '20px', 'right' => '28px', 'bottom' => '20px', 'left' => '24px']),
                                 'width' => $this->responsive('fit-content'),
+                                'maxWidth' => $this->responsive('100%'),
+                                'alignItems' => $this->responsive('center'),
                             ]),
                             'children' => [
-                                $this->eyebrowText('Larkspur Family Health', DesignTokens::ref('on_dark_muted'), '11px'),
-                                $this->h3($clinic['name'], ['color' => $this->responsive(DesignTokens::ref('on_dark')), 'fontSize' => $this->responsive('22px')]),
-                                $this->paragraph($clinic['floor'], DesignTokens::ref('on_dark_muted'), '12px'),
+                                $this->image('Larkspur', ['width' => $this->responsive('32px'), 'height' => $this->responsive('32px'), 'flexShrink' => $this->responsive('0'), 'objectFit' => 'contain'], self::ASSETS.'mark-light.svg'),
+                                [
+                                    ...$this->container('stack', '2px'),
+                                    'children' => [
+                                        $this->eyebrowText('Larkspur Family Health', DesignTokens::ref('on_dark_muted'), '12px'),
+                                        $this->h3($clinic['name'], ['color' => $this->responsive(DesignTokens::ref('on_dark')), 'fontSize' => $this->responsive('24px')]),
+                                        $this->paragraph($clinic['floor'], DesignTokens::ref('on_dark_muted'), '13px'),
+                                    ],
+                                ],
                             ],
                         ]],
                     ],
@@ -1226,16 +1258,10 @@ final class LarkspurDesigns
      */
     private function servicesCatalogSection(): array
     {
-        $services = [
-            ['Feeling unwell', 'Colds, flu and fevers', 'sick visit, sore throat', 'Seen the same day when you call before 10 am, or on video from home.', ['Same-day', 'Video'], 'From $90', 'treat-unwell'],
-            ['Routine check-ups', 'Annual physical', 'check-up, wellness visit', 'A full yearly review with screenings and time to talk, without being rushed out the door.', ['In clinic'], '$235, or $0 with most plans', 'treat-checkup'],
-            ['Routine check-ups', 'Well-child visits', 'pediatric check-up', 'Growth checks, vaccines and school forms for newborns to 18.', ['In clinic'], '$0 with most plans', 'review-2'],
-            ['Ongoing conditions', 'High blood pressure', 'hypertension, high BP', 'Regular checks and medication reviews. Most follow-ups can be done by video.', ['In clinic', 'Video'], 'From $90', 'treat-chronic'],
-            ['Ongoing conditions', 'Diabetes care', 'blood sugar, A1C', 'A plan you can live with, glucose reviews every three months and a nurse who checks in by text.', ['In clinic', 'Video'], 'From $120', 'review-3'],
-            ['Mental health', 'Anxiety and low mood', 'stress, depression, sleep', 'Talk with a clinician who has time for you, with follow-ups by video when that is easier.', ['In clinic', 'Video'], 'From $90', 'treat-mental'],
-            ['Vaccinations', 'Flu and COVID shots', 'boosters, walk-in vaccine', 'Walk in at any clinic Monday to Saturday. No appointment needed.', ['Walk-in'], '$0 with most plans', 'treat-vaccine'],
-            ['Tests & screening', 'Bloodwork and labs', 'blood test, lab results', 'Drawn on site with results in your portal, usually within three to five days.', ['In clinic'], 'From $35', 'treat-tests'],
-        ];
+        $services = array_map(fn (array $service): array => [
+            $service['area'], $service['title'], $service['aliases'], $service['summary'],
+            $service['chips'], $service['price'], $service['photo'], $service['slug'],
+        ], $this->services());
 
         $card = fn (array $service): array => [
             ...$this->blockNode(BlockType::Container, [
@@ -1280,7 +1306,7 @@ final class LarkspurDesigns
                             ]),
                             'children' => [
                                 $this->paragraph($service[5], DesignTokens::ref('heading'), '14px'),
-                                $this->ctaButton('View service', '/new-patients', 'text'),
+                                $this->ctaButton('View service', '/'.$service[7], 'text'),
                             ],
                         ],
                     ],
@@ -1322,6 +1348,286 @@ final class LarkspurDesigns
                 'padding' => ['desktop' => ['top' => '48px'], 'mobile' => ['top' => '32px']],
                 'border' => $this->responsive(['style' => 'solid', 'color' => DesignTokens::ref('border'), 'top' => '1px']),
             ])),
+        ], ['padding' => $this->sectionPadding(false)]));
+    }
+
+    /**
+     * Every service on the Services page, with what its own detail page shows.
+     *
+     * @return list<array{slug: string, area: string, title: string, aliases: string, summary: string, chips: list<string>, price: string, photo: string, lead: string, helps: list<string>, expect: list<array{0: string, 1: string}>, length: string, where: string, bring: string, provider: int, faq: list<array{0: string, 1: string}>}>
+     */
+    private function services(): array
+    {
+        return [
+            [
+                'slug' => 'colds-flu-and-fevers', 'area' => 'Feeling unwell', 'title' => 'Colds, flu and fevers', 'aliases' => 'sick visit, sore throat',
+                'summary' => 'Seen the same day when you call before 10 am, or on video from home.', 'chips' => ['Same-day', 'Video'], 'price' => 'From $90', 'photo' => 'treat-unwell',
+                'lead' => 'Same-day sick visits every weekday morning, and video visits from 7 am to 9 pm. We work out what is going on, treat what needs treating and tell you plainly when rest is the best medicine.',
+                'helps' => ['Colds, coughs and congestion', 'Flu and COVID symptoms', 'Fevers in adults and children', 'Sore throats and ear pain', 'Sinus and chest infections'],
+                'expect' => [['Call before 10 am', 'We hold same-day times every weekday morning, or book a video visit online any time.'], ['A focused visit', 'Your clinician checks your symptoms, runs a rapid strep or flu test if needed and explains the plan.'], ['Follow-up by text', 'Prescriptions go to your pharmacy and a nurse checks in two days later.']],
+                'length' => 'About 15 minutes', 'where' => 'All clinics or video', 'bring' => 'Photo ID, insurance card and a list of your medicines', 'provider' => 0,
+                'faq' => [['Should I come in or book a video visit?', 'Video works well for colds, mild flu and refills. Come in for ear pain, a high fever in a child or anything that needs a test.'], ['Do you see children the same day?', 'Yes. Same-day sick visits are open to every age, from newborns up.']],
+            ],
+            [
+                'slug' => 'annual-physical', 'area' => 'Routine check-ups', 'title' => 'Annual physical', 'aliases' => 'check-up, wellness visit',
+                'summary' => 'A full yearly review with screenings and time to talk, without being rushed out the door.', 'chips' => ['In clinic'], 'price' => '$235, or $0 with most plans', 'photo' => 'treat-checkup',
+                'lead' => 'A full yearly review of your health with time to talk. We check the essentials, bring your screenings up to date and agree a plan for the year ahead.',
+                'helps' => ['Blood pressure, weight and heart checks', 'Cholesterol and diabetes screening', 'Cancer screening referrals', 'Vaccines brought up to date', 'Sleep, stress and lifestyle questions'],
+                'expect' => [['Book a 40-minute visit', 'Choose a clinic and clinician. Fasting is only needed if we tell you in your reminder.'], ['Check and talk', 'Your clinician reviews your history, examines you and orders any tests on site.'], ['Your plan in the portal', 'Results and a written summary arrive in your portal within a week.']],
+                'length' => 'About 40 minutes', 'where' => 'All clinics', 'bring' => 'Photo ID, insurance card, medicine list and any questions', 'provider' => 3,
+                'faq' => [['Is an annual physical covered by insurance?', 'Most plans cover one preventive visit a year at no cost. We check your plan before you book.'], ['Do I need to fast?', 'Only if bloodwork is planned. Your reminder text will say if you should skip breakfast.']],
+            ],
+            [
+                'slug' => 'well-child-visits', 'area' => 'Routine check-ups', 'title' => 'Well-child visits', 'aliases' => 'pediatric check-up',
+                'summary' => 'Growth checks, vaccines and school forms for newborns to 18.', 'chips' => ['In clinic'], 'price' => '$0 with most plans', 'photo' => 'review-2',
+                'lead' => 'Regular check-ups from the first week to the last year of school, with growth checks, development milestones, vaccines and every form signed on the day.',
+                'helps' => ['Newborn and infant checks', 'Growth and development milestones', 'Childhood vaccines on schedule', 'School, camp and sports forms', 'Sleep, feeding and behaviour questions'],
+                'expect' => [['Book by age', 'We remind you when the next check is due, from two weeks old to eighteen.'], ['A relaxed visit', 'Measurements, a full exam and time for your questions, with vaccines if due.'], ['Forms done today', 'School and sports forms are signed before you leave.']],
+                'length' => 'About 30 minutes', 'where' => 'All clinics', 'bring' => 'Vaccine record, insurance card and any school forms', 'provider' => 2,
+                'faq' => [['How often should my child come in?', 'Several times in the first two years, then once a year. We send a reminder for each one.'], ['Can siblings be seen together?', 'Yes. Book back-to-back times and we see them in one visit.']],
+            ],
+            [
+                'slug' => 'high-blood-pressure', 'area' => 'Ongoing conditions', 'title' => 'High blood pressure', 'aliases' => 'hypertension, high BP',
+                'summary' => 'Regular checks and medication reviews. Most follow-ups can be done by video.', 'chips' => ['In clinic', 'Video'], 'price' => 'From $90', 'photo' => 'treat-chronic',
+                'lead' => 'Steady, unhurried care to bring your blood pressure down and keep it there, with home readings, medication reviews and a nurse who checks in between visits.',
+                'helps' => ['New and long-standing high blood pressure', 'Medication reviews and side effects', 'Home blood pressure monitoring', 'Heart and kidney health checks', 'Diet, exercise and salt advice'],
+                'expect' => [['A first review', 'We check your readings, history and medicines and agree a target with you.'], ['Readings from home', 'Send home readings through the portal so we can adjust treatment without extra trips.'], ['Regular follow-ups', 'Most follow-ups are 15-minute video visits every three months.']],
+                'length' => '20 minutes, then 15-minute follow-ups', 'where' => 'All clinics or video', 'bring' => 'Your home readings and current medicines', 'provider' => 3,
+                'faq' => [['Do I need a home blood pressure monitor?', 'It helps a lot. We can recommend one, and many plans cover the cost.'], ['Can follow-ups be done by video?', 'Yes. Most patients only come in once or twice a year once readings are stable.']],
+            ],
+            [
+                'slug' => 'diabetes-care', 'area' => 'Ongoing conditions', 'title' => 'Diabetes care', 'aliases' => 'blood sugar, A1C',
+                'summary' => 'A plan you can live with, glucose reviews every three months and a nurse who checks in by text.', 'chips' => ['In clinic', 'Video'], 'price' => 'From $120', 'photo' => 'review-3',
+                'lead' => 'A diabetes plan that fits your life, with A1C checks every three months, medication reviews, foot and eye referrals and a nurse who checks in by text.',
+                'helps' => ['Type 2 diabetes and prediabetes', 'A1C and glucose reviews', 'Medication and insulin changes', 'Foot checks and eye referrals', 'Nutrition and activity plans'],
+                'expect' => [['Get to know you', 'A longer first visit to understand your routine, readings and goals.'], ['Checks every three months', 'A1C on site with results the same week, and changes made together.'], ['Support between visits', 'Our nurse checks in by text and answers questions through the portal.']],
+                'length' => '40 minutes, then 20-minute reviews', 'where' => 'All clinics or video', 'bring' => 'Your meter or readings, medicines and recent results', 'provider' => 1,
+                'faq' => [['Do you manage insulin?', 'Yes. Our family clinicians start and adjust insulin and refer on when a specialist is needed.'], ['Is the A1C test done on site?', 'Yes. We draw it at the clinic and results are usually ready within a few days.']],
+            ],
+            [
+                'slug' => 'anxiety-and-low-mood', 'area' => 'Mental health', 'title' => 'Anxiety and low mood', 'aliases' => 'stress, depression, sleep',
+                'summary' => 'Talk with a clinician who has time for you, with follow-ups by video when that is easier.', 'chips' => ['In clinic', 'Video'], 'price' => 'From $90', 'photo' => 'treat-mental',
+                'lead' => 'Talk with a clinician who has time to listen. We help with anxiety, low mood, stress and sleep, and connect you with therapists when you need more support.',
+                'helps' => ['Anxiety and panic', 'Low mood and depression', 'Stress and burnout', 'Sleep problems', 'Grief and big life changes'],
+                'expect' => [['A longer first visit', 'Thirty minutes to talk through what is happening, in person or by video.'], ['A plan you agree on', 'Talking therapy, medication, or both, explained clearly with no pressure.'], ['Regular check-ins', 'Short follow-ups by video so you are never left waiting for months.']],
+                'length' => 'About 30 minutes', 'where' => 'All clinics or video', 'bring' => 'Nothing special, just yourself', 'provider' => 0,
+                'faq' => [['Do I need a referral?', 'No. Book a visit with any of our clinicians directly.'], ['What if I am in crisis?', 'Call or text 988 any time, or call 911 in an emergency. We are not a crisis service.']],
+            ],
+            [
+                'slug' => 'flu-and-covid-shots', 'area' => 'Vaccinations', 'title' => 'Flu and COVID shots', 'aliases' => 'boosters, walk-in vaccine',
+                'summary' => 'Walk in at any clinic Monday to Saturday. No appointment needed.', 'chips' => ['Walk-in'], 'price' => '$0 with most plans', 'photo' => 'treat-vaccine',
+                'lead' => 'Walk in at any Larkspur clinic Monday to Saturday for this season’s flu and COVID vaccines. No appointment needed, and most patients are in and out in fifteen minutes.',
+                'helps' => ['Seasonal flu vaccine', 'Updated COVID boosters', 'Both shots in one visit', 'Vaccines for children six months and up', 'High-dose flu vaccine for over 65s'],
+                'expect' => [['Walk in', 'Come to any clinic during opening hours, no booking needed.'], ['Quick check and shot', 'A nurse checks you are well enough, then gives the vaccine.'], ['Fifteen minutes to rest', 'Wait briefly before you head off. Your record updates in the portal.']],
+                'length' => 'About 15 minutes', 'where' => 'All clinics, walk-in', 'bring' => 'Insurance card', 'provider' => 2,
+                'faq' => [['Can I get flu and COVID shots together?', 'Yes. Both can be given in the same visit, one in each arm.'], ['Is there a cost without insurance?', 'Flu shots are $35 self-pay. Ask us about free community clinics for COVID boosters.']],
+            ],
+            [
+                'slug' => 'bloodwork-and-labs', 'area' => 'Tests & screening', 'title' => 'Bloodwork and labs', 'aliases' => 'blood test, lab results',
+                'summary' => 'Drawn on site with results in your portal, usually within three to five days.', 'chips' => ['In clinic'], 'price' => 'From $35', 'photo' => 'treat-tests',
+                'lead' => 'Blood and urine tests drawn on site at every clinic, so there is no separate lab trip. Results go to your portal and your clinician calls if anything needs a closer look.',
+                'helps' => ['Routine blood counts', 'Cholesterol and A1C', 'Thyroid, kidney and liver tests', 'Urine tests', 'Pre-surgery and pre-employment labs'],
+                'expect' => [['Book or walk in', 'Book a lab time, or have bloods drawn straight after your visit.'], ['A quick draw', 'A trained nurse takes the sample in a few minutes.'], ['Results in your portal', 'Most results arrive in three to five days with a note from your clinician.']],
+                'length' => 'About 10 minutes', 'where' => 'All clinics', 'bring' => 'Lab order if from another doctor, and insurance card', 'provider' => 1,
+                'faq' => [['Do I need to fast?', 'Only for some tests. Your clinician or reminder text will tell you.'], ['Can you run tests ordered by another doctor?', 'Yes. Bring the order and we draw the sample and send the results back.']],
+            ],
+        ];
+    }
+
+    /**
+     * The sections of one service's own page.
+     *
+     * @param  array<string, mixed>  $service
+     * @return list<array<string, mixed>>
+     */
+    private function serviceDetailSections(array $service): array
+    {
+        return [
+            $this->serviceHeroSection($service),
+            $this->serviceInfoSection($service),
+            $this->serviceFaqSection($service),
+            $this->bookBandSection(),
+        ];
+    }
+
+    /**
+     * @param  array<string, mixed>  $service
+     * @return array<string, mixed>
+     */
+    private function serviceHeroSection(array $service): array
+    {
+        return $this->tagSection('service-hero', $this->section('Service Header', [
+            $this->row([
+                $this->column(6, [
+                    $this->paragraph('<a href="/services">Services</a>  /  '.$service['area'], DesignTokens::ref('muted'), '14px', 'left', ['larkspurRole' => 'breadcrumb']),
+                    $this->eyebrow($service['area']),
+                    $this->h1('<em>'.$service['title'].'</em>', 'left', ['larkspurRole' => 'split-heading', 'fontSize' => ['desktop' => 'clamp(2.5rem, 5vw, calc(var(--site-h1-size, 3.25rem) * 1.077))', 'mobile' => '38px']]),
+                    $this->paragraph($service['lead'], DesignTokens::ref('body'), '18px', 'left', ['lineHeight' => $this->responsive('1.556'), 'larkspurRole' => 'fade-up']),
+                    [
+                        ...$this->container('row', '8px', null, ['flexWrap' => $this->responsive('wrap')]),
+                        'children' => [...array_map(fn (string $chip): array => $this->chip($chip), $service['chips']), $this->chip($service['price'], true)],
+                    ],
+                    [
+                        ...$this->container('row', '16px', null, ['flexWrap' => $this->responsive('wrap'), 'margin' => $this->responsive(['top' => '8px'])]),
+                        'children' => [
+                            $this->ctaButton('Book this visit', '/new-patients'),
+                            $this->ctaButton('Call '.self::PHONE, self::PHONE_URL, 'outline'),
+                        ],
+                    ],
+                ], ['gap' => $this->responsive('16px'), 'justifyContent' => $this->responsive('center')]),
+                $this->column(6, [
+                    $this->image($service['title'], [
+                        'width' => $this->responsive('100%'),
+                        'aspectRatio' => $this->responsive('4 / 3.2'),
+                        'borderRadius' => $this->responsive('2rem'),
+                        'objectFit' => 'cover',
+                    ], self::ASSETS.$service['photo'].'.jpg'),
+                ], ['larkspurRole' => 'fade-up']),
+            ], $this->contentRow(['gap' => ['desktop' => '64px', 'mobile' => '32px'], 'alignItems' => $this->responsive('center')]), 'tablet'),
+        ], [
+            'backgroundColor' => $this->responsive(DesignTokens::ref('surface')),
+            'padding' => [
+                'desktop' => ['top' => '80px', 'right' => '24px', 'bottom' => '80px', 'left' => '24px'],
+                'mobile' => ['top' => '48px', 'right' => '20px', 'bottom' => '48px', 'left' => '20px'],
+            ],
+        ]));
+    }
+
+    /**
+     * What the service helps with, what to expect, and a sticky visit-details card.
+     *
+     * @param  array<string, mixed>  $service
+     * @return array<string, mixed>
+     */
+    private function serviceInfoSection(array $service): array
+    {
+        $provider = self::PROVIDERS[$service['provider']];
+
+        $steps = [];
+        foreach ($service['expect'] as $index => [$title, $text]) {
+            $steps[] = [
+                ...$this->container('row', '20px', 'expect-step', [
+                    'alignItems' => $this->responsive('flex-start'),
+                    'padding' => $this->responsive(['top' => '20px', 'bottom' => '20px']),
+                    'border' => $this->responsive(['style' => 'solid', 'color' => DesignTokens::ref('border'), 'top' => '1px']),
+                ]),
+                'children' => [
+                    $this->paragraph(sprintf('%02d', $index + 1), DesignTokens::ref('accent'), '32px', 'left', ['fontFamily' => $this->responsive(DesignTokens::ref('heading_font')), 'lineHeight' => $this->responsive('1'), 'minWidth' => $this->responsive('48px')]),
+                    [
+                        ...$this->container('stack', '4px'),
+                        'children' => [$this->h4($title), $this->paragraph($text, DesignTokens::ref('body'), '15px')],
+                    ],
+                ],
+            ];
+        }
+
+        $detail = fn (string $label, string $value): array => [
+            ...$this->container('row', '16px', 'fee-row', [
+                'justifyContent' => $this->responsive('space-between'),
+                'alignItems' => $this->responsive('flex-start'),
+                'padding' => $this->responsive(['top' => '14px', 'bottom' => '14px']),
+                'border' => $this->responsive(['style' => 'solid', 'color' => DesignTokens::ref('border'), 'bottom' => '1px']),
+            ]),
+            'children' => [
+                $this->paragraph($label, DesignTokens::ref('muted'), '14px'),
+                $this->paragraph($value, DesignTokens::ref('heading'), '14px', 'right', ['maxWidth' => $this->responsive('60%')]),
+            ],
+        ];
+
+        $card = [
+            ...$this->container('stack', '0px', 'fee-card card', [
+                'backgroundColor' => $this->responsive(DesignTokens::ref('background')),
+                'borderRadius' => $this->responsive(DesignTokens::ref('card_radius')),
+                'boxShadow' => $this->responsive('0 4px 24px -8px rgba(21, 57, 76, 0.18)'),
+                'overflow' => $this->responsive('hidden'),
+            ]),
+            'children' => [
+                [
+                    ...$this->container('stack', '4px', null, [
+                        'backgroundColor' => $this->responsive(DesignTokens::ref('surface')),
+                        'padding' => $this->responsive(['top' => '24px', 'right' => '24px', 'bottom' => '24px', 'left' => '24px']),
+                    ]),
+                    'children' => [$this->eyebrowText('Visit details', DesignTokens::ref('body')), $this->h3($service['price'], ['fontSize' => $this->responsive('28px')])],
+                ],
+                [
+                    ...$this->container('stack', '0px', null, ['padding' => $this->responsive(['top' => '8px', 'right' => '24px', 'bottom' => '8px', 'left' => '24px'])]),
+                    'children' => [
+                        $detail('Visit length', $service['length']),
+                        $detail('Where', $service['where']),
+                        $detail('Bring', $service['bring']),
+                    ],
+                ],
+                [
+                    ...$this->container('stack', '16px', null, ['padding' => $this->responsive(['top' => '16px', 'right' => '24px', 'bottom' => '24px', 'left' => '24px'])]),
+                    'children' => [
+                        [
+                            ...$this->container('row', '14px', null, ['alignItems' => $this->responsive('center')]),
+                            'children' => [
+                                $this->image('Portrait of '.$provider['name'], [
+                                    'width' => $this->responsive('56px'),
+                                    'height' => $this->responsive('56px'),
+                                    'borderRadius' => $this->responsive('999px'),
+                                    'flexShrink' => $this->responsive('0'),
+                                    'objectFit' => 'cover',
+                                ], self::ASSETS.'provider-'.($service['provider'] + 1).'.jpg'),
+                                [
+                                    ...$this->container('stack', '2px'),
+                                    'children' => [$this->h4($provider['name'], ['fontSize' => $this->responsive('17px')]), $this->paragraph($provider['days'], DesignTokens::ref('body'), '13px')],
+                                ],
+                            ],
+                        ],
+                        $this->ctaButton('Book this visit', '/new-patients'),
+                    ],
+                ],
+            ],
+        ];
+
+        return $this->tagSection('service-info', $this->section('Service Details', [
+            $this->row([
+                $this->column(7, [
+                    $this->eyebrow('What we help with'),
+                    $this->h2('<em>Common reasons</em> people book', 'left', ['larkspurRole' => 'split-heading']),
+                    [
+                        ...$this->container('stack', '0px', 'tick-list'),
+                        'children' => array_map(fn (string $item): array => $this->tickRow($item), $service['helps']),
+                    ],
+                    $this->h2('<em>What to</em> expect', 'left', ['larkspurRole' => 'split-heading', 'margin' => $this->responsive(['top' => '48px'])]),
+                    [
+                        ...$this->container('stack', '0px', 'expect-list'),
+                        'children' => $steps,
+                    ],
+                ], ['gap' => $this->responsive('20px')]),
+                $this->column(5, [$card], ['larkspurRole' => 'sticky-col']),
+            ], $this->contentRow(['gap' => ['desktop' => '64px', 'mobile' => '40px'], 'alignItems' => $this->responsive('flex-start')]), 'tablet'),
+        ], ['padding' => $this->sectionPadding()]));
+    }
+
+    /**
+     * @param  array<string, mixed>  $service
+     * @return array<string, mixed>
+     */
+    private function serviceFaqSection(array $service): array
+    {
+        return $this->tagSection('service-faq', $this->section('Service FAQ', [
+            $this->row([
+                $this->column(4, [
+                    $this->eyebrow('FAQ'),
+                    $this->h2('<em>Questions</em> about this visit', 'left', ['larkspurRole' => 'split-heading']),
+                    $this->ctaButton('All services', '/services', 'text'),
+                ], ['gap' => $this->responsive('16px')]),
+                $this->column(8, [
+                    $this->blockNode(BlockType::Faq, [
+                        'initialOpen' => true,
+                        'allowMultipleOpen' => false,
+                        'emitSchemaOrg' => true,
+                        'items' => array_map(fn (array $item): array => ['question' => $item[0], 'answer' => $item[1]], $service['faq']),
+                        'larkspurRole' => 'faq-list',
+                    ], [
+                        'color' => $this->responsive(DesignTokens::ref('primary')),
+                        'fontFamily' => $this->responsive(DesignTokens::ref('body_font')),
+                    ]),
+                ]),
+            ], $this->contentRow(['gap' => ['desktop' => '64px', 'mobile' => '32px'], 'alignItems' => $this->responsive('flex-start')]), 'tablet'),
         ], ['padding' => $this->sectionPadding(false)]));
     }
 
@@ -1636,7 +1942,7 @@ final class LarkspurDesigns
     private function iconLine(string $icon, string $text): array
     {
         return [
-            ...$this->container('row', '12px', null, ['alignItems' => $this->responsive('flex-start')]),
+            ...$this->container('row', '12px', 'icon-line', ['alignItems' => $this->responsive('flex-start')]),
             'children' => [
                 $this->blockNode(BlockType::Icon, ['name' => $icon, 'library' => 'lucide', 'size' => '18px'], ['color' => $this->responsive(DesignTokens::ref('primary')), 'flexShrink' => $this->responsive('0'), 'margin' => $this->responsive(['top' => '1px'])]),
                 $this->paragraph($text, DesignTokens::ref('heading'), '14px'),

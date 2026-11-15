@@ -2,7 +2,7 @@
     "schemaVersion": 1,
     "sections": [
         {
-            "id": "01J9MRK00000000000000001FV",
+            "id": "01J9MRK00000000000000001G7",
             "name": "Inner Page Header",
             "width": "full",
             "sticky": false,
@@ -33,7 +33,7 @@
             },
             "rows": [
                 {
-                    "id": "01J9MRK00000000000000001FT",
+                    "id": "01J9MRK00000000000000001G6",
                     "stackBelow": "tablet",
                     "style": {
                         "margin": {
@@ -55,7 +55,7 @@
                     },
                     "columns": [
                         {
-                            "id": "01J9MRK00000000000000001FQ",
+                            "id": "01J9MRK00000000000000001G3",
                             "span": {
                                 "desktop": 7,
                                 "tablet": 12,
@@ -68,7 +68,7 @@
                             },
                             "blocks": [
                                 {
-                                    "id": "01J9MRK00000000000000001FM",
+                                    "id": "01J9MRK00000000000000001G0",
                                     "type": "container",
                                     "props": {
                                         "layout": "row",
@@ -109,7 +109,7 @@
                                     },
                                     "children": [
                                         {
-                                            "id": "01J9MRK00000000000000001FN",
+                                            "id": "01J9MRK00000000000000001G1",
                                             "type": "icon",
                                             "props": {
                                                 "name": "circle-dot",
@@ -131,7 +131,7 @@
                                             }
                                         },
                                         {
-                                            "id": "01J9MRK00000000000000001FP",
+                                            "id": "01J9MRK00000000000000001G2",
                                             "type": "paragraph",
                                             "props": {
                                                 "text": "New patients"
@@ -166,7 +166,7 @@
                                     ]
                                 },
                                 {
-                                    "id": "01J9MRK00000000000000001FK",
+                                    "id": "01J9MRK00000000000000001FZ",
                                     "type": "heading",
                                     "props": {
                                         "text": "<em>Joining Larkspur</em> takes ten minutes",
@@ -209,7 +209,7 @@
                             ]
                         },
                         {
-                            "id": "01J9MRK00000000000000001FS",
+                            "id": "01J9MRK00000000000000001G5",
                             "span": {
                                 "desktop": 5,
                                 "tablet": 6,
@@ -222,7 +222,7 @@
                             },
                             "blocks": [
                                 {
-                                    "id": "01J9MRK00000000000000001FR",
+                                    "id": "01J9MRK00000000000000001G4",
                                     "type": "paragraph",
                                     "props": {
                                         "text": "Register online, choose a clinician and book your first visit. Most new patients are seen within a week.",
@@ -266,7 +266,7 @@
             }
         },
         {
-            "id": "01J9MRK00000000000000001HC",
+            "id": "01J9MRK00000000000000001HR",
             "name": "New Patient Steps",
             "width": "full",
             "sticky": false,
@@ -297,7 +297,7 @@
             },
             "rows": [
                 {
-                    "id": "01J9MRK00000000000000001HA",
+                    "id": "01J9MRK00000000000000001HP",
                     "stackBelow": "tablet",
                     "style": {
                         "margin": {
@@ -325,7 +325,7 @@
                     },
                     "columns": [
                         {
-                            "id": "01J9MRK00000000000000001H7",
+                            "id": "01J9MRK00000000000000001HK",
                             "span": {
                                 "desktop": 7,
                                 "tablet": 12,
@@ -338,7 +338,7 @@
                             },
                             "blocks": [
                                 {
-                                    "id": "01J9MRK00000000000000001H3",
+                                    "id": "01J9MRK00000000000000001HF",
                                     "type": "container",
                                     "props": {
                                         "layout": "row",
@@ -379,7 +379,7 @@
                                     },
                                     "children": [
                                         {
-                                            "id": "01J9MRK00000000000000001H4",
+                                            "id": "01J9MRK00000000000000001HG",
                                             "type": "icon",
                                             "props": {
                                                 "name": "circle-dot",
@@ -401,7 +401,7 @@
                                             }
                                         },
                                         {
-                                            "id": "01J9MRK00000000000000001H5",
+                                            "id": "01J9MRK00000000000000001HH",
                                             "type": "paragraph",
                                             "props": {
                                                 "text": "How to join"
@@ -436,7 +436,7 @@
                                     ]
                                 },
                                 {
-                                    "id": "01J9MRK00000000000000001H6",
+                                    "id": "01J9MRK00000000000000001HJ",
                                     "type": "heading",
                                     "props": {
                                         "text": "<em>Three steps</em> to your first visit",
@@ -479,7 +479,7 @@
                             ]
                         },
                         {
-                            "id": "01J9MRK00000000000000001H9",
+                            "id": "01J9MRK00000000000000001HN",
                             "span": {
                                 "desktop": 5,
                                 "tablet": 6,
@@ -492,7 +492,7 @@
                             },
                             "blocks": [
                                 {
-                                    "id": "01J9MRK00000000000000001H8",
+                                    "id": "01J9MRK00000000000000001HM",
                                     "type": "paragraph",
                                     "props": {
                                         "text": "Most new patients go from registration to their first appointment within a week.",
@@ -530,7 +530,7 @@
                     ]
                 },
                 {
-                    "id": "01J9MRK00000000000000001HB",
+                    "id": "01J9MRK00000000000000001HQ",
                     "stackBelow": "tablet",
                     "style": {
                         "margin": {
@@ -552,7 +552,7 @@
                     },
                     "columns": [
                         {
-                            "id": "01J9MRK00000000000000001G7",
+                            "id": "01J9MRK00000000000000001GK",
                             "span": {
                                 "desktop": 4,
                                 "tablet": 6,
@@ -561,7 +561,7 @@
                             "style": [],
                             "blocks": [
                                 {
-                                    "id": "01J9MRK00000000000000001G8",
+                                    "id": "01J9MRK00000000000000001GM",
                                     "type": "container",
                                     "props": {
                                         "layout": "stack",
@@ -575,7 +575,7 @@
                                     },
                                     "children": [
                                         {
-                                            "id": "01J9MRK00000000000000001FW",
+                                            "id": "01J9MRK00000000000000001G8",
                                             "type": "container",
                                             "props": {
                                                 "layout": "stack",
@@ -606,7 +606,7 @@
                                             },
                                             "children": [
                                                 {
-                                                    "id": "01J9MRK00000000000000001FX",
+                                                    "id": "01J9MRK00000000000000001G9",
                                                     "type": "paragraph",
                                                     "props": {
                                                         "text": "01"
@@ -642,7 +642,7 @@
                                                     }
                                                 },
                                                 {
-                                                    "id": "01J9MRK00000000000000001FY",
+                                                    "id": "01J9MRK00000000000000001GA",
                                                     "type": "heading",
                                                     "props": {
                                                         "text": "Register online",
@@ -679,7 +679,7 @@
                                                     }
                                                 },
                                                 {
-                                                    "id": "01J9MRK00000000000000001FZ",
+                                                    "id": "01J9MRK00000000000000001GB",
                                                     "type": "paragraph",
                                                     "props": {
                                                         "text": "Fill in a short form with your details, insurance and current medicines."
@@ -712,7 +712,7 @@
                                                     }
                                                 },
                                                 {
-                                                    "id": "01J9MRK00000000000000001G0",
+                                                    "id": "01J9MRK00000000000000001GC",
                                                     "type": "container",
                                                     "props": {
                                                         "layout": "stack",
@@ -722,7 +722,7 @@
                                                     "style": [],
                                                     "children": [
                                                         {
-                                                            "id": "01J9MRK00000000000000001G1",
+                                                            "id": "01J9MRK00000000000000001GD",
                                                             "type": "container",
                                                             "props": {
                                                                 "layout": "row",
@@ -749,7 +749,7 @@
                                                             },
                                                             "children": [
                                                                 {
-                                                                    "id": "01J9MRK00000000000000001G2",
+                                                                    "id": "01J9MRK00000000000000001GE",
                                                                     "type": "icon",
                                                                     "props": {
                                                                         "name": "circle-check",
@@ -764,7 +764,7 @@
                                                                     }
                                                                 },
                                                                 {
-                                                                    "id": "01J9MRK00000000000000001G3",
+                                                                    "id": "01J9MRK00000000000000001GF",
                                                                     "type": "paragraph",
                                                                     "props": {
                                                                         "text": "Takes about ten minutes"
@@ -799,7 +799,7 @@
                                                             ]
                                                         },
                                                         {
-                                                            "id": "01J9MRK00000000000000001G4",
+                                                            "id": "01J9MRK00000000000000001GG",
                                                             "type": "container",
                                                             "props": {
                                                                 "layout": "row",
@@ -826,7 +826,7 @@
                                                             },
                                                             "children": [
                                                                 {
-                                                                    "id": "01J9MRK00000000000000001G5",
+                                                                    "id": "01J9MRK00000000000000001GH",
                                                                     "type": "icon",
                                                                     "props": {
                                                                         "name": "circle-check",
@@ -841,7 +841,7 @@
                                                                     }
                                                                 },
                                                                 {
-                                                                    "id": "01J9MRK00000000000000001G6",
+                                                                    "id": "01J9MRK00000000000000001GJ",
                                                                     "type": "paragraph",
                                                                     "props": {
                                                                         "text": "Save and finish later"
@@ -884,7 +884,7 @@
                             ]
                         },
                         {
-                            "id": "01J9MRK00000000000000001GM",
+                            "id": "01J9MRK00000000000000001H0",
                             "span": {
                                 "desktop": 4,
                                 "tablet": 6,
@@ -893,7 +893,7 @@
                             "style": [],
                             "blocks": [
                                 {
-                                    "id": "01J9MRK00000000000000001GN",
+                                    "id": "01J9MRK00000000000000001H1",
                                     "type": "container",
                                     "props": {
                                         "layout": "stack",
@@ -907,7 +907,7 @@
                                     },
                                     "children": [
                                         {
-                                            "id": "01J9MRK00000000000000001G9",
+                                            "id": "01J9MRK00000000000000001GN",
                                             "type": "container",
                                             "props": {
                                                 "layout": "stack",
@@ -938,7 +938,7 @@
                                             },
                                             "children": [
                                                 {
-                                                    "id": "01J9MRK00000000000000001GA",
+                                                    "id": "01J9MRK00000000000000001GP",
                                                     "type": "paragraph",
                                                     "props": {
                                                         "text": "02"
@@ -974,7 +974,7 @@
                                                     }
                                                 },
                                                 {
-                                                    "id": "01J9MRK00000000000000001GB",
+                                                    "id": "01J9MRK00000000000000001GQ",
                                                     "type": "heading",
                                                     "props": {
                                                         "text": "Choose a clinician",
@@ -1011,7 +1011,7 @@
                                                     }
                                                 },
                                                 {
-                                                    "id": "01J9MRK00000000000000001GC",
+                                                    "id": "01J9MRK00000000000000001GR",
                                                     "type": "paragraph",
                                                     "props": {
                                                         "text": "Pick by language, clinic or specialty, or let us match you."
@@ -1044,7 +1044,7 @@
                                                     }
                                                 },
                                                 {
-                                                    "id": "01J9MRK00000000000000001GD",
+                                                    "id": "01J9MRK00000000000000001GS",
                                                     "type": "container",
                                                     "props": {
                                                         "layout": "stack",
@@ -1054,7 +1054,7 @@
                                                     "style": [],
                                                     "children": [
                                                         {
-                                                            "id": "01J9MRK00000000000000001GE",
+                                                            "id": "01J9MRK00000000000000001GT",
                                                             "type": "container",
                                                             "props": {
                                                                 "layout": "row",
@@ -1081,7 +1081,7 @@
                                                             },
                                                             "children": [
                                                                 {
-                                                                    "id": "01J9MRK00000000000000001GF",
+                                                                    "id": "01J9MRK00000000000000001GV",
                                                                     "type": "icon",
                                                                     "props": {
                                                                         "name": "circle-check",
@@ -1096,7 +1096,7 @@
                                                                     }
                                                                 },
                                                                 {
-                                                                    "id": "01J9MRK00000000000000001GG",
+                                                                    "id": "01J9MRK00000000000000001GW",
                                                                     "type": "paragraph",
                                                                     "props": {
                                                                         "text": "Profiles list clinic days"
@@ -1131,7 +1131,7 @@
                                                             ]
                                                         },
                                                         {
-                                                            "id": "01J9MRK00000000000000001GH",
+                                                            "id": "01J9MRK00000000000000001GX",
                                                             "type": "container",
                                                             "props": {
                                                                 "layout": "row",
@@ -1158,7 +1158,7 @@
                                                             },
                                                             "children": [
                                                                 {
-                                                                    "id": "01J9MRK00000000000000001GJ",
+                                                                    "id": "01J9MRK00000000000000001GY",
                                                                     "type": "icon",
                                                                     "props": {
                                                                         "name": "circle-check",
@@ -1173,7 +1173,7 @@
                                                                     }
                                                                 },
                                                                 {
-                                                                    "id": "01J9MRK00000000000000001GK",
+                                                                    "id": "01J9MRK00000000000000001GZ",
                                                                     "type": "paragraph",
                                                                     "props": {
                                                                         "text": "Switch any time"
@@ -1216,7 +1216,7 @@
                             ]
                         },
                         {
-                            "id": "01J9MRK00000000000000001H1",
+                            "id": "01J9MRK00000000000000001HD",
                             "span": {
                                 "desktop": 4,
                                 "tablet": 6,
@@ -1225,7 +1225,7 @@
                             "style": [],
                             "blocks": [
                                 {
-                                    "id": "01J9MRK00000000000000001H2",
+                                    "id": "01J9MRK00000000000000001HE",
                                     "type": "container",
                                     "props": {
                                         "layout": "stack",
@@ -1239,7 +1239,7 @@
                                     },
                                     "children": [
                                         {
-                                            "id": "01J9MRK00000000000000001GP",
+                                            "id": "01J9MRK00000000000000001H2",
                                             "type": "container",
                                             "props": {
                                                 "layout": "stack",
@@ -1270,7 +1270,7 @@
                                             },
                                             "children": [
                                                 {
-                                                    "id": "01J9MRK00000000000000001GQ",
+                                                    "id": "01J9MRK00000000000000001H3",
                                                     "type": "paragraph",
                                                     "props": {
                                                         "text": "03"
@@ -1306,7 +1306,7 @@
                                                     }
                                                 },
                                                 {
-                                                    "id": "01J9MRK00000000000000001GR",
+                                                    "id": "01J9MRK00000000000000001H4",
                                                     "type": "heading",
                                                     "props": {
                                                         "text": "Book your first visit",
@@ -1343,7 +1343,7 @@
                                                     }
                                                 },
                                                 {
-                                                    "id": "01J9MRK00000000000000001GS",
+                                                    "id": "01J9MRK00000000000000001H5",
                                                     "type": "paragraph",
                                                     "props": {
                                                         "text": "A 40-minute new patient visit to get to know you and your history."
@@ -1376,7 +1376,7 @@
                                                     }
                                                 },
                                                 {
-                                                    "id": "01J9MRK00000000000000001GT",
+                                                    "id": "01J9MRK00000000000000001H6",
                                                     "type": "container",
                                                     "props": {
                                                         "layout": "stack",
@@ -1386,7 +1386,7 @@
                                                     "style": [],
                                                     "children": [
                                                         {
-                                                            "id": "01J9MRK00000000000000001GV",
+                                                            "id": "01J9MRK00000000000000001H7",
                                                             "type": "container",
                                                             "props": {
                                                                 "layout": "row",
@@ -1413,7 +1413,7 @@
                                                             },
                                                             "children": [
                                                                 {
-                                                                    "id": "01J9MRK00000000000000001GW",
+                                                                    "id": "01J9MRK00000000000000001H8",
                                                                     "type": "icon",
                                                                     "props": {
                                                                         "name": "circle-check",
@@ -1428,7 +1428,7 @@
                                                                     }
                                                                 },
                                                                 {
-                                                                    "id": "01J9MRK00000000000000001GX",
+                                                                    "id": "01J9MRK00000000000000001H9",
                                                                     "type": "paragraph",
                                                                     "props": {
                                                                         "text": "Text reminder the day before"
@@ -1463,7 +1463,7 @@
                                                             ]
                                                         },
                                                         {
-                                                            "id": "01J9MRK00000000000000001GY",
+                                                            "id": "01J9MRK00000000000000001HA",
                                                             "type": "container",
                                                             "props": {
                                                                 "layout": "row",
@@ -1490,7 +1490,7 @@
                                                             },
                                                             "children": [
                                                                 {
-                                                                    "id": "01J9MRK00000000000000001GZ",
+                                                                    "id": "01J9MRK00000000000000001HB",
                                                                     "type": "icon",
                                                                     "props": {
                                                                         "name": "circle-check",
@@ -1505,7 +1505,7 @@
                                                                     }
                                                                 },
                                                                 {
-                                                                    "id": "01J9MRK00000000000000001H0",
+                                                                    "id": "01J9MRK00000000000000001HC",
                                                                     "type": "paragraph",
                                                                     "props": {
                                                                         "text": "Free to reschedule"
@@ -1556,7 +1556,7 @@
             }
         },
         {
-            "id": "01J9MRK00000000000000001HY",
+            "id": "01J9MRK00000000000000001JA",
             "name": "Clinic Numbers",
             "width": "full",
             "sticky": false,
@@ -1587,7 +1587,7 @@
             },
             "rows": [
                 {
-                    "id": "01J9MRK00000000000000001HX",
+                    "id": "01J9MRK00000000000000001J9",
                     "stackBelow": "mobile",
                     "style": {
                         "margin": {
@@ -1605,348 +1605,6 @@
                         }
                     },
                     "columns": [
-                        {
-                            "id": "01J9MRK00000000000000001HF",
-                            "span": {
-                                "desktop": 3,
-                                "tablet": 6,
-                                "mobile": 12
-                            },
-                            "style": {
-                                "gap": {
-                                    "desktop": "12px"
-                                },
-                                "padding": {
-                                    "desktop": {
-                                        "top": "24px",
-                                        "left": "24px"
-                                    }
-                                },
-                                "border": {
-                                    "desktop": {
-                                        "style": "solid",
-                                        "color": "var(--site-border, #e2e8f0)",
-                                        "left": "1px"
-                                    }
-                                }
-                            },
-                            "blocks": [
-                                {
-                                    "id": "01J9MRK00000000000000001HG",
-                                    "type": "container",
-                                    "props": {
-                                        "layout": "stack",
-                                        "gap": "0px",
-                                        "larkspurRole": "fade-up"
-                                    },
-                                    "style": {
-                                        "height": {
-                                            "desktop": "100%"
-                                        }
-                                    },
-                                    "children": [
-                                        {
-                                            "id": "01J9MRK00000000000000001HD",
-                                            "type": "paragraph",
-                                            "props": {
-                                                "text": "7",
-                                                "larkspurRole": "count-up"
-                                            },
-                                            "style": {
-                                                "fontFamily": {
-                                                    "desktop": "var(--site-heading-font, \"Inter\", system-ui, sans-serif)"
-                                                },
-                                                "color": {
-                                                    "desktop": "var(--site-primary, #4f46e5)"
-                                                },
-                                                "fontSize": {
-                                                    "desktop": "clamp(3rem, 6vw, 4.5rem)"
-                                                },
-                                                "lineHeight": {
-                                                    "desktop": "1"
-                                                },
-                                                "textAlign": {
-                                                    "desktop": "left"
-                                                },
-                                                "margin": {
-                                                    "desktop": "0"
-                                                },
-                                                "letterSpacing": {
-                                                    "desktop": "-0.12rem"
-                                                },
-                                                "maxWidth": {
-                                                    "desktop": "66ch"
-                                                },
-                                                "custom": {
-                                                    "text-wrap": "pretty"
-                                                }
-                                            }
-                                        },
-                                        {
-                                            "id": "01J9MRK00000000000000001HE",
-                                            "type": "paragraph",
-                                            "props": {
-                                                "text": "Clinicians across three clinics"
-                                            },
-                                            "style": {
-                                                "fontFamily": {
-                                                    "desktop": "var(--site-body-font, \"Inter\", system-ui, sans-serif)"
-                                                },
-                                                "color": {
-                                                    "desktop": "var(--site-body, #475569)"
-                                                },
-                                                "fontSize": {
-                                                    "desktop": "16px"
-                                                },
-                                                "lineHeight": {
-                                                    "desktop": "var(--site-line-height, 1.6)"
-                                                },
-                                                "textAlign": {
-                                                    "desktop": "left"
-                                                },
-                                                "margin": {
-                                                    "desktop": "0"
-                                                },
-                                                "maxWidth": {
-                                                    "desktop": "66ch"
-                                                },
-                                                "custom": {
-                                                    "text-wrap": "pretty"
-                                                }
-                                            }
-                                        }
-                                    ]
-                                }
-                            ]
-                        },
-                        {
-                            "id": "01J9MRK00000000000000001HK",
-                            "span": {
-                                "desktop": 3,
-                                "tablet": 6,
-                                "mobile": 12
-                            },
-                            "style": {
-                                "gap": {
-                                    "desktop": "12px"
-                                },
-                                "padding": {
-                                    "desktop": {
-                                        "top": "24px",
-                                        "left": "24px"
-                                    }
-                                },
-                                "border": {
-                                    "desktop": {
-                                        "style": "solid",
-                                        "color": "var(--site-border, #e2e8f0)",
-                                        "left": "1px"
-                                    }
-                                }
-                            },
-                            "blocks": [
-                                {
-                                    "id": "01J9MRK00000000000000001HM",
-                                    "type": "container",
-                                    "props": {
-                                        "layout": "stack",
-                                        "gap": "0px",
-                                        "larkspurRole": "fade-up"
-                                    },
-                                    "style": {
-                                        "height": {
-                                            "desktop": "100%"
-                                        }
-                                    },
-                                    "children": [
-                                        {
-                                            "id": "01J9MRK00000000000000001HH",
-                                            "type": "paragraph",
-                                            "props": {
-                                                "text": "4.8",
-                                                "larkspurRole": "count-up"
-                                            },
-                                            "style": {
-                                                "fontFamily": {
-                                                    "desktop": "var(--site-heading-font, \"Inter\", system-ui, sans-serif)"
-                                                },
-                                                "color": {
-                                                    "desktop": "var(--site-primary, #4f46e5)"
-                                                },
-                                                "fontSize": {
-                                                    "desktop": "clamp(3rem, 6vw, 4.5rem)"
-                                                },
-                                                "lineHeight": {
-                                                    "desktop": "1"
-                                                },
-                                                "textAlign": {
-                                                    "desktop": "left"
-                                                },
-                                                "margin": {
-                                                    "desktop": "0"
-                                                },
-                                                "letterSpacing": {
-                                                    "desktop": "-0.12rem"
-                                                },
-                                                "maxWidth": {
-                                                    "desktop": "66ch"
-                                                },
-                                                "custom": {
-                                                    "text-wrap": "pretty"
-                                                }
-                                            }
-                                        },
-                                        {
-                                            "id": "01J9MRK00000000000000001HJ",
-                                            "type": "paragraph",
-                                            "props": {
-                                                "text": "Average rating from 910 reviews"
-                                            },
-                                            "style": {
-                                                "fontFamily": {
-                                                    "desktop": "var(--site-body-font, \"Inter\", system-ui, sans-serif)"
-                                                },
-                                                "color": {
-                                                    "desktop": "var(--site-body, #475569)"
-                                                },
-                                                "fontSize": {
-                                                    "desktop": "16px"
-                                                },
-                                                "lineHeight": {
-                                                    "desktop": "var(--site-line-height, 1.6)"
-                                                },
-                                                "textAlign": {
-                                                    "desktop": "left"
-                                                },
-                                                "margin": {
-                                                    "desktop": "0"
-                                                },
-                                                "maxWidth": {
-                                                    "desktop": "66ch"
-                                                },
-                                                "custom": {
-                                                    "text-wrap": "pretty"
-                                                }
-                                            }
-                                        }
-                                    ]
-                                }
-                            ]
-                        },
-                        {
-                            "id": "01J9MRK00000000000000001HQ",
-                            "span": {
-                                "desktop": 3,
-                                "tablet": 6,
-                                "mobile": 12
-                            },
-                            "style": {
-                                "gap": {
-                                    "desktop": "12px"
-                                },
-                                "padding": {
-                                    "desktop": {
-                                        "top": "24px",
-                                        "left": "24px"
-                                    }
-                                },
-                                "border": {
-                                    "desktop": {
-                                        "style": "solid",
-                                        "color": "var(--site-border, #e2e8f0)",
-                                        "left": "1px"
-                                    }
-                                }
-                            },
-                            "blocks": [
-                                {
-                                    "id": "01J9MRK00000000000000001HR",
-                                    "type": "container",
-                                    "props": {
-                                        "layout": "stack",
-                                        "gap": "0px",
-                                        "larkspurRole": "fade-up"
-                                    },
-                                    "style": {
-                                        "height": {
-                                            "desktop": "100%"
-                                        }
-                                    },
-                                    "children": [
-                                        {
-                                            "id": "01J9MRK00000000000000001HN",
-                                            "type": "paragraph",
-                                            "props": {
-                                                "text": "1 hr",
-                                                "larkspurRole": "count-up"
-                                            },
-                                            "style": {
-                                                "fontFamily": {
-                                                    "desktop": "var(--site-heading-font, \"Inter\", system-ui, sans-serif)"
-                                                },
-                                                "color": {
-                                                    "desktop": "var(--site-primary, #4f46e5)"
-                                                },
-                                                "fontSize": {
-                                                    "desktop": "clamp(3rem, 6vw, 4.5rem)"
-                                                },
-                                                "lineHeight": {
-                                                    "desktop": "1"
-                                                },
-                                                "textAlign": {
-                                                    "desktop": "left"
-                                                },
-                                                "margin": {
-                                                    "desktop": "0"
-                                                },
-                                                "letterSpacing": {
-                                                    "desktop": "-0.12rem"
-                                                },
-                                                "maxWidth": {
-                                                    "desktop": "66ch"
-                                                },
-                                                "custom": {
-                                                    "text-wrap": "pretty"
-                                                }
-                                            }
-                                        },
-                                        {
-                                            "id": "01J9MRK00000000000000001HP",
-                                            "type": "paragraph",
-                                            "props": {
-                                                "text": "Typical call-back time"
-                                            },
-                                            "style": {
-                                                "fontFamily": {
-                                                    "desktop": "var(--site-body-font, \"Inter\", system-ui, sans-serif)"
-                                                },
-                                                "color": {
-                                                    "desktop": "var(--site-body, #475569)"
-                                                },
-                                                "fontSize": {
-                                                    "desktop": "16px"
-                                                },
-                                                "lineHeight": {
-                                                    "desktop": "var(--site-line-height, 1.6)"
-                                                },
-                                                "textAlign": {
-                                                    "desktop": "left"
-                                                },
-                                                "margin": {
-                                                    "desktop": "0"
-                                                },
-                                                "maxWidth": {
-                                                    "desktop": "66ch"
-                                                },
-                                                "custom": {
-                                                    "text-wrap": "pretty"
-                                                }
-                                            }
-                                        }
-                                    ]
-                                }
-                            ]
-                        },
                         {
                             "id": "01J9MRK00000000000000001HV",
                             "span": {
@@ -1991,7 +1649,7 @@
                                             "id": "01J9MRK00000000000000001HS",
                                             "type": "paragraph",
                                             "props": {
-                                                "text": "6 days",
+                                                "text": "7",
                                                 "larkspurRole": "count-up"
                                             },
                                             "style": {
@@ -2026,6 +1684,348 @@
                                         },
                                         {
                                             "id": "01J9MRK00000000000000001HT",
+                                            "type": "paragraph",
+                                            "props": {
+                                                "text": "Clinicians across three clinics"
+                                            },
+                                            "style": {
+                                                "fontFamily": {
+                                                    "desktop": "var(--site-body-font, \"Inter\", system-ui, sans-serif)"
+                                                },
+                                                "color": {
+                                                    "desktop": "var(--site-body, #475569)"
+                                                },
+                                                "fontSize": {
+                                                    "desktop": "16px"
+                                                },
+                                                "lineHeight": {
+                                                    "desktop": "var(--site-line-height, 1.6)"
+                                                },
+                                                "textAlign": {
+                                                    "desktop": "left"
+                                                },
+                                                "margin": {
+                                                    "desktop": "0"
+                                                },
+                                                "maxWidth": {
+                                                    "desktop": "66ch"
+                                                },
+                                                "custom": {
+                                                    "text-wrap": "pretty"
+                                                }
+                                            }
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "id": "01J9MRK00000000000000001HZ",
+                            "span": {
+                                "desktop": 3,
+                                "tablet": 6,
+                                "mobile": 12
+                            },
+                            "style": {
+                                "gap": {
+                                    "desktop": "12px"
+                                },
+                                "padding": {
+                                    "desktop": {
+                                        "top": "24px",
+                                        "left": "24px"
+                                    }
+                                },
+                                "border": {
+                                    "desktop": {
+                                        "style": "solid",
+                                        "color": "var(--site-border, #e2e8f0)",
+                                        "left": "1px"
+                                    }
+                                }
+                            },
+                            "blocks": [
+                                {
+                                    "id": "01J9MRK00000000000000001J0",
+                                    "type": "container",
+                                    "props": {
+                                        "layout": "stack",
+                                        "gap": "0px",
+                                        "larkspurRole": "fade-up"
+                                    },
+                                    "style": {
+                                        "height": {
+                                            "desktop": "100%"
+                                        }
+                                    },
+                                    "children": [
+                                        {
+                                            "id": "01J9MRK00000000000000001HX",
+                                            "type": "paragraph",
+                                            "props": {
+                                                "text": "4.8",
+                                                "larkspurRole": "count-up"
+                                            },
+                                            "style": {
+                                                "fontFamily": {
+                                                    "desktop": "var(--site-heading-font, \"Inter\", system-ui, sans-serif)"
+                                                },
+                                                "color": {
+                                                    "desktop": "var(--site-primary, #4f46e5)"
+                                                },
+                                                "fontSize": {
+                                                    "desktop": "clamp(3rem, 6vw, 4.5rem)"
+                                                },
+                                                "lineHeight": {
+                                                    "desktop": "1"
+                                                },
+                                                "textAlign": {
+                                                    "desktop": "left"
+                                                },
+                                                "margin": {
+                                                    "desktop": "0"
+                                                },
+                                                "letterSpacing": {
+                                                    "desktop": "-0.12rem"
+                                                },
+                                                "maxWidth": {
+                                                    "desktop": "66ch"
+                                                },
+                                                "custom": {
+                                                    "text-wrap": "pretty"
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "id": "01J9MRK00000000000000001HY",
+                                            "type": "paragraph",
+                                            "props": {
+                                                "text": "Average rating from 910 reviews"
+                                            },
+                                            "style": {
+                                                "fontFamily": {
+                                                    "desktop": "var(--site-body-font, \"Inter\", system-ui, sans-serif)"
+                                                },
+                                                "color": {
+                                                    "desktop": "var(--site-body, #475569)"
+                                                },
+                                                "fontSize": {
+                                                    "desktop": "16px"
+                                                },
+                                                "lineHeight": {
+                                                    "desktop": "var(--site-line-height, 1.6)"
+                                                },
+                                                "textAlign": {
+                                                    "desktop": "left"
+                                                },
+                                                "margin": {
+                                                    "desktop": "0"
+                                                },
+                                                "maxWidth": {
+                                                    "desktop": "66ch"
+                                                },
+                                                "custom": {
+                                                    "text-wrap": "pretty"
+                                                }
+                                            }
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "id": "01J9MRK00000000000000001J3",
+                            "span": {
+                                "desktop": 3,
+                                "tablet": 6,
+                                "mobile": 12
+                            },
+                            "style": {
+                                "gap": {
+                                    "desktop": "12px"
+                                },
+                                "padding": {
+                                    "desktop": {
+                                        "top": "24px",
+                                        "left": "24px"
+                                    }
+                                },
+                                "border": {
+                                    "desktop": {
+                                        "style": "solid",
+                                        "color": "var(--site-border, #e2e8f0)",
+                                        "left": "1px"
+                                    }
+                                }
+                            },
+                            "blocks": [
+                                {
+                                    "id": "01J9MRK00000000000000001J4",
+                                    "type": "container",
+                                    "props": {
+                                        "layout": "stack",
+                                        "gap": "0px",
+                                        "larkspurRole": "fade-up"
+                                    },
+                                    "style": {
+                                        "height": {
+                                            "desktop": "100%"
+                                        }
+                                    },
+                                    "children": [
+                                        {
+                                            "id": "01J9MRK00000000000000001J1",
+                                            "type": "paragraph",
+                                            "props": {
+                                                "text": "1 hr",
+                                                "larkspurRole": "count-up"
+                                            },
+                                            "style": {
+                                                "fontFamily": {
+                                                    "desktop": "var(--site-heading-font, \"Inter\", system-ui, sans-serif)"
+                                                },
+                                                "color": {
+                                                    "desktop": "var(--site-primary, #4f46e5)"
+                                                },
+                                                "fontSize": {
+                                                    "desktop": "clamp(3rem, 6vw, 4.5rem)"
+                                                },
+                                                "lineHeight": {
+                                                    "desktop": "1"
+                                                },
+                                                "textAlign": {
+                                                    "desktop": "left"
+                                                },
+                                                "margin": {
+                                                    "desktop": "0"
+                                                },
+                                                "letterSpacing": {
+                                                    "desktop": "-0.12rem"
+                                                },
+                                                "maxWidth": {
+                                                    "desktop": "66ch"
+                                                },
+                                                "custom": {
+                                                    "text-wrap": "pretty"
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "id": "01J9MRK00000000000000001J2",
+                                            "type": "paragraph",
+                                            "props": {
+                                                "text": "Typical call-back time"
+                                            },
+                                            "style": {
+                                                "fontFamily": {
+                                                    "desktop": "var(--site-body-font, \"Inter\", system-ui, sans-serif)"
+                                                },
+                                                "color": {
+                                                    "desktop": "var(--site-body, #475569)"
+                                                },
+                                                "fontSize": {
+                                                    "desktop": "16px"
+                                                },
+                                                "lineHeight": {
+                                                    "desktop": "var(--site-line-height, 1.6)"
+                                                },
+                                                "textAlign": {
+                                                    "desktop": "left"
+                                                },
+                                                "margin": {
+                                                    "desktop": "0"
+                                                },
+                                                "maxWidth": {
+                                                    "desktop": "66ch"
+                                                },
+                                                "custom": {
+                                                    "text-wrap": "pretty"
+                                                }
+                                            }
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "id": "01J9MRK00000000000000001J7",
+                            "span": {
+                                "desktop": 3,
+                                "tablet": 6,
+                                "mobile": 12
+                            },
+                            "style": {
+                                "gap": {
+                                    "desktop": "12px"
+                                },
+                                "padding": {
+                                    "desktop": {
+                                        "top": "24px",
+                                        "left": "24px"
+                                    }
+                                },
+                                "border": {
+                                    "desktop": {
+                                        "style": "solid",
+                                        "color": "var(--site-border, #e2e8f0)",
+                                        "left": "1px"
+                                    }
+                                }
+                            },
+                            "blocks": [
+                                {
+                                    "id": "01J9MRK00000000000000001J8",
+                                    "type": "container",
+                                    "props": {
+                                        "layout": "stack",
+                                        "gap": "0px",
+                                        "larkspurRole": "fade-up"
+                                    },
+                                    "style": {
+                                        "height": {
+                                            "desktop": "100%"
+                                        }
+                                    },
+                                    "children": [
+                                        {
+                                            "id": "01J9MRK00000000000000001J5",
+                                            "type": "paragraph",
+                                            "props": {
+                                                "text": "6 days",
+                                                "larkspurRole": "count-up"
+                                            },
+                                            "style": {
+                                                "fontFamily": {
+                                                    "desktop": "var(--site-heading-font, \"Inter\", system-ui, sans-serif)"
+                                                },
+                                                "color": {
+                                                    "desktop": "var(--site-primary, #4f46e5)"
+                                                },
+                                                "fontSize": {
+                                                    "desktop": "clamp(3rem, 6vw, 4.5rem)"
+                                                },
+                                                "lineHeight": {
+                                                    "desktop": "1"
+                                                },
+                                                "textAlign": {
+                                                    "desktop": "left"
+                                                },
+                                                "margin": {
+                                                    "desktop": "0"
+                                                },
+                                                "letterSpacing": {
+                                                    "desktop": "-0.12rem"
+                                                },
+                                                "maxWidth": {
+                                                    "desktop": "66ch"
+                                                },
+                                                "custom": {
+                                                    "text-wrap": "pretty"
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "id": "01J9MRK00000000000000001J6",
                                             "type": "paragraph",
                                             "props": {
                                                 "text": "Open every week, with late hours"
@@ -2070,7 +2070,7 @@
             }
         },
         {
-            "id": "01J9MRK00000000000000001K3",
+            "id": "01J9MRK00000000000000001KF",
             "name": "Health Notes",
             "width": "full",
             "sticky": false,
@@ -2101,7 +2101,7 @@
             },
             "rows": [
                 {
-                    "id": "01J9MRK00000000000000001K1",
+                    "id": "01J9MRK00000000000000001KD",
                     "stackBelow": "tablet",
                     "style": {
                         "margin": {
@@ -2129,7 +2129,7 @@
                     },
                     "columns": [
                         {
-                            "id": "01J9MRK00000000000000001JY",
+                            "id": "01J9MRK00000000000000001KA",
                             "span": {
                                 "desktop": 7,
                                 "tablet": 12,
@@ -2142,7 +2142,7 @@
                             },
                             "blocks": [
                                 {
-                                    "id": "01J9MRK00000000000000001JT",
+                                    "id": "01J9MRK00000000000000001K6",
                                     "type": "container",
                                     "props": {
                                         "layout": "row",
@@ -2183,7 +2183,7 @@
                                     },
                                     "children": [
                                         {
-                                            "id": "01J9MRK00000000000000001JV",
+                                            "id": "01J9MRK00000000000000001K7",
                                             "type": "icon",
                                             "props": {
                                                 "name": "circle-dot",
@@ -2205,7 +2205,7 @@
                                             }
                                         },
                                         {
-                                            "id": "01J9MRK00000000000000001JW",
+                                            "id": "01J9MRK00000000000000001K8",
                                             "type": "paragraph",
                                             "props": {
                                                 "text": "Health notes"
@@ -2240,7 +2240,7 @@
                                     ]
                                 },
                                 {
-                                    "id": "01J9MRK00000000000000001JX",
+                                    "id": "01J9MRK00000000000000001K9",
                                     "type": "heading",
                                     "props": {
                                         "text": "<em>Advice from</em> our clinicians",
@@ -2283,7 +2283,7 @@
                             ]
                         },
                         {
-                            "id": "01J9MRK00000000000000001K0",
+                            "id": "01J9MRK00000000000000001KC",
                             "span": {
                                 "desktop": 5,
                                 "tablet": 6,
@@ -2296,7 +2296,7 @@
                             },
                             "blocks": [
                                 {
-                                    "id": "01J9MRK00000000000000001JZ",
+                                    "id": "01J9MRK00000000000000001KB",
                                     "type": "paragraph",
                                     "props": {
                                         "text": "Short, practical guides written by the people who see you in clinic.",
@@ -2334,7 +2334,7 @@
                     ]
                 },
                 {
-                    "id": "01J9MRK00000000000000001K2",
+                    "id": "01J9MRK00000000000000001KE",
                     "stackBelow": "tablet",
                     "style": {
                         "margin": {
@@ -2353,7 +2353,7 @@
                     },
                     "columns": [
                         {
-                            "id": "01J9MRK00000000000000001J6",
+                            "id": "01J9MRK00000000000000001JJ",
                             "span": {
                                 "desktop": 4,
                                 "tablet": 6,
@@ -2362,7 +2362,7 @@
                             "style": [],
                             "blocks": [
                                 {
-                                    "id": "01J9MRK00000000000000001J7",
+                                    "id": "01J9MRK00000000000000001JK",
                                     "type": "container",
                                     "props": {
                                         "layout": "stack",
@@ -2376,7 +2376,7 @@
                                     },
                                     "children": [
                                         {
-                                            "id": "01J9MRK00000000000000001HZ",
+                                            "id": "01J9MRK00000000000000001JB",
                                             "type": "container",
                                             "props": {
                                                 "layout": "stack",
@@ -2386,7 +2386,7 @@
                                             "style": [],
                                             "children": [
                                                 {
-                                                    "id": "01J9MRK00000000000000001J0",
+                                                    "id": "01J9MRK00000000000000001JC",
                                                     "type": "image",
                                                     "props": {
                                                         "src": "/templates/larkspur/treat-vaccine.jpg",
@@ -2409,7 +2409,7 @@
                                                     }
                                                 },
                                                 {
-                                                    "id": "01J9MRK00000000000000001J1",
+                                                    "id": "01J9MRK00000000000000001JD",
                                                     "type": "container",
                                                     "props": {
                                                         "layout": "row",
@@ -2422,7 +2422,7 @@
                                                     },
                                                     "children": [
                                                         {
-                                                            "id": "01J9MRK00000000000000001J2",
+                                                            "id": "01J9MRK00000000000000001JE",
                                                             "type": "paragraph",
                                                             "props": {
                                                                 "text": "Vaccines",
@@ -2476,7 +2476,7 @@
                                                             }
                                                         },
                                                         {
-                                                            "id": "01J9MRK00000000000000001J3",
+                                                            "id": "01J9MRK00000000000000001JF",
                                                             "type": "paragraph",
                                                             "props": {
                                                                 "text": "4 min read"
@@ -2511,7 +2511,7 @@
                                                     ]
                                                 },
                                                 {
-                                                    "id": "01J9MRK00000000000000001J4",
+                                                    "id": "01J9MRK00000000000000001JG",
                                                     "type": "heading",
                                                     "props": {
                                                         "text": "Flu season checklist for the whole family",
@@ -2548,7 +2548,7 @@
                                                     }
                                                 },
                                                 {
-                                                    "id": "01J9MRK00000000000000001J5",
+                                                    "id": "01J9MRK00000000000000001JH",
                                                     "type": "button",
                                                     "props": {
                                                         "label": "Read the note",
@@ -2600,7 +2600,7 @@
                             ]
                         },
                         {
-                            "id": "01J9MRK00000000000000001JF",
+                            "id": "01J9MRK00000000000000001JV",
                             "span": {
                                 "desktop": 4,
                                 "tablet": 6,
@@ -2609,7 +2609,7 @@
                             "style": [],
                             "blocks": [
                                 {
-                                    "id": "01J9MRK00000000000000001JG",
+                                    "id": "01J9MRK00000000000000001JW",
                                     "type": "container",
                                     "props": {
                                         "layout": "stack",
@@ -2623,7 +2623,7 @@
                                     },
                                     "children": [
                                         {
-                                            "id": "01J9MRK00000000000000001J8",
+                                            "id": "01J9MRK00000000000000001JM",
                                             "type": "container",
                                             "props": {
                                                 "layout": "stack",
@@ -2633,7 +2633,7 @@
                                             "style": [],
                                             "children": [
                                                 {
-                                                    "id": "01J9MRK00000000000000001J9",
+                                                    "id": "01J9MRK00000000000000001JN",
                                                     "type": "image",
                                                     "props": {
                                                         "src": "/templates/larkspur/treat-checkup.jpg",
@@ -2656,7 +2656,7 @@
                                                     }
                                                 },
                                                 {
-                                                    "id": "01J9MRK00000000000000001JA",
+                                                    "id": "01J9MRK00000000000000001JP",
                                                     "type": "container",
                                                     "props": {
                                                         "layout": "row",
@@ -2669,7 +2669,7 @@
                                                     },
                                                     "children": [
                                                         {
-                                                            "id": "01J9MRK00000000000000001JB",
+                                                            "id": "01J9MRK00000000000000001JQ",
                                                             "type": "paragraph",
                                                             "props": {
                                                                 "text": "Check-ups",
@@ -2723,7 +2723,7 @@
                                                             }
                                                         },
                                                         {
-                                                            "id": "01J9MRK00000000000000001JC",
+                                                            "id": "01J9MRK00000000000000001JR",
                                                             "type": "paragraph",
                                                             "props": {
                                                                 "text": "5 min read"
@@ -2758,7 +2758,7 @@
                                                     ]
                                                 },
                                                 {
-                                                    "id": "01J9MRK00000000000000001JD",
+                                                    "id": "01J9MRK00000000000000001JS",
                                                     "type": "heading",
                                                     "props": {
                                                         "text": "What happens at an annual physical, step by step",
@@ -2795,7 +2795,7 @@
                                                     }
                                                 },
                                                 {
-                                                    "id": "01J9MRK00000000000000001JE",
+                                                    "id": "01J9MRK00000000000000001JT",
                                                     "type": "button",
                                                     "props": {
                                                         "label": "Read the note",
@@ -2847,7 +2847,7 @@
                             ]
                         },
                         {
-                            "id": "01J9MRK00000000000000001JR",
+                            "id": "01J9MRK00000000000000001K4",
                             "span": {
                                 "desktop": 4,
                                 "tablet": 6,
@@ -2856,7 +2856,7 @@
                             "style": [],
                             "blocks": [
                                 {
-                                    "id": "01J9MRK00000000000000001JS",
+                                    "id": "01J9MRK00000000000000001K5",
                                     "type": "container",
                                     "props": {
                                         "layout": "stack",
@@ -2870,7 +2870,7 @@
                                     },
                                     "children": [
                                         {
-                                            "id": "01J9MRK00000000000000001JH",
+                                            "id": "01J9MRK00000000000000001JX",
                                             "type": "container",
                                             "props": {
                                                 "layout": "stack",
@@ -2880,7 +2880,7 @@
                                             "style": [],
                                             "children": [
                                                 {
-                                                    "id": "01J9MRK00000000000000001JJ",
+                                                    "id": "01J9MRK00000000000000001JY",
                                                     "type": "image",
                                                     "props": {
                                                         "src": "/templates/larkspur/treat-mental.jpg",
@@ -2903,7 +2903,7 @@
                                                     }
                                                 },
                                                 {
-                                                    "id": "01J9MRK00000000000000001JK",
+                                                    "id": "01J9MRK00000000000000001JZ",
                                                     "type": "container",
                                                     "props": {
                                                         "layout": "row",
@@ -2916,7 +2916,7 @@
                                                     },
                                                     "children": [
                                                         {
-                                                            "id": "01J9MRK00000000000000001JM",
+                                                            "id": "01J9MRK00000000000000001K0",
                                                             "type": "paragraph",
                                                             "props": {
                                                                 "text": "Mental health",
@@ -2970,7 +2970,7 @@
                                                             }
                                                         },
                                                         {
-                                                            "id": "01J9MRK00000000000000001JN",
+                                                            "id": "01J9MRK00000000000000001K1",
                                                             "type": "paragraph",
                                                             "props": {
                                                                 "text": "6 min read"
@@ -3005,7 +3005,7 @@
                                                     ]
                                                 },
                                                 {
-                                                    "id": "01J9MRK00000000000000001JP",
+                                                    "id": "01J9MRK00000000000000001K2",
                                                     "type": "heading",
                                                     "props": {
                                                         "text": "Small sleep changes that make a real difference",
@@ -3042,7 +3042,7 @@
                                                     }
                                                 },
                                                 {
-                                                    "id": "01J9MRK00000000000000001JQ",
+                                                    "id": "01J9MRK00000000000000001K3",
                                                     "type": "button",
                                                     "props": {
                                                         "label": "Read the note",
@@ -3102,7 +3102,7 @@
             }
         },
         {
-            "id": "01J9MRK00000000000000001MB",
+            "id": "01J9MRK00000000000000001MQ",
             "name": "Booking Band",
             "width": "full",
             "sticky": false,
@@ -3133,7 +3133,7 @@
             },
             "rows": [
                 {
-                    "id": "01J9MRK00000000000000001MA",
+                    "id": "01J9MRK00000000000000001MP",
                     "stackBelow": "tablet",
                     "style": {
                         "margin": {
@@ -3155,7 +3155,7 @@
                     },
                     "columns": [
                         {
-                            "id": "01J9MRK00000000000000001M7",
+                            "id": "01J9MRK00000000000000001MK",
                             "span": {
                                 "desktop": 7,
                                 "tablet": 12,
@@ -3168,7 +3168,7 @@
                             },
                             "blocks": [
                                 {
-                                    "id": "01J9MRK00000000000000001KW",
+                                    "id": "01J9MRK00000000000000001M8",
                                     "type": "container",
                                     "props": {
                                         "layout": "row",
@@ -3209,7 +3209,7 @@
                                     },
                                     "children": [
                                         {
-                                            "id": "01J9MRK00000000000000001KX",
+                                            "id": "01J9MRK00000000000000001M9",
                                             "type": "icon",
                                             "props": {
                                                 "name": "circle-dot",
@@ -3231,7 +3231,7 @@
                                             }
                                         },
                                         {
-                                            "id": "01J9MRK00000000000000001KY",
+                                            "id": "01J9MRK00000000000000001MA",
                                             "type": "paragraph",
                                             "props": {
                                                 "text": "Book a visit"
@@ -3266,7 +3266,7 @@
                                     ]
                                 },
                                 {
-                                    "id": "01J9MRK00000000000000001KZ",
+                                    "id": "01J9MRK00000000000000001MB",
                                     "type": "heading",
                                     "props": {
                                         "text": "<em>Book today.</em> Most new patients are seen within a week.",
@@ -3310,7 +3310,7 @@
                                     }
                                 },
                                 {
-                                    "id": "01J9MRK00000000000000001M0",
+                                    "id": "01J9MRK00000000000000001MC",
                                     "type": "paragraph",
                                     "props": {
                                         "text": "Choose a clinic, a clinician and a time of day. We confirm by text within one working hour."
@@ -3343,7 +3343,7 @@
                                     }
                                 },
                                 {
-                                    "id": "01J9MRK00000000000000001M1",
+                                    "id": "01J9MRK00000000000000001MD",
                                     "type": "container",
                                     "props": {
                                         "layout": "row",
@@ -3356,7 +3356,7 @@
                                     },
                                     "children": [
                                         {
-                                            "id": "01J9MRK00000000000000001M2",
+                                            "id": "01J9MRK00000000000000001ME",
                                             "type": "button",
                                             "props": {
                                                 "label": "Book an appointment",
@@ -3394,7 +3394,7 @@
                                             }
                                         },
                                         {
-                                            "id": "01J9MRK00000000000000001M3",
+                                            "id": "01J9MRK00000000000000001MF",
                                             "type": "button",
                                             "props": {
                                                 "label": "Call (555) 310-4477",
@@ -3444,11 +3444,12 @@
                                     ]
                                 },
                                 {
-                                    "id": "01J9MRK00000000000000001M4",
+                                    "id": "01J9MRK00000000000000001MG",
                                     "type": "container",
                                     "props": {
                                         "layout": "row",
-                                        "gap": "12px"
+                                        "gap": "12px",
+                                        "larkspurRole": "icon-line"
                                     },
                                     "style": {
                                         "alignItems": {
@@ -3457,7 +3458,7 @@
                                     },
                                     "children": [
                                         {
-                                            "id": "01J9MRK00000000000000001M5",
+                                            "id": "01J9MRK00000000000000001MH",
                                             "type": "icon",
                                             "props": {
                                                 "name": "triangle-alert",
@@ -3480,7 +3481,7 @@
                                             }
                                         },
                                         {
-                                            "id": "01J9MRK00000000000000001M6",
+                                            "id": "01J9MRK00000000000000001MJ",
                                             "type": "paragraph",
                                             "props": {
                                                 "text": "Not an emergency service. In an emergency, call 911."
@@ -3517,7 +3518,7 @@
                             ]
                         },
                         {
-                            "id": "01J9MRK00000000000000001M8",
+                            "id": "01J9MRK00000000000000001MM",
                             "span": {
                                 "desktop": 5,
                                 "tablet": 6,
@@ -3526,7 +3527,7 @@
                             "style": [],
                             "blocks": [
                                 {
-                                    "id": "01J9MRK00000000000000001M9",
+                                    "id": "01J9MRK00000000000000001MN",
                                     "type": "container",
                                     "props": {
                                         "layout": "stack",
@@ -3540,7 +3541,7 @@
                                     },
                                     "children": [
                                         {
-                                            "id": "01J9MRK00000000000000001K4",
+                                            "id": "01J9MRK00000000000000001KG",
                                             "type": "container",
                                             "props": {
                                                 "layout": "stack",
@@ -3568,7 +3569,7 @@
                                             },
                                             "children": [
                                                 {
-                                                    "id": "01J9MRK00000000000000001K5",
+                                                    "id": "01J9MRK00000000000000001KH",
                                                     "type": "container",
                                                     "props": {
                                                         "layout": "row",
@@ -3584,7 +3585,7 @@
                                                     },
                                                     "children": [
                                                         {
-                                                            "id": "01J9MRK00000000000000001K6",
+                                                            "id": "01J9MRK00000000000000001KJ",
                                                             "type": "container",
                                                             "props": {
                                                                 "layout": "stack",
@@ -3593,7 +3594,7 @@
                                                             "style": [],
                                                             "children": [
                                                                 {
-                                                                    "id": "01J9MRK00000000000000001K7",
+                                                                    "id": "01J9MRK00000000000000001KK",
                                                                     "type": "paragraph",
                                                                     "props": {
                                                                         "text": "YOUR VISIT"
@@ -3632,7 +3633,7 @@
                                                                     }
                                                                 },
                                                                 {
-                                                                    "id": "01J9MRK00000000000000001K8",
+                                                                    "id": "01J9MRK00000000000000001KM",
                                                                     "type": "heading",
                                                                     "props": {
                                                                         "text": "New patient",
@@ -3670,7 +3671,7 @@
                                                             ]
                                                         },
                                                         {
-                                                            "id": "01J9MRK00000000000000001K9",
+                                                            "id": "01J9MRK00000000000000001KN",
                                                             "type": "paragraph",
                                                             "props": {
                                                                 "text": "40 min",
@@ -3726,7 +3727,7 @@
                                                     ]
                                                 },
                                                 {
-                                                    "id": "01J9MRK00000000000000001KA",
+                                                    "id": "01J9MRK00000000000000001KP",
                                                     "type": "container",
                                                     "props": {
                                                         "layout": "row",
@@ -3762,7 +3763,7 @@
                                                     },
                                                     "children": [
                                                         {
-                                                            "id": "01J9MRK00000000000000001KB",
+                                                            "id": "01J9MRK00000000000000001KQ",
                                                             "type": "paragraph",
                                                             "props": {
                                                                 "text": "Check-in code"
@@ -3795,7 +3796,7 @@
                                                             }
                                                         },
                                                         {
-                                                            "id": "01J9MRK00000000000000001KC",
+                                                            "id": "01J9MRK00000000000000001KR",
                                                             "type": "paragraph",
                                                             "props": {
                                                                 "text": "LK 0214"
@@ -3833,7 +3834,7 @@
                                                     ]
                                                 },
                                                 {
-                                                    "id": "01J9MRK00000000000000001KD",
+                                                    "id": "01J9MRK00000000000000001KS",
                                                     "type": "container",
                                                     "props": {
                                                         "layout": "row",
@@ -3859,7 +3860,7 @@
                                                     },
                                                     "children": [
                                                         {
-                                                            "id": "01J9MRK00000000000000001KE",
+                                                            "id": "01J9MRK00000000000000001KT",
                                                             "type": "paragraph",
                                                             "props": {
                                                                 "text": "Clinic"
@@ -3892,7 +3893,7 @@
                                                             }
                                                         },
                                                         {
-                                                            "id": "01J9MRK00000000000000001KF",
+                                                            "id": "01J9MRK00000000000000001KV",
                                                             "type": "paragraph",
                                                             "props": {
                                                                 "text": "Orchard Street"
@@ -3927,7 +3928,7 @@
                                                     ]
                                                 },
                                                 {
-                                                    "id": "01J9MRK00000000000000001KG",
+                                                    "id": "01J9MRK00000000000000001KW",
                                                     "type": "container",
                                                     "props": {
                                                         "layout": "row",
@@ -3953,7 +3954,7 @@
                                                     },
                                                     "children": [
                                                         {
-                                                            "id": "01J9MRK00000000000000001KH",
+                                                            "id": "01J9MRK00000000000000001KX",
                                                             "type": "paragraph",
                                                             "props": {
                                                                 "text": "Clinician"
@@ -3986,7 +3987,7 @@
                                                             }
                                                         },
                                                         {
-                                                            "id": "01J9MRK00000000000000001KJ",
+                                                            "id": "01J9MRK00000000000000001KY",
                                                             "type": "paragraph",
                                                             "props": {
                                                                 "text": "Dr. Priya Raman, MD"
@@ -4021,7 +4022,7 @@
                                                     ]
                                                 },
                                                 {
-                                                    "id": "01J9MRK00000000000000001KK",
+                                                    "id": "01J9MRK00000000000000001KZ",
                                                     "type": "container",
                                                     "props": {
                                                         "layout": "row",
@@ -4047,7 +4048,7 @@
                                                     },
                                                     "children": [
                                                         {
-                                                            "id": "01J9MRK00000000000000001KM",
+                                                            "id": "01J9MRK00000000000000001M0",
                                                             "type": "paragraph",
                                                             "props": {
                                                                 "text": "When"
@@ -4080,7 +4081,7 @@
                                                             }
                                                         },
                                                         {
-                                                            "id": "01J9MRK00000000000000001KN",
+                                                            "id": "01J9MRK00000000000000001M1",
                                                             "type": "paragraph",
                                                             "props": {
                                                                 "text": "Weekday morning"
@@ -4115,7 +4116,7 @@
                                                     ]
                                                 },
                                                 {
-                                                    "id": "01J9MRK00000000000000001KP",
+                                                    "id": "01J9MRK00000000000000001M2",
                                                     "type": "container",
                                                     "props": {
                                                         "layout": "row",
@@ -4141,7 +4142,7 @@
                                                     },
                                                     "children": [
                                                         {
-                                                            "id": "01J9MRK00000000000000001KQ",
+                                                            "id": "01J9MRK00000000000000001M3",
                                                             "type": "paragraph",
                                                             "props": {
                                                                 "text": "Bring"
@@ -4174,7 +4175,7 @@
                                                             }
                                                         },
                                                         {
-                                                            "id": "01J9MRK00000000000000001KR",
+                                                            "id": "01J9MRK00000000000000001M4",
                                                             "type": "paragraph",
                                                             "props": {
                                                                 "text": "Photo ID, insurance card, medicine list"
@@ -4209,7 +4210,7 @@
                                                     ]
                                                 },
                                                 {
-                                                    "id": "01J9MRK00000000000000001KS",
+                                                    "id": "01J9MRK00000000000000001M5",
                                                     "type": "container",
                                                     "props": {
                                                         "layout": "row",
@@ -4227,7 +4228,7 @@
                                                     },
                                                     "children": [
                                                         {
-                                                            "id": "01J9MRK00000000000000001KT",
+                                                            "id": "01J9MRK00000000000000001M6",
                                                             "type": "paragraph",
                                                             "props": {
                                                                 "text": "Text reminder",
@@ -4281,7 +4282,7 @@
                                                             }
                                                         },
                                                         {
-                                                            "id": "01J9MRK00000000000000001KV",
+                                                            "id": "01J9MRK00000000000000001M7",
                                                             "type": "paragraph",
                                                             "props": {
                                                                 "text": "Free to reschedule",
