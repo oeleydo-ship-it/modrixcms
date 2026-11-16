@@ -334,10 +334,11 @@ final class SableDesigns
             'src' => self::ASSETS.'logo.svg',
             'alt' => self::FULL_BRAND,
             'text' => self::BRAND,
+            'url' => '/',
             'link' => '/',
-            'width' => '124px',
+            'width' => '132px',
         ], [
-            'maxWidth' => $this->responsive('124px'),
+            'height' => ['desktop' => '34px', 'mobile' => '30px'],
         ]);
 
         $navigation = $this->blockNode(BlockType::Navigation, [
@@ -372,20 +373,34 @@ final class SableDesigns
             'children' => [$navigation],
         ];
 
-        $cta = $this->primaryPill('Start a project', '/contact');
+        $ctaWrap = [
+            ...$this->container('row', '0px', 'header-cta', [
+                'justifyContent' => $this->responsive('flex-end'),
+                'alignItems' => $this->responsive('center'),
+            ]),
+            'children' => [$this->primaryPill('Start a project', '/contact')],
+        ];
+
+        $bar = [
+            ...$this->container('columns', '16px', 'header-bar', [
+                'columns' => [2, 8, 2],
+                'stackBelow' => 'none',
+                'width' => $this->responsive('100%'),
+                'alignItems' => $this->responsive('center'),
+            ]),
+            'children' => [$logo, $capsule, $ctaWrap],
+        ];
 
         return $this->tagSection('header', $this->section('Header · Sable Capsule', [
             $this->row([
-                $this->column(3, [$logo], ['justifyContent' => $this->responsive('center')]),
-                $this->column(6, [$capsule], ['justifyContent' => $this->responsive('center'), 'alignItems' => $this->responsive('center')]),
-                $this->column(3, [$cta], ['justifyContent' => $this->responsive('center'), 'alignItems' => ['desktop' => 'flex-end', 'mobile' => 'flex-start']]),
-            ], $this->railRow(['alignItems' => $this->responsive('center'), 'gap' => ['desktop' => '16px', 'mobile' => '12px']]), 'tablet'),
+                $this->column(12, [$bar]),
+            ], $this->railRow(['alignItems' => $this->responsive('center')]), 'none'),
         ], [
             'sticky' => true,
             'backgroundColor' => $this->responsive(DesignTokens::ref('header_bg', '#fdfcfc')),
             'padding' => [
                 'desktop' => ['top' => '14px', 'bottom' => '14px', 'left' => '24px', 'right' => '24px'],
-                'mobile' => ['top' => '12px', 'bottom' => '12px', 'left' => '16px', 'right' => '16px'],
+                'mobile' => ['top' => '12px', 'bottom' => '12px', 'left' => '18px', 'right' => '18px'],
             ],
         ]));
     }
@@ -1308,11 +1323,14 @@ final class SableDesigns
     {
         return $this->tagSection('contact', $this->section('Contact · Project Intake Card', [
             $this->row([
-                $this->column(8, [[
+                $this->column(12, [[
                     ...$this->container('stack', '14px', 'contact-form-mount', [
                         'backgroundColor' => $this->responsive('var(--sable-surface, var(--site-surface, #f5f3f1))'),
                         'borderRadius' => $this->responsive('20px'),
                         'padding' => ['desktop' => ['top' => '40px', 'bottom' => '40px', 'left' => '40px', 'right' => '40px'], 'mobile' => ['top' => '26px', 'bottom' => '26px', 'left' => '22px', 'right' => '22px']],
+                        'maxWidth' => $this->responsive('720px'),
+                        'width' => $this->responsive('100%'),
+                        'margin' => $this->responsive(['left' => 'auto', 'right' => 'auto']),
                     ]),
                     'children' => [
                         $this->h3('Send us your project scope', [

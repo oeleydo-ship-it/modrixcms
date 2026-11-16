@@ -227,7 +227,7 @@
                         {
                             "id": "01J9SB000000000000000000Q3",
                             "span": {
-                                "desktop": 8,
+                                "desktop": 12,
                                 "tablet": 12,
                                 "mobile": 12
                             },
@@ -260,6 +260,18 @@
                                                 "bottom": "26px",
                                                 "left": "22px",
                                                 "right": "22px"
+                                            }
+                                        },
+                                        "maxWidth": {
+                                            "desktop": "720px"
+                                        },
+                                        "width": {
+                                            "desktop": "100%"
+                                        },
+                                        "margin": {
+                                            "desktop": {
+                                                "left": "auto",
+                                                "right": "auto"
                                             }
                                         }
                                     },

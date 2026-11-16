@@ -303,6 +303,15 @@ const mobileHeaderRules = (scope: string): string => `
     min-height: 62px !important;
     padding: 8px 0 !important;
   }
+  ${scope} [data-vertex="header"] [data-vertex-role="header-bar"] {
+    position: relative !important;
+  }
+  /* The open menu panel is positioned against the header bar. Without this, the column and the menu
+     block (both position: relative) become its containing block and shrink it to the 38px button. */
+  ${scope} [data-vertex="header"] [data-vertex-role="header-nav-col"],
+  ${scope} [data-vertex="header"] [data-vertex-role="header-nav-col"] [data-fnl-type="navigation"] {
+    position: static !important;
+  }
   ${scope} [data-vertex="header"] [data-vertex-role="header-bar"] > .fnl-nested-columns {
     position: static !important;
     width: 100% !important;
