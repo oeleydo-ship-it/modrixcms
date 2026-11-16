@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import MediaLibraryModal from '@/cms/admin/MediaLibraryModal';
 
 /**
  * A small rich text editor for the post body: headings, bold/italic/underline, lists, quotes,
@@ -47,6 +48,7 @@ export default function RichTextEditor({ value, onChange, placeholder = 'Start w
     const [source, setSource] = useState(false);
     const [ask, setAsk] = useState(null); // { kind: 'link' | 'image', url, alt }
     const [block, setBlock] = useState('p');
+    const [library, setLibrary] = useState(false);
 
     // Load the content once, and again only when it is replaced from outside (for example by the AI writer).
     useEffect(() => {
@@ -161,9 +163,18 @@ export default function RichTextEditor({ value, onChange, placeholder = 'Start w
                     {ask.kind === 'image' ? (
                         <input type="text" placeholder="Describe the image (alt text)" value={ask.alt} onChange={(event) => setAsk({ ...ask, alt: event.target.value })} />
                     ) : null}
+                    {ask.kind === 'image' ? <button type="button" className="btn btn-light btn-sm" onClick={() => setLibrary(true)}>Choose from library</button> : null}
                     <button type="submit" className="btn btn-sm">{ask.kind === 'link' ? 'Add link' : 'Insert image'}</button>
                     <button type="button" className="btn btn-light btn-sm" onClick={() => setAsk(null)}>Cancel</button>
                 </form>
+            ) : null}
+
+            {library ? (
+                <MediaLibraryModal
+                    kind="image"
+                    onClose={() => setLibrary(false)}
+                    onSelect={(item) => { setAsk((current) => ({ ...current, url: new URL(item.url, window.location.origin).href, alt: current?.alt || item.alt || '' })); setLibrary(false); }}
+                />
             ) : null}
 
             {source ? (

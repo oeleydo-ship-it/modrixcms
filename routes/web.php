@@ -80,6 +80,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::get('pages/{page}/builder', [Admin\PageController::class, 'builder'])->name('pages.builder');
         Route::post('pages/{page}/convert-to-builder', [Admin\PageController::class, 'convertToBuilder'])->name('pages.convert');
         Route::post('pages/{page}/switch-to-blocks', [Admin\PageController::class, 'switchToBlocks'])->name('pages.switch-to-blocks');
+        Route::post('pages/{page}/home', [Admin\PageController::class, 'setHome'])->name('pages.home');
         Route::post('pages/new-builder-page', [Admin\PageController::class, 'storeBuilderPage'])->name('pages.store-builder');
         Route::resource('pages', Admin\PageController::class)->except('show');
 
@@ -95,6 +96,13 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::post('posts/ai/auto', [Admin\PostController::class, 'aiAuto'])->middleware('throttle:40,1')->name('posts.ai.auto');
         Route::resource('posts', Admin\PostController::class)->except('show');
         Route::resource('categories', Admin\CategoryController::class)->only(['index', 'store', 'update', 'destroy']);
+
+        Route::get('media', [Admin\MediaController::class, 'index'])->name('media.index');
+        Route::get('media/list', [Admin\MediaController::class, 'list'])->name('media.list');
+        Route::post('media', [Admin\MediaController::class, 'store'])->middleware('throttle:60,1')->name('media.store');
+        Route::delete('media', [Admin\MediaController::class, 'destroyMany'])->name('media.destroy-many');
+        Route::put('media/{media}', [Admin\MediaController::class, 'update'])->name('media.update');
+        Route::delete('media/{media}', [Admin\MediaController::class, 'destroy'])->name('media.destroy');
 
         Route::get('settings/general', [Admin\SettingsController::class, 'general'])->name('settings.general');
         Route::put('settings/general', [Admin\SettingsController::class, 'updateGeneral'])->name('settings.general.update');

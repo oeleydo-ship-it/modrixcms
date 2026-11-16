@@ -17,6 +17,7 @@ class AdminNavigation
                 self::item('AI generator', 'admin.ai.index', 'admin.ai.*', 'sparkles'),
                 self::item('Blog posts', 'admin.posts.index', 'admin.posts.*', 'posts'),
                 self::item('Categories', 'admin.categories.index', 'admin.categories.*', 'layers'),
+                self::item('Media', 'admin.media.index', 'admin.media.*', 'image'),
             ]],
             ['label' => 'Extensions', 'items' => [
                 self::item('Appearance', 'admin.themes.index', 'admin.themes.*', 'palette'),

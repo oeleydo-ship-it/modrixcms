@@ -39,6 +39,16 @@ return [
     'first_run_setup' => env('CMS_FIRST_RUN_SETUP', true),
     'setup_token' => env('SETUP_TOKEN'),
 
+    /*
+     * Media library (Admin → Media and the page builder). The largest file accepted, in MB: the web
+     * server and PHP (upload_max_filesize, post_max_size) may set a lower limit of their own.
+     * Which file types are accepted is listed in App\Cms\Media\MediaLibrary. SVG is not one of them,
+     * because an SVG file can carry scripts.
+     */
+    'media' => [
+        'max_upload_mb' => (int) env('CMS_MEDIA_MAX_MB', 20),
+    ],
+
     'limits' => [
         'upload_mb' => 50,
         'extracted_mb' => 200,
