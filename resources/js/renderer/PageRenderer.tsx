@@ -331,6 +331,13 @@ function nodeAttributes(
             context.onSelect?.(ref);
         },
         onKeyDown: (event: ReactKeyboardEvent) => {
+            if (event.target !== event.currentTarget) {
+                return;
+            }
+            const target = event.target as HTMLElement | null;
+            if (target?.isContentEditable || target?.closest('[contenteditable], input, textarea, select, [role="textbox"]')) {
+                return;
+            }
             if (event.key === 'Enter' || event.key === ' ') {
                 event.preventDefault();
                 event.stopPropagation();

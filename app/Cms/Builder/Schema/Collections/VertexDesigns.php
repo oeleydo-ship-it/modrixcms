@@ -336,6 +336,7 @@ final class VertexDesigns
             'text' => 'modrix',
             'link' => '/',
             'width' => '184px',
+            'height' => 56,
         ], [
             'maxWidth' => $this->responsive('184px'),
         ]);

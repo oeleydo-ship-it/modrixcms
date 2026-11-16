@@ -33,6 +33,7 @@ class PageController extends Controller
         $pages = Page::query()
             ->regular()
             ->when($request->query('q'), fn ($q, $term) => $q->where('title', 'like', "%{$term}%"))
+            ->orderByDesc('is_home')
             ->orderBy('title')
             ->orderBy('id')
             ->select(['id', 'title'])
@@ -41,6 +42,25 @@ class PageController extends Controller
 
         $loaded = Page::query()->whereKey($pages->pluck('id'))->get()->keyBy('id');
         $pages->setCollection($pages->getCollection()->map(fn (Page $row): ?Page => $loaded->get($row->id))->filter()->values());
+
+        $homeOptions = Page::query()
+            ->regular()
+            ->orderByDesc('is_home')
+            ->orderBy('title')
+            ->orderBy('id')
+            ->get(['id', 'title', 'slug', 'is_home', 'is_published', 'editor'])
+            ->map(fn (Page $page): array => [
+                'id' => $page->id,
+                'title' => $page->title,
+                'slug' => $page->slug,
+                'is_home' => (bool) $page->is_home,
+                'is_published' => (bool) $page->is_published,
+                'editor' => $page->editor,
+                'builder_url' => route('admin.pages.builder', $page),
+                'edit_url' => route('admin.pages.edit', $page),
+                'url' => $page->is_home ? route('home') : route('pages.show', $page),
+            ])
+            ->values();
 
         return Inertia::render('Admin/Pages/Index', [
             'pages' => $pages->through(fn (Page $page) => [
@@ -59,6 +79,7 @@ class PageController extends Controller
                 'updated' => $page->updated_at->diffForHumans(),
                 'url' => $page->is_home ? route('home') : route('pages.show', $page),
             ]),
+            'homeOptions' => $homeOptions,
             'filters' => ['q' => $request->query('q')],
             'siteChrome' => [
                 'headerUrl' => route('admin.pages.site-header'),
@@ -264,6 +285,19 @@ class PageController extends Controller
         }
 
         return $page;
+    }
+
+    /** Sets the given regular page as the site's home page (`/`). */
+    public function setHome(Page $page): RedirectResponse
+    {
+        abort_if($page->role !== null, 404);
+
+        DB::transaction(function () use ($page): void {
+            Page::query()->whereKeyNot($page->id)->where('is_home', true)->update(['is_home' => false]);
+            $page->forceFill(['is_home' => true])->save();
+        });
+
+        return back()->with('status', "“{$page->title}” is now the home page.");
     }
 
     private function validated(Request $request, ?Page $page = null): array

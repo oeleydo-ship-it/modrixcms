@@ -1404,6 +1404,14 @@ export function BlockContentFields({
                         onChange={(event) => set({ alt: event.currentTarget.value })}
                     />
                     <Input
+                        label="Logo height (px)"
+                        type="number"
+                        size="sm"
+                        hint="Between 16 and 240. The width follows the picture's shape."
+                        value={String(propNumber(props, 'height', 36))}
+                        onChange={(event) => set({ height: Math.min(240, Math.max(16, Number(event.currentTarget.value) || 36)) })}
+                    />
+                    <Input
                         label="Links to"
                         size="sm"
                         value={propText(props, 'url')}

@@ -22,9 +22,89 @@ function SiteChromePanel({ chrome }) {
     );
 }
 
-export default function PagesIndex({ pages, filters, siteChrome, ai }) {
+function HomePagePanel({ options, onSelectHome, saving }) {
+    const currentHome = options.find((option) => option.is_home) ?? null;
+    const [selectedId, setSelectedId] = useState(currentHome ? String(currentHome.id) : (options[0] ? String(options[0].id) : ''));
+
+    useEffect(() => {
+        if (currentHome) {
+            setSelectedId(String(currentHome.id));
+        } else if (options.length > 0) {
+            setSelectedId((prev) => (options.some((option) => String(option.id) === prev) ? prev : String(options[0].id)));
+        }
+    }, [currentHome?.id, options]);
+
+    if (!options.length) {
+        return null;
+    }
+
+    const unchanged = currentHome !== null && String(currentHome.id) === selectedId;
+
+    return (
+        <div className="panel">
+            <h2>Home page</h2>
+            {currentHome ? (
+                <p className="hint">
+                    Currently showing <b>{currentHome.title}</b> at <code>/</code>{' '}
+                    <span className={`badge ${currentHome.is_published ? 'green' : 'amber'}`}>
+                        {currentHome.is_published ? 'Published' : 'Draft · publish to show on /'}
+                    </span>
+                </p>
+            ) : (
+                <p className="hint">
+                    <span className="badge amber">No home page selected</span> Pick which page visitors see at <code>/</code>.
+                </p>
+            )}
+            <div className="actions" style={{ flexWrap: 'wrap', gap: 12, justifyContent: 'space-between', alignItems: 'center' }}>
+                <form
+                    className="toolbar"
+                    style={{ marginBottom: 0, alignItems: 'center' }}
+                    onSubmit={(e) => {
+                        e.preventDefault();
+                        if (selectedId && !unchanged) {
+                            onSelectHome(selectedId);
+                        }
+                    }}
+                >
+                    <select
+                        aria-label="Home page"
+                        value={selectedId}
+                        onChange={(e) => setSelectedId(e.target.value)}
+                    >
+                        {options.map((option) => (
+                            <option key={option.id} value={String(option.id)}>
+                                {option.title} ({option.is_home ? '/' : `/${option.slug}`})
+                                {option.is_published ? '' : ' · Draft'}
+                                {option.is_home ? ' · Current' : ''}
+                            </option>
+                        ))}
+                    </select>
+                    <button className="btn btn-sm" type="submit" disabled={saving || !selectedId || unchanged}>
+                        {saving ? 'Updating…' : 'Set home page'}
+                    </button>
+                </form>
+                {currentHome ? (
+                    <div className="actions">
+                        {currentHome.is_published ? (
+                            <a className="btn btn-light btn-sm" href={currentHome.url} target="_blank" rel="noopener">View /</a>
+                        ) : null}
+                        {currentHome.editor === 'builder' ? (
+                            <a className="btn btn-sm" href={currentHome.builder_url}>Open builder</a>
+                        ) : null}
+                        <Link className="btn btn-light btn-sm" href={currentHome.edit_url}>
+                            {currentHome.editor === 'builder' ? 'Settings' : 'Edit'}
+                        </Link>
+                    </div>
+                ) : null}
+            </div>
+        </div>
+    );
+}
+
+export default function PagesIndex({ pages, homeOptions = [], filters, siteChrome, ai }) {
     const { errors } = usePage().props;
     const [q, setQ] = useState(filters.q ?? '');
+    const [settingHome, setSettingHome] = useState(false);
     const [aiOpen, setAiOpen] = useState(Boolean(ai?.initialTargetPageId));
     const [aiRequest, setAiRequest] = useState(
         ai?.initialTargetPageId
@@ -52,6 +132,18 @@ export default function PagesIndex({ pages, filters, siteChrome, ai }) {
         setAiOpen(true);
     };
 
+    const setAsHome = (pageId) => {
+        setSettingHome(true);
+        router.post(
+            route('admin.pages.home', pageId),
+            {},
+            {
+                preserveScroll: true,
+                onFinish: () => setSettingHome(false),
+            },
+        );
+    };
+
     return (
         <AdminLayout
             title="Pages"
@@ -66,10 +158,14 @@ export default function PagesIndex({ pages, filters, siteChrome, ai }) {
         >
             <ErrorFlash errors={errors} />
             <SiteChromePanel chrome={siteChrome} />
+            <HomePagePanel options={homeOptions} onSelectHome={setAsHome} saving={settingHome} />
             <div className="panel">
                 <form className="toolbar" onSubmit={(e) => { e.preventDefault(); router.get(route('admin.pages.index'), { q: q || undefined }, { preserveState: true }); }}>
                     <input type="search" value={q} onChange={(e) => setQ(e.target.value)} placeholder="Search pages…" />
                     <button className="btn btn-light" type="submit">Search</button>
+                    {filters.q ? (
+                        <button className="btn btn-light" type="button" onClick={() => { setQ(''); router.get(route('admin.pages.index'), {}, { preserveState: true }); }}>Clear</button>
+                    ) : null}
                 </form>
 
                 <div className="table-wrap">
@@ -89,6 +185,11 @@ export default function PagesIndex({ pages, filters, siteChrome, ai }) {
                                     <td>
                                         <div className="actions">
                                             {page.is_published ? <a className="btn btn-light btn-sm" href={page.url} target="_blank" rel="noopener">View</a> : null}
+                                            {!page.is_home ? (
+                                                <button className="btn btn-light btn-sm" type="button" disabled={settingHome} onClick={() => setAsHome(page.id)}>
+                                                    Set as home
+                                                </button>
+                                            ) : null}
                                             <button className="btn btn-light btn-sm" type="button" onClick={() => openAiModal('redesign', page.id)}>AI redesign</button>
                                             {page.editor === 'builder' ? <a className="btn btn-sm" href={page.builder_url}>Open builder</a> : null}
                                             <Link className="btn btn-light btn-sm" href={route('admin.pages.edit', page.id)}>{page.editor === 'builder' ? 'Settings' : 'Edit'}</Link>

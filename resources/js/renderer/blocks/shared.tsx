@@ -106,16 +106,46 @@ export function EditableText({
             // re-render the canvas mid-edit; selection still reaches the block
             // through focus.
             onMouseDown={(event) => event.stopPropagation()}
+            onClick={(event) => {
+                // Prevent ancestor labels, links, or summaries from stealing focus or
+                // navigating while still letting the click bubble to select the block.
+                if (event.currentTarget.closest('a, label, summary')) {
+                    event.preventDefault();
+                }
+            }}
             onBlur={(event) => {
-                const next = (multiline ? event.currentTarget.innerText : event.currentTarget.textContent) ?? '';
-                if (next !== value) {
-                    onChange(multiline ? next.replace(/\n$/, '') : next);
+                const raw = (multiline ? event.currentTarget.innerText : event.currentTarget.textContent) ?? '';
+                const normalized = (multiline ? raw.replace(/\r?\n$/, '') : raw).replace(/\u00a0/g, ' ');
+                if (normalized !== value) {
+                    onChange(normalized);
                 }
             }}
             onKeyDown={(event) => {
                 if (event.key === 'Escape' || (event.key === 'Enter' && !multiline && !event.shiftKey)) {
                     event.preventDefault();
+                    event.stopPropagation();
                     event.currentTarget.blur();
+                    return;
+                }
+                if (event.key === ' ' && event.currentTarget.closest('button, summary')) {
+                    // Ancestor <button> / <summary> elements intercept Spacebar for
+                    // native activation; insert the space explicitly instead.
+                    event.preventDefault();
+                    event.stopPropagation();
+                    document.execCommand('insertText', false, ' ');
+                    return;
+                }
+                if (event.key === 'Enter' && !multiline && event.currentTarget.closest('button, summary')) {
+                    event.preventDefault();
+                }
+                if (!event.ctrlKey && !event.metaKey) {
+                    event.stopPropagation();
+                }
+            }}
+            onKeyUp={(event) => {
+                if (event.key === ' ' && event.currentTarget.closest('button, summary')) {
+                    event.preventDefault();
+                    event.stopPropagation();
                 }
             }}
             onPaste={(event) => {

@@ -111,13 +111,59 @@ class PageManagementTest extends TestCase
                 ->where('pages.data.0.block_count', 1));
 
         // MySQL sorts the selected columns in a small buffer, so the sorted query must not select the big JSON columns.
-        $sorted = array_values(array_filter($queries, fn (string $sql): bool => str_contains($sql, 'from "pages"') && str_contains($sql, 'order by "title"')));
+        $sorted = array_values(array_filter(
+            $queries,
+            fn (string $sql): bool => str_contains($sql, 'from "pages"') && str_contains($sql, 'order by') && str_contains($sql, '"title"'),
+        ));
 
         $this->assertNotEmpty($sorted);
         foreach ($sorted as $sql) {
             $this->assertStringNotContainsString('*', $sql);
             $this->assertStringNotContainsString('"blocks"', $sql);
+            $this->assertStringNotContainsString('"document"', $sql);
+            $this->assertStringNotContainsString('"published_document"', $sql);
         }
+    }
+
+    public function test_pages_list_pins_the_selected_home_page_first_and_provides_home_options(): void
+    {
+        Page::factory()->create(['title' => 'About', 'slug' => 'about', 'is_home' => false]);
+        $home = Page::factory()->create(['title' => 'Zebra Landing', 'slug' => 'zebra-landing', 'is_home' => true]);
+
+        $this->actingAs($this->admin())
+            ->get(route('admin.pages.index'))
+            ->assertOk()
+            ->assertInertia(fn ($page) => $page
+                ->where('pages.data.0.id', $home->id)
+                ->where('pages.data.0.is_home', true)
+                ->where('homeOptions.0.id', $home->id)
+                ->where('homeOptions.0.is_home', true));
+    }
+
+    public function test_admin_can_switch_the_home_page_from_pages_index(): void
+    {
+        $admin = $this->admin();
+        $first = Page::factory()->create(['title' => 'First Home', 'slug' => 'first-home', 'is_home' => true]);
+        $next = Page::factory()->create(['title' => 'New Home', 'slug' => 'new-home', 'is_home' => false]);
+        $chrome = Page::factory()->create([
+            'title' => 'Site header',
+            'slug' => 'site-header',
+            'role' => Page::ROLE_HEADER,
+            'is_home' => false,
+        ]);
+
+        $this->actingAs($admin)
+            ->from(route('admin.pages.index'))
+            ->post(route('admin.pages.home', $next))
+            ->assertRedirect(route('admin.pages.index'))
+            ->assertSessionHasNoErrors();
+
+        $this->assertFalse($first->fresh()->is_home);
+        $this->assertTrue($next->fresh()->is_home);
+
+        $this->actingAs($admin)
+            ->post(route('admin.pages.home', $chrome))
+            ->assertNotFound();
     }
 
     public function test_published_pages_render_markdown_and_drafts_are_hidden(): void

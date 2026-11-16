@@ -353,6 +353,7 @@ final class BlockRegistry
                 'src' => null,
                 'alt' => null,
                 'url' => '/',
+                'height' => 36,
             ]),
 
             BlockType::Map->value => self::leaf([

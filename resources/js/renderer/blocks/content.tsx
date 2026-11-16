@@ -739,16 +739,18 @@ export function LogoBlock({ block, mode, onPropsChange }: BlockComponentProps) {
     const src = optionalStr(block.props, 'src');
     const alt = str(block.props, 'alt', 'Logo');
     const href = safeHref(block.props['url']) ?? '/';
+    // The logo's height in pixels, set in the builder; the same value sizes the picture and the text fallback.
+    const height = Math.min(240, Math.max(16, num(block.props, 'height', 36)));
 
     const inner = src ? (
-        <img src={src} alt={alt} style={{ display: 'block', maxHeight: '36px', maxWidth: '100%', width: 'auto', objectFit: 'contain' }} />
+        <img src={src} alt={alt} style={{ display: 'block', height: `${height}px`, maxWidth: '100%', width: 'auto', objectFit: 'contain' }} />
     ) : (
         <EditableText
             value={alt}
             mode={mode}
             placeholder="Brand name"
             ariaLabel="Edit logo text"
-            style={{ fontWeight: 700, fontSize: '20px', letterSpacing: '-0.01em' }}
+            style={{ fontWeight: 700, fontSize: `${Math.round(height * 0.55)}px`, letterSpacing: '-0.01em' }}
             {...(mode === 'editable' && onPropsChange ? { onChange: (next: string) => onPropsChange({ alt: next }) } : {})}
         />
     );
